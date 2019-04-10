@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 15:50:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/10 16:49:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 # include "rtv1_macroses.h"
 # include <math.h>
 
-bool	rt_init(Env *env);
+bool	rt_read_scene(Enviroment *env, string scene_file);
+bool	rt_init(Enviroment *env);
 
-void	rt_free(Env **env);
+void	rt_free(Enviroment **env);
 
 #endif

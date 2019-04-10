@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 23:19:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/10 17:59:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,9 @@ bool	ft_is_one_of_n(int64_t cmp, int64_t n, ...);
 **	\return true if one of argument is equal to \param cmp, else - false.
 */
 bool	ft_is_one_of_str(cstring cmp, int32_t n, ...);
+
+int32_t	ft_digits(int32_t n);
+int32_t	ft_skip_blanks(cstring str);
 
 /*
 **	Swap int32_t values.
@@ -248,6 +251,7 @@ bool	ft_strrepchr(cstring str, char search, char replace);
 **	 else - number which contained in string.
 */
 int32_t	ft_atoi(string str);
+int64_t	ft_atol(string str);
 
 /*
 **	Convert string \param str to int32_t number in \param base notation.

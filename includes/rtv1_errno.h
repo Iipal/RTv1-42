@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 15:45:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/10 18:11:18 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,9 @@
 # define E_ALLOC    " ERROR: Where is memory, pal ?"
 
 # define E_SURFPXL  " ERROR: Broken SDL_Surface load. ->pixels not found"
+# define E_FILE     " ERROR: Cannot open scene setup file."
+# define E_FREAD    " ERROR: Empty file."
+# define E_WINSIZE  " ERROR: Invalid window size. Less than 0 or too big."
+# define E_ISYNTAX  " ERROR: Invalid scene file syntax."
 
 #endif

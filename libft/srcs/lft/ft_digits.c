@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_free.c                                          :+:      :+:    :+:   */
+/*   ft_digits.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/10 15:50:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 16:57:19 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/04/10 17:45:30 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/04/10 17:47:45 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "libft.h"
 
-void	rt_free(Enviroment **env)
+int32_t	ft_digits(int32_t n)
 {
-	IFDO((*env)->sdl, FREE((*env)->sdl->win, SDL_DestroyWindow));
-	FREE((*env)->sdl, free);
-	FREE(*env, free);
-	SDL_Quit();
+	string	temp;
+	int32_t	len;
+
+	temp = ft_itoa(n);
+	len = ft_strlen(temp);
+	ft_strdel(&temp);
+	return (len);
 }
