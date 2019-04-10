@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 19:32:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/10 20:15:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@ static void	rt_start_render(Enviroment *env)
 
 	exit_ = false;
 	while (!exit_)
+	{
 		while (SDL_PollEvent(&env->sdl->e) > 0)
 			if (env->sdl->e.type == SDL_QUIT)
 				exit_ = true;
 			else if (env->sdl->e.type == SDL_KEYDOWN
 			&& env->sdl->e.key.keysym.sym == SDLK_ESCAPE)
 				exit_ = true;
+		rt_rendering(env);
+	}
 }
 
 int			main(int argc, char *argv[])

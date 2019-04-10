@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rtv1.h                                             :+:      :+:    :+:   */
+/*   sdl_pixelput.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 20:15:22 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/04/10 20:02:04 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/04/10 20:06:44 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RTV1_H
-# define RTV1_H
+#include "libftsdl.h"
 
-# include "libftsdl.h"
-# include "rtv1_errno.h"
-# include "rtv1_structs.h"
-# include "rtv1_macroses.h"
-# include <math.h>
+void	sdl_pixelput(SDL_Surface *surface, int32_t x, int32_t y, int64_t color)
+{
+	int64_t	*pixels;
 
-bool	rt_read_scene(Enviroment *env, string scene_file);
-bool	rt_init(Enviroment *env);
-
-void	rt_rendering(Enviroment *env);
-
-void	rt_free(Enviroment **env);
-
-#endif
+	pixels = surface->pixels;
+	if (0 < x && 0 < y && surface->h < y && surface->w < x)
+		pixels[y * surface->w + x] = color;
+}

@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/10 19:16:51 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/10 20:16:19 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ endif
 #   -fno-elide-type     - Do not elide types when printing diagnostics
 CC := gcc -march=native -mtune=native -flto -Ofast
 CFLAGS := -Wall -Wextra -Werror -Wunused
-IFLAGS := -I $(CURDIR)/includes/ -I $(CURDIR)/libft/includes/ -I frameworks/*/Headers
+IFLAGS := -I $(CURDIR)/includes/ -I $(CURDIR)/libft/includes/ -I $(CURDIR)/libftsdl/includes/
 
 SRC := $(abspath $(wildcard srcs/*.c))
 SRC += $(abspath $(wildcard srcs/*/*.c))
@@ -41,6 +41,8 @@ OBJ := $(SRC:.c=.o)
 
 LIBFT := $(CURDIR)/libft/libft.a
 LMAKE := make -C libft
+LIBFTSDL := $(CURDIR)/libftsdl/libftsdl.a
+LSDLMAKE := make -C libftsdl
 
 WHITE := \033[0m
 BGREEN := \033[42m
@@ -62,9 +64,12 @@ $(OBJ): %.o: %.c
 $(LIBFT):
 	@$(LMAKE)
 
-$(NAME): $(LIBFT) $(OBJ)
+$(LIBFTSDL):
+	@$(LSDLMAKE)
+
+$(NAME): $(LIBFT) $(LIBFTSDL) $(OBJ)
 	@$(ECHO) -n ' <q.p> | $(NPWD): '
-	@$(CC) $(OBJ) $(LIBS) $(LIBFT) -o $(NAME)
+	@$(CC) $(OBJ) $(LIBS) $(LIBFT) $(LIBFTSDL) -o $(NAME)
 	@$(ECHO) "[$(INVERT)$(GREEN)✓$(WHITE)]"
 
 del:
@@ -72,9 +77,11 @@ del:
 
 clean:
 	@$(DEL) $(OBJ)
+	@$(LSDLMAKE) clean
 	@$(LMAKE) clean
 
 fclean: clean
+	@$(LSDLMAKE) fclean
 	@$(LMAKE) fclean
 	@$(DEL) $(NAME)
 	@$(ECHO) "$(INVERT)$(RED)deleted$(WHITE)$(INVERT): $(NPWD)$(WHITE)"

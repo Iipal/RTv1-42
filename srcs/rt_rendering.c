@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rtv1.h                                             :+:      :+:    :+:   */
+/*   rt_rendering.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 20:15:22 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/04/10 20:16:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RTV1_H
-# define RTV1_H
+#include "rtv1.h"
 
-# include "libftsdl.h"
-# include "rtv1_errno.h"
-# include "rtv1_structs.h"
-# include "rtv1_macroses.h"
-# include <math.h>
+void	rt_rendering(Enviroment *env)
+{
+	point	p;
 
-bool	rt_read_scene(Enviroment *env, string scene_file);
-bool	rt_init(Enviroment *env);
-
-void	rt_rendering(Enviroment *env);
-
-void	rt_free(Enviroment **env);
-
-#endif
+	p.y = -1;
+	while (env->win_size.y > ++(p.y) && (p.x = -1))
+		while (env->win_size.x > ++(p.x))
+			sdl_pixelput(env->sdl->win_surf, p.x, p.y, 0xff);
+	SDL_UpdateWindowSurface(env->sdl->win);
+}
