@@ -6,17 +6,17 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:02:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 20:06:44 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/10 22:04:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftsdl.h"
 
-void	sdl_pixelput(SDL_Surface *surface, int32_t x, int32_t y, int64_t color)
+void	sdl_pixelput(SDL_Surface *surf, int32_t x, int32_t y, uint32_t color)
 {
-	int64_t	*pixels;
+	int32_t	*pixels;
 
-	pixels = surface->pixels;
-	if (0 < x && 0 < y && surface->h < y && surface->w < x)
-		pixels[y * surface->w + x] = color;
+	pixels = surf->pixels;
+	if (0 <= x && 0 <= y && y < surf->h && x < surf->w)
+		pixels[y * surf->w + x] = color;
 }

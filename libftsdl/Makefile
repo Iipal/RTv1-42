@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/10 20:11:09 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/10 22:07:40 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ endif
 
 LC += rcs
 
-CC := gcc -march=native -mtune=native -flto -Ofast -std=c11
+CC := gcc -march=native -mtune=native -flto -Ofast
 CFLAGS := -Wall -Wextra -Werror -Wunused
 INC := -I $(CURDIR)/includes/ -I ../frameworks/*/Headers/
 
@@ -56,6 +56,7 @@ $(OBJS): %.o: %.c
 	@$(ECHO) -n ' $@: '
 	@$(CC) -c $(CFLAGS) $(INC) $< -o $@
 	@$(ECHO) "$(SUCCESS)"
+
 clean:
 	@$(DEL) $(OBJS)
 
