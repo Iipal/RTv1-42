@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 19:21:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/10 21:31:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,7 @@
 # define FREE(trash, del) if ((trash)) {del((trash)); (trash) = NULL;}
 
 # define ABS(var) ((var) < 0) ? -(var) : (var)
+
+# define RGB_BLACK	0x00
 
 #endif
