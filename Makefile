@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/10 14:24:12 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/10 15:46:35 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ endif
 #	-fno-elide-type		- Do not elide types when printing diagnostics
 CC := gcc -march=native -mtune=native -flto -Ofast
 CFLAGS := -Wall -Wextra -Werror -Wunused
-IFLAGS := -I $(CURDIR)/includes/ -I $(CURDIR)/libft/includes/
+IFLAGS := -I $(CURDIR)/includes/ -I $(CURDIR)/libft/includes/ -I frameworks/*/Headers
 
 SRC := $(abspath $(wildcard srcs/*.c))
 SRC += $(abspath $(wildcard srcs/*/*.c))

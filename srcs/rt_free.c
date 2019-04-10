@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rtv1.h                                             :+:      :+:    :+:   */
+/*   rt_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 15:50:57 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/04/10 15:50:28 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/04/10 15:52:42 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RTV1_H
-# define RTV1_H
+#include "rtv1.h"
 
-# include "rtv1_errno.h"
-# include "rtv1_structs.h"
-# include "rtv1_macroses.h"
-# include <math.h>
-
-bool	rt_init(Env *env);
-
-void	rt_free(Env **env);
-
-#endif
+void	rt_free(Env **env)
+{
+	FREE((*env)->sdl->win, SDL_DestroyWindow);
+	FREE((*env)->sdl, free);
+	FREE(*env, free);
+	SDL_Quit();
+}
