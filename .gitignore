@@ -2,7 +2,7 @@
 .vscode/
 .VScode/
 **.o
-libft/libft.a
+**.a
 RTv1
 **.DS_Store
 test/
