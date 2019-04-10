@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/10 15:46:35 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/10 15:54:46 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,13 +24,13 @@ ifeq ($(UNAME_S),Darwin)
 	LIBS := -F $(CURDIR)/frameworks -rpath $(CURDIR)/frameworks -framework SDL2
 endif
 
-#	-march=native		- Setups compiler to use all available CPU instructions for
-#							optimizing compiling time
-#	-mtune=native		- Setups compiler to compiling all correctly for
-#							current system architecture on which project compiling
-#	-flto				- Enable Link Time Optimization
-#	-Ofast				- MAXIMUM OPTIMIZATION
-#	-fno-elide-type		- Do not elide types when printing diagnostics
+#   -march=native       - Setups compiler to use all available CPU instructions for
+#                           optimizing compiling time
+#   -mtune=native       - Setups compiler to compiling all correctly for
+#                           current system architecture on which project compiling
+#   -flto               - Enable Link Time Optimization
+#   -Ofast              - MAXIMUM OPTIMIZATION
+#   -fno-elide-type     - Do not elide types when printing diagnostics
 CC := gcc -march=native -mtune=native -flto -Ofast
 CFLAGS := -Wall -Wextra -Werror -Wunused
 IFLAGS := -I $(CURDIR)/includes/ -I $(CURDIR)/libft/includes/ -I frameworks/*/Headers
