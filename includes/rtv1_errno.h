@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/11 12:01:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/11 22:30:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 # define E_DIR      ERR "Invalid executable path."
 # define E_ALLOC    ERR "Where is memory, pal ?"
-# define E_SURFPXL  ERR "Broken SDL_Surface load. ->pixels invalid."
 
 # define E_FNLESS   ERR "Too short file name."
 # define E_FILEXT   ERR "Invalid scene file extention. (.rtv1)"

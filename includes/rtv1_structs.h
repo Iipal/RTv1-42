@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/11 11:15:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/11 22:25:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,6 @@ struct	s_point
 # define POINT typedef struct s_point   point
 
 POINT;
-
-struct	s_sdl
-{
-	SDL_Window		*win;
-	SDL_Surface		*win_surf;
-	uiarr			pixels;
-	SDL_Event		e;
-};
-
-# define SDL typedef struct s_sdl   Sdl
-
-SDL;
 
 struct	s_enviroment
 {

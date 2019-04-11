@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:50:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 16:57:19 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/11 22:38:44 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	rt_free(Enviroment **env)
 {
-	IFDO((*env)->sdl, FREE((*env)->sdl->win, SDL_DestroyWindow));
-	FREE((*env)->sdl, free);
+	sdl_free(&(*env)->sdl);
 	FREE(*env, free);
 	SDL_Quit();
 }

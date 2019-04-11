@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_init.c                                          :+:      :+:    :+:   */
+/*   sdl_free.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/10 15:22:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/11 22:34:37 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/04/11 22:37:40 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/04/11 22:39:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "libftsdl.h"
 
-bool	rt_init(Enviroment *env)
+void	sdl_free(Sdl **sdl)
 {
-	MEM(Sdl, env->sdl, 1, E_ALLOC);
-	IFDOR(!sdl_init(env->sdl, env->w_size.x, env->w_size.y, RTV1_TITLE),
-		rt_free(&env), false);
-	return (true);
+	IFDO(*sdl, FREE((*sdl)->w, SDL_DestroyWindow));
+	FREE(*sdl, free);
+	SDL_Quit();
 }
