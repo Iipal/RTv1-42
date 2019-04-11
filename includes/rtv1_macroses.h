@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/10 21:31:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/11 15:30:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # define RTV1_TITLE     "Ray Tracing v1"
 # define RTV1_EXE_PATH  "./RTv1"
 # define RTV1_FILEXT    ".rtv1"
+
+# define WIN_MIN_X	400
+# define WIN_MIN_Y	400
 
 # ifdef __APPLE__
 #  define WIN_MAX_X 2000

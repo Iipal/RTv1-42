@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/11 11:56:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/11 16:48:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,27 @@
 
 static bool	add_check_win_sizes(Enviroment *env, string win_info)
 {
-	string	temp_info;
+	int8_t		i;
+	const char	params[2] = {'w', 'h'};
+	int32_t		**sizes;
+	string		temp_info;
 
+	i = -1;
 	temp_info = win_info;
-	if (*win_info++ == 'w' && *win_info++ == ':')
-		win_info += ft_skip_blanks(win_info);
-	ISM(E_WINSIZE, 0 >= (env->w_size.x = ft_atoi(win_info))
-		|| WIN_MAX_X < env->w_size.x, ft_strdel(&temp_info), false);
-	win_info += ft_digits(env->w_size.x);
-	win_info += ft_skip_blanks(win_info);
-	ISM(E_ISYNTAX, !*win_info, ft_strdel(&temp_info), false);
-	if (*win_info++ == 'h' && *win_info++ == ':')
-		win_info += ft_skip_blanks(win_info);
-	ISM(E_WINSIZE, 0 >= (env->w_size.y = ft_atoi(win_info))
-		|| WIN_MAX_X < env->w_size.y, ft_strdel(&temp_info), false);
-	win_info += ft_digits(env->w_size.y);
+	sizes = (int32_t*[]){&env->w_size.x, &env->w_size.y};
+	while (2 > ++i)
+	{
+		if (params[i] == *win_info++ && ':' == *win_info++)
+			win_info += ft_skip_blanks(win_info);
+		ISM(E_WINSIZE, WIN_MIN_X > (*sizes[i] = ft_atoi(win_info))
+			|| WIN_MAX_X < *sizes[i], ft_strdel(&temp_info), false);
+		IFDO(*win_info, win_info += ft_digits(*sizes[i]));
+		if (!i)
+		{
+			win_info += ft_skip_blanks(win_info);
+			ISM(E_ISYNTAX, !*win_info, ft_strdel(&temp_info), false);
+		}
+	}
 	ISM(E_ISYNTAX, *win_info++ != ';' || *win_info, ft_strdel(&temp_info), 0);
 	ft_strdel(&temp_info);
 	return (true);
