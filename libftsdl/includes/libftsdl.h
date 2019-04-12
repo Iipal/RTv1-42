@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 19:59:09 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 20:08:43 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 20:28:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ Uint8	sdl_clr_inrange(int16_t color);
 
 Uint32	sdl_clr_convert_rgb(Color src);
 
-Color	*sdl_gradient(const Color *start, const Color *end, int32_t length);
+Color	*sdl_clrs_gradient(const Color *start, const Color *end, int32_t len);
 
 bool	sdl_clrs_equal(const Color *c1, const Color *c2);
 
