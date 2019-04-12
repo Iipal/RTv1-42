@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/10 22:07:08 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/12 10:40:03 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ endif
 #   -flto               - Enable Link Time Optimization
 #   -Ofast              - MAXIMUM OPTIMIZATION
 #   -fno-elide-type     - Do not elide types when printing diagnostics
+CC_DEBUG := gcc -march=native -g3 -D DEBUG
 CC := gcc -march=native -mtune=native -flto -Ofast
 CFLAGS := -Wall -Wextra -Werror -Wunused
 IFLAGS := -I $(CURDIR)/includes/ -I $(CURDIR)/libft/includes/ -I $(CURDIR)/libftsdl/includes/
@@ -74,7 +75,16 @@ $(NAME): $(LIBFT) $(LIBFTSDL) $(OBJ)
 
 del:
 	@$(DEL) $(OBJ)
+	@$(DEL) $(NAME)
 
+pre: del $(NAME)
+	@$(ECHO) "$(INVERT)$(GREEN)Successed re-build.$(WHITE)"
+
+set_cc_debug:
+	@$(eval CC=$(CC_DEBUG))
+
+debug: set_cc_debug pre
+	@$(ECHO) "$(INVERT)$(GREEN)Ready for debug.$(WHITE)"
 clean:
 	@$(DEL) $(OBJ)
 	@$(LSDLMAKE) clean
