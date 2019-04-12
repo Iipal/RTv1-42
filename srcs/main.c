@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 11:45:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 13:29:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	rt_start_render(Environment *env)
 	bool	exit_;
 
 	exit_ = false;
+	ft_putfile(RTV1_USAGE);
 	while (!exit_)
 	{
 		while (SDL_PollEvent(&env->sdl->e) > 0)

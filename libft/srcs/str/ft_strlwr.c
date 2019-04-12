@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 12:08:57 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 13:43:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 13:27:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ string	ft_strlwr(string str)
 	s = str;
 	while (*s)
 	{
-		*s = ft_tolower((uint8_t)*s);
+		*s = ft_tolower((uint8_t)(*s));
 		++s;
 	}
-	return str;
+	return (str);
 }

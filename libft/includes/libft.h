@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/11 22:27:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 13:30:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@
 # define IFDO(ex, do) if ((ex)) {do;}
 # define IFDOR(ex, do, ret) if ((ex)) {do; return(ret);}
 
-# define MSG(msg) ft_putstr(msg)
-# define MSGN(msg) ft_putendl(msg)
+# define MSG(msg) ft_putstr_fd(msg, STDERR_FILENO)
+# define MSGN(msg) ft_putendl_fd(msg, STDERR_FILENO)
 # define NOTIS(msg, ex, do, ret) if (!(ex)) {MSGN(msg); do; return(ret);}
 # define NOTIS_F(ex) if (!(ex)) return (false)
 # define ISARGS(ac, av) {--ac;++av; NOTIS(E_USAGE, !(ac != 1), exit(1), 0);}
 # define ISM(msg, ex, do, ret) if ((ex)) {MSGN(msg); do; return (ret);}
+# define ISME(msg, ex, do, ret) if ((ex)) {perror(msg); do; return (ret);}
 
 # define Z(type, dest, x) ft_bzero(dest, sizeof(type) * (x))
 # define MEM(t, d, x, m) NOTIS(m,d=(t*)malloc(sizeof(t)*(x)),exit(1),0);Z(t,d,x)
@@ -78,7 +79,7 @@ BOOL;
 **	\return:
 **	[0 - End of File.
 **	 1 - Successful readed 1 line from file.
-	 -1 - Reading error.]
+**	 -1 - Reading error.]
 */
 int8_t	ft_gnl(const int32_t fd, string *line);
 
@@ -420,7 +421,6 @@ string	ft_strtrim(char const *s);
 **	 If the allocation fails the function returns NULL.
 */
 strtab	ft_strsplit(char const *s, char c);
-
 
 /*
 **	------------------------
