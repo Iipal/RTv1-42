@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/11 11:59:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 10:40:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int			main(int argc, char *argv[])
 {
 	Enviroment	*env;
 
-	ISM(E_DIR, ft_strcmp(*argv, RTV1_EXE_PATH), exit(EXIT_FAILURE), false);
+	#ifndef DEBUG
+		ISM(E_DIR, ft_strcmp(*argv, RTV1_EXE_PATH), exit(EXIT_FAILURE), false);
+	#endif
 	ISARGS(argc, argv);
 	ISM(E_FNLESS, ft_strlen(*argv) < ft_strlen(RTV1_FILEXT) + 1, (void)env, 0);
 	NOTIS(E_FILEXT, !ft_strcmp(*argv
