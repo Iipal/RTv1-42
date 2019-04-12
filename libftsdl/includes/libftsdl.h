@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 19:59:09 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 23:02:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 23:13:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,14 @@ Color	*sdl_clrs_gradient(const Color *start, const Color *end, int32_t len);
 
 bool	sdl_clrs_equal(const Color *c1, const Color *c2);
 
+void	sdl_clr_add(Color *dst, const int16_t add);
+void	sdl_clr_sub(Color *dst, const int16_t sub);
+void	sdl_clr_div(Color *dst, const float div);
+void	sdl_clr_mul(Color *dst, const float mul);
+
 void	sdl_clrs_add(Color *dst, const Color add);
-void	sdl_clrs_div(Color *dst, const Color div);
 void	sdl_clrs_sub(Color *dst, const Color sub);
+void	sdl_clrs_div(Color *dst, const Color div);
 void	sdl_clrs_mul(Color *dst, const Color mul);
 
 void	sdl_clr_bright_inc(Color *dst, float amount);
