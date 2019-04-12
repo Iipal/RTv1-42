@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 23:40:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 23:43:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,14 @@ bool	ft_is_one_of_n(int64_t cmp, int64_t n, ...);
 */
 bool	ft_is_one_of_str(cstring cmp, int32_t n, ...);
 
+/*
+**	\return How many digits in \param n.
+*/
 int32_t	ft_digits(int32_t n);
+
+/*
+**	\return How many blanks skips in string \param str.
+*/
 int32_t	ft_skip_blanks(cstring str);
 
 /*
@@ -277,6 +284,12 @@ bool	ft_strrepchr(cstring str, char search, char replace);
 **	 else - number which contained in string.
 */
 int32_t	ft_atoi(string str);
+
+/*
+**	Convert string \param str to int64_t number.
+**	\return 0 if string \param str is invalid,
+**	 else - number which contained in string.
+*/
 int64_t	ft_atol(string str);
 
 /*
