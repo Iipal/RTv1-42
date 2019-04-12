@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 19:59:09 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 23:37:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 23:41:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ struct	s_sdl
 {
 	SDL_Window	*w;
 	SDL_Surface	*wsurf;
-	uint32_t	*pxls;
+	uiarr		pxls;
 	SDL_Event	e;
 };
 
