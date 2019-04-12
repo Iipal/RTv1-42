@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/11 16:48:41 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/11 19:26:40 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,27 @@ static bool	add_check_win_sizes(Enviroment *env, string win_info)
 	int8_t		i;
 	const char	params[2] = {'w', 'h'};
 	int32_t		**sizes;
-	string		temp_info;
+	string		itmp;
 
 	i = -1;
-	temp_info = win_info;
+	itmp = win_info;
 	sizes = (int32_t*[]){&env->w_size.x, &env->w_size.y};
 	while (2 > ++i)
 	{
 		if (params[i] == *win_info++ && ':' == *win_info++)
 			win_info += ft_skip_blanks(win_info);
 		ISM(E_WINSIZE, WIN_MIN_X > (*sizes[i] = ft_atoi(win_info))
-			|| WIN_MAX_X < *sizes[i], ft_strdel(&temp_info), false);
+			|| WIN_MAX_X < *sizes[i], ft_strdel(&itmp), false);
 		IFDO(*win_info, win_info += ft_digits(*sizes[i]));
 		if (!i)
 		{
+			ISM(E_ISYNTAX, !ft_skip_blanks(win_info), ft_strdel(&itmp), false);
 			win_info += ft_skip_blanks(win_info);
-			ISM(E_ISYNTAX, !*win_info, ft_strdel(&temp_info), false);
+			ISM(E_ISYNTAX, !*win_info, ft_strdel(&itmp), false);
 		}
 	}
-	ISM(E_ISYNTAX, *win_info++ != ';' || *win_info, ft_strdel(&temp_info), 0);
-	ft_strdel(&temp_info);
+	ISM(E_ISYNTAX, *win_info++ != ';' || *win_info, ft_strdel(&itmp), 0);
+	ft_strdel(&itmp);
 	return (true);
 }
 
@@ -46,8 +47,16 @@ bool		rt_read_scene(Enviroment *env, string scene_file)
 	string			temp;
 
 	ISM(E_FILE, 0 >= fd, rt_free(&env), 0);
-	ISM(E_FREAD, 0 >= ft_gnl(fd, &temp), rt_free(&env), false);
+	ISM(E_FEMPTY, 0 >= ft_gnl(fd, &temp), rt_free(&env), false);
 	IFDOR(!add_check_win_sizes(env, temp), rt_free(&env), false);
+	while (0 < ft_gnl(fd, &temp))
+	{
+		if (*temp)
+		{
+			printf("%s\n", temp);
+		}
+		ft_strdel(&temp);
+	}
 	close(fd);
 	return (true);
 }
