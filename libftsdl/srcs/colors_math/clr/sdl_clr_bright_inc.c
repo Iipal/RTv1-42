@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:52:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 20:13:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 23:16:57 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ inline void	sdl_clr_bright_inc(Color *dst, float amount)
 		{
 			if (1.0f > amount)
 				amount += 1.0f;
-			*dst = (Color){
-				sdl_clr_inrange(dst->r * amount),
-				sdl_clr_inrange(dst->g * amount),
-				sdl_clr_inrange(dst->b * amount)};
+			sdl_clr_mul(dst, amount);
 		}
 	}
 }
