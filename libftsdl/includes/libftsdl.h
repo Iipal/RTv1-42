@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 19:59:09 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/11 22:36:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 16:06:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 
 # define E_SURFPXL  " ERROR: Broken SDL_Surface load. ->pixels invalid."
 
+# define COLOR_MAX  255
+# define COLOR_MIN  0
+
 struct	s_sdl
 {
 	SDL_Window	*w;
@@ -37,10 +40,19 @@ struct	s_sdl
 
 SDL;
 
-bool	sdl_init(Sdl *sdl, int32_t width, int32_t height, cstring title);
+bool		sdl_init(Sdl *sdl, int32_t width, int32_t height, cstring title);
 
-void	sdl_pixelput(SDL_Surface *surf, int32_t x, int32_t y, uint32_t color);
+void		sdl_pixelput(SDL_Surface *surf,
+				int32_t x, int32_t y, uint32_t color);
 
-void	sdl_free(Sdl **sdl);
+Uint8		sdl_clr_inrange(Uint8 color);
+Uint32		sdl_clr_convert_rgb(SDL_Color src);
+
+void		sdl_clrs_add(SDL_Color *a, const SDL_Color *b);
+
+void		sdl_clr_bright_inc(SDL_Color *src, float amount);
+void		sdl_clr_bright_dec(SDL_Color *src, float amount);
+
+void		sdl_free(Sdl **sdl);
 
 #endif
