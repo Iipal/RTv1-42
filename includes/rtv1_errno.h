@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 12:56:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 16:52:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 # define E_USAGE    "Usage: ./RTv1 <scene_name>.rtv1"
 
+# define PERR       " ERROR"
 # define ERR        " ERROR: "
 
 # define E_DIR      ERR "Invalid executable path."
 # define E_ALLOC    ERR "Where is memory, pal ?"
 
-# define E_FILE     " ERROR"
 # define E_FNLESS   ERR "Too short file name."
 # define E_FILEXT   ERR "Invalid scene file extention. (.rtv1)"
 # define E_FEMPTY   ERR "File is empty."

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 12:55:03 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 16:52:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ bool		rt_read_scene(Environment *env, string scene_file)
 	const int32_t	fd = open(scene_file, O_RDONLY);
 	string			temp;
 
-	ISME(E_FILE, 0 >= fd, rt_free(&env), 0);
+	ISME(PERR, 0 >= fd, rt_free(&env), 0);
 	ISM(E_FEMPTY, 0 >= ft_gnl(fd, &temp), rt_free(&env), false);
 	IFDOR(!add_check_win_sizes(env, temp), rt_free(&env), false);
 	while (0 < ft_gnl(fd, &temp))
