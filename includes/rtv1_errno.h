@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/11 22:30:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 10:45:25 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define E_FNLESS   ERR "Too short file name."
 # define E_FILEXT   ERR "Invalid scene file extention. (.rtv1)"
 # define E_FILE     ERR "Scene setup file doesnt exist."
-# define E_FREAD    ERR "File is empty."
+# define E_FEMPTY   ERR "File is empty."
 # define E_WINSIZE  ERR "Invalid window sizes. Less than 400px or too big."
 # define E_ISYNTAX  ERR "Invalid scene file syntax."
 
