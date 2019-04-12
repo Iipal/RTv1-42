@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/11 22:25:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 11:32:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ struct	s_enviroment
 	point	w_size;
 };
 
-# define ENV typedef struct s_enviroment    Enviroment
+# define ENV typedef struct s_enviroment    Environment
 
 ENV;
 

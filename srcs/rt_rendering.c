@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/11 22:35:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 11:33:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	rt_rendering(Enviroment *env)
+void	rt_rendering(Environment *env)
 {
 	point	p;
 

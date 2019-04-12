@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/11 19:26:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 11:33:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static bool	add_check_win_sizes(Enviroment *env, string win_info)
+static bool	add_check_win_sizes(Environment *env, string win_info)
 {
 	int8_t		i;
 	const char	params[2] = {'w', 'h'};
@@ -41,7 +41,7 @@ static bool	add_check_win_sizes(Enviroment *env, string win_info)
 	return (true);
 }
 
-bool		rt_read_scene(Enviroment *env, string scene_file)
+bool		rt_read_scene(Environment *env, string scene_file)
 {
 	const int32_t	fd = open(scene_file, O_RDONLY);
 	string			temp;

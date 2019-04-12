@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:50:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/11 22:38:44 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 11:32:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	rt_free(Enviroment **env)
+void	rt_free(Environment **env)
 {
 	sdl_free(&(*env)->sdl);
 	FREE(*env, free);
