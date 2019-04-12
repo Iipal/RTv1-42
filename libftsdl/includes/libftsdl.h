@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 19:59:09 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 20:28:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 23:02:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,22 @@ struct	s_color
 	int16_t	b;
 };
 
+struct	s_fcolor
+{
+	float	r;
+	float	g;
+	float	b;
+};
+
 # define SDL    typedef struct s_sdl    Sdl;
 # define COLOR  typedef struct s_color  Color;
+# define FCOLOR typedef struct s_fcolor FColor;
 
-COLOR;
 SDL;
+COLOR;
+FCOLOR;
+
+# define INRANGE(c)	sdl_clr_inrange(c)
 
 bool	sdl_init(Sdl *sdl, int32_t width, int32_t height, cstring title);
 
