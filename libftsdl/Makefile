@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/12 15:54:56 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/12 17:11:47 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ endif
 
 LC += rcs
 
-CC := gcc -march=native -mtune=native -flto -Ofast
+CC := gcc -march=native -mtune=native -g3
 CFLAGS := -Wall -Wextra -Werror -Wunused
 INC := -I $(CURDIR)/includes/ -I ../frameworks/*/Headers/
 

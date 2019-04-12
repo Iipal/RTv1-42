@@ -6,16 +6,16 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:14:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 16:03:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 17:32:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftsdl.h"
 
-inline void	sdl_clrs_add(SDL_Color *a, const SDL_Color *b)
+inline void	sdl_clrs_add(Color *dst, const Color add)
 {
-	*a = (SDL_Color){
-		sdl_clr_inrange(a->r + b->r),
-		sdl_clr_inrange(a->b + b->b),
-		sdl_clr_inrange(a->g + b->g), 0};
+	*dst = (Color){
+		sdl_clr_inrange(dst->r + add.r),
+		sdl_clr_inrange(dst->g + add.g),
+		sdl_clr_inrange(dst->b + add.b)};
 }

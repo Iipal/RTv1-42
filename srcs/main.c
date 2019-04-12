@@ -6,26 +6,20 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 16:24:43 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 17:40:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-
-static void	rt_test(Uint8 *t)
-{
-	printf("%d\n", *t);
-	sdl_clr_inrange((*t)++);
-}
 
 static void	rt_start_render(Environment *env)
 {
 	bool	exit_;
 
 	exit_ = false;
-	Uint8	test = 0;
 	ft_putfile(RTV1_USAGE);
-	env->color = (SDL_Color){0xff, 0xff, 0xff, 0};
+	env->color = (Color){0x80, 0x00, 0x40};
+	sdl_clr_bright_inc(&env->color, 2);
 	while (!exit_)
 	{
 		while (SDL_PollEvent(&env->sdl->e) > 0)
@@ -34,8 +28,7 @@ static void	rt_start_render(Environment *env)
 			else if (env->sdl->e.type == SDL_KEYDOWN
 			&& env->sdl->e.key.keysym.sym == SDLK_ESCAPE)
 				exit_ = true;
-		rt_test(&test);
-		// rt_rendering(env);
+		rt_rendering(env);
 	}
 }
 

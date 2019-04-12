@@ -6,16 +6,22 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:44:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 16:06:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 17:37:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftsdl.h"
 
-inline void	sdl_clr_bright_dec(SDL_Color *src, float amount)
+inline void	sdl_clr_bright_dec(Color *dst, Uint8 amount)
 {
-	*src = (SDL_Color) {
-		sdl_clr_inrange(src->r / amount),
-		sdl_clr_inrange(src->g / amount),
-		sdl_clr_inrange(src->b / amount), 0};
+	if (1 < amount)
+	{
+		if (!dst->r && !dst->b && !dst->g)
+			*dst = (Color) {amount, amount, amount};
+		else
+			*dst = (Color){
+				sdl_clr_inrange(dst->r / amount),
+				sdl_clr_inrange(dst->g / amount),
+				sdl_clr_inrange(dst->b / amount)};
+	}
 }

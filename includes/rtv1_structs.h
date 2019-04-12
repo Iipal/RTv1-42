@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 15:56:07 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/12 17:28:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ struct	s_enviroment
 {
 	Sdl		*sdl;
 	point	w_size;
-	SDL_Color	color;
+	Color	color;
 };
 
 # define ENV typedef struct s_enviroment    Environment
