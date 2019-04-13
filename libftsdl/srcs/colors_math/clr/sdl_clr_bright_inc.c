@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:52:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/13 09:51:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/13 15:31:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,8 @@
 inline void	sdl_clr_bright_inc(Color *dst, float percent)
 {
 	if (.0f < percent)
-	{
-		if (!dst->r && !dst->b && !dst->g)
-			*dst = (Color) {1, 1, 1};
-		else
-			*dst = (Color){
-				INRANGE(dst->r + (dst->r * (percent / 100))),
-				INRANGE(dst->g + (dst->g * (percent / 100))),
-				INRANGE(dst->b + (dst->b * (percent / 100)))
-			};
-	}
+		*dst = (Color) {
+			INRANGE((!dst->r ? 1 : dst->r) + (dst->r * (percent / 100.0f))),
+			INRANGE((!dst->g ? 1 : dst->g) + (dst->g * (percent / 100.0f))),
+			INRANGE((!dst->b ? 1 : dst->b) + (dst->b * (percent / 100.0f)))};
 }
