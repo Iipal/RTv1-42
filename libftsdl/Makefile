@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/12 20:49:32 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/13 09:22:14 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,9 @@ INC := -I $(CURDIR)/includes/ -I ../frameworks/*/Headers/
 
 SRC_D := srcs/
 SRCS := $(abspath $(wildcard $(SRC_D)/*.c))
-SRCS += $(abspath $(wildcard srcs/*/*.c))
-SRCS += $(abspath $(wildcard srcs/*/*/*.c))
+SRCS += $(abspath $(wildcard $(SRC_D)/*/*.c))
+SRCS += $(abspath $(wildcard $(SRC_D)/*/*/*.c))
+SRCS += $(abspath $(wildcard $(SRC_D)/*/*/*/*.c))
 OBJS := $(SRCS:%.c=%.o)
 
 DEL := rm -rf

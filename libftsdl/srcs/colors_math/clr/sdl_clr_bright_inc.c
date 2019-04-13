@@ -6,23 +6,23 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:52:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 23:16:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/13 09:51:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftsdl.h"
+#include "libftsdl_colors_math.h"
 
-inline void	sdl_clr_bright_inc(Color *dst, float amount)
+inline void	sdl_clr_bright_inc(Color *dst, float percent)
 {
-	if (.0f < amount)
+	if (.0f < percent)
 	{
 		if (!dst->r && !dst->b && !dst->g)
-			*dst = (Color) {amount, amount, amount};
+			*dst = (Color) {1, 1, 1};
 		else
-		{
-			if (1.0f > amount)
-				amount += 1.0f;
-			sdl_clr_mul(dst, amount);
-		}
+			*dst = (Color){
+				INRANGE(dst->r + (dst->r * (percent / 100))),
+				INRANGE(dst->g + (dst->g * (percent / 100))),
+				INRANGE(dst->b + (dst->b * (percent / 100)))
+			};
 	}
 }

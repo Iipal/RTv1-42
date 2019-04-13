@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sdl_clrs_sub.c                                     :+:      :+:    :+:   */
+/*   sdl_clrs_div.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 18:59:32 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 19:00:36 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/04/12 18:56:44 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/04/13 09:48:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftsdl.h"
+#include "libftsdl_colors_math.h"
 
-inline void	sdl_clrs_sub(Color *dst, const Color sub)
+inline Color	*sdl_clrs_div(Color *dst, const Color div)
 {
 	*dst = (Color){
-		sdl_clr_inrange(dst->r - sub.r),
-		sdl_clr_inrange(dst->g - sub.g),
-		sdl_clr_inrange(dst->b - sub.b)};
+		sdl_clr_inrange(dst->r / div.r),
+		sdl_clr_inrange(dst->g / div.g),
+		sdl_clr_inrange(dst->b / div.b)};
+	return (dst);
 }

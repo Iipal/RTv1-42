@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sdl_clr_convert_rgb.c                              :+:      :+:    :+:   */
+/*   sdl_clrs_sub.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 16:00:05 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/13 09:17:05 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/04/12 18:59:32 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/04/13 09:49:17 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftsdl_colors_math.h"
 
-inline Uint32	sdl_clr_convert_rgb(Color src)
+inline Color	*sdl_clrs_sub(Color *dst, const Color sub)
 {
-	return (src.r << 16 | src.g << 8 | src.b);
+	*dst = (Color){
+		sdl_clr_inrange(dst->r - sub.r),
+		sdl_clr_inrange(dst->g - sub.g),
+		sdl_clr_inrange(dst->b - sub.b)};
+	return (dst);
 }

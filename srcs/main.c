@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 20:13:25 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/13 09:54:26 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ static void	rt_start_render(Environment *env)
 
 	exit_ = false;
 	ft_putfile(RTV1_USAGE);
-	env->color = (Color){0x80, 0x00, 0x40};
-	printf("%d %d %d\n", env->color.r, env->color.g, env->color.b);
-	sdl_clr_bright_inc(&env->color, 0.02);
-	printf("%d %d %d\n", env->color.r, env->color.g, env->color.b);
+	env->color = (Color){0xff, 0x4d, 0x2d};
+	Color	c2 = 		{0x02, 0x02, 0x02};
+	if (c2.b) {}
+	printf("%3d %3d %3d\n", env->color.r, env->color.g, env->color.b);
+	sdl_clr_bright_inc(&env->color, 100);
+	printf("%3d %3d %3d\n", env->color.r, env->color.g, env->color.b);
 	while (!exit_)
 	{
 		while (SDL_PollEvent(&env->sdl->e) > 0)

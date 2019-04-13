@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/12 11:19:09 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/13 09:22:38 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,6 @@ endif
 #                           current system architecture on which project compiling
 #   -flto               - Enable Link Time Optimization
 #   -Ofast              - MAXIMUM OPTIMIZATION
-#   -fno-elide-type     - Do not elide types when printing diagnostics
 CC_DEBUG := gcc -march=native -g3 -D DEBUG
 CC := gcc -march=native -mtune=native -flto -Ofast
 CFLAGS := -Wall -Wextra -Werror -Wunused

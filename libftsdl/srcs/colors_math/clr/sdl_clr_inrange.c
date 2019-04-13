@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:17:21 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 19:45:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/13 09:16:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftsdl.h"
+#include "libftsdl_colors_math.h"
 
 inline Uint8	sdl_clr_inrange(int16_t color)
 {

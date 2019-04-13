@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sdl_clrs_mul.c                                     :+:      :+:    :+:   */
+/*   sdl_clrs_equal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 19:00:16 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 19:01:06 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/04/12 19:08:53 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/04/13 09:16:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftsdl.h"
+#include "libftsdl_colors_math.h"
 
-inline void	sdl_clrs_mul(Color *dst, const Color mul)
+inline bool	sdl_clrs_equal(const Color s1, const Color s2)
 {
-	*dst = (Color){
-		sdl_clr_inrange(dst->r * mul.r),
-		sdl_clr_inrange(dst->g * mul.g),
-		sdl_clr_inrange(dst->b * mul.b)};
+	return (s1.r == s2.r && s1.g == s2.g && s1.b == s2.b);
 }

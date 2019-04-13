@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sdl_clr_add.c                                      :+:      :+:    :+:   */
+/*   sdl_clr_sub.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 23:08:15 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 23:10:52 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/04/12 23:11:00 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/04/13 09:48:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftsdl.h"
+#include "libftsdl_colors_math.h"
 
-inline void	sdl_clr_add(Color *dst, const int16_t add)
+inline Color	*sdl_clr_sub(Color *dst, const int16_t sub)
 {
 	*dst = (Color){
-		sdl_clr_inrange(dst->r + add),
-		sdl_clr_inrange(dst->g + add),
-		sdl_clr_inrange(dst->b + add)};
+		sdl_clr_inrange(dst->r - sub),
+		sdl_clr_inrange(dst->g - sub),
+		sdl_clr_inrange(dst->b - sub)};
+	return (dst);
 }
