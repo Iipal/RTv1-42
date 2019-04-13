@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 23:24:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/13 09:47:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/13 22:09:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ Uint8	sdl_clr_inrange(int16_t color);
 
 Uint32	sdl_clr_convert_rgb(Color src);
 
-void	sdl_clr_bright_inc(Color *dst, float percent);
-void	sdl_clr_bright_dec(Color *dst, float percent);
+Color	*sdl_clr_bright_inc(Color *dst, float percent);
+Color	*sdl_clr_bright_dec(Color *dst, float percent);
 
 bool	sdl_clr_equal(const Color c1, Uint8 c2);
 Color	*sdl_clr_add(Color *dst, const int16_t add);
@@ -61,6 +61,11 @@ Color	*sdl_clr_div(Color *dst, const float div);
 Color	*sdl_clr_mul(Color *dst, const float mul);
 
 Color	*sdl_clrs_gradient(const Color start, const Color end, int32_t len);
+
+void	sdl_clrs_swap(Color *a, Color *b);
+
+Color	*sdl_clrs_bright_inc(Color *dst, const Color src, float percent);
+Color	*sdl_clrs_bright_dec(Color *dst, const Color src, float percent);
 
 bool	sdl_clrs_equal(const Color c1, const Color c2);
 Color	*sdl_clrs_add(Color *dst, const Color add);
