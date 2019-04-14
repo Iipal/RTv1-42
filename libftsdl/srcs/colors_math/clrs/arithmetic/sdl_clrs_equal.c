@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 19:08:53 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/13 09:16:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/14 15:44:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftsdl_colors_math.h"
 
-inline bool	sdl_clrs_equal(const Color s1, const Color s2)
+inline bool	sdl_clrs_equal(const Color c1, const Color c2)
 {
-	return (s1.r == s2.r && s1.g == s2.g && s1.b == s2.b);
+	return (c1.r == c2.r && c1.g == c2.g && c1.b == c2.b);
 }

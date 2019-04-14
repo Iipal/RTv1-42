@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 18:56:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/13 09:48:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/14 16:58:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 inline Color	*sdl_clrs_div(Color *dst, const Color div)
 {
 	*dst = (Color){
-		sdl_clr_inrange(dst->r / div.r),
-		sdl_clr_inrange(dst->g / div.g),
-		sdl_clr_inrange(dst->b / div.b)};
+		sdl_clr_inrange((dst->r && div.r) ? (dst->r / div.r) : dst->r),
+		sdl_clr_inrange((dst->g && div.g) ? (dst->g / div.g) : dst->g),
+		sdl_clr_inrange((dst->b && div.b) ? (dst->b / div.b) : dst->b)};
 	return (dst);
 }

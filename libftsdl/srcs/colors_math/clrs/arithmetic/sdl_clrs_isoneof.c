@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sdl_clr_equal.c                                    :+:      :+:    :+:   */
+/*   sdl_clrs_isoneof.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/13 09:10:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/14 15:47:43 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/04/14 15:42:37 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/04/14 15:45:37 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftsdl_colors_math.h"
 
-bool	sdl_clr_equal(const Color c1, Uint8 c)
+inline bool	sdl_clrs_isoneof(const Color c1, const Color c2)
 {
-	return (c1.r == c && c1.g == c && c1.b == c);
+	return (c1.r == c2.r || c1.g == c2.g || c1.b == c2.b);
 }

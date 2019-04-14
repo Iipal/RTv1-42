@@ -6,34 +6,42 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/13 23:22:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/14 18:40:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-# define INC	5
+# define INC	10
 
 void	rt_rendering(Environment *env)
 {
 	point		p;
-	Color		c1 = {0x53, 0x42, 0xf4};
+	env->color = (Color){0xff, 0x80, 0x00};
+	Color		c1 = {0x21, 0x42, 0x84};
+	Color		c2 = {0x00, 0x80, 0xff};
 	Color		*g;
+	static int8_t a;
 
 	p.y = -1;
 	SDL_FillRect(env->sdl->wsurf, NULL, RGB_BLACK);
-	env->color = (Color){0xf4, 0x42, 0x53};
-	Color tmp = env->color;
+	g = sdl_clrs_gradient(env->color, c1, env->w_size.y);
+	if (2 < a)
+		a = 0;
 	while (env->w_size.y > ++(p.y) && (p.x = -1))
 	{
-		g = sdl_clrs_gradient(env->color, c1, env->w_size.x);
-		if (env->w_size.y / 2 > p.y)
-			env->color = *sdl_clrs_bright_inc(&env->color, c1, INC);
-		else if (!sdl_clrs_equal(env->color, tmp))
-			env->color = *sdl_clrs_bright_dec(&env->color, c1, INC);
+		Color	*g2 = sdl_clrs_gradient(g[p.y], c2, env->w_size.x);
 		while (env->w_size.x > ++(p.x))
-			sdl_pixelput(env->sdl->wsurf, p.x, p.y, g[p.x]);
-		free(g);
+		{
+			Color	c = g[p.y];
+			if (!a) sdl_clrs_bright_inc(&c, g2[p.x], INC);
+			else if (a == 1) sdl_clrs_bright_dec(&c, g2[p.x], INC);
+			sdl_pixelput(env->sdl->wsurf, p.x, p.y, c);
+		}
+		FREE(g2, free);
 	}
+	FREE(g, free);
+	SDL_Delay(500);
 	SDL_UpdateWindowSurface(env->sdl->w);
+	++a;
 }
