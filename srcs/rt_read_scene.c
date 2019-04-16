@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/16 19:09:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/16 19:48:44 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,26 +53,30 @@ static bool	rt_clight(Environment *env, string line)
 	return (true);
 }
 
-bool		rt_read_scene(Environment *env, string scene_file)
+static bool	add_parser(string line, Environment *env)
 {
 	const string			params[] = {FP_CAM, FP_LIGHT};
 	const fn_scene_parse	fns[] = {rt_scam, rt_clight};
-	const int32_t			fd = open(scene_file, O_RDONLY);
-	int16_t					i;
 	bool					is_valid;
+	int16_t					i;
+
+	i = -1;
+	while (2 > ++i)
+		if (!ft_strncmp(line, params[i], ft_strlen(params[i])))
+			is_valid = fns[i](env, line);
+	return is_valid;
+}
+
+bool		rt_read_scene(Environment *env, string scene_file)
+{
+
+	const int32_t			fd = open(scene_file, O_RDONLY);
 	string					temp;
 
-	is_valid = false;
 	ISME(PERR, 0 >= fd, rt_free(&env), 0);
 	while (0 < ft_gnl(fd, &temp))
 	{
-		i = -1;
-		while (2 > ++i)
-		{
-			if (!ft_strncmp(temp, params[i], ft_strlen(params[i])))
-				is_valid = fns[i](env, temp);
-		}
-		ISM(E_ISYNTAX, !is_valid, rt_free(&env), false);
+		ISM(E_ISYNTAX, !add_parser(temp, env), rt_free(&env), false);
 	}
 	close(fd);
 	return (true);
