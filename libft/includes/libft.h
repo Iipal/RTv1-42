@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 23:43:41 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/16 18:39:18 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <stddef.h>
 
 # define IFDO(ex, do) if ((ex)) {do;}
-# define IFDOR(ex, do, ret) if ((ex)) {do; return(ret);}
+# define IFDOR(ex, do, ret) {if ((ex)) {do; return(ret);}}
 
 # define MSG(msg) ft_putstr_fd(msg, STDERR_FILENO)
 # define MSGN(msg) ft_putendl_fd(msg, STDERR_FILENO)
@@ -119,12 +119,17 @@ bool	ft_is_one_of_str(cstring cmp, int32_t n, ...);
 /*
 **	\return How many digits in \param n.
 */
-int32_t	ft_digits(int32_t n);
+size_t	ft_digits(int32_t n);
 
 /*
 **	\return How many blanks skips in string \param str.
 */
-int32_t	ft_skip_blanks(cstring str);
+size_t	ft_skip_blanks(cstring str);
+
+/*
+**	\return How many symbols to first blank symbol in string \param str.
+*/
+size_t	ft_skip_to_blank(cstring str);
 
 /*
 **	Swap int32_t values.

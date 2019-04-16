@@ -6,56 +6,73 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 16:52:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/16 19:09:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static bool	add_check_win_sizes(Environment *env, string win_info)
+static bool	rt_scam(Environment *env, string line)
 {
-	int8_t		i;
-	const char	params[2] = {'w', 'h'};
-	int32_t		**sizes;
-	string		itmp;
+	double	**vars;
+	int32_t	i;
+	string	tmp;
 
+	vars = (double*[]){&env->cam.pos.x, &env->cam.pos.y, &env->cam.pos.z,
+						&env->cam.dir.x, &env->cam.dir.y, &env->cam.dir.z};
+	tmp = line;
+	line += ft_skip_to_blank(line);
+	IFDOR(*line != ' ', ft_strdel(&tmp), false);
+	IFDOR(!*line || !ft_isdigit(*line), ft_strdel(&tmp), false);
 	i = -1;
-	itmp = win_info;
-	sizes = (int32_t*[]){&env->w_size.x, &env->w_size.y};
-	while (2 > ++i)
+	while (MAX_CAM_PARAMS > ++i)
 	{
-		if (params[i] == *win_info++ && ':' == *win_info++)
-			win_info += ft_skip_blanks(win_info);
-		ISM(E_WINSIZE, WIN_MIN_X > (*sizes[i] = ft_atoi(win_info))
-			|| WIN_MAX_X < *sizes[i], ft_strdel(&itmp), false);
-		IFDO(*win_info, win_info += ft_digits(*sizes[i]));
-		if (!i)
+		line += ft_digits(*vars[i] = ft_atoi(line));
+		if (MAX_CAM_PARAMS != i + 1)
 		{
-			ISM(E_ISYNTAX, !ft_skip_blanks(win_info), ft_strdel(&itmp), false);
-			win_info += ft_skip_blanks(win_info);
-			ISM(E_ISYNTAX, !*win_info, ft_strdel(&itmp), false);
+			if (i + 1 == MAX_CAM_PARAMS / 2)
+			{
+				IFDOR(*line++ != ' ', ft_strdel(&tmp), false);
+			}
+			else
+				IFDOR(*line++ != ',', ft_strdel(&tmp), false);
 		}
+		else
+			IFDOR(*line, ft_strdel(&tmp), 0);
 	}
-	ISM(E_ISYNTAX, *win_info++ != ';' || *win_info, ft_strdel(&itmp), 0);
-	ft_strdel(&itmp);
+	ft_strdel(&tmp);
+	return (true);
+}
+
+static bool	rt_clight(Environment *env, string line)
+{
+	if (env)
+	{
+	}
+	ft_strdel(&line);
 	return (true);
 }
 
 bool		rt_read_scene(Environment *env, string scene_file)
 {
-	const int32_t	fd = open(scene_file, O_RDONLY);
-	string			temp;
+	const string			params[] = {FP_CAM, FP_LIGHT};
+	const fn_scene_parse	fns[] = {rt_scam, rt_clight};
+	const int32_t			fd = open(scene_file, O_RDONLY);
+	int16_t					i;
+	bool					is_valid;
+	string					temp;
 
+	is_valid = false;
 	ISME(PERR, 0 >= fd, rt_free(&env), 0);
-	ISM(E_FEMPTY, 0 >= ft_gnl(fd, &temp), rt_free(&env), false);
-	IFDOR(!add_check_win_sizes(env, temp), rt_free(&env), false);
 	while (0 < ft_gnl(fd, &temp))
 	{
-		if (*temp)
+		i = -1;
+		while (2 > ++i)
 		{
-			printf("%s\n", temp);
+			if (!ft_strncmp(temp, params[i], ft_strlen(params[i])))
+				is_valid = fns[i](env, temp);
 		}
-		ft_strdel(&temp);
+		ISM(E_ISYNTAX, !is_valid, rt_free(&env), false);
 	}
 	close(fd);
 	return (true);

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 17:28:07 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/16 17:05:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,30 +33,57 @@ ITAB;
 UIARR;
 UINT;
 
-struct	s_fpoint
+struct s_vec
+{
+	double	x;
+	double	y;
+	double	z;
+};
+
+# define VEC typedef struct s_vec   Vec
+
+VEC;
+
+struct s_ray
+{
+	Vec	o;
+	Vec	dir;
+};
+
+struct	s_fdot
 {
 	float	x;
 	float	y;
 };
 
-# define FPOINT typedef struct s_fpoint fpoint
-
-FPOINT;
-
-struct	s_point
+struct	s_dot
 {
 	int32_t	x;
 	int32_t	y;
 };
 
-# define POINT typedef struct s_point   point
+# define RAY typedef struct s_ray   Ray
+# define DOT typedef struct s_dot   Dot
+# define FDOT typedef struct s_fdot fDot
 
-POINT;
+RAY;
+DOT;
+FDOT;
+
+struct	s_camera
+{
+	Vec	pos;
+	Vec	dir;
+};
+
+# define CAMERA typedef struct s_camera    Camera
+
+CAMERA;
 
 struct	s_enviroment
 {
 	Sdl		*sdl;
-	point	w_size;
+	Camera	cam;
 	Color	color;
 };
 

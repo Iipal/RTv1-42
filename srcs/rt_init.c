@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:22:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 11:32:56 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/16 16:15:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 bool	rt_init(Environment *env)
 {
 	MEM(Sdl, env->sdl, 1, E_ALLOC);
-	IFDOR(!sdl_init(env->sdl, env->w_size.x, env->w_size.y, RTV1_TITLE),
+	IFDOR(!sdl_init(env->sdl, WIN_X, WIN_Y, RTV1_TITLE),
 		rt_free(&env), false);
 	return (true);
 }
