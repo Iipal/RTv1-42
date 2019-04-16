@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/16 22:28:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/16 22:47:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ struct	s_dot
 # define DOT typedef struct s_dot   Dot
 # define FDOT typedef struct s_fdot fDot
 
-RAY;
 DOT;
 FDOT;
 

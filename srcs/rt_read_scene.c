@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/16 22:40:25 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/16 22:52:17 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static inline bool	rt_scam(Scene *sc, string s)
 	return (true);
 }
 
-static bool	rt_clight(Scene *sc, string s)
+static inline bool	rt_clight(Scene *sc, string s)
 {
 	if (sc)
 	{
@@ -35,10 +35,10 @@ static bool	rt_clight(Scene *sc, string s)
 	return (true);
 }
 
-static bool	add_parser(string line, Scene *s)
+static bool			add_parser(string line, Scene *s)
 {
-	const string			params[] = {FP_CAM, FP_LIGHT};
 	const fn_scene_parse	fns[] = {rt_scam, rt_clight};
+	const string			params[] = {FP_CAM, FP_LIGHT};
 	bool					is_valid;
 	int16_t					i;
 
@@ -46,15 +46,21 @@ static bool	add_parser(string line, Scene *s)
 	while (2 > ++i)
 		if (!ft_strncmp(line, params[i], ft_strlen(params[i])))
 			is_valid = fns[i](s, line);
+	if (false == is_valid)
+	{
+		MSG(" Error occurred in line: \"");
+		MSG(line);
+		MSGN("\"");
+	}
 	ft_strdel(&line);
 	return is_valid;
 }
 
-bool		rt_read_scene(Environment *env, string scene_file)
+bool				rt_read_scene(Environment *env, string scene_file)
 {
 
-	const int32_t			fd = open(scene_file, O_RDONLY);
-	string					temp;
+	const int32_t	fd = open(scene_file, O_RDONLY);
+	string			temp;
 
 	ISME(PERR, 0 >= fd, rt_free(&env), 0);
 	while (0 < ft_gnl(fd, &temp))
