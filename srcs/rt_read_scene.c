@@ -6,51 +6,36 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/16 20:04:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/16 22:40:25 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static bool	rt_scam(Environment *env, string line)
+static inline bool	rt_scam(Scene *sc, string s)
 {
-	double	**dst;
-	int32_t	i;
-	string	tmp;
-
-	dst = (double*[]){&env->cam.pos.x, &env->cam.pos.y, &env->cam.pos.z,
-						&env->cam.dir.x, &env->cam.dir.y, &env->cam.dir.z};
-	tmp = line;
-	line += ft_skip_to_blank(line);
-	IFDOR(*line++ != ' ', ft_strdel(&tmp), false);
-	IFDOR(!*line || !ft_isdigit(*line), ft_strdel(&tmp), false);
-	i = -1;
-	while (MAX_CAM_PARAMS > ++i && (line += ft_digits(*dst[i] = ft_atoi(line))))
-		if (MAX_CAM_PARAMS != i + 1)
-		{
-			if (i + 1 == MAX_CAM_PARAMS / 2)
-			{
-				IFDOR(*line++ != ' ', ft_strdel(&tmp), false);
-			}
-			else
-				IFDOR(*line++ != ',', ft_strdel(&tmp), false);
-		}
-		else
-			IFDOR(*line, ft_strdel(&tmp), 0);
-	ft_strdel(&tmp);
+	s += ft_skip_to_blank(s);
+	ISR(*s++ != ' ', false);
+	ISR(!*s || !ft_isdigit(*s), false);
+	ISR(',' != *(s += ft_digits(sc->cam.pos.x = ft_atoi(s))) || !*s++, false);
+	ISR(',' != *(s += ft_digits(sc->cam.pos.y = ft_atoi(s))) || !*s++, false);
+	ISR(' ' != *(s += ft_digits(sc->cam.pos.z = ft_atoi(s))) || !*s++, false);
+	ISR(',' != *(s += ft_digits(sc->cam.dir.x = ft_atoi(s))) || !*s++, false);
+	ISR(',' != *(s += ft_digits(sc->cam.dir.y = ft_atoi(s))) || !*s++, false);
+	ISR(*(s += ft_digits(sc->cam.dir.z = ft_atoi(s))), false);
 	return (true);
 }
 
-static bool	rt_clight(Environment *env, string line)
+static bool	rt_clight(Scene *sc, string s)
 {
-	if (env)
+	if (sc)
 	{
 	}
-	ft_strdel(&line);
+	ft_strdel(&s);
 	return (true);
 }
 
-static bool	add_parser(string line, Environment *env)
+static bool	add_parser(string line, Scene *s)
 {
 	const string			params[] = {FP_CAM, FP_LIGHT};
 	const fn_scene_parse	fns[] = {rt_scam, rt_clight};
@@ -60,7 +45,8 @@ static bool	add_parser(string line, Environment *env)
 	i = -1;
 	while (2 > ++i)
 		if (!ft_strncmp(line, params[i], ft_strlen(params[i])))
-			is_valid = fns[i](env, line);
+			is_valid = fns[i](s, line);
+	ft_strdel(&line);
 	return is_valid;
 }
 
@@ -73,7 +59,7 @@ bool		rt_read_scene(Environment *env, string scene_file)
 	ISME(PERR, 0 >= fd, rt_free(&env), 0);
 	while (0 < ft_gnl(fd, &temp))
 	{
-		ISM(E_ISYNTAX, !add_parser(temp, env), rt_free(&env), false);
+		ISM(E_ISYNTAX, !add_parser(temp, &env->s), rt_free(&env), false);
 	}
 	close(fd);
 	return (true);

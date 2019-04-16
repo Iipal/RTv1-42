@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/16 18:39:18 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/16 22:12:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define ISARGS(ac, av) {--ac;++av; NOTIS(E_USAGE, !(ac != 1), exit(1), 0);}
 # define ISM(msg, ex, do, ret) if ((ex)) {MSGN(msg); do; return (ret);}
 # define ISME(msg, ex, do, ret) if ((ex)) {perror(msg); do; return (ret);}
+# define ISR(ex, ret) if ((ex)) {return (ret);}
 
 # define Z(type, dest, x) ft_bzero(dest, sizeof(type) * (x))
 # define MEM(t, d, x, m) NOTIS(m,d=(t*)malloc(sizeof(t)*(x)),exit(1),0);Z(t,d,x)

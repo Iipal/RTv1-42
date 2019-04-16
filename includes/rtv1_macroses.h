@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/16 18:31:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/16 22:09:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # endif
 
 # ifdef __linux__
-#  define WIN_X 2000
-#  define WIN_Y 1000
+#  define WIN_X 1000
+#  define WIN_Y 500
 # endif
 
 # define RTV1_TITLE     "Ray Tracing v1"

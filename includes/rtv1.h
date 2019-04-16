@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/16 16:15:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/16 22:33:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,13 @@
 # include "rtv1_macroses.h"
 # include <math.h>
 
-typedef bool (*fn_scene_parse)(Environment*, string);
+typedef bool (*fn_scene_parse)(Scene*, string);
 
 bool	rt_read_scene(Environment *env, string scene_file);
 bool	rt_init(Environment *env);
 
 Vec		*u_cp_vec(Vec *v, double x, double y, double z);
 Vec		*u_cp_vvec(Vec *dst, Vec src);
-Ray		*u_cp_ray(Ray *r, Vec origin, Vec direction);
 
 void	rt_rendering(Environment *env);
 

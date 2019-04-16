@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/16 17:05:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/16 22:28:40 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,6 @@ struct s_vec
 
 VEC;
 
-struct s_ray
-{
-	Vec	o;
-	Vec	dir;
-};
-
 struct	s_fdot
 {
 	float	x;
@@ -62,7 +56,6 @@ struct	s_dot
 	int32_t	y;
 };
 
-# define RAY typedef struct s_ray   Ray
 # define DOT typedef struct s_dot   Dot
 # define FDOT typedef struct s_fdot fDot
 
@@ -80,11 +73,20 @@ struct	s_camera
 
 CAMERA;
 
+struct	s_scene
+{
+	Camera cam;
+};
+
+# define SCENE typedef struct s_scene        Scene
+
+SCENE;
+
 struct	s_enviroment
 {
 	Sdl		*sdl;
-	Camera	cam;
 	Color	color;
+	Scene	s;
 };
 
 # define ENV typedef struct s_enviroment    Environment
