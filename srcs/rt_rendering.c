@@ -6,13 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/16 17:29:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/17 12:39:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-
-# define INC	10
 
 void	rt_rendering(Environment *env)
 {

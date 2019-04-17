@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 16:43:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/16 16:53:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/17 12:36:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 size_t	ft_skip_to_blank(cstring str)
 {
-	size_t	i = 0;
+	size_t	i;
 
+	i = 0;
 	while (str[i] && !ft_isblank(str[i]))
 		++i;
 	return (i);

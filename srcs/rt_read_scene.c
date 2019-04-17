@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/17 12:10:48 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/17 12:40:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline bool	rt_scam(Scene *sc, string s)
+static bool	rt_scam(Scene *sc, string s)
 {
 	IFDOR(sc->cam.is, MSGN(E_DUP), false);
 	s += ft_skip_to_blank(s);
@@ -28,7 +28,7 @@ static inline bool	rt_scam(Scene *sc, string s)
 	return (true);
 }
 
-static inline bool	rt_clight(Scene *sc, string s)
+static bool	rt_clight(Scene *sc, string s)
 {
 	IFDOR(sc->l.is, MSGN(E_DUP), false);
 	s += ft_skip_to_blank(s);
@@ -42,7 +42,8 @@ static inline bool	rt_clight(Scene *sc, string s)
 	sc->l.is = true;
 	return (true);
 }
-static inline bool	rt_csphere(Scene *sc, string s)
+
+static bool	rt_csphere(Scene *sc, string s)
 {
 	IFDOR(sc->sp.is, MSGN(E_DUP), false);
 	s += ft_skip_to_blank(s);
@@ -60,7 +61,7 @@ static inline bool	rt_csphere(Scene *sc, string s)
 	return (true);
 }
 
-static bool			add_parser(Scene *sc, string *str, int16_t nline)
+static bool	add_parser(Scene *sc, string *str, int16_t nline)
 {
 	const fn_scene_parse	fns[] = {rt_scam, rt_clight, rt_csphere};
 	const string			params[] = {FP_CAM, FP_LIGHT, FP_SPHERE};
@@ -69,18 +70,17 @@ static bool			add_parser(Scene *sc, string *str, int16_t nline)
 
 	i = -1;
 	is_valid = false;
-	while ((sizeof fns / sizeof *fns) > (size_t)++i)
+	while ((sizeof(fns) / sizeof(*fns)) > (size_t)++i)
 		if (!ft_strncmp(*str, params[i], ft_strlen(params[i])))
 			is_valid = fns[i](sc, *str);
 	if (false == is_valid)
 		ERRAT(nline, *str);
 	ft_strdel(str);
-	return is_valid;
+	return (is_valid);
 }
 
-bool				rt_read_scene(Environment *env, string scene_file)
+bool		rt_read_scene(Environment *env, string scene_file)
 {
-
 	const int32_t	fd = open(scene_file, O_RDONLY);
 	string			temp;
 	int16_t			nline;

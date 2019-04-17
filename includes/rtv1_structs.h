@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/17 11:47:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/17 12:36:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ ITAB;
 UIARR;
 UINT;
 
-struct s_vec
+struct	s_vec
 {
 	double	x;
 	double	y;

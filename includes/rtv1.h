@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/16 22:33:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/17 12:39:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 # include "rtv1_macroses.h"
 # include <math.h>
 
-typedef bool (*fn_scene_parse)(Scene*, string);
+# define FNSCP typedef bool (*fn_scene_parse)(Scene*, string);
+
+FNSCP;
 
 bool	rt_read_scene(Environment *env, string scene_file);
 bool	rt_init(Environment *env);
