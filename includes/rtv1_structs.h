@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/17 14:11:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/17 18:49:57 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,23 @@ struct	s_sphere
 	bool	is;
 };
 
+struct	s_object
+{
+	Vec		pos;
+	Uint32	clr;
+	int16_t	radius;
+	float	spec;
+};
+
 # define CAMERA typedef struct s_camera    Camera
 # define LIGHT typedef struct s_light      Light
 # define SPHERE typedef struct s_sphere    Sphere
+# define OBJ typedef struct s_object       Object
 
 CAMERA;
 LIGHT;
 SPHERE;
+OBJ;
 
 struct	s_scene
 {
@@ -109,6 +119,8 @@ struct	s_environment
 	Sdl		*sdl;
 	Color	color;
 	Scene	s;
+	Object	*obj;
+	uint8_t	max_objs;
 };
 
 # define ENV typedef struct s_environment   Environment
