@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:32:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/17 13:32:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/17 14:11:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ inline bool	rt_slight(Scene *sc, string s)
 	ISR(',' != *(s += ft_digits(sc->l.pos.x = ft_atoi(s))) || !*s++, false);
 	ISR(',' != *(s += ft_digits(sc->l.pos.y = ft_atoi(s))) || !*s++, false);
 	ISR(' ' != *(s += ft_digits(sc->l.pos.z = ft_atoi(s))) || !*s++, false);
-	ISR(*(s += ft_digits(sc->l.intense = ft_atoi(s))), false);
-	sc->l.intense /= 100;
+	ISR(*(s += ft_digits(sc->l.intensity = ft_atoi(s))), false);
+	sc->l.intensity /= 100;
 	sc->l.is = true;
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/17 13:35:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/17 14:17:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,18 @@
 
 static bool	add_valid_saved_data(Scene *sc)
 {
-	if (!sc)
-		return (false);
+	IFDOR(!sc->cam.is, MSGN(E_NOCAM), false);
+	IFDOR(!sc->l.is, MSGN(E_NOLIGHT), false);
+	IFDOR(!rt_inrange(sc->cam.dir, true, true), MSGN(E_CAMDIR), false);
+	IFDOR(!rt_inrange(sc->cam.pos, true, true), MSGN(E_CAMPOS), false);
+	IFDOR(!rt_inrange(sc->l.pos, true, true), MSGN(E_LIGHTPOS), false);
+	IFDOR(.0f > sc->l.intensity || 1.0f < sc->l.intensity, MSGN(E_LINT), false);
+	if (sc->sp.is)
+	{
+		IFDOR(!rt_inrange(sc->sp.pos, true, true), MSGN(E_SPPOS), false);
+		IFDOR(0 > sc->sp.radius || 50 < sc->sp.radius, MSGN(E_SPRAD), false);
+		IFDOR(0 > sc->sp.spec || 50 < sc->sp.spec, MSGN(E_SPSPEC), false);
+	}
 	return (true);
 }
 
@@ -49,6 +59,6 @@ bool		rt_read_scene(Environment *env, string scene_file)
 		ISM(E_ISYNTAX, !add_parser(&env->s, &temp, nline++),
 			rt_free(&env), false);
 	close(fd);
-	add_valid_saved_data(&env->s);
+	NOTIS_F(add_valid_saved_data(&env->s));
 	return (true);
 }

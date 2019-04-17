@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/17 12:36:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/17 14:11:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ struct	s_camera
 struct	s_light
 {
 	Vec		pos;
-	float	intense;
+	float	intensity;
 	bool	is;
 };
 
@@ -81,7 +81,7 @@ struct	s_sphere
 	Vec		pos;
 	Uint32	clr;
 	int16_t	radius;
-	int16_t	spec;
+	float	spec;
 	bool	is;
 };
 

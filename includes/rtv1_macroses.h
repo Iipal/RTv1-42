@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/17 12:11:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/17 13:46:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@
 #  define WIN_X 1000
 #  define WIN_Y 500
 # endif
+
+# define MIN_X	-250
+# define MAX_X	250
+
+# define MIN_Z	-250
+# define MAX_Z	250
+
+# define MIN_Y	-250
+# define MAX_Y	250
 
 # define RTV1_TITLE     "Ray Tracing v1"
 # define RTV1_EXE_PATH  "./RTv1"
