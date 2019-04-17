@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/16 22:55:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/17 12:11:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@
 
 # define FP_CAM "Camera:"
 # define FP_LIGHT "Light:"
+# define FP_SPHERE "Sphere:"
 
 # define MAX_CAM_PARAMS 6
-
-# define ERRAT(msg) MSG(" Error occurred at: \""); MSG(msg); MSGN("\"");
 
 # define RGB_BLACK  0x00
 

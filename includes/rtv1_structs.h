@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/16 22:47:48 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/17 11:47:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,31 +64,54 @@ FDOT;
 
 struct	s_camera
 {
-	Vec	pos;
-	Vec	dir;
+	Vec		pos;
+	Vec		dir;
+	bool	is;
+};
+
+struct	s_light
+{
+	Vec		pos;
+	float	intense;
+	bool	is;
+};
+
+struct	s_sphere
+{
+	Vec		pos;
+	Uint32	clr;
+	int16_t	radius;
+	int16_t	spec;
+	bool	is;
 };
 
 # define CAMERA typedef struct s_camera    Camera
+# define LIGHT typedef struct s_light      Light
+# define SPHERE typedef struct s_sphere    Sphere
 
 CAMERA;
+LIGHT;
+SPHERE;
 
 struct	s_scene
 {
-	Camera cam;
+	Camera	cam;
+	Light	l;
+	Sphere	sp;
 };
 
 # define SCENE typedef struct s_scene        Scene
 
 SCENE;
 
-struct	s_enviroment
+struct	s_environment
 {
 	Sdl		*sdl;
 	Color	color;
 	Scene	s;
 };
 
-# define ENV typedef struct s_enviroment    Environment
+# define ENV typedef struct s_environment   Environment
 
 ENV;
 
