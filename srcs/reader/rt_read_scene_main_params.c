@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:32:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 17:04:11 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 23:47:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ inline bool	rt_scam(Scene *sc, string s)
 	ISR(' ' != *(s += ft_digits(sc->cam.pos.z = ft_atoi(s))) || !*s++, false);
 	ISR(',' != *(s += ft_digits(sc->cam.dir.x = ft_atoi(s))) || !*s++, false);
 	ISR(',' != *(s += ft_digits(sc->cam.dir.y = ft_atoi(s))) || !*s++, false);
-	ISR(*(s += ft_digits(sc->cam.dir.z = ft_atoi(s))), false);
+	ISR(*(s += ft_digits(sc->cam.dir.z = -ft_atoi(s))), false);
+	sc->cam.pos.y = -sc->cam.pos.y;
 	sc->cam.is = true;
 	return (true);
 }
@@ -38,6 +39,7 @@ inline bool	rt_slight(Scene *sc, string s)
 	ISR(',' != *(s += ft_digits(sc->l.pos.y = ft_atoi(s))) || !*s++, false);
 	ISR(' ' != *(s += ft_digits(sc->l.pos.z = ft_atoi(s))) || !*s++, false);
 	ISR(*(s += ft_digits(sc->l.intensity = ft_atoi(s))), false);
+	sc->l.pos.y = -sc->l.pos.y;
 	sc->l.intensity /= 100;
 	sc->l.is = true;
 	return (true);

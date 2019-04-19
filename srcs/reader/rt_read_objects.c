@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:31:21 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 10:14:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 23:47:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ inline bool	rt_ssphere(Scene *sc, string s)
 	ISR(' ' != *(s += ft_skip_to_blank(s)) || !*s++, false);
 	ISR(' ' != *(s += ft_digits(sc->sp.radius = ft_atoi(s))) || !*s++, false);
 	ISR(*(s += ft_digits(sc->sp.spec = ft_atoi(s))), false);
+	sc->sp.pos.y = -sc->sp.pos.y;
 	sc->sp.clr = (Color){clr >> 16, (clr >> 8) & 0xff, clr & 0xff};
 	sc->sp.is = true;
 	return (true);
