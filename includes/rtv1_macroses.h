@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/18 16:17:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 12:29:44 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@
 # define FP_SPHERE  "Sphere:"
 
 # define MAX_CAM_PARAMS 6
+
+# define VMUL(a, b) u_mul_vec((a), (b))
 
 # define RGB_BLACK  0x00
 

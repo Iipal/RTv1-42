@@ -6,25 +6,25 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:44:49 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/18 15:40:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 12:30:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline Vec	*u_cp_vec(Vec *v, double x, double y, double z)
+inline Vec		*u_cp_vec(Vec *v, double x, double y, double z)
 {
 	*v = (Vec){x, y, z};
 	return (v);
 }
 
-inline Vec	*u_cp_vvec(Vec *dst, Vec src)
+inline Vec		*u_cp_vvec(Vec *dst, Vec src)
 {
 	*dst = (Vec){src.x, src.y, src.z};
 	return (dst);
 }
 
-inline bool	u_inrange(Vec v, bool check_min, bool check_max)
+inline bool		u_inrange(Vec v, bool check_min, bool check_max)
 {
 	if (check_max)
 		if (MAX_X < v.x || MAX_Y < v.y || MAX_Z < v.z)
@@ -35,7 +35,7 @@ inline bool	u_inrange(Vec v, bool check_min, bool check_max)
 	return (true);
 }
 
-inline Vec	u_sub_vec(Vec a, Vec b)
+inline Vec		u_sub_vec(Vec a, Vec b)
 {
 	Vec ret;
 
