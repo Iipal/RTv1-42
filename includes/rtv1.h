@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 19:23:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 23:56:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ bool	rt_read_scene(Environment *env, string scene_file);
 bool	rt_init(Environment *env);
 
 bool	u_inrange(Vec v, bool check_min, bool check_max);
+double	u_inrangev(double v, bool check_min, bool check_max);
 
 Vec		*u_cp_vec(Vec *v, double x, double y, double z);
 Vec		*u_cp_vvec(Vec *dst, Vec src);
 Vec		u_sub_vec(Vec a, Vec b);
-float	u_mul_vec(Vec a, Vec b);
 
 void	rt_sdl_keys_press(Environment *env);
 void	rt_sdl_keys_release(Environment *env);
