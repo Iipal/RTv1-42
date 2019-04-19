@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 15:32:54 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/18 16:22:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 12:32:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,3 @@ void	sdl_pixelput_canvas(SDL_Surface *surf, Dot p, Dot win, Color clr)
 			pixels[p.y * surf->w + p.x] = sdl_clr_convert_rgb(clr);
 	}
 }
-// x * WIDTH / (1000.0 * WIDTH),
-// y * HEIGHT / (1000.0 * HEIGHT)
