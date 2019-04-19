@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:07:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 19:14:17 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 19:17:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ inline void	rt_sdl_keys_press(Environment *env)
 		env->isr.is_cam_zdec = true;
 	else if (SDLK_e == SEKEY)
 		env->isr.is_cam_zinc = true;
-	else if (SDLK_f == SEKEY)
+	else if (SDLK_r == SEKEY)
 		env->isr.is_render_fps = !env->isr.is_render_fps;
 }
 
