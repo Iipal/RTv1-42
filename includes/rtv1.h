@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 19:15:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 19:23:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,11 @@ void	rt_sdl_keys_press(Environment *env);
 void	rt_sdl_keys_release(Environment *env);
 void	rt_sdl_keys_events(Environment *env);
 
+void	rt_render_loop(Environment *env);
 void	rt_rendering(Environment *env);
 void	rt_render_fps_counter(Environment *env);
+
+void	rt_raytracing(Environment *env);
 
 void	rt_fps(Fps *fps);
 

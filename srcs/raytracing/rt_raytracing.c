@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_rendering.c                                     :+:      :+:    :+:   */
+/*   rt_raytracing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 19:14:25 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/04/19 19:23:36 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/04/19 19:26:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static inline Color	add_trace_ray(Environment *env, Vec d)
 	return (light(env->s.sp.clr, lh.p, lh.n, env->s.l));
 }
 
-void				rt_rendering(Environment *env)
+void			rt_raytracing(Environment *env)
 {
 	Dot		i;
 	Color	curr_color;
@@ -70,9 +70,7 @@ void				rt_rendering(Environment *env)
 
 	i.y = RT_SY;
 	curr_color = (Color){0, 0, 0};
-	SDL_FillRect(env->sdl->wsurf, NULL, RGB_BLACK);
 	while (RT_EY > ++(i.y) && (i.x = RT_SX))
-	{
 		while (RT_EX > ++(i.x))
 		{
 			d = (Vec){i.x * WIN_X / (1000.0 * WIN_X),
@@ -81,8 +79,4 @@ void				rt_rendering(Environment *env)
 			sdl_pixelput_canvas(env->sdl->wsurf,
 				(Dot){i.x, i.y}, (Dot){WIN_X, WIN_Y}, curr_color);
 		}
-	}
-	if (env->isr.is_render_fps)
-		rt_render_fps_counter(env);
-	SDL_UpdateWindowSurface(env->sdl->w);
 }
