@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 10:13:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 17:30:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,27 @@ struct	s_sphere
 	int16_t	radius;
 	float	spec;
 	bool	is;
-	double	x1;
-	double	x2;
+};
+
+struct	s_isrender
+{
+	bool	is_cam_up;
+	bool	is_cam_down;
+	bool	is_cam_left;
+	bool	is_cam_right;
+	bool	is_cam_zinc;
+	bool	is_cam_zdec;
 };
 
 # define CAMERA typedef struct s_camera    Camera
 # define LIGHT typedef struct s_light      Light
 # define SPHERE typedef struct s_sphere    Sphere
+# define ISRNDR typedef struct s_isrender  Isr
 
 CAMERA;
 LIGHT;
 SPHERE;
+ISRNDR;
 
 struct	s_scene
 {
@@ -102,13 +112,21 @@ struct	s_environment
 {
 	Sdl		*sdl;
 	Scene	s;
-	double	tmin;
-	double	tmax;
 	double	closes;
+	Isr		isr;
 };
 
 # define ENV typedef struct s_environment   Environment
 
 ENV;
+
+struct	s_light_help
+{
+	Vec	cd;
+	Vec	p;
+	Vec	n;
+};
+
+typedef struct s_light_help	t_lhelp;
 
 #endif

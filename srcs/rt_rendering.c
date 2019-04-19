@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 13:41:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 17:16:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,31 +25,21 @@ static inline bool	add_inter(Environment *env, Vec d, double *t1, double *t2)
 	return (true);
 }
 
-double		vec_dot(Vec v1, Vec v2)
+static inline Color	light(Color clr, Vec p, Vec n, Light l)
 {
-	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
-}
-
-double		vec_len(Vec v)
-{
-	return (sqrt(v.x * v.x + v.y * v.y + v.z * v.z));
-}
-
-Color	light(Color clr, Vec P, Vec N, Light l)
-{
-	double			i = 0.0;
+	double			i;
 	Color			tmp;
-	const			Vec L = (Vec){l.pos.x - P.x, l.pos.y - P.y, l.pos.z - P.z};
-	const double	dot = vec_dot(N, L);
+	const Vec		x = (Vec){l.pos.x - p.x, l.pos.y - p.y, l.pos.z - p.z};
+	const double	dot = VDOT(n, x);
 
 	tmp = clr;
+	i = 0.0;
 	if (.0f < dot)
 	{
-		i += l.intensity * dot / (vec_len(N) * vec_len(L));
+		i += l.intensity * dot / (VLEN(n) * VLEN(x));
 		clr = *sdl_clrs_add(&clr, *sdl_clr_mul(&tmp, i));
-		return (clr);
 	}
-	return clr;
+	return (clr);
 }
 
 static inline Color	add_trace_ray(Environment *env, Vec d)
@@ -57,18 +47,19 @@ static inline Color	add_trace_ray(Environment *env, Vec d)
 	double	t1;
 	double	t2;
 	bool	is_figure;
+	t_lhelp	lh;
 
 	is_figure = add_inter(env, d, &t1, &t2);
 	ISR(!is_figure, ((Color){0, 0, 0}));
-	IFDO(t1 >= env->tmin && t1 <= env->tmax, env->closes = t1);
-	IFDO(t2 >= env->tmin && t2 <= env->tmax, env->closes = t2);
-	Vec CD = (Vec){env->closes * d.x, env->closes * d.y, env->closes * d.z};
-	Vec	P = (Vec){env->s.cam.pos.x + CD.x,
-		env->s.cam.pos.y + CD.y, env->s.cam.pos.z + CD.z};
-	Vec N = (Vec){P.x - env->s.sp.pos.x,
-		P.y - env->s.sp.pos.y, P.z - env->s.sp.pos.z};
-	N = (Vec){N.x / vec_len(N), N.y / vec_len(N), N.z / vec_len(N)};
-	return (light(env->s.sp.clr, P, N, env->s.l));
+	IFDO(t1 >= TMIN && t1 <= TMAX, env->closes = t1);
+	IFDO(t2 >= TMIN && t2 <= TMAX, env->closes = t2);
+	lh.cd = (Vec){env->closes * d.x, env->closes * d.y, env->closes * d.z};
+	lh.p = (Vec){env->s.cam.pos.x + lh.cd.x,
+		env->s.cam.pos.y + lh.cd.y, env->s.cam.pos.z + lh.cd.z};
+	lh.n = (Vec){lh.p.x - env->s.sp.pos.x,
+		lh.p.y - env->s.sp.pos.y, lh.p.z - env->s.sp.pos.z};
+	lh.n = (Vec){lh.n.x / VLEN(lh.n), lh.n.y / VLEN(lh.n), lh.n.z / VLEN(lh.n)};
+	return (light(env->s.sp.clr, lh.p, lh.n, env->s.l));
 }
 
 void				rt_rendering(Environment *env)

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 17:45:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/16 16:45:11 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 17:06:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ size_t	ft_digits(int32_t n)
 	temp = ft_itoa(n);
 	len = ft_strlen(temp);
 	ft_strdel(&temp);
-	return (0 > n ? 1 + len : len);
+	return (len);
 }

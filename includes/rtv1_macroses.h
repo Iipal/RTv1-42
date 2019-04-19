@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 12:29:44 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 17:28:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 # define TMIN   0.1
 # define TMAX   10000
 
+# define CAM_M 0.2
+
 # define RTV1_TITLE     "Ray Tracing v1"
 # define RTV1_EXE_PATH  "./RTv1"
 # define RTV1_FILEXT    ".rtv1"
@@ -51,6 +53,10 @@
 # define MAX_CAM_PARAMS 6
 
 # define VMUL(a, b) u_mul_vec((a), (b))
+# define VLEN(v) sqrt(v.x * v.x + v.y * v.y + v.z * v.z)
+# define VDOT(v1, v2) (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z)
+
+# define SEKEY env->sdl->e.key.keysym.sym
 
 # define RGB_BLACK  0x00
 
