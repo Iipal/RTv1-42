@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 15:32:54 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 12:32:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 12:38:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftsdl.h"
 
-void	sdl_pixelput_canvas(SDL_Surface *surf, Dot p, Dot win, Color clr)
+inline void	sdl_pixelput_canvas(SDL_Surface *surf, Dot p, Dot win, Color clr)
 {
 	int32_t	*pixels;
 
