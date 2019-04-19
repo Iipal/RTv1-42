@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 19:59:09 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/18 15:47:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 19:07:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define LIBFTSDL_H
 
 # include "libftsdl_colors_math.h"
+
+# define FPS_FONT   "frameworks/04B_03__.TTF"
 
 # define E_SURFPXL  " ERROR: Broken SDL_Surface load. ->pixels invalid."
 
@@ -23,6 +25,7 @@ struct	s_sdl
 	SDL_Surface	*wsurf;
 	uiarr		pxls;
 	SDL_Event	e;
+	TTF_Font	*font;
 };
 
 # define SDL    typedef struct s_sdl    Sdl;

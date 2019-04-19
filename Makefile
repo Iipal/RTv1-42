@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/19 12:39:16 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/19 19:12:49 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,14 @@ NPWD := $(CURDIR)/$(NAME)
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
 	ECHO := echo -e
-	LIBS := -lSDL2 -lm
+	LIBS := -lSDL2 -lSDL2_ttf -lm
 endif
 ifeq ($(UNAME_S),Darwin)
 	ECHO := echo
 	LIBSINC := -F $(CURDIR)/frameworks
-	LIBS := -F $(CURDIR)/frameworks -rpath $(CURDIR)/frameworks -framework SDL2
+	LIBS := -F $(CURDIR)/frameworks -rpath \
+	$(CURDIR)/frameworks -framework SDL2
+	$(CURDIR)/frameworks -framework SDL2_ttf
 endif
 
 #   -march=native       - Setups compiler to use all available CPU instructions for

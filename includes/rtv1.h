@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 17:24:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 19:10:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ void	rt_sdl_keys_release(Environment *env);
 void	rt_sdl_keys_events(Environment *env);
 
 void	rt_rendering(Environment *env);
+void	rt_render_fps_counter(Environment *env);
+
+void	rt_fps(Fps *fps);
+
+SDL_Surface	*wolf_optimize_font_load(string text, SDL_Color text_color,
+	TTF_Font *font, SDL_PixelFormat *format);
 
 void	rt_free(Environment **env);
 

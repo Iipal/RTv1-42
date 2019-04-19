@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 17:16:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 19:14:25 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ static inline Color	add_trace_ray(Environment *env, Vec d)
 
 	is_figure = add_inter(env, d, &t1, &t2);
 	ISR(!is_figure, ((Color){0, 0, 0}));
-	IFDO(t1 >= TMIN && t1 <= TMAX, env->closes = t1);
-	IFDO(t2 >= TMIN && t2 <= TMAX, env->closes = t2);
-	lh.cd = (Vec){env->closes * d.x, env->closes * d.y, env->closes * d.z};
+	IFDO(t1 >= TMIN && t1 <= TMAX, env->s.cobj = t1);
+	IFDO(t2 >= TMIN && t2 <= TMAX, env->s.cobj = t2);
+	lh.cd = (Vec){env->s.cobj * d.x, env->s.cobj * d.y, env->s.cobj * d.z};
 	lh.p = (Vec){env->s.cam.pos.x + lh.cd.x,
 		env->s.cam.pos.y + lh.cd.y, env->s.cam.pos.z + lh.cd.z};
 	lh.n = (Vec){lh.p.x - env->s.sp.pos.x,
@@ -82,5 +82,7 @@ void				rt_rendering(Environment *env)
 				(Dot){i.x, i.y}, (Dot){WIN_X, WIN_Y}, curr_color);
 		}
 	}
+	if (env->isr.is_render_fps)
+		rt_render_fps_counter(env);
 	SDL_UpdateWindowSurface(env->sdl->w);
 }

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 17:25:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 18:54:30 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void	rt_start_render(Environment *env)
 				rt_sdl_keys_release(env);
 		rt_sdl_keys_events(env);
 		rt_rendering(env);
+		rt_fps(&env->fps);
 	}
 }
 

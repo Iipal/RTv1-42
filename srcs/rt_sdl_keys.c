@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:07:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 17:34:34 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 19:14:17 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ inline void	rt_sdl_keys_press(Environment *env)
 		env->isr.is_cam_zdec = true;
 	else if (SDLK_e == SEKEY)
 		env->isr.is_cam_zinc = true;
+	else if (SDLK_f == SEKEY)
+		env->isr.is_render_fps = !env->isr.is_render_fps;
 }
 
 inline void	rt_sdl_keys_release(Environment *env)
@@ -46,10 +48,10 @@ inline void	rt_sdl_keys_release(Environment *env)
 
 inline void	rt_sdl_keys_events(Environment *env)
 {
-	IFDO(env->isr.is_cam_up, env->s.cam.pos.y -= CAM_M);
-	IFDO(env->isr.is_cam_down, env->s.cam.pos.y += CAM_M);
-	IFDO(env->isr.is_cam_left, env->s.cam.pos.x -= CAM_M);
-	IFDO(env->isr.is_cam_right, env->s.cam.pos.x += CAM_M);
-	IFDO(env->isr.is_cam_zdec, env->s.cam.pos.z -= CAM_M);
-	IFDO(env->isr.is_cam_zinc, env->s.cam.pos.z += CAM_M);
+	IFDO(env->isr.is_cam_up, env->s.cam.pos.y -= env->fps.move);
+	IFDO(env->isr.is_cam_down, env->s.cam.pos.y += env->fps.move);
+	IFDO(env->isr.is_cam_left, env->s.cam.pos.x -= env->fps.move);
+	IFDO(env->isr.is_cam_right, env->s.cam.pos.x += env->fps.move);
+	IFDO(env->isr.is_cam_zdec, env->s.cam.pos.z -= env->fps.move);
+	IFDO(env->isr.is_cam_zinc, env->s.cam.pos.z += env->fps.move);
 }

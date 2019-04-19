@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 17:30:34 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 19:13:42 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,35 +85,54 @@ struct	s_isrender
 	bool	is_cam_right;
 	bool	is_cam_zinc;
 	bool	is_cam_zdec;
+	bool	is_render_fps;
+};
+
+struct	s_time
+{
+	float	old;
+	float	current;
+	float	res;
 };
 
 # define CAMERA typedef struct s_camera    Camera
 # define LIGHT typedef struct s_light      Light
 # define SPHERE typedef struct s_sphere    Sphere
 # define ISRNDR typedef struct s_isrender  Isr
+# define TIME typedef struct s_time        Time
 
 CAMERA;
 LIGHT;
 SPHERE;
 ISRNDR;
+TIME;
 
 struct	s_scene
 {
 	Camera	cam;
 	Light	l;
 	Sphere	sp;
+	double	cobj;
 };
 
-# define SCENE typedef struct s_scene        Scene
+struct	s_fps
+{
+	Time	time;
+	float	move;
+};
+
+# define SCENE typedef struct s_scene   Scene
+# define FPS typedef struct s_fps       Fps
 
 SCENE;
+FPS;
 
 struct	s_environment
 {
 	Sdl		*sdl;
 	Scene	s;
-	double	closes;
 	Isr		isr;
+	Fps		fps;
 };
 
 # define ENV typedef struct s_environment   Environment
