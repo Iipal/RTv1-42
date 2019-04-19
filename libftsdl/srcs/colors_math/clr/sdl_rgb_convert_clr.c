@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sdl_pixelput.c                                     :+:      :+:    :+:   */
+/*   sdl_rgb_convert_clr.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/10 20:02:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/18 15:47:52 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/04/18 15:37:25 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/04/18 15:49:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftsdl.h"
+#include "libftsdl_colors_math.h"
 
-inline void	sdl_pixelput(SDL_Surface *surf, Dot p, Color clr)
+inline Color	sdl_rgb_convert_clr(Uint32 src)
 {
-	int32_t	*pixels;
+	Color	out;
 
-	if (surf)
-	{
-		pixels = surf->pixels;
-		if (0 <= p.x && 0 <= p.y && p.y < surf->h && p.x < surf->w)
-			pixels[p.y * surf->w + p.x] = sdl_clr_convert_rgb(clr);
-	}
+	out = (Color){src >> 16, (src >> 8) & 0xff, src & 0xff};
+	return (out);
 }

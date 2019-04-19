@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/16 22:12:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/18 15:48:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,26 @@
 */
 enum	e_bool {false, true} __attribute__((packed));
 
-# define STR        typedef char*           string
-# define CSTR       typedef const char*     cstring
-# define USTR       typedef unsigned char*  ustring
-# define UCHAR      typedef unsigned char   uchar
-# define STRTAB     typedef char**          strtab
-# define PVOID      typedef void*           pvoid
-# define BOOL       typedef enum e_bool     bool
-# define IARR       typedef int32_t*        iarr
-# define ITAB       typedef int32_t**       itab
-# define UIARR      typedef uint32_t*       uiarr
-# define UINT       typedef uint32_t        uint
+struct	s_dot
+{
+	int32_t	x;
+	int32_t	y;
+};
 
+# define DOT    typedef struct s_dot    Dot
+# define STR    typedef char*           string
+# define CSTR   typedef const char*     cstring
+# define USTR   typedef unsigned char*  ustring
+# define UCHAR  typedef unsigned char   uchar
+# define STRTAB typedef char**          strtab
+# define PVOID  typedef void*           pvoid
+# define BOOL   typedef enum e_bool     bool
+# define IARR   typedef int32_t*        iarr
+# define ITAB   typedef int32_t**       itab
+# define UIARR  typedef uint32_t*       uiarr
+# define UINT   typedef uint32_t        uint
+
+DOT;
 STR;
 CSTR;
 USTR;

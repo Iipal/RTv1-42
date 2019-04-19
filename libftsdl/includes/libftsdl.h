@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 19:59:09 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 23:41:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/18 15:47:26 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	sdl_free(Sdl **sdl);
 **	Protected from segfault when x && y pixel doesnt exist on Surface,
 **	and if Surface doesnt exist too.
 */
-void	sdl_pixelput(SDL_Surface *surf, int32_t x, int32_t y, Color clr);
+void	sdl_pixelput(SDL_Surface *surf, Dot p, Color clr);
+
+void	sdl_pixelput_canvas(SDL_Surface *surf, Dot p, Dot win, Color clr);
 
 #endif

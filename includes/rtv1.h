@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/17 13:49:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 10:03:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,14 @@ bool	rt_ssphere(Scene *sc, string s);
 bool	rt_read_scene(Environment *env, string scene_file);
 bool	rt_init(Environment *env);
 
-bool	rt_inrange(Vec v, bool check_min, bool check_max);
+typedef double	t_vector __attribute__((vector_size(sizeof(double)*4)));
+
+bool	u_inrange(Vec v, bool check_min, bool check_max);
 
 Vec		*u_cp_vec(Vec *v, double x, double y, double z);
 Vec		*u_cp_vvec(Vec *dst, Vec src);
+Vec		u_sub_vec(Vec a, Vec b);
+float	u_mul_vec(Vec a, Vec b);
 
 void	rt_rendering(Environment *env);
 

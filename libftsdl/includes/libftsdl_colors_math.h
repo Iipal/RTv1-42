@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 23:24:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/14 15:47:14 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/18 15:37:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ FCOLOR;
 Uint8	sdl_clr_inrange(int16_t color);
 
 Uint32	sdl_clr_convert_rgb(Color src);
+Color	sdl_rgb_convert_clr(Uint32 src);
 
 Color	*sdl_clr_bright_inc(Color *dst, float percent);
 Color	*sdl_clr_bright_dec(Color *dst, float percent);
