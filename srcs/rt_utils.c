@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:44:49 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 23:56:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/20 11:04:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,25 @@ inline Vec		*u_cp_vvec(Vec *dst, Vec src)
 
 inline bool		u_inrange(Vec v, bool check_min, bool check_max)
 {
-	if (check_max)
-		if (MAX_X < v.x || MAX_Y < v.y || MAX_Z < v.z)
-			return (false);
-	if (check_min)
-		if (MIN_X > v.x || MIN_Y > v.y || MIN_Z > v.z)
-			return (false);
+	if (check_max
+	&& (MAX_X < v.x || MAX_Y < v.y || MAX_Z < v.z))
+		return (false);
+	if (check_min
+	&& (MIN_X > v.x || MIN_Y > v.y || MIN_Z > v.z))
+		return (false);
 	return (true);
 }
 
-inline double		u_inrangev(double v, bool check_min, bool check_max)
+inline double	u_inrangev(double v, bool check_min, bool check_max)
 {
-	if (check_max)
-		if (MAX_X < v)
-			return (MAX_X);
-	if (check_min)
-		if (MIN_X > v)
-			return (MIN_X);
+	if (check_max && MAX_X < v)
+		return (MAX_X);
+	if (check_min && MIN_X > v)
+		return (MIN_X);
 	return (v);
 }
 
-inline Vec		u_sub_vec(Vec a, Vec b)
+inline Vec	u_sub_vec(Vec a, Vec b)
 {
 	Vec ret;
 
