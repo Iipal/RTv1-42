@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:44:49 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 17:24:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/19 23:56:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,17 @@ inline bool		u_inrange(Vec v, bool check_min, bool check_max)
 	return (true);
 }
 
+inline double		u_inrangev(double v, bool check_min, bool check_max)
+{
+	if (check_max)
+		if (MAX_X < v)
+			return (MAX_X);
+	if (check_min)
+		if (MIN_X > v)
+			return (MIN_X);
+	return (v);
+}
+
 inline Vec		u_sub_vec(Vec a, Vec b)
 {
 	Vec ret;
@@ -43,9 +54,4 @@ inline Vec		u_sub_vec(Vec a, Vec b)
 				a.y - b.y,
 				a.z - b.z};
 	return (ret);
-}
-
-inline float	u_mul_vec(Vec a, Vec b)
-{
-	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }
