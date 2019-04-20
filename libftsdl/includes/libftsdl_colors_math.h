@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 23:24:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/20 11:50:33 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/20 12:03:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include "../../libft/includes/libft.h"
 
 # ifdef __APPLE__
-#  include "../../frameworks/SDL2.framework/Headers/SDL.h"
-#  include "../../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
+#  include "../frameworks/SDL2.framework/Headers/SDL.h"
+#  include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
 # endif
 # ifdef __linux__
 #  include <SDL2/SDL.h>

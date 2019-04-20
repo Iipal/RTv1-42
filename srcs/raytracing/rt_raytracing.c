@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:23:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/20 11:52:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/20 12:51:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static inline bool	add_inter(Environment *env, Vec d, double *t1, double *t2)
 {
-	const int16_t	r = env->s.sp.radius;
-	const Vec		ds = u_sub_vec(env->s.cam.pos, env->s.sp.pos);
+	const int16_t	r = env->s.objs[0].radius;
+	const Vec		ds = u_sub_vec(env->s.cam.pos, env->s.objs[0].pos);
 	const Vec		k = {VMUL(d, d), 2.0f * VMUL(ds, d), VMUL(ds, ds) - r * r};
 	const float		disc = k.y * k.y - 4 * k.x * k.z;
 
@@ -56,10 +56,10 @@ static inline Color	add_trace_ray(Environment *env, Vec d)
 	lh.cd = (Vec){env->s.cobj * d.x, env->s.cobj * d.y, env->s.cobj * d.z};
 	lh.p = (Vec){env->s.cam.pos.x + lh.cd.x,
 		env->s.cam.pos.y + lh.cd.y, env->s.cam.pos.z + lh.cd.z};
-	lh.n = (Vec){lh.p.x - env->s.sp.pos.x,
-		lh.p.y - env->s.sp.pos.y, lh.p.z - env->s.sp.pos.z};
+	lh.n = (Vec){lh.p.x - env->s.objs[0].pos.x,
+		lh.p.y - env->s.objs[0].pos.y, lh.p.z - env->s.objs[0].pos.z};
 	lh.n = (Vec){lh.n.x / VLEN(lh.n), lh.n.y / VLEN(lh.n), lh.n.z / VLEN(lh.n)};
-	return (light(env->s.sp.clr, lh.p, lh.n, env->s.l));
+	return (light(env->s.objs[0].clr, lh.p, lh.n, env->s.l));
 }
 
 void				rt_raytracing(Environment *env)

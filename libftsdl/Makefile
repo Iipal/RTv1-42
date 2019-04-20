@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/20 10:53:36 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/20 12:04:29 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,7 @@ LC += rcs
 
 CC := gcc -march=native -mtune=native -Ofast -flto
 CFLAGS := -Wall -Wextra -Werror -Wunused
-INC := -F $(CURDIR)/frameworks -I $(CURDIR)/includes/ \
-	-I $(CURDIR)/frameworks/SDL2.framework/Headers \
-	-I $(CURDIR)/frameworks/SDL2_ttf.framework/Headers
+INC := -F $(CURDIR)/frameworks -I $(CURDIR)/includes/
 
 SRC_D := srcs/
 SRCS := $(abspath $(wildcard $(SRC_D)/*.c))

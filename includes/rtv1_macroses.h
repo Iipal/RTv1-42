@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 23:54:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/20 12:25:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@
 # define VLEN(v) sqrt(v.x * v.x + v.y * v.y + v.z * v.z)
 # define VDOT(v1, v2) (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z)
 
+# define OBJ(o) sc->objs[o]
 # define SEKEY env->sdl->e.key.keysym.sym
 
 # define RGB_BLACK 0x00

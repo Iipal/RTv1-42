@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 19:13:42 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/20 12:12:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,12 @@ struct	s_light
 	bool	is;
 };
 
-struct	s_sphere
+struct	s_object
 {
 	Vec		pos;
 	Color	clr;
 	int16_t	radius;
 	float	spec;
-	bool	is;
 };
 
 struct	s_isrender
@@ -97,13 +96,13 @@ struct	s_time
 
 # define CAMERA typedef struct s_camera    Camera
 # define LIGHT typedef struct s_light      Light
-# define SPHERE typedef struct s_sphere    Sphere
+# define OBJECT typedef struct s_object    Object
 # define ISRNDR typedef struct s_isrender  Isr
 # define TIME typedef struct s_time        Time
 
 CAMERA;
 LIGHT;
-SPHERE;
+OBJECT;
 ISRNDR;
 TIME;
 
@@ -111,7 +110,8 @@ struct	s_scene
 {
 	Camera	cam;
 	Light	l;
-	Sphere	sp;
+	Object	*objs;
+	int32_t	ins_objs;
 	double	cobj;
 };
 

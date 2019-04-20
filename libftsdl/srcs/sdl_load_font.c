@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:15:15 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 19:16:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/20 12:04:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftsdl.h"
 
-SDL_Surface	*wolf_optimize_font_load(string text, SDL_Color text_color,
+SDL_Surface	*sdl_optimize_font_load(string text, SDL_Color text_color,
 	TTF_Font *font, SDL_PixelFormat *format)
 {
 	SDL_Surface	*optimize_out;

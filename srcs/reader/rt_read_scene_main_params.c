@@ -6,14 +6,15 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:32:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 23:47:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/20 12:24:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool	rt_scam(Scene *sc, string s)
+inline bool	rt_scam(Scene *sc, string s, int32_t *o)
 {
+	(void)o;
 	IFDOR(sc->cam.is, MSGN(E_DUP), false);
 	s += ft_skip_to_blank(s);
 	ISR(*s++ != ' ', false);
@@ -29,8 +30,9 @@ inline bool	rt_scam(Scene *sc, string s)
 	return (true);
 }
 
-inline bool	rt_slight(Scene *sc, string s)
+inline bool	rt_slight(Scene *sc, string s, int32_t *o)
 {
+	(void)o;
 	IFDOR(sc->l.is, MSGN(E_DUP), false);
 	s += ft_skip_to_blank(s);
 	ISR(*s++ != ' ', false);
