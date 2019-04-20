@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:50:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/18 13:33:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/20 15:07:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	rt_free(Environment **env)
 {
-	sdl_free(&(*env)->sdl);
+	IFDO(*env && (*env)->sdl, sdl_free(&(*env)->sdl));
+	IFDO(*env && (*env)->s.objs, FREE((*env)->s.objs, free));
 	FREE(*env, free);
 	SDL_Quit();
 }

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/20 12:25:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/20 14:53:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define TMIN   0.1
 # define TMAX   10000
 
-# define MOVE_INC 10
+# define MOVE_INC 5
 
 # define RTV1_TITLE     "Ray Tracing v1"
 # define RTV1_EXE_PATH  "./RTv1"
