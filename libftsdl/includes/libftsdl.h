@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 19:59:09 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 19:16:19 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/20 10:58:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "libftsdl_colors_math.h"
 
-# define FPS_FONT   "frameworks/04B_03__.TTF"
+# define FPS_FONT   "libftsdl/frameworks/04B_03__.TTF"
 
 # define E_SURFPXL  " ERROR: Broken SDL_Surface load. ->pixels invalid."
 

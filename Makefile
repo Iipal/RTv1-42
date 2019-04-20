@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/19 19:12:49 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/04/20 10:58:04 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,11 @@ ifeq ($(UNAME_S),Linux)
 endif
 ifeq ($(UNAME_S),Darwin)
 	ECHO := echo
-	LIBSINC := -F $(CURDIR)/frameworks
-	LIBS := -F $(CURDIR)/frameworks -rpath \
-	$(CURDIR)/frameworks -framework SDL2
-	$(CURDIR)/frameworks -framework SDL2_ttf
+	LIBSINC := -F $(CURDIR)/libftsdl/frameworks \
+		-I $(CURDIR)/libftsdl/frameworks/SDL2.framework/Headers \
+		-I $(CURDIR)/libftsdl/frameworks/SDL2_ttf.framework/Headers
+	LIBS := -F $(CURDIR)/libftsdl/frameworks -rpath \
+		$(CURDIR)/libftsdl/frameworks -framework SDL2 -framework SDL2_ttf
 endif
 
 #   -march=native       - Setups compiler to use all available CPU instructions for
@@ -35,7 +36,8 @@ endif
 CC_DEBUG := gcc -march=native -g3 -D DEBUG
 CC := gcc -march=native -mtune=native -flto -Ofast
 CFLAGS := -Wall -Wextra -Werror -Wunused
-IFLAGS := -I $(CURDIR)/includes/ -I $(CURDIR)/libft/includes/ -I $(CURDIR)/libftsdl/includes/
+IFLAGS := -I $(CURDIR)/includes/ \
+	-I $(CURDIR)/libft/includes/ -I $(CURDIR)/libftsdl/includes/ \
 
 SRC := $(abspath $(wildcard srcs/*.c))
 SRC += $(abspath $(wildcard srcs/*/*.c))
