@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:23:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 23:28:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/20 11:52:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static inline Color	add_trace_ray(Environment *env, Vec d)
 	return (light(env->s.sp.clr, lh.p, lh.n, env->s.l));
 }
 
-void			rt_raytracing(Environment *env)
+void				rt_raytracing(Environment *env)
 {
 	Dot		i;
 	Color	curr_color;

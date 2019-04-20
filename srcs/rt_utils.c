@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:44:49 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/20 11:04:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/20 11:51:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ inline double	u_inrangev(double v, bool check_min, bool check_max)
 	return (v);
 }
 
-inline Vec	u_sub_vec(Vec a, Vec b)
+inline Vec		u_sub_vec(Vec a, Vec b)
 {
 	Vec ret;
 

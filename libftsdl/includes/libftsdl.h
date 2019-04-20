@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 19:59:09 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/20 10:58:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/20 12:01:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # include "libftsdl_colors_math.h"
 
-# define FPS_FONT   "libftsdl/frameworks/04B_03__.TTF"
-
 # define E_SURFPXL  " ERROR: Broken SDL_Surface load. ->pixels invalid."
 
-struct	s_sdl
+# define FPS_FONT   "libftsdl/frameworks/04B_03__.TTF"
+
+struct		s_sdl
 {
 	SDL_Window	*w;
 	SDL_Surface	*wsurf;
@@ -28,7 +28,7 @@ struct	s_sdl
 	TTF_Font	*font;
 };
 
-# define SDL    typedef struct s_sdl    Sdl;
+# define SDL typedef struct s_sdl Sdl
 
 SDL;
 
@@ -60,8 +60,7 @@ void		sdl_pixelput(SDL_Surface *surf, Dot p, Color clr);
 
 void		sdl_pixelput_canvas(SDL_Surface *surf, Dot p, Dot win, Color clr);
 
-
-SDL_Surface	*wolf_optimize_font_load(string text, SDL_Color text_color,
+SDL_Surface	*sdl_optimize_font_load(string text, SDL_Color text_color,
 								TTF_Font *font, SDL_PixelFormat *format);
 
 #endif

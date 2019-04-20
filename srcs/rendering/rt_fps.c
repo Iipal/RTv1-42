@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 18:51:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 19:11:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/20 12:00:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	add_fps_prepare_and_draw(float dfps, float dms, Environment *env)
 		data[i] = (i ? ft_itoa(dms) : ft_itoa(dfps));
 		temp[i] = data[i];
 		data[i] = ft_strjoin(data[i], data_info[i]);
-		text = wolf_optimize_font_load(data[i], (SDL_Color){127, 255, 0, 0},
+		text = sdl_optimize_font_load(data[i], (SDL_Color){127, 255, 0, 0},
 			env->sdl->font, env->sdl->wsurf->format);
 		ft_strdel(&(temp[i]));
 		ft_strdel(&(data[i]));

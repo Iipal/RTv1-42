@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/18 16:20:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/20 11:51:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ static bool	add_parser(Scene *sc, string *str, int16_t nline)
 	while ((sizeof(fns) / sizeof(*fns)) > (size_t)++i)
 		if (!ft_strncmp(*str, params[i], ft_strlen(params[i])))
 			is_valid = fns[i](sc, *str);
-	IFDOR(!is_valid, MSGN(E_ISYNTAX); ERRAT(nline, *str), false);
+	IFDO(!is_valid, MSGN(E_ISYNTAX));
+	IFDOR(!is_valid, ERRAT(*str, nline), false);
 	ft_strdel(str);
 	return (is_valid);
 }

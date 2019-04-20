@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/17 14:14:25 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/20 11:55:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@
 
 # define E_AT		" Error occured at line: "
 # define ERR_AT_NL(nl) MSG(E_AT);ft_putnbr(nl);
-# define ERRAT(nl, msg) {ERR_AT_NL(nl);MSG(" \"");MSG(msg);MSGN("\"");}
+# define ERRAT(msg, nl) {ERR_AT_NL(nl);MSG(" \"");MSG(msg);MSGN("\"");}
 
 #endif
