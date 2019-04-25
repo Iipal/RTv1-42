@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:07:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/20 00:00:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/25 19:58:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ inline void	rt_sdl_keys_press(Environment *env)
 		env->isr.is_cam_zinc = true;
 	else if (SDLK_r == SEKEY)
 		env->isr.is_render_fps = !env->isr.is_render_fps;
+	else if (SDLK_LSHIFT == SEKEY)
+		env->isr.is_cam_speedup = true;
+	else if (SDLK_LCTRL == SEKEY)
+		env->isr.is_cam_speeddown = true;
 }
 
 inline void	rt_sdl_keys_release(Environment *env)
@@ -44,20 +48,8 @@ inline void	rt_sdl_keys_release(Environment *env)
 		env->isr.is_cam_zdec = false;
 	else if (SDLK_e == SEKEY)
 		env->isr.is_cam_zinc = false;
-}
-
-inline void	rt_sdl_keys_events(Environment *env)
-{
-	if (env->isr.is_cam_up)
-		env->s.cam.pos.y = u_inrangev(env->s.cam.pos.y - env->fps.move, 1, 0);
-	if (env->isr.is_cam_down)
-		env->s.cam.pos.y = u_inrangev(env->s.cam.pos.y + env->fps.move, 0, 1);
-	if (env->isr.is_cam_left)
-		env->s.cam.pos.x = u_inrangev(env->s.cam.pos.x - env->fps.move, 1, 0);
-	if (env->isr.is_cam_right)
-		env->s.cam.pos.x = u_inrangev(env->s.cam.pos.x + env->fps.move, 0, 1);
-	if (env->isr.is_cam_zdec)
-		env->s.cam.pos.z = u_inrangev(env->s.cam.pos.z - env->fps.move, 1, 0);
-	if (env->isr.is_cam_zinc)
-		env->s.cam.pos.z = u_inrangev(env->s.cam.pos.z + env->fps.move, 0, 1);
+	else if (SDLK_LSHIFT == SEKEY)
+		env->isr.is_cam_speedup = false;
+	else if (SDLK_LCTRL == SEKEY)
+		env->isr.is_cam_speeddown = false;
 }

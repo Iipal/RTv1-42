@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/20 12:12:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/25 19:50:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ struct	s_isrender
 	bool	is_cam_zinc;
 	bool	is_cam_zdec;
 	bool	is_render_fps;
+	bool	is_cam_speedup;
+	bool	is_cam_speeddown;
 };
 
 struct	s_time
@@ -133,6 +135,7 @@ struct	s_environment
 	Scene	s;
 	Isr		isr;
 	Fps		fps;
+	double	cam_speed;
 };
 
 # define ENV typedef struct s_environment   Environment

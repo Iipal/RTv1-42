@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/20 14:53:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/25 19:59:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@
 # define TMAX   10000
 
 # define MOVE_INC 5
+# define MOVE_BOOST_PERCENT_DEFAULT 1.0f
+# define MOVE_BOOST_PERCENT_SUP 2.5f
+# define MOVE_BOOST_PERCENT_SDOWN .25f
+# define MOVE_BOOST_PERCENT_STEP .05f
 
 # define RTV1_TITLE     "Ray Tracing v1"
 # define RTV1_EXE_PATH  "./RTv1"

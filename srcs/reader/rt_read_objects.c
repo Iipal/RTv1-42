@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:31:21 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/20 12:47:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/20 20:38:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ inline bool	rt_ssphere(Scene *sc, string s, int32_t *o)
 
 	s += ft_skip_to_blank(s);
 	ISR(*s++ != ' ', false);
-	ISR(!*s || !ft_isdigit(*s), false);
+	ISR(!*s || ('-' != *s && !ft_isdigit(*s)), false);
 	ISR(',' != *(s += ft_digits(OBJ(*o).pos.x = ft_atoi(s))) || !*s++, false);
 	ISR(',' != *(s += ft_digits(OBJ(*o).pos.y = ft_atoi(s))) || !*s++, false);
 	ISR(' ' != *(s += ft_digits(OBJ(*o).pos.z = ft_atoi(s))) || !*s++, false);

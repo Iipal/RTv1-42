@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 18:51:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/20 12:00:43 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/25 19:28:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ inline void	rt_render_fps_counter(Environment *env)
 	delta += env->fps.time.res;
 }
 
-inline void	rt_fps(Fps *fps)
+inline void	rt_fps(Fps *fps, double boost_percent)
 {
 	fps->time.old = fps->time.current;
 	fps->time.current = SDL_GetTicks();
 	fps->time.res = (fps->time.current - fps->time.old) / 1000.0;
-	fps->move = fps->time.res * MOVE_INC;
+	fps->move = fps->time.res * MOVE_INC * boost_percent;
 }

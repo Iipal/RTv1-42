@@ -1,5 +1,5 @@
 Usage:
     [W A S D] - Move camera Up Left Down Right.
-    [Q E] - Inc\Decrease camera Z-position.
+    [Q E] - Dec\Increase camera Z-position.
     [R] - Toggle FPS\ms rendering info.
     [ESC] - exit.

@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:20:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 19:21:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/25 20:03:47 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	rt_render_loop(Environment *env)
+void			rt_render_loop(Environment *env)
 {
 	bool	exit_;
 
@@ -20,6 +20,8 @@ void	rt_render_loop(Environment *env)
 	ft_putfile(RTV1_USAGE);
 	while (!exit_)
 	{
+		rt_camera_speed(&env->cam_speed,
+			env->isr.is_cam_speedup, env->isr.is_cam_speeddown);
 		while (SDL_PollEvent(&env->sdl->e) > 0)
 			if (env->sdl->e.type == SDL_QUIT)
 				exit_ = true;
@@ -34,6 +36,6 @@ void	rt_render_loop(Environment *env)
 				rt_sdl_keys_release(env);
 		rt_sdl_keys_events(env);
 		rt_rendering(env);
-		rt_fps(&env->fps);
+		rt_fps(&env->fps, env->cam_speed);
 	}
 }
