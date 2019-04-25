@@ -1,5 +1,6 @@
 Usage:
     [W A S D] - Move camera Up Left Down Right.
     [Q E] - Dec\Increase camera Z-position.
+    [LCtrl LShift] - Dec\Increase camera speed.
     [R] - Toggle FPS\ms rendering info.
     [ESC] - exit.
