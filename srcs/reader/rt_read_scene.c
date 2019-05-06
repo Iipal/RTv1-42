@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/07 01:19:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/07 01:42:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,21 @@ static bool	add_parser(Scene *sc, string *str, int16_t nline, int32_t *o)
 {
 	const fns_parse	fns[] = {rt_scam, rt_slight, rt_ssphere};
 	const string	params[] = {FP_CAM, FP_LIGHT, FP_SPHERE};
-	bool			is_valid;
+	bool			is_valid_data;
+	bool			is_known_obj_type;
 	int16_t			i;
 
 	i = -1;
-	is_valid = false;
+	is_valid_data = false;
+	is_known_obj_type = false;
 	while ((sizeof(params) / sizeof(*params)) > (size_t)++i)
-		if (!ft_strncmp(*str, params[i], ft_strlen(params[i])))
-			is_valid = fns[i](sc, *str, o);
-	NOTIS(E_ISYNTAX, is_valid, ERRAT(*str, nline), false);
+		if (!ft_strncmp(*str, params[i], ft_strlen(params[i]))
+		&& (is_known_obj_type = true))
+			is_valid_data = fns[i](sc, *str, o);
+	IFDOM(E_OBJ, !is_known_obj_type, is_valid_data = false);
+	NOTIS(E_ISYNTAX, is_valid_data, ERRAT(*str, nline), false);
 	ft_strdel(str);
-	return (is_valid);
+	return (is_valid_data);
 }
 
 static bool	add_valid_objs_counter(int32_t *fd, Scene *s, string file)
@@ -70,8 +74,8 @@ static bool	add_valid_objs_counter(int32_t *fd, Scene *s, string file)
 			}
 		ft_strdel(&temp);
 	}
-	IFDO(s->ins_objs, MEM(Object, s->objs, s->ins_objs, E_ALLOC));
 	close(*fd);
+	IFDO(s->ins_objs, MEM(Object, s->objs, s->ins_objs, E_ALLOC));
 	ISME(PERR, 0 > (*fd = open(file, O_RDONLY)), (void)0, false);
 	return (true);
 }

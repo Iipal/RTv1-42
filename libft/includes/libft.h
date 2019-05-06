@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/20 14:21:07 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/07 01:52:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,18 @@
 # include <stdlib.h>
 # include <stddef.h>
 
+# define ISARGS(ac, av) {--ac;++av; NOTIS(E_USAGE, !(ac != 1), exit(1), 0);}
+
 # define IFDO(ex, do) if ((ex)) {do;}
+# define IFDOM(msg, ex, do) if ((ex)) {MSGN(msg); do;}
 # define IFDOR(ex, do, ret) {if ((ex)) {do; return(ret);}}
 
 # define MSG(msg) ft_putstr_fd(msg, STDERR_FILENO)
 # define MSGN(msg) ft_putendl_fd(msg, STDERR_FILENO)
+
 # define NOTIS(msg, ex, do, ret) if (!(ex)) {MSGN(msg); do; return(ret);}
 # define NOTIS_F(ex) if (!(ex)) return (false)
-# define ISARGS(ac, av) {--ac;++av; NOTIS(E_USAGE, !(ac != 1), exit(1), 0);}
+
 # define ISM(msg, ex, do, ret) if ((ex)) {MSGN(msg); do; return (ret);}
 # define ISME(msg, ex, do, ret) if ((ex)) {perror(msg); do; return (ret);}
 # define ISR(ex, ret) if ((ex)) {return (ret);}

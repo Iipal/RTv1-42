@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/07 01:22:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/07 01:54:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@
 # define PERR       " ERROR"
 # define ERR        " ERROR: "
 
-# define E_FNLESS   ERR "Too short file name."
+# define E_FNMAE    ERR "Missing file name."
 # define E_EFILE    ERR "Empty scene file."
 # define E_FILEXT   ERR "Invalid scene file extension. (.rtv1)"
 # define E_ISYNTAX  ERR "Invalid scene file syntax."
 
 # define E_DIR      ERR "Invalid executable path."
 # define E_ALLOC    ERR "Where is memory, pal ?"
+
+# define E_OBJ      ERR "Unknown object type."
 
 # define E_DUP      ERR "In scene cannot be more than "
 # define E_DCAMERA  E_DUP "1 camera."
