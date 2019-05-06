@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:32:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/20 12:24:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/07 01:10:37 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 inline bool	rt_scam(Scene *sc, string s, int32_t *o)
 {
 	(void)o;
-	IFDOR(sc->cam.is, MSGN(E_DUP), false);
+	IFDOR(sc->cam.is, MSGN(E_DCAMERA), false);
 	s += ft_skip_to_blank(s);
 	ISR(*s++ != ' ', false);
 	ISR(!*s || !ft_isdigit(*s), false);
@@ -33,7 +33,7 @@ inline bool	rt_scam(Scene *sc, string s, int32_t *o)
 inline bool	rt_slight(Scene *sc, string s, int32_t *o)
 {
 	(void)o;
-	IFDOR(sc->l.is, MSGN(E_DUP), false);
+	IFDOR(sc->l.is, MSGN(E_DLIGHT), false);
 	s += ft_skip_to_blank(s);
 	ISR(*s++ != ' ', false);
 	ISR(!*s || !ft_isdigit(*s), false);

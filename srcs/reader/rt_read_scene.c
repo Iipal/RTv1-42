@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/20 12:50:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/07 01:19:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,18 +78,19 @@ static bool	add_valid_objs_counter(int32_t *fd, Scene *s, string file)
 
 bool		rt_read_scene(Environment *env, string scene_file)
 {
-	int32_t	fd;
-	string	temp;
-	int16_t	nline;
-	int32_t	obj_counter;
+	int32_t		fd;
+	string		temp;
+	uint16_t	nline;
+	int32_t		obj_counter;
 
-	nline = 1;
+	nline = 0;
 	obj_counter = 0;
 	ISME(PERR, 0 > (fd = open(scene_file, O_RDONLY)), rt_free(&env), false);
 	IFDOR(!add_valid_objs_counter(&fd, &env->s, scene_file), rt_free(&env), 0);
 	while (0 < ft_gnl(fd, &temp))
-		IFDOR(!add_parser(&env->s, &temp, nline++, &obj_counter),
+		IFDOR(!add_parser(&env->s, &temp, ++nline, &obj_counter),
 			rt_free(&env), false);
+	NOTIS(E_EFILE, nline, rt_free(&env), false);
 	close(fd);
 	NOTIS_F(add_valid_saved_data(&env->s));
 	return (true);
