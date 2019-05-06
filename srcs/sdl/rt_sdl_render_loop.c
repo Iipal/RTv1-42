@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:20:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/25 20:03:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/28 22:55:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void			rt_render_loop(Environment *env)
 	bool	exit_;
 
 	exit_ = false;
-	ft_putfile(RTV1_USAGE);
 	while (!exit_)
 	{
 		rt_camera_speed(&env->cam_speed,

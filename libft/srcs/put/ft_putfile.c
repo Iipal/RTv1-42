@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 12:21:35 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/09 12:23:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/28 22:59:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 bool	ft_putfile(string file)
 {
-	int32_t	fd;
-	string	temp;
+	const int32_t	fd = open(file, O_RDONLY);
+	string			temp;
 
 	temp = NULL;
-	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (false);
 	while (ft_gnl(fd, &temp) > 0)
@@ -26,7 +25,6 @@ bool	ft_putfile(string file)
 		ft_putendl(temp);
 		ft_strdel(&temp);
 	}
-	if (temp)
-		ft_strdel(&temp);
+	close(fd);
 	return (true);
 }

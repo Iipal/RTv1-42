@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/19 19:21:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/04/28 22:55:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int			main(int argc, string argv[])
 	MEM(Environment, env, 1, E_ALLOC);
 	NOTIS_F(rt_read_scene(env, *argv));
 	NOTIS_F(rt_init(env));
+	ft_putfile(RTV1_USAGE);
 	rt_render_loop(env);
 	rt_free(&env);
 }
