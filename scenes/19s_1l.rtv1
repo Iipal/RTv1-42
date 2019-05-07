@@ -1,5 +1,5 @@
 Camera: 0,0,0 0,0,0
-Light: 0,100,10 100
+Light: 0,3,-15 25
 Sphere: 0,0,10 0xaa11ff 1 10
 Sphere: 0,1,12 0xffacaa 1 10
 Sphere: 0,2,14 0xabcdef 1 10

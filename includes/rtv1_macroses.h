@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/07 16:21:07 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/07 18:10:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@
 # define RT_EX  WIN_X / 2
 # define RT_EY  WIN_Y / 2
 
-# define TMIN   0.1
-# define TMAX   10000
+# define TMIN   0.1f
+# define TMAX   10000.0f
 
 # define MOVE_INC 5
 # define MOVE_SPEED_PERCENT_DEFAULT 1.0f

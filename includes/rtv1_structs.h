@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/28 23:06:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/07 18:16:26 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,8 @@ struct	s_environment
 	Isr		isr;
 	Fps		fps;
 	double	cam_speed;
+	double	t_max;
+	double	t_min;
 };
 
 # define ENV typedef struct s_environment   Environment
@@ -151,4 +153,15 @@ struct	s_light_help
 
 typedef struct s_light_help	t_lhelp;
 
+struct	s_calc_light
+{
+	Color	clr;
+	Vec		p;
+	Vec		n;
+	Light	l;
+	float	s;
+	Vec		v;
+};
+
+typedef struct s_calc_light	t_clhelp;
 #endif

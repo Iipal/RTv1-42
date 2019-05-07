@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:23:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/07 17:24:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/07 18:50:16 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,33 +29,31 @@ static inline bool	add_inter(Environment *env, Vec d, fDot *t, int32_t i)
 **	Calculate point light type
 */
 
-static inline Color	add_compute_light(Color clr, Vec p, Vec n, Light l,
-	float s, Vec V)
+static inline Color	add_compute_light(t_clhelp h)
 {
 	Color			tmp;
-	const Vec		x = (Vec){l.pos.x - p.x, l.pos.y - p.y, l.pos.z - p.z};
-	const double	dot_nl = VDOT(n, x);
+	const Vec		x = (Vec){h.l.pos.x - h.p.x, h.l.pos.y - h.p.y,
+								h.l.pos.z - h.p.z};
+	const double	dot_nl = VDOT(h.n, x);
+	Vec				r;
+	float			r_dot_v;
 
-	tmp = clr;
-	if (.0f < dot_nl && 0.0f < l.intensity)
+	tmp = h.clr;
+	if (.0f < dot_nl && 0.0f < h.l.intensity)
+		sdl_clrs_add(&h.clr, *sdl_clr_mul(&tmp,
+			h.l.intensity * dot_nl / (VLEN(h.n) * VLEN(x))));
+	if (0 <= h.s)
 	{
-		sdl_clrs_add(&clr, *sdl_clr_mul(&tmp,
-			l.intensity * dot_nl / (VLEN(n) * VLEN(x))));
-	}
-	if (0 <= s)
-	{
-		const Vec R = (Vec){2.0f * n.x * dot_nl - x.x,
-							2.0f * n.y * dot_nl - x.y,
-							2.0f * n.z * dot_nl - x.z};
-		const float	r_dot_v = VDOT(R, V);
+		tmp = h.clr;
+		r = (Vec){2.0f * h.n.x * dot_nl - x.x, 2.0f * h.n.y * dot_nl - x.y,
+				2.0f * h.n.z * dot_nl - x.z};
+		r_dot_v = VDOT(r, h.v);
 		if (0.0f < r_dot_v)
-		{
-			tmp = clr;
-			sdl_clrs_add(&clr, *sdl_clr_mul(&tmp,
-				l.intensity * pow(r_dot_v / (VLEN(R) * VLEN(V)), s)));
-		}
+			sdl_clrs_add(&h.clr, *sdl_clr_mul(&tmp,
+				h.l.intensity * pow(r_dot_v / (VLEN(r) * VLEN(h.v)),
+				pow(h.s, 0.5))));
 	}
-	return (clr);
+	return (h.clr);
 }
 
 static inline Color	add_calculate_light(Environment *env, int32_t i, Vec d)
@@ -76,8 +74,8 @@ static inline Color	add_calculate_light(Environment *env, int32_t i, Vec d)
 	lh.n = (Vec){lh.n.x / VLEN(lh.n),
 				lh.n.y / VLEN(lh.n),
 				lh.n.z / VLEN(lh.n)};
-	return (add_compute_light(env->s.objs[i].clr, lh.p, lh.n, env->s.l,
-			env->s.objs[i].spec, (Vec){-d.x, -d.y, -d.z}));
+	return (add_compute_light((t_clhelp){env->s.objs[i].clr, lh.p, lh.n,
+				env->s.l, env->s.objs[i].spec, (Vec){-d.x, -d.y, -d.z}}));
 }
 
 static inline Color	add_trace_ray(Environment *env, Vec d)
