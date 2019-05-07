@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:23:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/26 20:38:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/07 17:24:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,35 @@ static inline bool	add_inter(Environment *env, Vec d, fDot *t, int32_t i)
 	return (true);
 }
 
-static inline Color	add_compute_light(Color clr, Vec p, Vec n, Light l)
+/*
+**	Calculate point light type
+*/
+
+static inline Color	add_compute_light(Color clr, Vec p, Vec n, Light l,
+	float s, Vec V)
 {
-	double			intensity;
 	Color			tmp;
 	const Vec		x = (Vec){l.pos.x - p.x, l.pos.y - p.y, l.pos.z - p.z};
-	const double	dot = VDOT(n, x);
+	const double	dot_nl = VDOT(n, x);
 
 	tmp = clr;
-	intensity = 0.0;
-	if (.0f < dot)
+	if (.0f < dot_nl && 0.0f < l.intensity)
 	{
-		intensity += l.intensity * dot / (VLEN(n) * VLEN(x));
-		sdl_clrs_add(&clr, *sdl_clr_mul(&tmp, intensity));
+		sdl_clrs_add(&clr, *sdl_clr_mul(&tmp,
+			l.intensity * dot_nl / (VLEN(n) * VLEN(x))));
+	}
+	if (0 <= s)
+	{
+		const Vec R = (Vec){2.0f * n.x * dot_nl - x.x,
+							2.0f * n.y * dot_nl - x.y,
+							2.0f * n.z * dot_nl - x.z};
+		const float	r_dot_v = VDOT(R, V);
+		if (0.0f < r_dot_v)
+		{
+			tmp = clr;
+			sdl_clrs_add(&clr, *sdl_clr_mul(&tmp,
+				l.intensity * pow(r_dot_v / (VLEN(R) * VLEN(V)), s)));
+		}
 	}
 	return (clr);
 }
@@ -60,7 +76,8 @@ static inline Color	add_calculate_light(Environment *env, int32_t i, Vec d)
 	lh.n = (Vec){lh.n.x / VLEN(lh.n),
 				lh.n.y / VLEN(lh.n),
 				lh.n.z / VLEN(lh.n)};
-	return (add_compute_light(env->s.objs[i].clr, lh.p, lh.n, env->s.l));
+	return (add_compute_light(env->s.objs[i].clr, lh.p, lh.n, env->s.l,
+			env->s.objs[i].spec, (Vec){-d.x, -d.y, -d.z}));
 }
 
 static inline Color	add_trace_ray(Environment *env, Vec d)

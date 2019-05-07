@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/07 01:42:48 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/07 17:59:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static bool	add_valid_saved_data(Scene *sc)
 	if (sc->ins_objs)
 		while (++i < sc->ins_objs)
 		{
-			IFDOR(!u_inrange(sc->objs[i].pos, true, true), MSGN(E_SPPOS), 0);
-			IFDOR(0 > sc->objs[i].radius
-				|| 50 < sc->objs[i].radius, MSGN(E_SPRAD), false);
-			IFDOR(0 > sc->objs[i].spec
-				|| 50 < sc->objs[i].spec, MSGN(E_SPSPEC), false);
+			IFDOR(!u_inrange(OBJ(i).pos, true, true), MSGN(E_SPPOS), 0);
+			IFDOR(MIN_SPR > OBJ(i).radius
+				|| MAX_SPR < OBJ(i).radius, MSGN(E_SPRAD), false);
+			IFDOR(MIN_SPR > OBJ(i).spec
+				|| MAX_SPR < OBJ(i).spec, MSGN(E_SPSPEC), false);
 		}
 	return (true);
 }

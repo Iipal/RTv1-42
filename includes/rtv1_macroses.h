@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/28 23:01:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/07 16:21:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@
 #  define WIN_Y 500
 # endif
 
-# define MIN_X  -250
-# define MIN_Z  -250
-# define MIN_Y  -250
+# define MIN_X  -1500
+# define MIN_Z  -1500
+# define MIN_Y  -1500
 
-# define MAX_X  250
-# define MAX_Z  250
-# define MAX_Y  250
+# define MAX_X  1500
+# define MAX_Z  1500
+# define MAX_Y  1500
+
+# define MAX_SPR    100
+# define MIN_SPR    0
 
 # define RT_SX  -(WIN_X / 2)
 # define RT_SY  -(WIN_Y / 2)
@@ -62,7 +65,7 @@
 # define VLEN(v) sqrt(v.x * v.x + v.y * v.y + v.z * v.z)
 # define VDOT(v1, v2) (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z)
 
-# define OBJ(o) sc->objs[o]
+# define OBJ(i) sc->objs[i]
 # define SEKEY env->sdl->e.key.keysym.sym
 
 # define RGB_BLACK 0x00

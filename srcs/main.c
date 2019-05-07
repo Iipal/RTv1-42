@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/07 01:54:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/07 11:57:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int			main(int argc, string argv[])
 	NOTIS_F(add_valid_filename(*argv));
 	MEM(Environment, env, 1, E_ALLOC);
 	NOTIS_F(rt_read_scene(env, *argv));
+	printf("Objects in scene: %d\n", env->s.ins_objs);
 	NOTIS_F(rt_init(env));
 	ft_putfile(RTV1_USAGE);
 	rt_render_loop(env);

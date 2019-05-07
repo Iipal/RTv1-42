@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/07 01:54:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/07 10:51:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define E_NOCAM    ERR "No camera in scene founded."
 # define E_NOLIGHT  ERR "No origin light in scene founded."
 
-# define E_INRANGE  "not in available range."
+# define E_INRANGE  " not in available range."
 
 # define E_CAMDIR   ERR "Camera destination point" E_INRANGE
 # define E_CAMPOS   ERR "Camera position" E_INRANGE
