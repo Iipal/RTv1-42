@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/08 11:26:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/08 13:54:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ enum	e_type
 # define FDOT typedef struct s_fdot fDot
 # define VEC typedef struct s_vec   Vec
 # define ETYPE typedef enum e_type  Type
-# define GOTO(label) goto label
 
 FDOT;
 VEC;

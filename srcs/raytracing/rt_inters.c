@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/08 11:26:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/08 15:11:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool	rt_inter_sphere(Environment *env, Vec d, fDot *t, int32_t i)
+inline bool	rt_intersection(Environment *env, Vec d, fDot *t, int32_t i)
 {
 	const int16_t	r = env->s.objs[i].radius;
 	const Vec		ds = u_sub_vec(env->s.cam.pos, env->s.objs[i].pos);

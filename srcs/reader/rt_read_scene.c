@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/07 17:59:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/08 15:09:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static bool	add_valid_saved_data(Scene *sc)
 			IFDOR(!u_inrange(OBJ(i).pos, true, true), MSGN(E_SPPOS), 0);
 			IFDOR(MIN_SPR > OBJ(i).radius
 				|| MAX_SPR < OBJ(i).radius, MSGN(E_SPRAD), false);
-			IFDOR(MIN_SPR > OBJ(i).spec
-				|| MAX_SPR < OBJ(i).spec, MSGN(E_SPSPEC), false);
+			IFDOR(MIN_SPSP > OBJ(i).spec
+				|| MAX_SPSP < OBJ(i).spec, MSGN(E_SPSPEC), false);
 		}
 	return (true);
 }

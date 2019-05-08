@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/07 18:10:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/08 15:15:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,11 @@
 # define MAX_Z  1500
 # define MAX_Y  1500
 
-# define MAX_SPR    100
+# define MAX_SPR    500
 # define MIN_SPR    0
+
+# define MAX_SPSP   5000
+# define MIN_SPSP   0
 
 # define RT_SX  -(WIN_X / 2)
 # define RT_SY  -(WIN_Y / 2)

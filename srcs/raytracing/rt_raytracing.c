@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:23:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/08 11:28:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/08 15:12:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,26 @@
 
 static inline Color	add_compute_light(t_clhelp h)
 {
+	double		i;
 	Color		tmp;
 	const Vec	x = {h.l.pos.x - h.p.x, h.l.pos.y - h.p.y, h.l.pos.z - h.p.z};
 	const float	dot_nl = VDOT(h.n, x);
-	float		r_dot_v;
+	double		r_dot_v;
 	Vec			r;
 
 	tmp = h.clr;
-	if (.0f < dot_nl && 0.0f < h.l.intensity)
-		sdl_clrs_add(&h.clr, *sdl_clr_mul(&tmp,
-			h.l.intensity * dot_nl / (VLEN(h.n) * VLEN(x))));
+	i = 0.0;
+	if (.0f < dot_nl)
+		i += h.l.intensity * dot_nl / (VLEN(h.n) * VLEN(x));
 	if (0 <= h.s)
 	{
-		tmp = h.clr;
 		r = (Vec){2.0f * h.n.x * dot_nl - x.x, 2.0f * h.n.y * dot_nl - x.y,
 				2.0f * h.n.z * dot_nl - x.z};
 		r_dot_v = VDOT(r, h.v);
 		if (0.0f < r_dot_v)
-			sdl_clrs_add(&h.clr, *sdl_clr_mul(&tmp,
-				h.l.intensity * pow(r_dot_v / (VLEN(r) * VLEN(h.v)),
-				pow(h.s, 0.5))));
+			i += h.l.intensity * pow(r_dot_v / (VLEN(r) * VLEN(h.v)), h.s);
 	}
-	return (h.clr);
+	return (0.0f < i ? *sdl_clrs_add(&h.clr, *sdl_clr_mul(&tmp, i)) : h.clr);
 }
 
 static inline Color	add_calculate_light(Environment *env, int32_t i, Vec d)
@@ -69,20 +67,15 @@ static inline Color	add_trace_ray(Environment *env, Vec d)
 	fDot			t;
 	bool			is_figure;
 	int32_t			i;
-	int32_t			j;
-	const objsInter	objs_inter[] = {rt_inter_sphere};
 
 	i = -1;
-	while (env->s.ins_objs > ++i && (j = -1))
-		while (max_objs > ++j)
-			if (env->s.objs[i].type == j)
-				if ((is_figure = objs_inter[j](env, d, &t, i)))
-				{
-					IFDO(t.x >= TMIN && t.x <= TMAX, env->s.cobj = t.x);
-					IFDO(t.y >= TMIN && t.y <= TMAX, env->s.cobj = t.y);
-					GOTO(calc_light);
-				}
-	calc_light:
+	while (env->s.ins_objs > ++i)
+		if ((is_figure = rt_intersection(env, d, &t, i)))
+		{
+			IFDO(t.x >= TMIN && t.x <= TMAX, env->s.cobj = t.x);
+			IFDO(t.y >= TMIN && t.y <= TMAX, env->s.cobj = t.y);
+			break ;
+		}
 	return (is_figure ? add_calculate_light(env, i, d) : (Color){0, 0, 0});
 }
 

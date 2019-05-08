@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/08 11:25:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/08 13:54:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <stdint.h>
 # include <stdlib.h>
 # include <stddef.h>
+
+# define GOTO(label) goto label
 
 # define ISARGS(ac, av) {--ac;++av; NOTIS(E_USAGE, !(ac != 1), exit(1), 0);}
 
