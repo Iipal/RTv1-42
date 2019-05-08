@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/08 15:15:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/08 16:40:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@
 
 # define REFRESH_FPS_COUNTER .1f
 
-# define VMUL(a, b) (a.x * b.x + a.y * b.y + a.z * b.z)
 # define VLEN(v) sqrt(v.x * v.x + v.y * v.y + v.z * v.z)
 # define VDOT(v1, v2) (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z)
 

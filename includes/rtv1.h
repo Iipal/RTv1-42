@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/08 15:13:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/08 16:05:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ bool	rt_slight(Scene *sc, string s, int32_t *o);
 bool	rt_ssphere(Scene *sc, string s, int32_t *o);
 bool	rt_read_scene(Environment *env, string scene_file);
 
-bool	rt_intersection(Environment *env, Vec d, fDot *t, int32_t i);
-
 bool	rt_init(Environment *env);
 
 Vec		u_sub_vec(Vec a, Vec b);
@@ -48,6 +46,9 @@ void	rt_render_loop(Environment *env);
 void	rt_render_fps_counter(Environment *env);
 
 void	rt_raytracing(Environment *env);
+
+Color	rt_calculate_light(Environment *env, int32_t i, Vec d);
+bool	rt_intersection(Environment *env, Vec d, fDot *t, int32_t i);
 
 void	rt_fps(Fps *fps, double cam_speed);
 

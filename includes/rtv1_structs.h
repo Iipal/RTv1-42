@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/08 13:54:11 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/08 16:07:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ typedef struct s_light_help	t_lhelp;
 
 struct	s_calc_light
 {
-	Color	clr;
+	Object	obj;
 	Vec		p;
 	Vec		n;
 	Light	l;
