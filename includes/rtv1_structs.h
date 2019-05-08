@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/07 18:16:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/08 11:26:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,29 @@ struct	s_vec
 	double	z;
 };
 
-# define VEC typedef struct s_vec   Vec
-
-VEC;
-
 struct	s_fdot
 {
 	float	x;
 	float	y;
 };
 
+enum	e_type
+{
+	sphere,
+	plain,
+	cone,
+	cylinder,
+	max_objs
+};
+
 # define FDOT typedef struct s_fdot fDot
+# define VEC typedef struct s_vec   Vec
+# define ETYPE typedef enum e_type  Type
+# define GOTO(label) goto label
 
 FDOT;
+VEC;
+ETYPE;
 
 struct	s_camera
 {
@@ -74,6 +84,7 @@ struct	s_object
 	Color	clr;
 	int16_t	radius;
 	float	spec;
+	Type	type;
 };
 
 struct	s_isrender
@@ -164,4 +175,5 @@ struct	s_calc_light
 };
 
 typedef struct s_calc_light	t_clhelp;
+
 #endif

@@ -6,24 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:23:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/07 18:50:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/08 11:28:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-
-static inline bool	add_inter(Environment *env, Vec d, fDot *t, int32_t i)
-{
-	const int16_t	r = env->s.objs[i].radius;
-	const Vec		ds = u_sub_vec(env->s.cam.pos, env->s.objs[i].pos);
-	const Vec		k = {VMUL(d, d), 2.0f * VMUL(ds, d), VMUL(ds, ds) - r * r};
-	const float		disc = k.y * k.y - 4 * k.x * k.z;
-
-	ISR(.0f > disc, false);
-	t->x = (-k.y + sqrt(disc)) / (2 * k.x);
-	t->y = (-k.y - sqrt(disc)) / (2 * k.x);
-	return (true);
-}
 
 /*
 **	Calculate point light type
@@ -31,12 +18,11 @@ static inline bool	add_inter(Environment *env, Vec d, fDot *t, int32_t i)
 
 static inline Color	add_compute_light(t_clhelp h)
 {
-	Color			tmp;
-	const Vec		x = (Vec){h.l.pos.x - h.p.x, h.l.pos.y - h.p.y,
-								h.l.pos.z - h.p.z};
-	const double	dot_nl = VDOT(h.n, x);
-	Vec				r;
-	float			r_dot_v;
+	Color		tmp;
+	const Vec	x = {h.l.pos.x - h.p.x, h.l.pos.y - h.p.y, h.l.pos.z - h.p.z};
+	const float	dot_nl = VDOT(h.n, x);
+	float		r_dot_v;
+	Vec			r;
 
 	tmp = h.clr;
 	if (.0f < dot_nl && 0.0f < h.l.intensity)
@@ -80,18 +66,23 @@ static inline Color	add_calculate_light(Environment *env, int32_t i, Vec d)
 
 static inline Color	add_trace_ray(Environment *env, Vec d)
 {
-	fDot	t;
-	bool	is_figure;
-	int32_t	i;
+	fDot			t;
+	bool			is_figure;
+	int32_t			i;
+	int32_t			j;
+	const objsInter	objs_inter[] = {rt_inter_sphere};
 
 	i = -1;
-	while (env->s.ins_objs > ++i)
-		if ((is_figure = add_inter(env, d, &t, i)))
-		{
-			IFDO(t.x >= TMIN && t.x <= TMAX, env->s.cobj = t.x);
-			IFDO(t.y >= TMIN && t.y <= TMAX, env->s.cobj = t.y);
-			break ;
-		}
+	while (env->s.ins_objs > ++i && (j = -1))
+		while (max_objs > ++j)
+			if (env->s.objs[i].type == j)
+				if ((is_figure = objs_inter[j](env, d, &t, i)))
+				{
+					IFDO(t.x >= TMIN && t.x <= TMAX, env->s.cobj = t.x);
+					IFDO(t.y >= TMIN && t.y <= TMAX, env->s.cobj = t.y);
+					GOTO(calc_light);
+				}
+	calc_light:
 	return (is_figure ? add_calculate_light(env, i, d) : (Color){0, 0, 0});
 }
 

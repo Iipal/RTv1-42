@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/28 23:03:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/08 11:24:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,17 @@
 # include <math.h>
 
 # define FNSCP typedef bool (*fns_parse)(Scene*, string, int32_t*);
+# define OBJINTERS typedef bool (*objsInter)(Environment*, Vec, fDot*, int32_t)
 
 FNSCP;
+OBJINTERS;
 
 bool	rt_scam(Scene *sc, string s, int32_t *o);
 bool	rt_slight(Scene *sc, string s, int32_t *o);
 bool	rt_ssphere(Scene *sc, string s, int32_t *o);
 bool	rt_read_scene(Environment *env, string scene_file);
+
+bool	rt_inter_sphere(Environment *env, Vec d, fDot *t, int32_t i);
 
 bool	rt_init(Environment *env);
 
