@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/08 20:03:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/09 00:38:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 static inline Color	add_compute_light(t_clhelp h)
 {
-	double		i;
+	double_t	i;
 	Color		tmp, tmp2;
 	const Vec	x = {h.l.pos.x - h.p.x, h.l.pos.y - h.p.y, h.l.pos.z - h.p.z};
 	const float	dot_nl = VDOT(h.n, x);
@@ -27,11 +27,11 @@ static inline Color	add_compute_light(t_clhelp h)
 	i = 0.0;
 	if (.0f < dot_nl)
 		i += h.l.intensity * dot_nl / (VLEN(h.n) * VLEN(x));
-	if (0 <= h.s)
+	if (0 < h.s)
 	{
 		Vec H = {h.v.x + x.x, h.v.y + x.y, h.v.z + x.z};
-		H = (Vec) { H.x / VLEN(H), H.y / VLEN(H), H.z / VLEN(H)};
-		float intens = h.l.intensity* fmax(0, dot_nl) +
+		H = (Vec) {H.x / VLEN(H), H.y / VLEN(H), H.z / VLEN(H)};
+		float_t intens = h.l.intensity * fmax(0, dot_nl) +
 			h.s * h.l.intensity * pow(fmax(0, VDOT(h.n, H)), h.s);
 		Vec DDD = {h.p.x - h.l.pos.x, h.p.y - h.l.pos.y, h.p.z - h.l.pos.z};
 		i += intens / VLEN(DDD);

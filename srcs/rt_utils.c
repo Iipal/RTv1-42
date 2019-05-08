@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:44:49 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/07 11:11:48 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/09 00:42:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline Vec		*u_cp_vec(Vec *v, double x, double y, double z)
+inline Vec		*u_cp_vec(Vec *v, double_t x, double_t y, double_t z)
 {
 	*v = (Vec){x, y, z};
 	return (v);
@@ -35,7 +35,7 @@ inline bool		u_inrange(Vec v, bool check_min, bool check_max)
 	return (true);
 }
 
-inline double	u_inrangev(double v, bool check_min, bool check_max)
+inline double_t	u_inrangev(double_t v, bool check_min, bool check_max)
 {
 	if (check_max && MAX_X < v)
 		return (MAX_X);

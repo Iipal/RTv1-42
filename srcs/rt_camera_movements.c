@@ -6,13 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:14:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/28 23:01:56 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/09 00:42:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline void	rt_camera_speed(double *cam_s, bool is_speed_up, bool is_speed_down)
+inline void	rt_camera_speed(double_t *cam_s,
+		bool is_speed_up, bool is_speed_down)
 {
 	if (is_speed_up)
 	{

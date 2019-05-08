@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/08 16:05:13 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/09 00:40:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ bool	rt_init(Environment *env);
 Vec		u_sub_vec(Vec a, Vec b);
 
 bool	u_inrange(Vec v, bool check_min, bool check_max);
-double	u_inrangev(double v, bool check_min, bool check_max);
+double_t	u_inrangev(double_t v, bool check_min, bool check_max);
 
-void	rt_camera_speed(double *cam_s, bool is_speed_up, bool is_speed_down);
+void	rt_camera_speed(double_t *cam_s, bool is_speed_up, bool is_speed_down);
 
 void	rt_sdl_keys_press(Environment *env);
 void	rt_sdl_keys_release(Environment *env);
@@ -50,7 +50,7 @@ void	rt_raytracing(Environment *env);
 Color	rt_calculate_light(Environment *env, int32_t i, Vec d);
 bool	rt_intersection(Environment *env, Vec d, fDot *t, int32_t i);
 
-void	rt_fps(Fps *fps, double cam_speed);
+void	rt_fps(Fps *fps, double_t cam_speed);
 
 void	rt_free(Environment **env);
 

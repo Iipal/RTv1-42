@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/08 19:59:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/09 00:39:57 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,17 @@
 #  include <SDL2/SDL.h>
 # endif
 
-# define IARR   typedef int32_t*    iarr
-# define ITAB   typedef int32_t**   itab
-# define UIARR  typedef uint32_t*   uiarr
-# define UINT   typedef uint32_t    uint
-
-IARR;
-ITAB;
-UIARR;
-UINT;
-
 struct	s_vec
 {
-	double	x;
-	double	y;
-	double	z;
+	double_t	x;
+	double_t	y;
+	double_t	z;
 };
 
 struct	s_fdot
 {
-	float	x;
-	float	y;
+	float_t	x;
+	float_t	y;
 };
 
 enum	e_type
@@ -73,7 +63,7 @@ struct	s_camera
 struct	s_light
 {
 	Vec		pos;
-	float	intensity;
+	float_t	intensity;
 	bool	is;
 };
 
@@ -82,7 +72,7 @@ struct	s_object
 	Vec		pos;
 	Color	clr;
 	int16_t	radius;
-	float	spec;
+	float_t	spec;
 	Type	type;
 };
 
@@ -102,9 +92,9 @@ struct	s_isrender
 
 struct	s_time
 {
-	float	old;
-	float	current;
-	float	res;
+	float_t	old;
+	float_t	current;
+	float_t	res;
 };
 
 # define CAMERA typedef struct s_camera    Camera
@@ -121,17 +111,17 @@ TIME;
 
 struct	s_scene
 {
-	Camera	cam;
-	Light	l;
-	Object	*objs;
-	int32_t	ins_objs;
-	double	cobj;
+	Camera		cam;
+	Light		l;
+	Object		*objs;
+	int32_t		ins_objs;
+	double_t	cobj;
 };
 
 struct	s_fps
 {
 	Time	time;
-	float	move;
+	float_t	move;
 };
 
 # define SCENE typedef struct s_scene   Scene
@@ -142,13 +132,13 @@ FPS;
 
 struct	s_environment
 {
-	Sdl		*sdl;
-	Scene	s;
-	Isr		isr;
-	Fps		fps;
-	double	cam_speed;
-	double	t_max;
-	double	t_min;
+	Sdl			*sdl;
+	Scene		s;
+	Isr			isr;
+	Fps			fps;
+	double_t	cam_speed;
+	double_t	t_max;
+	double_t	t_min;
 };
 
 # define ENV typedef struct s_environment   Environment
@@ -170,7 +160,7 @@ struct	s_calc_light
 	Vec		p;
 	Vec		n;
 	Light	l;
-	float	s;
+	float_t	s;
 	Vec		v;
 };
 
