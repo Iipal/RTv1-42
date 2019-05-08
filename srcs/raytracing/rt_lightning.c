@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/08 17:31:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/08 20:03:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 **	Calculate point light type
 */
 
-static inline Color	add_compute_light(Light l, t_clhelp h)
+static inline Color	add_compute_light(t_clhelp h)
 {
 	double		i;
 	Color		tmp, tmp2;
@@ -31,9 +31,9 @@ static inline Color	add_compute_light(Light l, t_clhelp h)
 	{
 		Vec H = {h.v.x + x.x, h.v.y + x.y, h.v.z + x.z};
 		H = (Vec) { H.x / VLEN(H), H.y / VLEN(H), H.z / VLEN(H)};
-		float intens = 1 * h.l.intensity * fmax(0, dot_nl) +
+		float intens = h.l.intensity* fmax(0, dot_nl) +
 			h.s * h.l.intensity * pow(fmax(0, VDOT(h.n, H)), h.s);
-		Vec DDD = {h.p.x - l.pos.x, h.p.y - l.pos.y, h.p.z - l.pos.z};
+		Vec DDD = {h.p.x - h.l.pos.x, h.p.y - h.l.pos.y, h.p.z - h.l.pos.z};
 		i += intens / VLEN(DDD);
 	}
 	return (0.0f < i ? *sdl_clrs_add(&tmp2, *sdl_clr_mul(&tmp, i)) : h.obj.clr);
@@ -57,6 +57,6 @@ inline Color		rt_calculate_light(Environment *env, int32_t i, Vec d)
 	lh.n = (Vec){lh.n.x / VLEN(lh.n),
 				lh.n.y / VLEN(lh.n),
 				lh.n.z / VLEN(lh.n)};
-	return (add_compute_light(env->s.l, (t_clhelp){env->s.objs[i], lh.p, lh.n,
+	return (add_compute_light((t_clhelp){env->s.objs[i], lh.p, lh.n,
 				env->s.l, env->s.objs[i].spec, (Vec){-d.x, -d.y, -d.z}}));
 }
