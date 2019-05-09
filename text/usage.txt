@@ -1,6 +1,15 @@
 Usage:
-    [W A S D] - Move camera Up Left Down Right.
-    [- +] - Dec\Increase camera Z-position.
+    [W A S D] - Move camera Up Left Down & Right.
+    [Q E] - Dec\Increase camera Z-position.
     [LCtrl LShift] - Dec\Increase camera speed.
-    [Q] - Toggle FPS\ms rendering info.
+    [Z] - Toggle FPS\ms rendering info.
     [ESC] - exit.
+
+    [X] - Switch movements binds to control light.
+        After press [X] binds are:
+        [W A S D] - Move light origin Up Left Down & Right.
+        [Q E] - Dec\Increase light intensity.
+
+        P.S. None Z-position light movements because
+            light calculating not dependence on distance to objects,
+            only angle calculating.

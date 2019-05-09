@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:20:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 00:41:48 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/09 13:44:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void			rt_render_loop(Environment *env)
 	quit = false;
 	while (!quit)
 	{
-		rt_camera_speed(&env->cam_speed,
-			env->isr.is_cam_speedup, env->isr.is_cam_speeddown);
 		while (SDL_PollEvent(&env->sdl->e) > 0)
 			if (env->sdl->e.type == SDL_QUIT)
 				quit = true;

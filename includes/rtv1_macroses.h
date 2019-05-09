@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 11:44:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/09 13:22:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 # define RT_EY  WIN_Y / 2
 
 # define TMIN   0.1f
-# define TMAX   10000.0f
+# define TMAX   1500.0f
 
 # define MOVE_INC 5
 # define MOVE_SPEED_PERCENT_DEFAULT 1.0f
@@ -71,5 +71,9 @@
 # define SEKEY env->sdl->e.key.keysym.sym
 
 # define RGB_BLACK 0x00
+
+# define FNSCP typedef bool (*fns_parse)(Scene*, string, int32_t*);
+
+FNSCP;
 
 #endif
