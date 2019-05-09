@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 23:24:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/20 12:03:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/09 17:29:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ FCOLOR;
 
 # define INRANGE(c)	sdl_clr_inrange(c)
 
+# define SDL_CLR_CMP(clr, u) (clr.r == u && clr.g == u && clr.b == u)
+# define SDL_CLRS_CMP(c1, c2) (c1.r == c2.r && c1.g == c2.g && c1.b == c2.b)
+
+# define SDL_CLR_ISONE(clr, u) (clr.r == u || clr.g == u || clr.b == u)
+# define SDL_CLRS_ISONE(c1, c2) (c1.r == c2.r || c1.g == c2.g || c1.b == c2.b)
+
 Uint8	sdl_clr_inrange(int16_t color);
 
 Uint32	sdl_clr_convert_rgb(Color src);
@@ -56,9 +62,6 @@ Color	sdl_rgb_convert_clr(Uint32 src);
 
 Color	*sdl_clr_bright_inc(Color *dst, float percent);
 Color	*sdl_clr_bright_dec(Color *dst, float percent);
-
-bool	sdl_clr_isoneof(const Color c1, Uint8 c);
-bool	sdl_clr_equal(const Color c1, Uint8 c);
 
 Color	*sdl_clr_add(Color *dst, const int16_t add);
 Color	*sdl_clr_sub(Color *dst, const int16_t sub);
@@ -71,9 +74,6 @@ void	sdl_clrs_swap(Color *a, Color *b);
 
 Color	*sdl_clrs_bright_inc(Color *dst, const Color src, float percent);
 Color	*sdl_clrs_bright_dec(Color *dst, const Color src, float percent);
-
-bool	sdl_clrs_isoneof(const Color c1, const Color c2);
-bool	sdl_clrs_equal(const Color c1, const Color c2);
 
 Color	*sdl_clrs_add(Color *dst, const Color add);
 Color	*sdl_clrs_sub(Color *dst, const Color sub);

@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 11:46:33 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/09 17:58:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool	rt_intersection(Environment *env, t_vec d, fDot *t, int32_t i)
+inline bool		rt_intersection(Environment *env, t_vec d, fDot *t, int32_t i)
 {
 	const int16_t	r = env->s.objs[i].radius;
 	const t_vec		ds = env->s.cam.pos - env->s.objs[i].pos;
@@ -20,7 +20,27 @@ inline bool	rt_intersection(Environment *env, t_vec d, fDot *t, int32_t i)
 	const double_t	disc = k[Y] * k[Y] - 4 * k[X] * k[Z];
 
 	ISR(.0f > disc, false);
-	*t = (fDot){ (-k[Y] + sqrt(disc)) / (2 * k[X]),
-		(-k[Y] - sqrt(disc)) / (2 * k[X]) };
+	*t = (fDot){(-k[Y] + sqrt(disc)) / (2 * k[X]),
+		(-k[Y] - sqrt(disc)) / (2 * k[X])};
 	return (true);
+}
+
+inline Object	*rt_closest_inter(t_vec d, Environment *env,
+					double_t t_min, double_t t_max)
+{
+	int32_t	i;
+	fDot	t;
+	bool	is_figure;
+
+	i = -1;
+	while (++i < env->s.ins_objs)
+		if ((is_figure = rt_intersection(env, d, &t, i)))
+		{
+			if (t.x >= t_min && t.x <= t_max && t.x < env->s.cobj)
+				env->s.cobj = t.x;
+			if (t.y >= t_min && t.y <= t_max && t.x < env->s.cobj)
+				env->s.cobj = t.y;
+			return (&env->s.objs[i]);
+		}
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 12:28:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/09 17:37:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef double	t_vec __attribute__((vector_size(sizeof(double)*4)));
 # define X 0
 # define Y 1
 # define Z 2
-# define T 3
+# define A 3
 
 enum	e_type
 {
@@ -137,17 +137,17 @@ ENV;
 
 struct	s_calc_light
 {
-	t_vec	cd;
-	t_vec	p;
-	t_vec	n;
-	Color	tmp1;
-	Color	tmp2;
-	t_vec	x;
-	float_t	dnl;
-	t_vec	h;
-	float_t	h_intense;
-	float_t	i;
-	t_vec	d;
+	Color		tmp1;
+	Color		tmp2;
+	t_vec		cd;
+	t_vec		p;
+	t_vec		n;
+	t_vec		x;
+	t_vec		h;
+	t_vec		d;
+	double_t	dnl;
+	double_t	h_intense;
+	double_t	i;
 };
 
 typedef struct s_calc_light	t_clhelp;
