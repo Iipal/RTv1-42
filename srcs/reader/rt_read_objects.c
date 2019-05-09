@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:31:21 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 17:19:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/10 00:14:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@ inline bool	rt_ssphere(Scene *sc, string s, int32_t *o)
 	Uint32	clr;
 
 	s += ft_skip_to_blank(s);
-	ISR(*s++ != ' ', false);
-	ISR(!*s || ('-' != *s && !ft_isdigit(*s)), false);
-	ISR(',' != *(s += ft_digits(OBJ(*o).pos[X] = ft_atoi(s))) || !*s++, false);
-	ISR(',' != *(s += ft_digits(OBJ(*o).pos[Y] = ft_atoi(s))) || !*s++, false);
-	ISR(' ' != *(s += ft_digits(OBJ(*o).pos[Z] = ft_atoi(s))) || !*s++, false);
-	ISR(*s++ != '0' || *s++ != 'x', false);
-	NOTIS_F(clr = ft_atoi_base(s, 16));
-	ISR(' ' != *(s += ft_skip_to_blank(s)) || !*s++, false);
-	ISR(' ' != *(s += ft_digits(OBJ(*o).radius = ft_atoi(s))) || !*s++, false);
-	ISR(*(s += ft_digits(OBJ(*o).spec = ft_atoi(s))), false);
-	if (OBJ(*o).pos[Y] != 0)
-		OBJ(*o).pos[Y] = -OBJ(*o).pos[Y];
-	OBJ(*o).clr = (Color){clr >> 16, (clr >> 8) & 0xff, clr & 0xff};
-	OBJ(*o).type = sphere;
+	IF_F(*s++ != ' ');
+	IF_F(!*s || ('-' != *s && !ft_isdigit(*s)));
+	IF_F(',' != *(s += ft_digits(sc->objs[*o].pos[X] = ft_atoi(s))) || !*s++);
+	IF_F(',' != *(s += ft_digits(sc->objs[*o].pos[Y] = ft_atoi(s))) || !*s++);
+	IF_F(' ' != *(s += ft_digits(sc->objs[*o].pos[Z] = ft_atoi(s))) || !*s++);
+	IF_F(*s++ != '0' || *s++ != 'x');
+	NO_F(clr = ft_atoi_base(s, 16));
+	IF_F(' ' != *(s += ft_skip_to_blank(s)) || !*s++);
+	IF_F(' ' != *(s += ft_digits(sc->objs[*o].radius = ft_atoi(s))) || !*s++);
+	IF_F(*(s += ft_digits(sc->objs[*o].spec = ft_atoi(s))));
+	if (sc->objs[*o].pos[Y] != 0)
+		sc->objs[*o].pos[Y] = -sc->objs[*o].pos[Y];
+	sc->objs[*o].clr = (Color){clr >> 16, (clr >> 8) & 0xff, clr & 0xff};
+	sc->objs[*o].type = sphere;
 	++(*o);
 	return (true);
 }

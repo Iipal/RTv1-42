@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 12:28:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/10 00:25:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,27 @@
 # include <stdlib.h>
 # include <stddef.h>
 
-# define ISARGS(ac, av) {--ac;++av; NOTIS(E_USAGE, !(ac != 1), exit(1), 0);}
-
-# define IFDO(ex, do) if ((ex)) {do;}
-# define IFDOM(msg, ex, do) if ((ex)) {MSGN(msg); do;}
-# define IFDOR(ex, do, ret) {if ((ex)) {do; return(ret);}}
-
 # define MSG(msg) ft_putstr_fd(msg, STDERR_FILENO)
 # define MSGN(msg) ft_putendl_fd(msg, STDERR_FILENO)
 
-# define NOTIS(msg, ex, do, ret) if (!(ex)) {MSGN(msg); do; return(ret);}
-# define NOTIS_F(ex) if (!(ex)) return (false)
+# define ISARGS(ac, av) {--ac;++av; NO(E_USAGE, !(ac != 1), exit(1), 0);}
 
-# define ISM(msg, ex, do, ret) if ((ex)) {MSGN(msg); do; return (ret);}
-# define ISME(msg, ex, do, ret) if ((ex)) {perror(msg); do; return (ret);}
-# define ISR(ex, ret) if ((ex)) {return (ret);}
+# define IFR(ex, ret) if ((ex)) {return (ret);}
+# define IF_F(ex) if ((ex)) return (false);
+# define IFDO(ex, do) if ((ex)) {do;}
+# define IFDOM(msg, ex, do) if ((ex)) {MSGN(msg); do;}
+# define IFDOR(ex, do, ret) {if ((ex)) {do; return(ret);}}
+# define IFDOMR(msg, ex, do, ret) if ((ex)) {MSGN(msg); do; return (ret);}
+# define IFME(msg, ex, do, ret) if ((ex)) {perror(msg); do; return (ret);}
+# define IFM_F(msg, ex) if ((ex)) {MSGN(msg); return (false);}
+
+# define NO(msg, ex, do, ret) if (!(ex)) {MSGN(msg); do; return(ret);}
+# define NO_F(ex) if (!(ex)) return (false)
+# define NODO_F(ex, do) if (!(ex)) {do; return(false);}
+# define NOM_F(msg, ex) if (!(ex)) {MSGN(msg); return (false);}
 
 # define C(type, dest, x) ft_bzero(dest, sizeof(type) * (x))
-# define MEM(t, d, x, m) NOTIS(m,d=(t*)malloc(sizeof(t)*(x)),exit(1),0);C(t,d,x)
+# define MEM(t, d, x, m) NO(m,d=(t*)malloc(sizeof(t)*(x)),exit(1),0);C(t,d,x)
 
 # define FREE(trash, del) if ((trash)) {del((trash)); (trash) = NULL;}
 

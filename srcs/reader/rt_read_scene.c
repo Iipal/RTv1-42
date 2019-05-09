@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 12:25:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/10 00:21:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,22 @@ static bool	add_valid_saved_data(Scene *sc)
 {
 	int32_t	i;
 
+	NOM_F(E_NOCAM, sc->cam.is);
+	NOM_F(E_NOLIGHT, sc->l.is);
+	NOM_F(E_NOOBJS, sc->ins_objs);
+	NOM_F(E_CAMDIR, u_inrange(sc->cam.dir, true, true));
+	NOM_F(E_CAMPOS, u_inrange(sc->cam.pos, true, true));
+	NOM_F(E_LIGHTPOS, u_inrange(sc->l.pos, true, true));
+	IFM_F(E_LINTENSE, .0f > sc->l.intens || 1.0f < sc->l.intens);
 	i = -1;
-	IFDOR(!sc->cam.is, MSGN(E_NOCAM), false);
-	IFDOR(!sc->l.is, MSGN(E_NOLIGHT), false);
-	IFDOR(!u_inrange(sc->cam.dir, true, true), MSGN(E_CAMDIR), false);
-	IFDOR(!u_inrange(sc->cam.pos, true, true), MSGN(E_CAMPOS), false);
-	IFDOR(!u_inrange(sc->l.pos, true, true), MSGN(E_LIGHTPOS), false);
-	IFDOR(.0f > sc->l.intens || 1.0f < sc->l.intens, MSGN(E_LINT), false);
-	if (sc->ins_objs)
-		while (++i < sc->ins_objs)
-		{
-			IFDOR(!u_inrange(OBJ(i).pos, true, true), MSGN(E_SPPOS), 0);
-			IFDOR(MIN_SPR > OBJ(i).radius
-				|| MAX_SPR < OBJ(i).radius, MSGN(E_SPRAD), false);
-			IFDOR(MIN_SPSP > OBJ(i).spec
-				|| MAX_SPSP < OBJ(i).spec, MSGN(E_SPSPEC), false);
-		}
+	while (++i < sc->ins_objs)
+	{
+		NOM_F(E_SPPOS, u_inrange(sc->objs[i].pos, true, true));
+		IFM_F(E_SPRAD, MIN_SPR > sc->objs[i].radius
+			|| MAX_SPR < sc->objs[i].radius);
+		IFM_F(E_SPSPEC, MIN_SPSP > sc->objs[i].spec
+			|| MAX_SPSP < sc->objs[i].spec);
+	}
 	return (true);
 }
 
@@ -51,7 +51,7 @@ static bool	add_parser(Scene *sc, string *str, int16_t nline, int32_t *o)
 		&& (is_known_obj_type = true))
 			is_valid_data = fns[i](sc, *str, o);
 	IFDOM(E_OBJ, !is_known_obj_type, is_valid_data = false);
-	NOTIS(E_ISYNTAX, is_valid_data, ERRAT(*str, nline), false);
+	NO(E_ISYNTAX, is_valid_data, ERRAT(*str, nline), false);
 	ft_strdel(str);
 	return (is_valid_data);
 }
@@ -76,26 +76,25 @@ static bool	add_valid_objs_counter(int32_t *fd, Scene *s, string file)
 	}
 	close(*fd);
 	IFDO(s->ins_objs, MEM(Object, s->objs, s->ins_objs, E_ALLOC));
-	ISME(PERR, 0 > (*fd = open(file, O_RDONLY)), (void)0, false);
+	IFDOMR(PERR, 0 > (*fd = open(file, O_RDONLY)), (void)0, false);
 	return (true);
 }
 
 bool		rt_read_scene(Environment *env, string scene_file)
 {
 	int32_t		fd;
-	string		temp;
+	string		tmp;
 	uint16_t	nline;
 	int32_t		obj_counter;
 
 	nline = 0;
 	obj_counter = 0;
-	ISME(PERR, 0 > (fd = open(scene_file, O_RDONLY)), rt_free(&env), false);
-	IFDOR(!add_valid_objs_counter(&fd, &env->s, scene_file), rt_free(&env), 0);
-	while (0 < ft_gnl(fd, &temp))
-		IFDOR(!add_parser(&env->s, &temp, ++nline, &obj_counter),
-			rt_free(&env), false);
-	NOTIS(E_EFILE, nline, rt_free(&env), false);
+	IFDOMR(PERR, 0 > (fd = open(scene_file, O_RDONLY)), rt_free(&env), false);
+	NODO_F(add_valid_objs_counter(&fd, &env->s, scene_file), rt_free(&env));
+	while (0 < ft_gnl(fd, &tmp))
+		NODO_F(add_parser(&env->s, &tmp, ++nline, &obj_counter), rt_free(&env));
 	close(fd);
-	NOTIS_F(add_valid_saved_data(&env->s));
+	NO(E_EFILE, nline, rt_free(&env), false);
+	NO_F(add_valid_saved_data(&env->s));
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/07 10:51:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/10 00:00:16 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,14 @@
 
 # define E_NOCAM    ERR "No camera in scene founded."
 # define E_NOLIGHT  ERR "No origin light in scene founded."
+# define E_NOOBJS   ERR "No objects in scene founded."
 
 # define E_INRANGE  " not in available range."
 
 # define E_CAMDIR   ERR "Camera destination point" E_INRANGE
 # define E_CAMPOS   ERR "Camera position" E_INRANGE
 # define E_LIGHTPOS ERR "Light position" E_INRANGE
-# define E_LINT     ERR "Light intensity" E_INRANGE
+# define E_LINTENSE ERR "Light intensity" E_INRANGE
 # define E_SPPOS    ERR "Sphere position" E_INRANGE
 # define E_SPRAD    ERR "Sphere radius" E_INRANGE
 # define E_SPSPEC   ERR "Sphere specular intensity" E_INRANGE

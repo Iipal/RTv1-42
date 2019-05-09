@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 13:22:07 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/10 00:09:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@
 #  define WIN_Y 500
 # endif
 
-# define MIN_X  -1500
-# define MIN_Z  -1500
-# define MIN_Y  -1500
-
 # define MAX_X  1500
 # define MAX_Z  1500
 # define MAX_Y  1500
+
+# define MIN_X  -MAX_X
+# define MIN_Z  -MAX_Z
+# define MIN_Y  -MAX_Y
 
 # define MAX_SPR    500
 # define MIN_SPR    0

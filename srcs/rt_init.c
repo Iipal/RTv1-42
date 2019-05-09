@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:22:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 17:54:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/10 00:26:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 bool	rt_init(Environment *env)
 {
 	MEM(Sdl, env->sdl, 1, E_ALLOC);
-	IFDOR(!sdl_init(env->sdl, WIN_X, WIN_Y, RTV1_TITLE), rt_free(&env), false);
+	NODO_F(sdl_init(env->sdl, WIN_X, WIN_Y, RTV1_TITLE), rt_free(&env));
 	env->cam_speed = MOVE_SPEED_PERCENT_DEFAULT;
 	return (true);
 }
