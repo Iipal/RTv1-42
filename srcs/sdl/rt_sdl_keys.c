@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:07:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/08 20:04:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/09 12:25:37 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,26 +35,25 @@ inline void	rt_sdl_keys_press(Environment *env)
 	else if ((env->isr.is_debug = true))
 	{
 		if (SDLK_t == SEKEY)
-			env->s.l.pos.y -= 10;
+			env->s.l.pos[Y] -= 10;
 		else if (SDLK_g == SEKEY)
-			env->s.l.pos.y += 10;
+			env->s.l.pos[Y] += 10;
 		else if (SDLK_f == SEKEY)
-			env->s.l.pos.x -= 10;
+			env->s.l.pos[X] -= 10;
 		else if (SDLK_h == SEKEY)
-			env->s.l.pos.x += 10;
+			env->s.l.pos[X] += 10;
 		else if (SDLK_r == SEKEY)
-			env->s.l.pos.z -= 10;
+			env->s.l.pos[Z] -= 10;
 		else if (SDLK_y == SEKEY)
-			env->s.l.pos.z += 10;
+			env->s.l.pos[Z] += 10;
 		else if (SDLK_u == SEKEY)
-			env->s.l.intensity += 0.01f;
+			env->s.l.intens += 0.01f;
 		else if (SDLK_j == SEKEY)
-			env->s.l.intensity -= 0.01f;
-
-		if (1.0f <= env->s.l.intensity)
-			env->s.l.intensity = 1.0f;
-		else if (0.0f >= env->s.l.intensity)
-			env->s.l.intensity = 0.0f;
+			env->s.l.intens -= 0.01f;
+		if (1.0f <= env->s.l.intens)
+			env->s.l.intens = 1.0f;
+		else if (0.0f >= env->s.l.intens)
+			env->s.l.intens = 0.0f;
 	}
 }
 

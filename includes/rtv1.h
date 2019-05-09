@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 00:40:34 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/09 11:54:45 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "rtv1_errno.h"
 # include "rtv1_structs.h"
 # include "rtv1_macroses.h"
-# include <math.h>
 
 # define FNSCP typedef bool (*fns_parse)(Scene*, string, int32_t*);
 
@@ -30,10 +29,8 @@ bool	rt_read_scene(Environment *env, string scene_file);
 
 bool	rt_init(Environment *env);
 
-Vec		u_sub_vec(Vec a, Vec b);
-
-bool	u_inrange(Vec v, bool check_min, bool check_max);
-double_t	u_inrangev(double_t v, bool check_min, bool check_max);
+bool	u_inrange(t_vec v, bool check_min, bool check_max);
+double	u_inrangev(double_t v, bool check_min, bool check_max);
 
 void	rt_camera_speed(double_t *cam_s, bool is_speed_up, bool is_speed_down);
 
@@ -47,8 +44,8 @@ void	rt_render_fps_counter(Environment *env);
 
 void	rt_raytracing(Environment *env);
 
-Color	rt_calculate_light(Environment *env, int32_t i, Vec d);
-bool	rt_intersection(Environment *env, Vec d, fDot *t, int32_t i);
+Color	rt_calculate_light(Environment *env, int32_t i, t_vec d);
+bool	rt_intersection(Environment *env, t_vec d, fDot *t, int32_t i);
 
 void	rt_fps(Fps *fps, double_t cam_speed);
 

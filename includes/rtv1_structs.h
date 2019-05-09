@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 00:39:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/09 12:28:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,12 @@
 #  include <SDL2/SDL.h>
 # endif
 
-struct	s_vec
-{
-	double_t	x;
-	double_t	y;
-	double_t	z;
-};
+typedef double	t_vec __attribute__((vector_size(sizeof(double)*4)));
 
-struct	s_fdot
-{
-	float_t	x;
-	float_t	y;
-};
+# define X 0
+# define Y 1
+# define Z 2
+# define T 3
 
 enum	e_type
 {
@@ -45,31 +39,27 @@ enum	e_type
 	max_objs
 };
 
-# define FDOT typedef struct s_fdot fDot
-# define VEC typedef struct s_vec   Vec
 # define ETYPE typedef enum e_type  Type
 
-FDOT;
-VEC;
 ETYPE;
 
 struct	s_camera
 {
-	Vec		pos;
-	Vec		dir;
+	t_vec	pos;
+	t_vec	dir;
 	bool	is;
 };
 
 struct	s_light
 {
-	Vec		pos;
-	float_t	intensity;
+	t_vec	pos;
+	float_t	intens;
 	bool	is;
 };
 
 struct	s_object
 {
-	Vec		pos;
+	t_vec	pos;
 	Color	clr;
 	int16_t	radius;
 	float_t	spec;
@@ -145,23 +135,19 @@ struct	s_environment
 
 ENV;
 
-struct	s_light_help
-{
-	Vec	cd;
-	Vec	p;
-	Vec	n;
-};
-
-typedef struct s_light_help	t_lhelp;
-
 struct	s_calc_light
 {
-	Object	obj;
-	Vec		p;
-	Vec		n;
-	Light	l;
-	float_t	s;
-	Vec		v;
+	t_vec	cd;
+	t_vec	p;
+	t_vec	n;
+	Color	tmp1;
+	Color	tmp2;
+	t_vec	x;
+	float_t	dnl;
+	t_vec	h;
+	float_t	h_intense;
+	float_t	i;
+	t_vec	d;
 };
 
 typedef struct s_calc_light	t_clhelp;

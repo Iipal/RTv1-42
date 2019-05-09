@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/08 15:09:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/09 12:25:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static bool	add_valid_saved_data(Scene *sc)
 	IFDOR(!u_inrange(sc->cam.dir, true, true), MSGN(E_CAMDIR), false);
 	IFDOR(!u_inrange(sc->cam.pos, true, true), MSGN(E_CAMPOS), false);
 	IFDOR(!u_inrange(sc->l.pos, true, true), MSGN(E_LIGHTPOS), false);
-	IFDOR(.0f > sc->l.intensity || 1.0f < sc->l.intensity, MSGN(E_LINT), false);
+	IFDOR(.0f > sc->l.intens || 1.0f < sc->l.intens, MSGN(E_LINT), false);
 	if (sc->ins_objs)
 		while (++i < sc->ins_objs)
 		{

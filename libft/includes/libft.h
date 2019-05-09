@@ -6,13 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/08 19:08:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/09 12:28:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <math.h>
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdarg.h>
@@ -38,8 +39,8 @@
 # define ISME(msg, ex, do, ret) if ((ex)) {perror(msg); do; return (ret);}
 # define ISR(ex, ret) if ((ex)) {return (ret);}
 
-# define Z(type, dest, x) ft_bzero(dest, sizeof(type) * (x))
-# define MEM(t, d, x, m) NOTIS(m,d=(t*)malloc(sizeof(t)*(x)),exit(1),0);Z(t,d,x)
+# define C(type, dest, x) ft_bzero(dest, sizeof(type) * (x))
+# define MEM(t, d, x, m) NOTIS(m,d=(t*)malloc(sizeof(t)*(x)),exit(1),0);C(t,d,x)
 
 # define FREE(trash, del) if ((trash)) {del((trash)); (trash) = NULL;}
 
@@ -61,7 +62,14 @@ struct	s_dot
 	int32_t	y;
 };
 
+struct	s_fdot
+{
+	double_t	x;
+	double_t	y;
+};
+
 # define DOT    typedef struct s_dot    Dot
+# define FDOT   typedef struct s_fdot   fDot
 # define STR    typedef char*           string
 # define CSTR   typedef const char*     cstring
 # define USTR   typedef unsigned char*  ustring
@@ -75,6 +83,7 @@ struct	s_dot
 # define UINT   typedef uint32_t        uint
 
 DOT;
+FDOT;
 STR;
 CSTR;
 USTR;

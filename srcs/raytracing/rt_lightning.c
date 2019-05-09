@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 00:38:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/09 12:25:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,47 +16,31 @@
 **	Calculate point light type
 */
 
-static inline Color	add_compute_light(t_clhelp h)
+inline Color		rt_calculate_light(Environment *env, int32_t i, t_vec d)
 {
-	double_t	i;
-	Color		tmp, tmp2;
-	const Vec	x = {h.l.pos.x - h.p.x, h.l.pos.y - h.p.y, h.l.pos.z - h.p.z};
-	const float	dot_nl = VDOT(h.n, x);
+	t_clhelp	h;
 
-	tmp2 = tmp = h.obj.clr;
-	i = 0.0;
-	if (.0f < dot_nl)
-		i += h.l.intensity * dot_nl / (VLEN(h.n) * VLEN(x));
-	if (0 < h.s)
+	C(t_clhelp, &h, 1);
+	h.tmp1 = env->s.objs[i].clr;
+	h.tmp2 = h.tmp1;
+	IFDO(env->s.ins_objs <= i, i = env->s.ins_objs - 1);
+	h.cd = (t_vec){env->s.cobj * d[X], env->s.cobj * d[Y], env->s.cobj * d[Z]};
+	h.p = env->s.cam.pos + h.cd;
+	h.n = h.p - env->s.objs[i].pos;
+	h.n = (t_vec){h.n[X] / VLEN(h.n), h.n[Y] / VLEN(h.n), h.n[Z] / VLEN(h.n)};
+	h.x = env->s.l.pos - h.p;
+	h.dnl = VDOT(h.n, h.x);
+	IFDO(.0f < h.dnl, h.i += env->s.l.intens * h.dnl / (VLEN(h.n) * VLEN(h.x)));
+	if (.0f < env->s.objs[i].spec)
 	{
-		Vec H = {h.v.x + x.x, h.v.y + x.y, h.v.z + x.z};
-		H = (Vec) {H.x / VLEN(H), H.y / VLEN(H), H.z / VLEN(H)};
-		float_t intens = h.l.intensity * fmax(0, dot_nl) +
-			h.s * h.l.intensity * pow(fmax(0, VDOT(h.n, H)), h.s);
-		Vec DDD = {h.p.x - h.l.pos.x, h.p.y - h.l.pos.y, h.p.z - h.l.pos.z};
-		i += intens / VLEN(DDD);
+		h.h = -d + h.x;
+		h.h = (t_vec){h.h[X] / VLEN(h.h),
+			h.h[Y] / VLEN(h.h), h.h[Z] / VLEN(h.h)};
+		h.h_intense = env->s.l.intens * fmax(0, h.dnl) + env->s.objs[i].spec
+		* env->s.l.intens * pow(fmax(0, VDOT(h.n, h.h)), env->s.objs[i].spec);
+		h.d = h.p - env->s.l.pos;
+		h.i += h.h_intense / VLEN(h.d);
 	}
-	return (0.0f < i ? *sdl_clrs_add(&tmp2, *sdl_clr_mul(&tmp, i)) : h.obj.clr);
-}
-
-inline Color		rt_calculate_light(Environment *env, int32_t i, Vec d)
-{
-	t_lhelp	lh;
-
-	if (env->s.ins_objs <= i)
-		i = env->s.ins_objs - 1;
-	lh.cd = (Vec){env->s.cobj * d.x,
-				env->s.cobj * d.y,
-				env->s.cobj * d.z};
-	lh.p = (Vec){env->s.cam.pos.x + lh.cd.x,
-				env->s.cam.pos.y + lh.cd.y,
-				env->s.cam.pos.z + lh.cd.z};
-	lh.n = (Vec){lh.p.x - env->s.objs[i].pos.x,
-				lh.p.y - env->s.objs[i].pos.y,
-				lh.p.z - env->s.objs[i].pos.z};
-	lh.n = (Vec){lh.n.x / VLEN(lh.n),
-				lh.n.y / VLEN(lh.n),
-				lh.n.z / VLEN(lh.n)};
-	return (add_compute_light((t_clhelp){env->s.objs[i], lh.p, lh.n,
-				env->s.l, env->s.objs[i].spec, (Vec){-d.x, -d.y, -d.z}}));
+	return ((.0f >= h.i) ? (env->s.objs[i].clr)
+		: (*sdl_clrs_add(&h.tmp2, *sdl_clr_mul(&h.tmp1, h.i))));
 }

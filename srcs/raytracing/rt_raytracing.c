@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:23:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/08 16:05:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/09 11:56:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline Color	add_trace_ray(Environment *env, Vec d)
+static inline Color	add_trace_ray(Environment *env, t_vec d)
 {
 	fDot			t;
 	bool			is_figure;
@@ -33,14 +33,14 @@ void				rt_raytracing(Environment *env)
 {
 	Dot		i;
 	Color	curr_color;
-	Vec		d;
+	t_vec	d;
 
 	i.y = RT_SY;
 	curr_color = (Color){0, 0, 0};
 	while (RT_EY > ++(i.y) && (i.x = RT_SX))
 		while (RT_EX > ++(i.x))
 		{
-			d = (Vec){i.x * WIN_X / (1000.0 * WIN_X),
+			d = (t_vec) {i.x * WIN_X / (1000.0 * WIN_X),
 				i.y * WIN_Y / (1000.0 * WIN_Y), 1.0};
 			curr_color = add_trace_ray(env, d);
 			sdl_pixelput_canvas(env->sdl->wsurf,
