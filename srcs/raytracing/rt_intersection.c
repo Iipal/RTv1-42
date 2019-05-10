@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/10 00:27:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/10 11:29:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,14 @@ inline Object	*rt_closest_inter(t_vec d, Environment *env,
 {
 	int32_t	i;
 	fDot	t;
-	bool	is_figure;
 
 	i = -1;
 	while (++i < env->s.ins_objs)
-		if ((is_figure = rt_intersection(env, d, &t, i)))
+		if (rt_intersection(env, d, &t, i))
 		{
 			if (t.x >= t_min && t.x <= t_max && t.x < env->s.cobj)
 				env->s.cobj = t.x;
-			if (t.y >= t_min && t.y <= t_max && t.x < env->s.cobj)
+			if (t.y >= t_min && t.y <= t_max && t.y < env->s.cobj)
 				env->s.cobj = t.y;
 			return (&env->s.objs[i]);
 		}
