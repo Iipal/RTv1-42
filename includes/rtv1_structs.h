@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 23:35:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/10 19:34:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,15 @@ struct	s_object
 
 struct	s_isrender
 {
-	bool	is_cam_up;
-	bool	is_cam_down;
-	bool	is_cam_left;
-	bool	is_cam_right;
-	bool	is_cam_zinc;
-	bool	is_cam_zdec;
+	bool	is_up;
+	bool	is_down;
+	bool	is_left;
+	bool	is_right;
+	bool	is_zinc;
+	bool	is_zdec;
 	bool	is_render_fps;
-	bool	is_cam_speedup;
-	bool	is_cam_speeddown;
+	bool	is_speedup;
+	bool	is_speeddown;
 	bool	is_debug;
 };
 
@@ -142,7 +142,7 @@ struct	s_calc_light
 	t_vec		cd;
 	t_vec		p;
 	t_vec		n;
-	t_vec		x;
+	t_vec		l;
 	t_vec		h;
 	t_vec		d;
 	double_t	dnl;

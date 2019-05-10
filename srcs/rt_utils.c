@@ -6,13 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:44:49 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 11:55:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/10 19:24:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool		u_inrange(t_vec v, bool check_min, bool check_max)
+inline bool		u_inrange(const t_vec v,
+	const bool check_min, const bool check_max)
 {
 	if (check_max
 	&& (MAX_X < v[X] || MAX_Y < v[Y] || MAX_Z < v[Z]))
@@ -23,7 +24,8 @@ inline bool		u_inrange(t_vec v, bool check_min, bool check_max)
 	return (true);
 }
 
-inline double_t	u_inrangev(double_t v, bool check_min, bool check_max)
+inline double_t	u_inrangev(const double_t v,
+	const bool check_min, const bool check_max)
 {
 	if (check_max && MAX_X < v)
 		return (MAX_X);

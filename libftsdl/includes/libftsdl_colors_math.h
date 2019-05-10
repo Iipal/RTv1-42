@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 23:24:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 17:29:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/10 18:23:25 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ COLOR;
 FCOLOR;
 
 # define INRANGE(c)	sdl_clr_inrange(c)
+
+# define COLOR_MULT(c1, cp1, i) *sdl_clrs_add(&c1, *sdl_clr_mul(&cp1, i))
 
 # define SDL_CLR_CMP(clr, u) (clr.r == u && clr.g == u && clr.b == u)
 # define SDL_CLRS_CMP(c1, c2) (c1.r == c2.r && c1.g == c2.g && c1.b == c2.b)

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 17:26:48 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/10 19:26:42 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,16 @@ bool		rt_read_scene(Environment *env, string scene_file);
 
 bool		rt_init(Environment *env);
 
-bool		u_inrange(t_vec v, bool check_min, bool check_max);
-double_t	u_inrangev(double_t v, bool check_min, bool check_max);
+bool		u_inrange(const t_vec v,
+					const bool check_min,
+					const bool check_max);
+double_t	u_inrangev(const double_t v,
+					const bool check_min,
+					const bool check_max);
 
 void		rt_camera_speed_movements(double_t *cam_speed,
-				bool is_speed_up, bool is_speed_down);
+									bool is_speed_up,
+									bool is_speed_down);
 
 void		rt_sdl_keys_press(Environment *env);
 void		rt_sdl_keys_release(Environment *env);
@@ -43,9 +48,7 @@ void		rt_raytracing(Environment *env);
 
 Color		rt_calculate_light(Environment *env, Object *obj, t_vec d);
 
-bool		rt_intersection(Environment *env, t_vec d, fDot *t, int32_t i);
-Object		*rt_closest_inter(t_vec d, Environment *env,
-				double_t t_min, double_t t_max);
+Object		*rt_closest_inter(t_vec o, t_vec d, Environment *env);
 
 void		rt_fps(Fps *fps, double_t cam_speed);
 

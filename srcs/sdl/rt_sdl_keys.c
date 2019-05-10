@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:07:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 13:42:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/10 18:20:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,41 +17,41 @@ inline void	rt_sdl_keys_press(Environment *env)
 	if (SDLK_x == SEKEY)
 		env->isr.is_debug = !env->isr.is_debug;
 	if (SDLK_w == SEKEY)
-		env->isr.is_cam_up = true;
+		env->isr.is_up = true;
 	else if (SDLK_s == SEKEY)
-		env->isr.is_cam_down = true;
+		env->isr.is_down = true;
 	else if (SDLK_a == SEKEY)
-		env->isr.is_cam_left = true;
+		env->isr.is_left = true;
 	else if (SDLK_d == SEKEY)
-		env->isr.is_cam_right = true;
+		env->isr.is_right = true;
 	else if (SDLK_q == SEKEY)
-		env->isr.is_cam_zdec = true;
+		env->isr.is_zdec = true;
 	else if (SDLK_e == SEKEY)
-		env->isr.is_cam_zinc = true;
+		env->isr.is_zinc = true;
 	else if (SDLK_z == SEKEY)
 		env->isr.is_render_fps = !env->isr.is_render_fps;
 	else if (SDLK_LSHIFT == SEKEY)
-		env->isr.is_cam_speedup = true;
+		env->isr.is_speedup = true;
 	else if (SDLK_LCTRL == SEKEY)
-		env->isr.is_cam_speeddown = true;
+		env->isr.is_speeddown = true;
 }
 
 inline void	rt_sdl_keys_release(Environment *env)
 {
 	if (SDLK_w == SEKEY)
-		env->isr.is_cam_up = false;
+		env->isr.is_up = false;
 	else if (SDLK_s == SEKEY)
-		env->isr.is_cam_down = false;
+		env->isr.is_down = false;
 	else if (SDLK_a == SEKEY)
-		env->isr.is_cam_left = false;
+		env->isr.is_left = false;
 	else if (SDLK_d == SEKEY)
-		env->isr.is_cam_right = false;
+		env->isr.is_right = false;
 	else if (SDLK_q == SEKEY)
-		env->isr.is_cam_zdec = false;
+		env->isr.is_zdec = false;
 	else if (SDLK_e == SEKEY)
-		env->isr.is_cam_zinc = false;
+		env->isr.is_zinc = false;
 	else if (SDLK_LSHIFT == SEKEY)
-		env->isr.is_cam_speedup = false;
+		env->isr.is_speedup = false;
 	else if (SDLK_LCTRL == SEKEY)
-		env->isr.is_cam_speeddown = false;
+		env->isr.is_speeddown = false;
 }
