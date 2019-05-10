@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:32:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/10 00:17:42 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/10 10:19:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ inline bool	rt_scam(Scene *sc, string s, int32_t *o)
 	IF_F(',' != *(s += ft_digits(sc->cam.dir[X] = ft_atoi(s))) || !*s++);
 	IF_F(',' != *(s += ft_digits(sc->cam.dir[Y] = ft_atoi(s))) || !*s++);
 	IF_F(*(s += ft_digits(sc->cam.dir[Z] = -ft_atoi(s))));
-	sc->cam.pos[Y] = -sc->cam.pos[Y];
+	if (sc->cam.pos[Y] != 0.0f)
+		sc->cam.pos[Y] = -sc->cam.pos[Y];
 	sc->cam.is = true;
 	return (true);
 }
@@ -41,7 +42,8 @@ inline bool	rt_slight(Scene *sc, string s, int32_t *o)
 	IF_F(',' != *(s += ft_digits(sc->l.pos[Y] = ft_atoi(s))) || !*s++);
 	IF_F(' ' != *(s += ft_digits(sc->l.pos[Z] = ft_atoi(s))) || !*s++);
 	IF_F(*(s += ft_digits(sc->l.intens = ft_atoi(s))));
-	sc->l.pos[Y] = -sc->l.pos[Y];
+	if (sc->l.pos[Y] != 0.0f)
+		sc->l.pos[Y] = -sc->l.pos[Y];
 	IFDO(0 < sc->l.intens, sc->l.intens /= 100);
 	sc->l.is = true;
 	return (true);

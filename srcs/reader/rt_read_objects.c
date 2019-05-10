@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:31:21 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/10 00:14:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/10 10:19:14 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ inline bool	rt_ssphere(Scene *sc, string s, int32_t *o)
 	IF_F(' ' != *(s += ft_skip_to_blank(s)) || !*s++);
 	IF_F(' ' != *(s += ft_digits(sc->objs[*o].radius = ft_atoi(s))) || !*s++);
 	IF_F(*(s += ft_digits(sc->objs[*o].spec = ft_atoi(s))));
-	if (sc->objs[*o].pos[Y] != 0)
+	if (sc->objs[*o].pos[Y] != 0.0f)
 		sc->objs[*o].pos[Y] = -sc->objs[*o].pos[Y];
 	sc->objs[*o].clr = (Color){clr >> 16, (clr >> 8) & 0xff, clr & 0xff};
 	sc->objs[*o].type = sphere;
