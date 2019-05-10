@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:23:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 17:59:03 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/10 10:50:44 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	rt_raytracing(Environment *env)
 	while (RT_EY > ++(i.y) && (i.x = RT_SX))
 		while (RT_EX > ++(i.x))
 		{
-			env->s.cobj = -TMAX;
+			env->s.cobj = env->t_max;
 			curr_color = (Color){0, 0, 0};
 			d = (t_vec) {i.x * WIN_X / (1000.0 * WIN_X),
 				i.y * WIN_Y / (1000.0 * WIN_Y), 1.0};
