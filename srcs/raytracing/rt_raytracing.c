@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:23:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/10 10:50:44 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/10 11:57:45 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	rt_raytracing(Environment *env)
 	Color	curr_color;
 
 	i.y = RT_SY;
-	SDL_FillRect(env->sdl->wsurf, NULL, RGB_BLACK);
 	while (RT_EY > ++(i.y) && (i.x = RT_SX))
 		while (RT_EX > ++(i.x))
 		{
