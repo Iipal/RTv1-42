@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/10 00:25:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/11 23:49:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define IFM_F(msg, ex) if ((ex)) {MSGN(msg); return (false);}
 
 # define NO(msg, ex, do, ret) if (!(ex)) {MSGN(msg); do; return(ret);}
+# define NO_R(ex, ret) if (!(ex)) return (ret)
 # define NO_F(ex) if (!(ex)) return (false)
 # define NODO_F(ex, do) if (!(ex)) {do; return(false);}
 # define NOM_F(msg, ex) if (!(ex)) {MSGN(msg); return (false);}

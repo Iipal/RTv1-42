@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/11 12:36:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/11 23:25:17 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ inline Color		rt_calculate_light(Environment *env, Object *obj, t_vec d)
 	h.n = h.p - obj->pos;
 	h.n = (t_vec){X(h.n) / VLEN(h.n), Y(h.n) / VLEN(h.n), Z(h.n) / VLEN(h.n)};
 	h.l = env->s.l.pos - h.p;
-	obj = rt_closest_inter(h.p, h.l, env);
+	// obj = rt_closest_inter(h.p, h.l, env);
 	if (NULL == obj)
 		return (h.tmp1);
 	h.dnl = VDOT(h.n, h.l);

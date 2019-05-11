@@ -6,23 +6,23 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 18:51:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/28 23:08:18 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/11 23:32:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static void	add_render_fps(SDL_Surface *text, uiarr screen, bool pos)
+static void	add_render_fps(const SDL_Surface *text,
+						uiarr screen,
+						const bool pos)
 {
 	Dot		tp;
 	Dot		p;
 	uiarr	pixels;
 
 	pixels = text->pixels;
+	tp.y = pos ? 20 : 0;
 	p.y = -1;
-	tp.y = 0;
-	if (pos)
-		tp.y = 20;
 	while (text->h > ++(p.y) && (p.x = -1)
 	&& (tp.x = -1))
 	{
@@ -32,7 +32,9 @@ static void	add_render_fps(SDL_Surface *text, uiarr screen, bool pos)
 	}
 }
 
-static void	add_fps_prepare_and_draw(float dfps, float dms, Environment *env)
+static void	add_fps_prepare_and_draw(const float_t dfps,
+									const float_t dms,
+									const Environment *env)
 {
 	const string	data_info[] = {" fps", " ms"};
 	string			data[2];
@@ -57,9 +59,9 @@ static void	add_fps_prepare_and_draw(float dfps, float dms, Environment *env)
 
 inline void	rt_render_fps_counter(Environment *env)
 {
-	static float	delta;
-	static float	delta_fps;
-	static float	delta_ms;
+	static float_t	delta;
+	static float_t	delta_fps;
+	static float_t	delta_ms;
 
 	(delta > REFRESH_FPS_COUNTER) ? (delta = 0) : 0;
 	if (.0f == delta)
@@ -71,7 +73,7 @@ inline void	rt_render_fps_counter(Environment *env)
 	delta += env->fps.time.res;
 }
 
-inline void	rt_fps(Fps *fps, double cam_speed)
+inline void	rt_fps(Fps *fps, const double_t cam_speed)
 {
 	fps->time.old = fps->time.current;
 	fps->time.current = SDL_GetTicks();
