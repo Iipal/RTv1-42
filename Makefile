@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/05/11 12:42:33 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/05/11 16:24:33 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,13 +27,7 @@ ifeq ($(UNAME_S),Darwin)
 		$(CURDIR)/libftsdl/frameworks -framework SDL2 -framework SDL2_ttf
 endif
 
-#   -march=native       - Setups compiler to use all available CPU instructions for
-#                           optimizing compiling time
-#   -mtune=native       - Setups compiler to compiling all correctly for
-#                           current system architecture on which project compiling
-#   -flto               - Enable Link Time Optimization
-#   -Ofast              - MAXIMUM OPTIMIZATION
-CC := gcc -march=native -mtune=native -Ofast
+CC := gcc -march=native -mtune=native -Ofast -flto
 CC_DEBUG := gcc -march=native -mtune=native -g3 -D DEBUG
 CFLAGS := -Wall -Wextra -Werror -Wunused
 IFLAGS := -I $(CURDIR)/includes/ \
