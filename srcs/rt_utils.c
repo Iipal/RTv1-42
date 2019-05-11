@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:44:49 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/10 19:24:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/11 12:36:30 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ inline bool		u_inrange(const t_vec v,
 	const bool check_min, const bool check_max)
 {
 	if (check_max
-	&& (MAX_X < v[X] || MAX_Y < v[Y] || MAX_Z < v[Z]))
+	&& (MAX_X < X(v) || MAX_Y < Y(v) || MAX_Z < Z(v)))
 		return (false);
 	if (check_min
-	&& (MIN_X > v[X] || MIN_Y > v[Y] || MIN_Z > v[Z]))
+	&& (MIN_X > X(v) || MIN_Y > Y(v) || MIN_Z > Z(v)))
 		return (false);
 	return (true);
 }

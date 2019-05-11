@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:12:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/10 18:24:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/11 12:10:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static inline void	add_light_debug_key_events(Environment *env)
 {
 	if (env->isr.is_up)
-		env->s.l.pos[Y] = u_inrangev(env->s.l.pos[Y] - env->fps.move * 5, 1, 0);
+		Y(env->s.l.pos) = u_inrangev(Y(env->s.l.pos) - env->fps.move * 5, 1, 0);
 	if (env->isr.is_down)
-		env->s.l.pos[Y] = u_inrangev(env->s.l.pos[Y] + env->fps.move * 5, 0, 1);
+		Y(env->s.l.pos) = u_inrangev(Y(env->s.l.pos) + env->fps.move * 5, 0, 1);
 	if (env->isr.is_left)
-		env->s.l.pos[X] = u_inrangev(env->s.l.pos[X] - env->fps.move * 5, 1, 0);
+		X(env->s.l.pos) = u_inrangev(X(env->s.l.pos) - env->fps.move * 5, 1, 0);
 	if (env->isr.is_right)
-		env->s.l.pos[X] = u_inrangev(env->s.l.pos[X] + env->fps.move * 5, 0, 1);
+		X(env->s.l.pos) = u_inrangev(X(env->s.l.pos) + env->fps.move * 5, 0, 1);
 	if (env->isr.is_zdec)
 		env->s.l.intens = 0.0f > env->s.l.intens - 0.015f
 			? 0.0f : env->s.l.intens - 0.015f;
@@ -33,17 +33,17 @@ static inline void	add_light_debug_key_events(Environment *env)
 static inline void	add_normal_keys_events(Environment *env)
 {
 	if (env->isr.is_up)
-		env->s.cam.pos[Y] = u_inrangev(env->s.cam.pos[Y] - env->fps.move, 1, 0);
+		Y(env->s.cam.pos) = u_inrangev(Y(env->s.cam.pos) - env->fps.move, 1, 0);
 	if (env->isr.is_down)
-		env->s.cam.pos[Y] = u_inrangev(env->s.cam.pos[Y] + env->fps.move, 0, 1);
+		Y(env->s.cam.pos) = u_inrangev(Y(env->s.cam.pos) + env->fps.move, 0, 1);
 	if (env->isr.is_left)
-		env->s.cam.pos[X] = u_inrangev(env->s.cam.pos[X] - env->fps.move, 1, 0);
+		X(env->s.cam.pos) = u_inrangev(X(env->s.cam.pos) - env->fps.move, 1, 0);
 	if (env->isr.is_right)
-		env->s.cam.pos[X] = u_inrangev(env->s.cam.pos[X] + env->fps.move, 0, 1);
+		X(env->s.cam.pos) = u_inrangev(X(env->s.cam.pos) + env->fps.move, 0, 1);
 	if (env->isr.is_zdec)
-		env->s.cam.pos[Z] = u_inrangev(env->s.cam.pos[Z] - env->fps.move, 1, 0);
+		Z(env->s.cam.pos) = u_inrangev(Z(env->s.cam.pos) - env->fps.move, 1, 0);
 	if (env->isr.is_zinc)
-		env->s.cam.pos[Z] = u_inrangev(env->s.cam.pos[Z] + env->fps.move, 0, 1);
+		Z(env->s.cam.pos) = u_inrangev(Z(env->s.cam.pos) + env->fps.move, 0, 1);
 }
 
 inline void			rt_sdl_keys_events(Environment *env)

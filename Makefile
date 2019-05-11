@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/20 10:58:04 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/05/11 12:42:33 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,8 @@ endif
 #                           current system architecture on which project compiling
 #   -flto               - Enable Link Time Optimization
 #   -Ofast              - MAXIMUM OPTIMIZATION
-CC_DEBUG := gcc -march=native -g3 -D DEBUG
-CC := gcc -march=native -mtune=native -flto -Ofast
+CC := gcc -march=native -mtune=native -Ofast
+CC_DEBUG := gcc -march=native -mtune=native -g3 -D DEBUG
 CFLAGS := -Wall -Wextra -Werror -Wunused
 IFLAGS := -I $(CURDIR)/includes/ \
 	-I $(CURDIR)/libft/includes/ -I $(CURDIR)/libftsdl/includes/ \

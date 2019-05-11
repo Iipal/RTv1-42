@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/10 16:02:34 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/11 12:08:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,8 @@
 
 # define REFRESH_FPS_COUNTER .1f
 
-# define VLEN(v) sqrt(v[X] * v[X] + v[Y] * v[Y] + v[Z] * v[Z])
-# define VDOT(v1, v2) (v1[X] * v2[X] + v1[Y] * v2[Y] + v1[Z] * v2[Z])
-# define VMULT(v1, m) { v1[X] * m; v1[Y] * m; v1[Z] * m; }
+# define VLEN(v) sqrt(X(v) * X(v) + Y(v) * Y(v) + Z(v) * Z(v))
+# define VDOT(v1, v2) (X(v1) * X(v2) + Y(v1) * Y(v2) + Z(v1) * Z(v2))
 
 # define OBJ(i) sc->objs[i]
 # define SEKEY env->sdl->e.key.keysym.sym

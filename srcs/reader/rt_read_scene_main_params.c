@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:32:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/10 10:19:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/11 12:07:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ inline bool	rt_scam(Scene *sc, string s, int32_t *o)
 	s += ft_skip_to_blank(s);
 	IF_F(*s++ != ' ');
 	IF_F(!*s || !ft_isdigit(*s));
-	IF_F(',' != *(s += ft_digits(sc->cam.pos[X] = ft_atoi(s))) || !*s++);
-	IF_F(',' != *(s += ft_digits(sc->cam.pos[Y] = ft_atoi(s))) || !*s++);
-	IF_F(' ' != *(s += ft_digits(sc->cam.pos[Z] = ft_atoi(s))) || !*s++);
-	IF_F(',' != *(s += ft_digits(sc->cam.dir[X] = ft_atoi(s))) || !*s++);
-	IF_F(',' != *(s += ft_digits(sc->cam.dir[Y] = ft_atoi(s))) || !*s++);
-	IF_F(*(s += ft_digits(sc->cam.dir[Z] = -ft_atoi(s))));
-	if (sc->cam.pos[Y] != 0.0f)
-		sc->cam.pos[Y] = -sc->cam.pos[Y];
+	IF_F(',' != *(s += ft_digits(X(sc->cam.pos) = ft_atoi(s))) || !*s++);
+	IF_F(',' != *(s += ft_digits(Y(sc->cam.pos) = ft_atoi(s))) || !*s++);
+	IF_F(' ' != *(s += ft_digits(Z(sc->cam.pos) = ft_atoi(s))) || !*s++);
+	IF_F(',' != *(s += ft_digits(X(sc->cam.dir) = ft_atoi(s))) || !*s++);
+	IF_F(',' != *(s += ft_digits(Y(sc->cam.dir) = ft_atoi(s))) || !*s++);
+	IF_F(*(s += ft_digits(Z(sc->cam.dir) = -ft_atoi(s))));
+	if (Y(sc->cam.pos) != 0.0f)
+		Y(sc->cam.pos) = -Y(sc->cam.pos);
 	sc->cam.is = true;
 	return (true);
 }
@@ -38,12 +38,12 @@ inline bool	rt_slight(Scene *sc, string s, int32_t *o)
 	s += ft_skip_to_blank(s);
 	IF_F(*s++ != ' ');
 	IF_F(!*s || !ft_isdigit(*s));
-	IF_F(',' != *(s += ft_digits(sc->l.pos[X] = ft_atoi(s))) || !*s++);
-	IF_F(',' != *(s += ft_digits(sc->l.pos[Y] = ft_atoi(s))) || !*s++);
-	IF_F(' ' != *(s += ft_digits(sc->l.pos[Z] = ft_atoi(s))) || !*s++);
+	IF_F(',' != *(s += ft_digits(X(sc->l.pos) = ft_atoi(s))) || !*s++);
+	IF_F(',' != *(s += ft_digits(Y(sc->l.pos) = ft_atoi(s))) || !*s++);
+	IF_F(' ' != *(s += ft_digits(Z(sc->l.pos) = ft_atoi(s))) || !*s++);
 	IF_F(*(s += ft_digits(sc->l.intens = ft_atoi(s))));
-	if (sc->l.pos[Y] != 0.0f)
-		sc->l.pos[Y] = -sc->l.pos[Y];
+	if (Y(sc->l.pos) != 0.0f)
+		Y(sc->l.pos) = -Y(sc->l.pos);
 	IFDO(0 < sc->l.intens, sc->l.intens /= 100);
 	sc->l.is = true;
 	return (true);

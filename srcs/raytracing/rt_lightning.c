@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/10 19:58:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/11 12:36:30 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
  inline t_vec add_mult(t_vec vec, double_t mult)
 {
-	vec[X] *= mult;
-	vec[Y] *= mult;
-	vec[Z] *= mult;
+	X(vec) *= mult;
+	Y(vec) *= mult;
+	Z(vec) *= mult;
 	return (vec);
 }
 
@@ -29,8 +29,8 @@ static inline void	add_specular_reflect(Environment *env,
 		h->i += env->s.l.intens
 			* pow(r_dot_v / (VLEN(R) * VLEN(d)), obj->spec); */
 	h->h = d + h->l;
-	h->h = (t_vec){h->h[X] / VLEN(h->h),
-		h->h[Y] / VLEN(h->h), h->h[Z] / VLEN(h->h)};
+	h->h = (t_vec){X(h->h) / VLEN(h->h),
+		Y(h->h) / VLEN(h->h), Z(h->h) / VLEN(h->h)};
 	h->h_intense = env->s.l.intens * fmax(0, h->dnl) + obj->spec
 	* env->s.l.intens * pow(fmax(0, VDOT(h->n, h->h)), obj->spec);
 	h->d = h->p - env->s.l.pos;
@@ -45,10 +45,10 @@ inline Color		rt_calculate_light(Environment *env, Object *obj, t_vec d)
 	C(t_clhelp, &h, 1);
 	h.tmp1 = obj->clr;
 	h.tmp2 = h.tmp1;
-	h.cd = (t_vec){env->s.cobj * d[X], env->s.cobj * d[Y], env->s.cobj * d[Z]};
+	h.cd = (t_vec){env->s.cobj * X(d), env->s.cobj * Y(d), env->s.cobj * Z(d)};
 	h.p = env->s.cam.pos + h.cd;
 	h.n = h.p - obj->pos;
-	h.n = (t_vec){h.n[X] / VLEN(h.n), h.n[Y] / VLEN(h.n), h.n[Z] / VLEN(h.n)};
+	h.n = (t_vec){X(h.n) / VLEN(h.n), Y(h.n) / VLEN(h.n), Z(h.n) / VLEN(h.n)};
 	h.l = env->s.l.pos - h.p;
 	obj = rt_closest_inter(h.p, h.l, env);
 	if (NULL == obj)
