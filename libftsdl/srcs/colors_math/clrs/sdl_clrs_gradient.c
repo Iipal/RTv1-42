@@ -6,24 +6,26 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 19:04:08 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/09 17:29:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/11 23:51:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftsdl_colors_math.h"
 
-Color	*sdl_clrs_gradient(const Color start, const Color end, int32_t len)
+Color	*sdl_clrs_gradient(const Color start,
+						const Color end,
+						const int32_t len)
 {
 	Color	*out;
 	FColor	step;
 	FColor	diff;
 	int32_t	i;
 
-	IFDOR(1 >= len, NULL, NULL);
-	IFDOR(NULL == (out = (Color*)malloc(sizeof(Color) * len)), NULL, NULL);
-	i = 0;
+	IFR(1 > len, NULL);
+	NO_R(out = (Color*)malloc(sizeof(Color) * len), NULL);
 	*out = start;
-	if (SDL_CLRS_CMP(start, end))
+	i = 0;
+	if (SDL_CLRS_CMP(start, end) || 1 == len)
 	{
 		while (len > ++i)
 			out[i] = start;

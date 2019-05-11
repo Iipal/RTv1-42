@@ -6,13 +6,16 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 22:23:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/10 00:11:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/11 23:39:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftsdl.h"
 
-bool	sdl_init(Sdl *sdl, int32_t width, int32_t height, cstring title)
+bool	sdl_init(Sdl *sdl,
+				const int32_t width,
+				const int32_t height,
+				const string title)
 {
 	IFDOR(0 > SDL_Init(SDL_INIT_EVERYTHING), MSGN(SDL_GetError()), false);
 	IFDOMR(TTF_GetError(), 0 > TTF_Init(), exit(1), false);

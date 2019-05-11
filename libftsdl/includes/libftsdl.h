@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 19:59:09 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/20 12:03:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/11 23:59:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ SDL;
 **	\param height: Window height what will created.
 **	\param title: Title for window.
 */
-bool		sdl_init(Sdl *sdl, int32_t width, int32_t height, cstring title);
+bool		sdl_init(Sdl *sdl,
+					const int32_t width,
+					const int32_t height,
+					const string title);
 
 /*
 **	Free all data in Sdl*.
@@ -56,11 +59,14 @@ void		sdl_free(Sdl **sdl);
 **	Protected from segfault when x && y pixel doesnt exist on Surface,
 **	and if Surface doesnt exist too.
 */
-void		sdl_pixelput(SDL_Surface *surf, Dot p, Color clr);
+void		sdl_pixelput(SDL_Surface *surf, const Dot p, const Color clr);
+void		sdl_pixelput_canvas(SDL_Surface *surf, Dot p,
+								const Dot win,
+								const Color clr);
 
-void		sdl_pixelput_canvas(SDL_Surface *surf, Dot p, Dot win, Color clr);
-
-SDL_Surface	*sdl_optimize_font_load(string text, SDL_Color text_color,
-								TTF_Font *font, SDL_PixelFormat *format);
+SDL_Surface	*sdl_optimize_font_load(const string text,
+									const SDL_Color text_color,
+									TTF_Font *font,
+									const SDL_PixelFormat *format);
 
 #endif

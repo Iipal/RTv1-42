@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:44:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/13 22:16:34 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/11 23:46:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftsdl_colors_math.h"
 
-inline Color	*sdl_clr_bright_dec(Color *dst, float percent)
+inline Color	*sdl_clr_bright_dec(Color *dst, const float_t percent)
 {
 	if (dst && .0f < percent)
 		*dst = (Color) {
