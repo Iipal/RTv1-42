@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 10:33:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 13:35:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ void		rt_raytracing(Environment *env);
 
 Color		rt_calculate_light(Environment *env, Object *obj, t_vec d);
 
-Object		*rt_closest_inter(const t_vec o, const t_vec d, Environment *env);
+Object		*rt_closest_inter(const t_vec o,
+							const t_vec d,
+							Environment *env,
+							bool is_shadow);
 
 void		rt_fps(Fps *fps, double_t cam_speed);
 

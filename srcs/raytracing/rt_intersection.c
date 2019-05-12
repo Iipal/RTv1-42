@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 10:36:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 13:35:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static inline fDot	rt_intersection(const t_vec o,
 }
 
 Object				*rt_closest_inter(const t_vec o, const t_vec d,
-										Environment *env)
+								Environment *env, bool is_shadow)
 {
 	fDot			t;
 	size_t			i;
@@ -43,12 +43,14 @@ Object				*rt_closest_inter(const t_vec o, const t_vec d,
 		t = rt_intersection(o, d, d_dot_d, env->s.objs[i]);
 		if (t.x >= env->t_min && t.x < env->t_max && t.x < env->s.cobj)
 		{
-			env->s.cobj = t.x;
+			if (!is_shadow)
+				env->s.cobj = t.x;
 			obj = &env->s.objs[i];
 		}
 		if (t.y >= env->t_min && t.y < env->t_max && t.y < env->s.cobj)
 		{
-			env->s.cobj = t.y;
+			if (!is_shadow)
+				env->s.cobj = t.y;
 			obj = &env->s.objs[i];
 		}
 	}
