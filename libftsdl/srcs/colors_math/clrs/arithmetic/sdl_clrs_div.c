@@ -6,17 +6,19 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 18:56:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/14 16:58:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 14:08:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftsdl_colors_math.h"
 
-inline Color	*sdl_clrs_div(Color *dst, const Color div)
+inline Color	sdl_clrs_div(Color src, const Color div)
 {
-	*dst = (Color){
-		sdl_clr_inrange((dst->r && div.r) ? (dst->r / div.r) : dst->r),
-		sdl_clr_inrange((dst->g && div.g) ? (dst->g / div.g) : dst->g),
-		sdl_clr_inrange((dst->b && div.b) ? (dst->b / div.b) : dst->b)};
-	return (dst);
+	Color	out;
+
+	if (!SDL_CLR_CMP(src, 0x0) && !SDL_CLR_CMP(div, 0x0))
+		out = (Color) { INRANGE(src.r / div.r),
+						INRANGE(src.g / div.g),
+						INRANGE(src.b / div.b) };
+	return (out);
 }

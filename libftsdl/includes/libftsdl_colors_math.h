@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 23:24:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 00:16:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 14:12:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ FCOLOR;
 
 # define INRANGE(c)	sdl_clr_inrange(c)
 
-# define COLOR_MULT(c1, cp1, i) *sdl_clrs_add(&c1, *sdl_clr_mul(&cp1, i))
+# define SDL_CLR_MULT(c, i) sdl_clrs_add(c, sdl_clr_mul(c, i))
 
 # define SDL_CLR_CMP(clr, u) (clr.r == u && clr.g == u && clr.b == u)
 # define SDL_CLRS_CMP(c1, c2) (c1.r == c2.r && c1.g == c2.g && c1.b == c2.b)
@@ -66,28 +66,33 @@ FCOLOR;
 # define SDL_CLR_TO_RGB(clr) (clr.r << 16 | clr.g << 8 | clr.b)
 # define SDL_RGB_TO_CLR(hex) (Color) {hex >> 16, (hex >> 8)  & 0xff, hex & 0xff}
 
+# define SDL_CLR_ADD(c, a) (Color){INRANGE(c.r+a),INRANGE(c.g+a),INRANGE(c.b+a)}
+# define SDL_CLR_SUB(c, a) (Color){INRANGE(c.r-a),INRANGE(c.g-a),INRANGE(c.b-a)}
+
 Uint8	sdl_clr_inrange(const int16_t color);
 
-Color	*sdl_clr_bright_inc(Color *dst, const float_t percent);
-Color	*sdl_clr_bright_dec(Color *dst, const float_t percent);
+Color	sdl_clr_bright_inc(Color src, const float_t percent);
+Color	sdl_clr_bright_dec(Color src, const float_t percent);
 
-Color	*sdl_clr_add(Color *dst, const int16_t add);
-Color	*sdl_clr_sub(Color *dst, const int16_t sub);
-Color	*sdl_clr_div(Color *dst, const float_t div);
-Color	*sdl_clr_mul(Color *dst, const float_t mul);
+Color	sdl_clr_div(Color src, const float_t div);
+Color	sdl_clr_mul(Color src, const float_t mul);
 
 void	sdl_clrs_swap(Color *a, Color *b);
 
-Color	*sdl_clrs_gradient(const Color start,
-						const Color end,
-						const int32_t len);
+Color	*sdl_clrs_gradient(Color start,
+					const Color end,
+					const size_t len);
 
-Color	*sdl_clrs_bright_inc(Color *dst, const Color src, float_t percent);
-Color	*sdl_clrs_bright_dec(Color *dst, const Color src, float_t percent);
+Color	sdl_clrs_bright_inc(Color clr1,
+						const Color clr2,
+						const float_t percent);
+Color	sdl_clrs_bright_dec(Color clr1,
+						const Color clr2,
+						const float_t percent);
 
-Color	*sdl_clrs_add(Color *dst, const Color add);
-Color	*sdl_clrs_sub(Color *dst, const Color sub);
-Color	*sdl_clrs_div(Color *dst, const Color div);
-Color	*sdl_clrs_mul(Color *dst, const Color mul);
+Color	sdl_clrs_add(Color src, const Color add);
+Color	sdl_clrs_sub(Color src, const Color sub);
+Color	sdl_clrs_div(Color src, const Color div);
+Color	sdl_clrs_mul(Color src, const Color mul);
 
 #endif
