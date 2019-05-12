@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:12:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/11 12:10:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 10:36:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,23 @@
 static inline void	add_light_debug_key_events(Environment *env)
 {
 	if (env->isr.is_up)
-		Y(env->s.l.pos) = u_inrangev(Y(env->s.l.pos) - env->fps.move * 5, 1, 0);
+		Y(env->s.l[0].pos) =
+			u_inrangev(Y(env->s.l[0].pos) - env->fps.move * 5, 1, 0);
 	if (env->isr.is_down)
-		Y(env->s.l.pos) = u_inrangev(Y(env->s.l.pos) + env->fps.move * 5, 0, 1);
+		Y(env->s.l[0].pos) =
+			u_inrangev(Y(env->s.l[0].pos) + env->fps.move * 5, 0, 1);
 	if (env->isr.is_left)
-		X(env->s.l.pos) = u_inrangev(X(env->s.l.pos) - env->fps.move * 5, 1, 0);
+		X(env->s.l[0].pos) =
+			u_inrangev(X(env->s.l[0].pos) - env->fps.move * 5, 1, 0);
 	if (env->isr.is_right)
-		X(env->s.l.pos) = u_inrangev(X(env->s.l.pos) + env->fps.move * 5, 0, 1);
+		X(env->s.l[0].pos) =
+			u_inrangev(X(env->s.l[0].pos) + env->fps.move * 5, 0, 1);
 	if (env->isr.is_zdec)
-		env->s.l.intens = 0.0f > env->s.l.intens - 0.015f
-			? 0.0f : env->s.l.intens - 0.015f;
+		env->s.l[0].intens = 0.0f > env->s.l[0].intens - 0.015f
+			? 0.0f : env->s.l[0].intens - 0.015f;
 	if (env->isr.is_zinc)
-		env->s.l.intens = 1.0f < env->s.l.intens + 0.015f
-			? 1.0f : env->s.l.intens + 0.015f;
+		env->s.l[0].intens = 1.0f < env->s.l[0].intens + 0.015f
+			? 1.0f : env->s.l[0].intens + 0.015f;
 }
 
 static inline void	add_normal_keys_events(Environment *env)

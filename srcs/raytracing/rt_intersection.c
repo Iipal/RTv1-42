@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/11 23:30:34 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 10:36:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ static inline fDot	rt_intersection(const t_vec o,
 Object				*rt_closest_inter(const t_vec o, const t_vec d,
 										Environment *env)
 {
-	int32_t			i;
 	fDot			t;
+	size_t			i;
 	Object			*obj;
 	const double_t	d_dot_d = VDOT(d, d);
 
-	i = -1;
+	i = ~0L;
 	obj = NULL;
 	while (++i < env->s.ins_objs)
 	{

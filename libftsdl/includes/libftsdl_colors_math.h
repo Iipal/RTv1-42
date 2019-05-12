@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 23:24:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/11 23:57:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 00:16:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ struct	s_fcolor
 
 COLOR;
 FCOLOR;
+
+# define RGB_BLACK 0x00
+# define RGB_WHITE 0xffffff
+
+# define CLR_BLACK (Color){0, 0, 0}
+# define CLR_WHITE (Color){255, 255, 255}
 
 # define INRANGE(c)	sdl_clr_inrange(c)
 

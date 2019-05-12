@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:32:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/11 12:07:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 10:37:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool	rt_scam(Scene *sc, string s, int32_t *o)
+inline bool	rt_scam(Scene *sc, string s, size_t *o)
 {
 	(void)o;
 	IFM_F(E_DCAMERA, sc->cam.is);
@@ -31,20 +31,18 @@ inline bool	rt_scam(Scene *sc, string s, int32_t *o)
 	return (true);
 }
 
-inline bool	rt_slight(Scene *sc, string s, int32_t *o)
+inline bool	rt_slight(Scene *sc, string s, size_t *o)
 {
-	(void)o;
-	IFM_F(E_DLIGHT, sc->l.is);
 	s += ft_skip_to_blank(s);
 	IF_F(*s++ != ' ');
 	IF_F(!*s || !ft_isdigit(*s));
-	IF_F(',' != *(s += ft_digits(X(sc->l.pos) = ft_atoi(s))) || !*s++);
-	IF_F(',' != *(s += ft_digits(Y(sc->l.pos) = ft_atoi(s))) || !*s++);
-	IF_F(' ' != *(s += ft_digits(Z(sc->l.pos) = ft_atoi(s))) || !*s++);
-	IF_F(*(s += ft_digits(sc->l.intens = ft_atoi(s))));
-	if (Y(sc->l.pos) != 0.0f)
-		Y(sc->l.pos) = -Y(sc->l.pos);
-	IFDO(0 < sc->l.intens, sc->l.intens /= 100);
-	sc->l.is = true;
+	IF_F(',' != *(s += ft_digits(X(sc->l[*o].pos) = ft_atoi(s))) || !*s++);
+	IF_F(',' != *(s += ft_digits(Y(sc->l[*o].pos) = ft_atoi(s))) || !*s++);
+	IF_F(' ' != *(s += ft_digits(Z(sc->l[*o].pos) = ft_atoi(s))) || !*s++);
+	IF_F(*(s += ft_digits(sc->l[*o].intens = ft_atoi(s))));
+	if (Y(sc->l[*o].pos) != 0.0f)
+		Y(sc->l[*o].pos) = -Y(sc->l[*o].pos);
+	IFDO(0 < sc->l[*o].intens, sc->l[*o].intens /= 100);
+	++(*o);
 	return (true);
 }

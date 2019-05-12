@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/11 23:30:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 10:22:14 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@
 # define MAX_SPSP   5000
 # define MIN_SPSP   0
 
-# define RT_SX  -(WIN_X / 2)
-# define RT_SY  -(WIN_Y / 2)
-# define RT_EX  WIN_X / 2
-# define RT_EY  WIN_Y / 2
+# define RT_CANVAS_STARTX   -(WIN_X / 2)
+# define RT_CANVAS_STARTY   -(WIN_Y / 2)
+# define RT_CANVAS_ENDX     WIN_X / 2
+# define RT_CANVA_ENDY      WIN_Y / 2
 
 # define TMIN   0.001f
 # define TMAX   10000.0f
@@ -68,9 +68,7 @@
 # define OBJ(i) sc->objs[i]
 # define SEKEY env->sdl->e.key.keysym.sym
 
-# define RGB_BLACK 0x00
-
-# define FNSCP typedef bool (*fns_parse)(Scene*, string, int32_t*);
+# define FNSCP typedef bool (*fns_parse)(Scene*, string, size_t*);
 
 FNSCP;
 

@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:31:21 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/11 12:07:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 10:22:16 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool	rt_ssphere(Scene *sc, string s, int32_t *o)
+inline bool	rt_ssphere(Scene *sc, string s, size_t *o)
 {
 	Uint32	clr;
 

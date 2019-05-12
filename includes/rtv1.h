@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/11 23:28:25 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 10:33:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # include "rtv1_structs.h"
 # include "rtv1_macroses.h"
 
-bool		rt_scam(Scene *sc, string s, int32_t *o);
-bool		rt_slight(Scene *sc, string s, int32_t *o);
-bool		rt_ssphere(Scene *sc, string s, int32_t *o);
+bool		rt_scam(Scene *sc, string s, size_t *o);
+bool		rt_slight(Scene *sc, string s, size_t *o);
+bool		rt_ssphere(Scene *sc, string s, size_t *o);
 bool		rt_read_scene(Environment *env, string scene_file);
 
 bool		rt_init(Environment *env);

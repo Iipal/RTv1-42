@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:23:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/11 23:28:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 10:44:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	rt_raytracing(Environment *env)
 	Object	*curr_obj;
 	Color	curr_color;
 
-	i.y = RT_SY;
-	while (RT_EY > ++(i.y) && (i.x = RT_SX))
-		while (RT_EX > ++(i.x))
+	i.y = RT_CANVAS_STARTY;
+	while (RT_CANVA_ENDY > ++(i.y) && (i.x = RT_CANVAS_STARTX))
+		while (RT_CANVAS_ENDX > ++(i.x))
 		{
 			env->s.cobj = env->t_max;
-			curr_color = (Color){0, 0, 0};
+			curr_color = CLR_BLACK;
 			d = (t_vec) {i.x * WIN_X / (1000.0 * WIN_X),
 				i.y * WIN_Y / (1000.0 * WIN_Y), 1.0};
 			curr_obj = rt_closest_inter(env->s.cam.pos, d, env);

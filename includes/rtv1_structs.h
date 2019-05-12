@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/11 12:44:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 10:33:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ struct	s_light
 {
 	t_vec	pos;
 	float_t	intens;
-	bool	is;
 };
 
 struct	s_object
@@ -102,9 +101,10 @@ TIME;
 struct	s_scene
 {
 	Camera		cam;
-	Light		l;
+	Light		*l;
 	Object		*objs;
-	int32_t		ins_objs;
+	size_t		ins_l;
+	size_t		ins_objs;
 	double_t	cobj;
 };
 
