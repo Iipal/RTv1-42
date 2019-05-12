@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 10:31:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 14:13:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ inline Color		rt_calculate_light(Environment *env, Object *obj, t_vec d)
 
 	i = ~0L;
 	C(t_clhelp, &h, 1);
-	h.tmp1 = obj->clr;
-	h.tmp2 = h.tmp1;
 	while (++i < env->s.ins_l)
 	{
 		h.cd = (t_vec){ env->s.cobj * X(d),
@@ -58,7 +56,7 @@ inline Color		rt_calculate_light(Environment *env, Object *obj, t_vec d)
 					Y(h.n) / VLEN(h.n),
 					Z(h.n) / VLEN(h.n)};
 		h.l = env->s.l[i].pos - h.p;
-		if ((shadow = rt_closest_inter(h.p, h.l, env)))
+		if ((shadow = rt_closest_inter(h.p, h.l, env, true)))
 			continue ;
 		h.dnl = VDOT(h.n, h.l);
 		if (.0f < h.dnl)
@@ -66,5 +64,5 @@ inline Color		rt_calculate_light(Environment *env, Object *obj, t_vec d)
 		if (.0f < obj->spec)
 			add_specular_reflect(env, &h, obj, -d, i);
 	}
-	return (.0f < h.i ? COLOR_MULT(h.tmp2, h.tmp1, h.i) : CLR_BLACK);
+	return (.0f < h.i ? SDL_CLR_MULT(obj->clr, h.i) : CLR_BLACK);
 }
