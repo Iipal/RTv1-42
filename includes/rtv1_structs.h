@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 10:33:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 14:13:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,6 @@ ENV;
 
 struct	s_calc_light
 {
-	Color		tmp1;
-	Color		tmp2;
 	t_vec		cd;
 	t_vec		p;
 	t_vec		n;
