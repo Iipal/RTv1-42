@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/11 23:49:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 14:35:40 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ size_t	ft_rand(size_t limits);
 **	\param ...: va_list.
 **	\return true if one of argument is equal to \param cmp, else - false.
 */
-bool	ft_is_one_of_n(int64_t cmp, int64_t n, ...);
+bool	ft_is_one_of_n(int64_t cmp, size_t n, ...);
 
 /*
 **	Compare if one of \param n va_list arguments is equal to \param cmp.
@@ -140,7 +140,7 @@ bool	ft_is_one_of_n(int64_t cmp, int64_t n, ...);
 **	\param ...: va_list.
 **	\return true if one of argument is equal to \param cmp, else - false.
 */
-bool	ft_is_one_of_str(cstring cmp, int32_t n, ...);
+bool	ft_is_one_of_str(cstring cmp, size_t n, ...);
 
 /*
 **	\return How many digits in \param n.
