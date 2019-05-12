@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 10:34:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 14:40:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static bool	add_valid_saved_data(Scene *sc)
 	size_t	i;
 
 	NOM_F(E_NOCAM, sc->cam.is);
-	NOM_F(E_NOOBJS, sc->ins_objs);
 	NOM_F(E_CAMDIR, u_inrange(sc->cam.dir, true, true));
 	NOM_F(E_CAMPOS, u_inrange(sc->cam.pos, true, true));
 	i = ~0L;
@@ -66,26 +65,23 @@ static bool	add_parser(Scene *sc, string *str,
 
 static bool	add_valid_objs_counter(int32_t *fd, Scene *s, const string file)
 {
-	const string	objs[] = {FP_SPHERE};
-	const int32_t	max_objs = (sizeof(objs) / sizeof(*objs));
+	const int32_t	max_objs = 1;
 	string			temp;
-	int32_t			i;
 
-	while (0 < ft_gnl(*fd, &temp) && (i = -1))
+	while (0 < ft_gnl(*fd, &temp))
 	{
 		if (!ft_strncmp(temp, FP_LIGHT, ft_strlen(FP_LIGHT)))
 			++s->ins_l;
-		while (++i < max_objs)
-			if (!ft_strncmp(temp, objs[i], ft_strlen(objs[i])))
-			{
-				++s->ins_objs;
-				break ;
-			}
+		else if (ft_is_one_of_str(temp, max_objs, FP_SPHERE))
+			++s->ins_objs;
 		ft_strdel(&temp);
 	}
 	close(*fd);
-	IFDO(s->ins_objs, MEM(Object, s->objs, s->ins_objs, E_ALLOC));
-	IFDO(s->ins_l, MEM(Light, s->l, s->ins_l, E_ALLOC));
+	NOM_F(E_NOOBJS, s->ins_objs);
+	NOM_F(E_NOLIGHT, s->ins_l);
+	IFM_F(E_MLIGHTS, MAX_LIGHTS < s->ins_l);
+	MEM(Object, s->objs, s->ins_objs, E_ALLOC);
+	MEM(Light, s->l, s->ins_l, E_ALLOC);
 	IFDOMR(PERR, 0 > (*fd = open(file, O_RDONLY)), (void)0, false);
 	return (true);
 }
