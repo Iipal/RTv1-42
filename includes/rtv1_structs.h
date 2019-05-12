@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 14:13:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 21:49:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #  include <SDL2/SDL.h>
 # endif
 
-typedef double t_vec __attribute__ ((vector_size(32), aligned));
+typedef double t_v __attribute__ ((vector_size(32), aligned));
 
 #  define X(vec) vec[0]
 #  define Y(vec) vec[1]
@@ -45,20 +45,20 @@ ETYPE;
 
 struct	s_camera
 {
-	t_vec	pos;
-	t_vec	dir;
+	t_v		pos;
+	t_v		dir;
 	bool	is;
 };
 
 struct	s_light
 {
-	t_vec	pos;
+	t_v		pos;
 	float_t	intens;
 };
 
 struct	s_object
 {
-	t_vec	pos;
+	t_v		pos;
 	Color	clr;
 	int16_t	radius;
 	float_t	spec;
@@ -135,19 +135,28 @@ struct	s_environment
 
 ENV;
 
-struct	s_calc_light
+struct	s_calc_light_helper
 {
-	t_vec		cd;
-	t_vec		p;
-	t_vec		n;
-	t_vec		l;
-	t_vec		h;
-	t_vec		d;
+	t_v			c;
+	t_v			p;
+	t_v			n;
+	t_v			l;
+	t_v			h;
+	t_v			d;
 	double_t	dnl;
 	double_t	h_intense;
 	double_t	i;
 };
 
-typedef struct s_calc_light	t_clhelp;
+typedef struct s_calc_light_helper	t_clhelp;
+
+struct	s_parse_file_helper
+{
+	uint16_t	nline;
+	size_t		obj_counter;
+	size_t		light_counter;
+};
+
+typedef struct s_parse_file_helper	t_pfhelp;
 
 #endif

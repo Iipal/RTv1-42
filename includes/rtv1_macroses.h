@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 14:40:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 22:46:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define RT_CANVAS_STARTX   -(WIN_X / 2)
 # define RT_CANVAS_STARTY   -(WIN_Y / 2)
 # define RT_CANVAS_ENDX     WIN_X / 2
-# define RT_CANVA_ENDY      WIN_Y / 2
+# define RT_CANVAS_ENDY     WIN_Y / 2
 
 # define TMIN   0.001f
 # define TMAX   10000.0f

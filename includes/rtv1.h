@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 13:35:56 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 22:51:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool		rt_read_scene(Environment *env, string scene_file);
 
 bool		rt_init(Environment *env);
 
-bool		u_inrange(const t_vec v,
+bool		u_inrange(const t_v v,
 					const bool check_min,
 					const bool check_max);
 double_t	u_inrangev(const double_t v,
@@ -46,10 +46,10 @@ void		rt_render_fps_counter(Environment *env);
 
 void		rt_raytracing(Environment *env);
 
-Color		rt_calculate_light(Environment *env, Object *obj, t_vec d);
+Color		rt_calculate_light(Environment *env, Object *obj, t_v d);
 
-Object		*rt_closest_inter(const t_vec o,
-							const t_vec d,
+Object		*rt_closest_inter(const t_v o,
+							const t_v d,
 							Environment *env,
 							bool is_shadow);
 

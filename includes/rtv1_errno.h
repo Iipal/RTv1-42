@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 14:45:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 21:39:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # define E_SPSPEC   ERR "Sphere specular intensity" E_INRANGE
 
 # define E_AT " Error occured at line: "
-# define ERR_AT_NL(nl) MSG(E_AT);ft_putnbr(nl);
+# define ERR_AT_NL(nl) MSG(E_AT);ft_putnbr(nl)
 # define ERRAT(msg, nl) {ERR_AT_NL(nl);MSG(" \"");MSG(msg);MSGN("\"");}
 
 #endif
