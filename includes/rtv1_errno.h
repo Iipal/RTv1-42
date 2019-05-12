@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 10:30:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/12 14:45:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 
 # define E_DUP      ERR "In scene cannot be more than "
 # define E_DCAMERA  E_DUP "1 camera."
+
+# define E_MLIGHTS  ERR "Maximum lights in scene: 5."
 
 # define E_NOCAM    ERR "No camera in scene founded."
 # define E_NOLIGHT  ERR "No origin light in scene founded."
