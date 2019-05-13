@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:23:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/13 15:00:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 19:41:26 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	rt_raytracing(Environment *env)
 			env->s.cobj = TMAX;
 			curr_color = CLR_BLACK;
 			d = (t_v) {i.x * WIN_X / (1000.0f * WIN_X),
-				i.y * WIN_Y / (1000.0f * WIN_Y), 1.0f};
+				i.y * WIN_Y / (1000.0f * WIN_Y), env->flags.viewport_scale};
 			curr_obj = rt_closest_inter(env->s.cam.pos, d, env, false);
 			if (curr_obj)
 				curr_color = rt_calculate_light(env, curr_obj, d);

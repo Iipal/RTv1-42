@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/13 15:15:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 20:32:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Color				rt_calculate_light(Environment *env, Object *obj, t_v d)
 	Object		*shadow;
 	t_clhelp	h;
 	size_t		i;
-	const Color	bg_clr = sdl_clr_div(obj->clr, 20);
+	const Color	bg_clr = sdl_clr_div(obj->clr, env->flags.shadows_bright);
 
 	i = ~0L;
 	C(t_clhelp, &h, 1);
