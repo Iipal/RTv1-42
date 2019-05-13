@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/13 18:58:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 21:15:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@
 # define RTV1_EXE_PATH  "./RTv1"
 # define RTV1_FILEXT    ".rtv1"
 # define RTV1_USAGE     "text/usage.txt"
+# define RTV1_FHELP     "text/flags_help.txt"
 
 # define FP_CAM         "Camera:"
 # define FP_LIGHT       "Light:"
@@ -66,13 +67,15 @@
 # define FP_CYLINDER    "Cylinder:"
 # define FP_MAX_OBJS    4
 
-# define F_VPS  "--viewport-scale"
-# define F_SB   "--shadow-bright"
+# define F_HELP     "--help"
+# define F_VPS      "--viewport-scale"
+# define F_SB       "--shadow-bright"
 
-# define SF_VPS "-vps"
-# define SF_SB  "-sb"
+# define SF_HELP    "-h"
+# define SF_VPS     "-vps"
+# define SF_SB      "-sb"
 
-# define MAX_FLAGS  2
+# define MAX_FLAGS  3
 
 # define REFRESH_FPS_COUNTER .1f
 
