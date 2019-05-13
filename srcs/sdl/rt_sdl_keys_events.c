@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:12:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 13:11:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 12:11:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static inline void	add_light_debug_key_events(Environment *env)
 				u_inrangev(X(env->s.l[i].pos) + env->fps.move * 5, 0, 1);
 		if (env->isr.is_zdec)
 			env->s.l[i].intens = 0.0f > env->s.l[i].intens - 0.015f
-				? 0.01f : env->s.l[i].intens - 0.015f;
+				? 0.0f : env->s.l[i].intens - 0.015f;
 		if (env->isr.is_zinc)
 			env->s.l[i].intens = 1.0f < env->s.l[i].intens + 0.015f
 				? 1.0f : env->s.l[i].intens + 0.015f;
