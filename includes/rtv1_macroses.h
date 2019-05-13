@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/13 12:02:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 12:46:45 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@
 # define FP_CONE        "Cone:"
 # define FP_PLANE       "Plane:"
 # define FP_CYLINDER    "Cylinder:"
+# define FP_MAX_OBJS    4
 
 # define REFRESH_FPS_COUNTER .1f
 
