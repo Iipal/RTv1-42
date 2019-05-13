@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 22:37:40 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/20 12:06:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 15:24:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	sdl_free(Sdl **sdl)
 {
 	IFDO(*sdl, FREE((*sdl)->w, SDL_DestroyWindow));
-	IFDO(*sdl, TTF_CloseFont((*sdl)->font));
+	IFDO(*sdl, FREE((*sdl)->font, TTF_CloseFont));
 	FREE(*sdl, free);
 	TTF_Quit();
 	SDL_Quit();
