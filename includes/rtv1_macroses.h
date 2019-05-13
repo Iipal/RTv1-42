@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/13 15:46:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 18:58:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,14 @@
 # define FP_CYLINDER    "Cylinder:"
 # define FP_MAX_OBJS    4
 
+# define F_VPS  "--viewport-scale"
+# define F_SB   "--shadow-bright"
+
+# define SF_VPS "-vps"
+# define SF_SB  "-sb"
+
+# define MAX_FLAGS  2
+
 # define REFRESH_FPS_COUNTER .1f
 
 # define VLEN(v) sqrt(X(v) * X(v) + Y(v) * Y(v) + Z(v) * Z(v))
@@ -74,7 +82,8 @@
 # define OBJ(i) sc->objs[i]
 # define SEKEY env->sdl->e.key.keysym.sym
 
-# define FNSCP typedef bool (*fns_parse)(Scene*, string, size_t*);
+typedef bool (*t_fn_fparse)(Flags*, char**, const size_t, size_t*);
+# define FNSCP typedef bool (*fns_parse)(Scene*, char*, size_t*);
 
 FNSCP;
 
