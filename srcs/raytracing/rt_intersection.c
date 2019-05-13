@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 23:34:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 15:11:44 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,19 @@ Object				*rt_closest_inter(const t_v o,
 
 	i = ~0L;
 	out_obj = NULL;
+	IFDO(!is_shadow, env->t_min = TMIN);
+	IFDO(!is_shadow, env->t_max = TMAX);
 	while (++i < env->s.ins_objs)
 	{
 		t = rt_intersection(o, d, d_dot_d, env->s.objs[i]);
 		if (t.x >= env->t_min && t.x < env->t_max && t.x < env->s.cobj)
 		{
-			if (!is_shadow)
-				env->s.cobj = t.x;
+			!is_shadow ? (env->s.cobj = t.x) : 0;
 			out_obj = &env->s.objs[i];
 		}
 		if (t.y >= env->t_min && t.y < env->t_max && t.y < env->s.cobj)
 		{
-			if (!is_shadow)
-				env->s.cobj = t.y;
+			!is_shadow ? (env->s.cobj = t.y) : 0;
 			out_obj = &env->s.objs[i];
 		}
 	}
