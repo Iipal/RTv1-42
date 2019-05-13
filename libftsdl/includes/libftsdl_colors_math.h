@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 23:24:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 14:12:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 12:53:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ FCOLOR;
 # define CLR_WHITE (Color){255, 255, 255}
 
 # define INRANGE(c)	sdl_clr_inrange(c)
-
-# define SDL_CLR_MULT(c, i) sdl_clrs_add(c, sdl_clr_mul(c, i))
 
 # define SDL_CLR_CMP(clr, u) (clr.r == u && clr.g == u && clr.b == u)
 # define SDL_CLRS_CMP(c1, c2) (c1.r == c2.r && c1.g == c2.g && c1.b == c2.b)
