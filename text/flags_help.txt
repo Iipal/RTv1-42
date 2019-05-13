@@ -1,0 +1,4 @@
+Flags usage:
+ ./RTv1 [flags-params] scenes/scene_file.rtv1
+ -vps, --viewport-scale: integer param 1-10.
+ -sb, --shadow-bright: integer param 0-100.
