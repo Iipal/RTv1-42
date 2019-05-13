@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 22:46:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 12:02:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,12 @@
 # define RTV1_FILEXT    ".rtv1"
 # define RTV1_USAGE     "text/usage.txt"
 
-# define FP_CAM     "Camera:"
-# define FP_LIGHT   "Light:"
-# define FP_SPHERE  "Sphere:"
+# define FP_CAM         "Camera:"
+# define FP_LIGHT       "Light:"
+# define FP_SPHERE      "Sphere:"
+# define FP_CONE        "Cone:"
+# define FP_PLANE       "Plane:"
+# define FP_CYLINDER    "Cylinder:"
 
 # define REFRESH_FPS_COUNTER .1f
 
