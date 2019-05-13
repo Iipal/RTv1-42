@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 22:23:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/13 15:29:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 15:37:18 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ inline bool	sdl_init(Sdl *sdl,
 				const int32_t height,
 				const string title)
 {
-	IFM_F(SDL_GetError(), 0 > SDL_Init(SDL_INIT_EVERYTHING));
+	IFM_F(SDL_GetError(), 0 > SDL_Init(SDL_INIT_EVENTS | SDL_INIT_VIDEO));
 	IFM_F(TTF_GetError(), 0 > TTF_Init());
 	NOM_F(SDL_GetError(),
 		sdl->w = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED,
