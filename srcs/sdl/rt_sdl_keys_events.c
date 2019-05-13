@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:12:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/13 12:11:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 17:31:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static inline void	add_normal_keys_events(Environment *env)
 
 inline void			rt_sdl_keys_events(Environment *env)
 {
-	if (env->isr.is_debug)
+	if (env->isr.is_light_debug)
 		add_light_debug_key_events(env);
 	else
 		add_normal_keys_events(env);

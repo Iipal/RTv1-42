@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:07:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/10 18:20:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 17:31:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 inline void	rt_sdl_keys_press(Environment *env)
 {
 	if (SDLK_x == SEKEY)
-		env->isr.is_debug = !env->isr.is_debug;
+		env->isr.is_light_debug = !env->isr.is_light_debug;
 	if (SDLK_w == SEKEY)
 		env->isr.is_up = true;
 	else if (SDLK_s == SEKEY)
