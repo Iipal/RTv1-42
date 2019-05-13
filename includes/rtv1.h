@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 22:51:41 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 19:19:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ bool		rt_ssphere(Scene *sc, string s, size_t *o);
 bool		rt_read_scene(Environment *env, string scene_file);
 
 bool		rt_init(Environment *env);
+
+bool		rt_fparser(Flags *f, strtab av, const size_t ac);
+bool		rt_fvps(Flags *f, strtab av, const size_t ac, size_t *av_i);
+bool		rt_fsb(Flags *f, strtab av, const size_t ac, size_t *av_i);
 
 bool		u_inrange(const t_v v,
 					const bool check_min,
