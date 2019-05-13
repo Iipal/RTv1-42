@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 21:49:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 20:32:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ struct	s_isrender
 	bool	is_render_fps;
 	bool	is_speedup;
 	bool	is_speeddown;
-	bool	is_debug;
+	bool	is_light_debug;
 };
 
 struct	s_time
@@ -114,11 +114,19 @@ struct	s_fps
 	float_t	move;
 };
 
+struct	s_flags
+{
+	float_t	viewport_scale;
+	float_t	shadows_bright;
+};
+
 # define SCENE typedef struct s_scene   Scene
 # define FPS typedef struct s_fps       Fps
+# define FLAGS typedef struct s_flags   Flags
 
 SCENE;
 FPS;
+FLAGS;
 
 struct	s_environment
 {
@@ -129,6 +137,7 @@ struct	s_environment
 	double_t	cam_speed;
 	double_t	t_max;
 	double_t	t_min;
+	Flags		flags;
 };
 
 # define ENV typedef struct s_environment   Environment
