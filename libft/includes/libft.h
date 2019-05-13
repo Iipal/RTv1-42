@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 14:35:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 20:38:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define MSG(msg) ft_putstr_fd(msg, STDERR_FILENO)
 # define MSGN(msg) ft_putendl_fd(msg, STDERR_FILENO)
 
-# define ISARGS(ac, av) {--ac;++av; NO(E_USAGE, !(ac != 1), exit(1), 0);}
+# define ISARGS(ac, av) {--ac;++av; IFM_F(E_USAGE, !ac);}
 
 # define IFR(ex, ret) if ((ex)) {return (ret);}
 # define IF_F(ex) if ((ex)) return (false);
@@ -140,12 +140,17 @@ bool	ft_is_one_of_n(int64_t cmp, size_t n, ...);
 **	\param ...: va_list.
 **	\return true if one of argument is equal to \param cmp, else - false.
 */
-bool	ft_is_one_of_str(cstring cmp, size_t n, ...);
+bool	ft_is_one_of_str(cstring cmp, size_t n, bool cmp_len, ...);
 
 /*
 **	\return How many digits in \param n.
 */
 size_t	ft_digits(int32_t n);
+
+/*
+**	\return true is \param str contain only digits or false if not.
+*/
+bool	ft_isdigits_str(const string str);
 
 /*
 **	\return How many blanks skips in string \param str.
