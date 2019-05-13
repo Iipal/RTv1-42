@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 22:14:48 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 12:46:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,17 @@ static bool	add_parser(Scene *sc, string *str, t_pfhelp *pfh)
 
 static bool	add_valid_objs_counter(int32_t *fd, Scene *s, const string file)
 {
-	const int32_t	max_objs = 1;
 	string			temp;
 
 	while (0 < ft_gnl(*fd, &temp))
 	{
-		if (*temp != '#')
-		{
-			if (!ft_strncmp(temp, FP_LIGHT, ft_strlen(FP_LIGHT)))
-				++s->ins_l;
-			else if (ft_is_one_of_str(temp, max_objs, FP_SPHERE))
-				++s->ins_objs;
-		}
+		if (*temp == '#')
+			NULL;
+		else if (!ft_strncmp(temp, FP_LIGHT, ft_strlen(FP_LIGHT)))
+			++s->ins_l;
+		else if (ft_is_one_of_str(temp, FP_MAX_OBJS,
+					FP_SPHERE, FP_CONE, FP_CYLINDER, FP_PLANE))
+			++s->ins_objs;
 		ft_strdel(&temp);
 	}
 	close(*fd);
