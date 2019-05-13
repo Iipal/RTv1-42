@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/13 12:46:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 20:39:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static bool	add_valid_objs_counter(int32_t *fd, Scene *s, const string file)
 			NULL;
 		else if (!ft_strncmp(temp, FP_LIGHT, ft_strlen(FP_LIGHT)))
 			++s->ins_l;
-		else if (ft_is_one_of_str(temp, FP_MAX_OBJS,
+		else if (ft_is_one_of_str(temp, FP_MAX_OBJS, true,
 					FP_SPHERE, FP_CONE, FP_CYLINDER, FP_PLANE))
 			++s->ins_objs;
 		ft_strdel(&temp);
@@ -85,7 +85,7 @@ static bool	add_valid_objs_counter(int32_t *fd, Scene *s, const string file)
 	IFM_F(E_MLIGHTS, MAX_LIGHTS < s->ins_l);
 	MEM(Object, s->objs, s->ins_objs, E_ALLOC);
 	MEM(Light, s->l, s->ins_l, E_ALLOC);
-	IFDOMR(PERR, 0 > (*fd = open(file, O_RDONLY)), (void)0, false);
+	IFME(PERR, 0 > (*fd = open(file, O_RDONLY)), (void)0, false);
 	return (true);
 }
 
@@ -96,7 +96,7 @@ bool		rt_read_scene(Environment *env, string scene_file)
 	t_pfhelp	pfh;
 
 	C(t_pfhelp, &pfh, 1);
-	IFDOMR(PERR, 0 > (fd = open(scene_file, O_RDONLY)), rt_free(&env), false);
+	IFME(PERR, 0 > (fd = open(scene_file, O_RDONLY)), rt_free(&env), false);
 	NODO_F(add_valid_objs_counter(&fd, &env->s, scene_file), rt_free(&env));
 	while (0 < ft_gnl(fd, &tmp))
 		NODO_F(add_parser(&env->s, &tmp, &pfh), rt_free(&env));
