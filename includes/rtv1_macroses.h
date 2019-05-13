@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/13 12:46:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 15:46:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@
 
 # define MOVE_INC 5
 # define MOVE_SPEED_PERCENT_DEFAULT 1.0f
-# define MOVE_SPEED_PERCENT_SUP 2.5f
-# define MOVE_SPEED_PERCENT_SDOWN .25f
+# define MOVE_SPEED_PERCENT_SUP 3.5f
+# define MOVE_SPEED_PERCENT_SDOWN .15f
 # define MOVE_SPEED_PERCENT_STEP .05f
 
 # define RTV1_TITLE     "Ray Tracing v1"
