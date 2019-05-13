@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:23:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 23:53:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 15:00:40 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	rt_raytracing(Environment *env)
 	Color	curr_color;
 
 	curr_obj = NULL;
-	env->t_min = TMIN;
-	env->t_max = TMAX;
 	i.y = RT_CANVAS_STARTY;
 	while (RT_CANVAS_ENDY > ++(i.y) && (i.x = RT_CANVAS_STARTX))
 		while (RT_CANVAS_ENDX > ++(i.x))
