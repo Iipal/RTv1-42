@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 23:33:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/13 12:46:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ Color				rt_calculate_light(Environment *env, Object *obj, t_v d)
 		if (.0f < obj->spec)
 			add_specular_reflect(env->s.l[i], &h, obj, -d);
 	}
-	return (.0f < h.i ? SDL_CLR_MULT(obj->clr, h.i) : CLR_BLACK);
+	return (.0f < h.i ?
+		sdl_clrs_bright_inc(CLR_BLACK, obj->clr, h.i) : CLR_BLACK);
 }
