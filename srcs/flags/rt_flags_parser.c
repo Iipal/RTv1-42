@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_fparser.c                                       :+:      :+:    :+:   */
+/*   rt_flags_parser.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 17:35:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 10:18:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 11:35:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static bool	add_fparse_curr_flags(Flags *f, strtab av,
+static bool	add_curr_fparse(Flags *f, strtab av,
 							const size_t ac, size_t *i_av)
 {
 	const string		flags[] = {F_HELP, F_VPS, F_SB};
@@ -33,7 +33,7 @@ static bool	add_fparse_curr_flags(Flags *f, strtab av,
 	return (is_valid_flag);
 }
 
-bool		rt_fparser(Flags *f, strtab av, const size_t ac)
+bool		rt_flags_parser(Flags *f, strtab av, const size_t ac)
 {
 	size_t	i;
 
@@ -42,7 +42,7 @@ bool		rt_fparser(Flags *f, strtab av, const size_t ac)
 		if (av[i][0] == '-'
 		&& (av[i][1] == '-' || ft_isalpha(av[i][1])))
 		{
-			NO_F(add_fparse_curr_flags(f, av, ac, &i));
+			NO_F(add_curr_fparse(f, av, ac, &i));
 		}
 		else
 			IFM_F(E_IFLAG, true);
