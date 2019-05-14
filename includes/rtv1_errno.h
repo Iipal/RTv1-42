@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 10:56:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 11:25:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@
 # define E_DIGITS   ERR "Only digits in param values string."
 
 # define E_WVPSZERO WARNING E_VPS " flag param is 0. Min is 1."
-# define E_WSBZERO  WARNING E_SB "flag param is 0. Min is 1."
+# define E_WSBZERO  WARNING E_SB " flag param is 0. Min is 1."
 
-# define E_WF_10 "flag param was greate than 10. Max is 10."
+# define E_WF_10 " flag param was greate than 10. Max is 10."
 
 # define E_WARNVPS  WARNING E_VPS E_WF_10
 # define E_WARNSB   WARNING E_SB E_WF_10
