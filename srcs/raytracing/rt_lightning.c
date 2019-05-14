@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 10:52:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 17:17:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,26 @@ static inline void	add_specular_reflect(Light l, t_clhelp *h,
 	h->i += h->h_intense / VLEN(h->d);
 }
 
-Color				rt_calculate_light(Environment *env, Object *obj, t_v d)
+Color				rt_calculate_light(Environment *env, t_clhelp *h,
+								const Object *obj, const t_v d)
 {
 	Object		*shadow;
-	t_clhelp	h;
 	size_t		i;
 	const Color	bg_clr = sdl_clr_div(obj->clr, env->flags.shadows_bright);
 
 	i = ~0L;
-	C(t_clhelp, &h, 1);
-	h.c = (t_v){env->s.cobj * X(d), env->s.cobj * Y(d), env->s.cobj * Z(d)};
-	h.p = env->s.cam.pos + h.c;
-	h.n = h.p - obj->pos;
-	h.n = (t_v){X(h.n) / VLEN(h.n), Y(h.n) / VLEN(h.n), Z(h.n) / VLEN(h.n)};
 	while (++i < env->s.ins_l)
 	{
-		h.l = env->s.l[i].pos - h.p;
-		if ((shadow = rt_closest_inter(h.p, h.l, env, true)))
+		if (.0f >= env->s.l[i].intens)
 			continue ;
-		h.dnl = VDOT(h.n, h.l);
-		if (.0f < h.dnl)
-			h.i += env->s.l[i].intens * h.dnl / (VLEN(h.n) * VLEN(h.l));
+		h->l = env->s.l[i].pos - h->p;
+		if ((shadow = rt_closest_inter(h->p, h->l, env, true)))
+			continue ;
+		h->dnl = VDOT(h->n, h->l);
+		if (.0f < h->dnl)
+			h->i += env->s.l[i].intens * h->dnl / (VLEN(h->n) * VLEN(h->l));
 		if (.0f < obj->spec)
-			add_specular_reflect(env->s.l[i], &h, obj->spec, -d);
+			add_specular_reflect(env->s.l[i], h, obj->spec, -d);
 	}
-	return (.0f < h.i ? sdl_clrs_bright_inc(bg_clr, obj->clr, h.i) : bg_clr);
+	return (.0f < h->i ? sdl_clrs_bright_inc(bg_clr, obj->clr, h->i) : bg_clr);
 }

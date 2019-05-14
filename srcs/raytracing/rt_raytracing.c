@@ -6,33 +6,41 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:23:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 12:32:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 17:08:40 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	rt_raytracing(Environment *env)
+static inline Color	add_prepare_light_calc(Environment *env,
+								const t_v d, const Object *obj)
 {
-	Dot		i;
-	t_v		d;
-	Object	*curr_obj;
-	Color	curr_color;
+	t_clhelp	h;
 
-	curr_obj = NULL;
+	if (!obj)
+		return (CLR_BLACK);
+	C(t_clhelp, &h, 1);
+	h.p = env->s.cam.pos + VMULR(d, env->s.cobj);
+	h.n = h.p - obj->pos;
+	h.n = (t_v){X(h.n) / VLEN(h.n), Y(h.n) / VLEN(h.n), Z(h.n) / VLEN(h.n)};
+	return (rt_calculate_light(env, &h, obj, d));
+}
+
+void		rt_raytracing(Environment *env)
+{
+	Dot			i;
+	t_v			d;
+
 	i.y = RT_CANVAS_STARTY;
 	while (RT_CANVAS_ENDY > ++(i.y) && (i.x = RT_CANVAS_STARTX))
 		while (RT_CANVAS_ENDX > ++(i.x))
 		{
 			env->s.cobj = TMAX;
-			curr_color = CLR_BLACK;
 			d = (t_v) {i.x * WIN_X / (1000.0f * WIN_X),
 				i.y * WIN_Y / (1000.0f * WIN_Y), env->flags.viewport_scale};
-			curr_obj = rt_closest_inter(env->s.cam.pos, d, env, false);
-			if (curr_obj)
-				curr_color = rt_calculate_light(env, curr_obj, d);
-			if (!SDL_CLR_CMP(curr_color, 0x0))
-				sdl_pixelput(env->sdl->wsurf,
-				CONVERT_FROM_CANVAS(i.x, i.y, WIN_X, WIN_Y), curr_color);
+			sdl_pixelput(env->sdl->wsurf,
+				CONVERT_FROM_CANVAS(i.x, i.y, WIN_X, WIN_Y),
+				add_prepare_light_calc(env, d,
+					rt_closest_inter(env->s.cam.pos, d, env, false)));
 		}
 }
