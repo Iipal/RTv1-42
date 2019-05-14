@@ -6,20 +6,20 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 23:08:35 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/13 20:05:41 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 10:18:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_is_one_of_str(cstring cmp, size_t n, bool cmp_len, ...)
+bool	ft_is_one_of_str(cstring cmp, bool cmp_len, size_t n, ...)
 {
 	va_list	ap;
 	bool	is_one_of;
 	char	*temp;
 
 	is_one_of = false;
-	va_start(ap, cmp_len);
+	va_start(ap, n);
 	while (n--)
 	{
 		temp = va_arg(ap, char*);
