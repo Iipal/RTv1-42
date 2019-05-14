@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 10:18:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 17:19:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,26 +39,27 @@ static bool	add_valid_saved_data(Scene *sc)
 
 static bool	add_parser(Scene *sc, string *str, t_pfhelp *pfh)
 {
-	const fns_parse	fns[] = {rt_scam, rt_ssphere};
-	const string	params[] = {FP_CAM, FP_SPHERE};
+	const fns_parse	fns[] = {rt_ssphere, rt_splane, rt_scylinder};
+	const string	params[] = {FP_SPHERE, FP_PLANE, FP_CYLINDER};
 	bool			is_valid_data;
-	bool			is_known_obj_type;
+	bool			is_known;
 	size_t			i;
 
 	i = ~0L;
 	++pfh->nline;
+	is_known = false;
 	is_valid_data = false;
-	is_known_obj_type = false;
 	IFR(**str == '#', true);
-	if (!ft_strncmp(*str, FP_LIGHT, ft_strlen(FP_LIGHT))
-	&& (is_known_obj_type = true))
-		is_valid_data = rt_slight(sc, *str, &pfh->light_counter);
+	if (!ft_strncmp(*str, FP_LIGHT, ft_strlen(FP_LIGHT)) && (is_known = true))
+		is_valid_data = rt_slight(&sc->l[pfh->light_counter++], *str);
+	else if (!ft_strncmp(*str, FP_CAM, ft_strlen(FP_CAM)) && (is_known = true))
+		is_valid_data = rt_scam(&sc->cam, *str);
 	else
 		while ((sizeof(params) / sizeof(*params)) > ++i)
 			if (!ft_strncmp(*str, params[i], ft_strlen(params[i]))
-			&& (is_known_obj_type = true))
-				is_valid_data = fns[i](sc, *str, &pfh->obj_counter);
-	IFDOM(E_OBJ, !is_known_obj_type, is_valid_data = false);
+			&& (is_known = true))
+				is_valid_data = fns[i](&sc->objs[pfh->obj_counter++], *str);
+	IFDOM(E_OBJ, !is_known, is_valid_data = false);
 	NO(E_ISYNTAX, is_valid_data, ERRAT(*str, pfh->nline), false);
 	ft_strdel(str);
 	return (is_valid_data);
