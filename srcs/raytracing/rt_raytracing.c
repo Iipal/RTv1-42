@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:23:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/13 19:41:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 12:28:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	rt_raytracing(Environment *env)
 	t_v		d;
 	Object	*curr_obj;
 	Color	curr_color;
+	const Dot	win_size = {WIN_X, WIN_Y};
 
 	curr_obj = NULL;
 	i.y = RT_CANVAS_STARTY;
@@ -32,7 +33,7 @@ void	rt_raytracing(Environment *env)
 			if (curr_obj)
 				curr_color = rt_calculate_light(env, curr_obj, d);
 			if (!SDL_CLR_CMP(curr_color, 0x0))
-				sdl_pixelput_canvas(env->sdl->wsurf,
-					(Dot){i.x, i.y}, (Dot){WIN_X, WIN_Y}, curr_color);
+				sdl_pixelput(env->sdl->wsurf,
+				CONVERT_FROM_CANVAS(i, win_size), curr_color);
 		}
 }
