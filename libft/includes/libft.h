@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:04:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/13 20:38:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 10:24:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,11 +136,12 @@ bool	ft_is_one_of_n(int64_t cmp, size_t n, ...);
 /*
 **	Compare if one of \param n va_list arguments is equal to \param cmp.
 **	\param cmp: String to compare.
+**	\param cmp_len: boolean for compare strings length or not.
 **	\param n: va_list arguments counter to compare.
 **	\param ...: va_list.
 **	\return true if one of argument is equal to \param cmp, else - false.
 */
-bool	ft_is_one_of_str(cstring cmp, size_t n, bool cmp_len, ...);
+bool	ft_is_one_of_str(cstring cmp, bool cmp_len, size_t n, ...);
 
 /*
 **	\return How many digits in \param n.
