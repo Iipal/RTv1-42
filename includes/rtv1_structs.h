@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 16:51:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 18:43:17 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ struct	s_isrender
 	bool	is_speedup;
 	bool	is_speeddown;
 	bool	is_light_debug;
+	bool	is_zmove_light;
 };
 
 struct	s_time
@@ -85,6 +86,8 @@ struct	s_time
 	float_t	old;
 	float_t	current;
 	float_t	res;
+	float_t	ms;
+	float_t	fps;
 };
 
 # define CAMERA typedef struct s_camera    Camera

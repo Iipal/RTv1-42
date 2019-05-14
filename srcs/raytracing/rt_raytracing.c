@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:23:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 17:08:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 18:08:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,13 @@ void		rt_raytracing(Environment *env)
 	while (RT_CANVAS_ENDY > ++(i.y) && (i.x = RT_CANVAS_STARTX))
 		while (RT_CANVAS_ENDX > ++(i.x))
 		{
-			env->s.cobj = TMAX;
+			env->t_max = TMAX;
+			env->t_min = TMIN;
 			d = (t_v) {i.x * WIN_X / (1000.0f * WIN_X),
 				i.y * WIN_Y / (1000.0f * WIN_Y), env->flags.viewport_scale};
 			sdl_pixelput(env->sdl->wsurf,
 				CONVERT_FROM_CANVAS(i.x, i.y, WIN_X, WIN_Y),
 				add_prepare_light_calc(env, d,
-					rt_closest_inter(env->s.cam.pos, d, env, false)));
+					rt_closest_inter(env->s.cam.pos, d, env)));
 		}
 }

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 18:51:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/11 23:32:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 18:43:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,14 @@ static void	add_fps_prepare_and_draw(const float_t dfps,
 inline void	rt_render_fps_counter(Environment *env)
 {
 	static float_t	delta;
-	static float_t	delta_fps;
-	static float_t	delta_ms;
 
 	(delta > REFRESH_FPS_COUNTER) ? (delta = 0) : 0;
 	if (.0f == delta)
 	{
-		delta_fps = 1.0 / env->fps.time.res;
-		delta_ms = env->fps.time.res * 1000;
+		env->fps.time.fps = 1.0 / env->fps.time.res;
+		env->fps.time.ms = env->fps.time.res * 1000;
 	}
-	add_fps_prepare_and_draw(delta_fps, delta_ms, env);
+	add_fps_prepare_and_draw(env->fps.time.fps, env->fps.time.ms, env);
 	delta += env->fps.time.res;
 }
 

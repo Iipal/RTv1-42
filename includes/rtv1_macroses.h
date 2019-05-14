@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 17:22:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 18:49:47 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@
 # define VMUL(v, d) (t_v){X(v) * d, Y(v) * d, Z(v) * d}
 # define VMULR(v, d) (t_v){d * X(v), d * Y(v), d * Z(v)}
 
-# define OBJ(i) sc->objs[i]
 # define SEKEY env->sdl->e.key.keysym.sym
 
 typedef bool	(*t_fn_fparse)(Flags*, char**, const size_t, size_t*);

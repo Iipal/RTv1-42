@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 16:41:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 18:07:40 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ static inline fDot	rt_intersection(const t_v o,
 
 Object				*rt_closest_inter(const t_v o,
 									const t_v d,
-									Environment *env,
-									bool is_shadow)
+									Environment *env)
 {
 	fDot			t;
 	size_t			i;
@@ -40,19 +39,18 @@ Object				*rt_closest_inter(const t_v o,
 
 	i = ~0L;
 	out_obj = NULL;
-	IFDO(!is_shadow, env->t_min = TMIN);
-	IFDO(!is_shadow, env->t_max = TMAX);
+	env->s.cobj = env->t_max;
 	while (++i < env->s.ins_objs)
 	{
 		t = rt_intersection(o, d, d_dot_d, env->s.objs[i]);
 		if (t.x >= env->t_min && t.x < env->t_max && t.x < env->s.cobj)
 		{
-			IFDO(!is_shadow, env->s.cobj = t.x);
+			env->s.cobj = t.x;
 			out_obj = &env->s.objs[i];
 		}
 		if (t.y >= env->t_min && t.y < env->t_max && t.y < env->s.cobj)
 		{
-			IFDO(!is_shadow, env->s.cobj = t.y);
+			env->s.cobj = t.y;
 			out_obj = &env->s.objs[i];
 		}
 	}
