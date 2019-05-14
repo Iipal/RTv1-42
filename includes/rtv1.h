@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 16:54:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 18:19:14 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void		rt_camera_speed_movements(double_t *cam_speed,
 void		rt_sdl_keys_press(Environment *env);
 void		rt_sdl_keys_release(Environment *env);
 void		rt_sdl_keys_events(Environment *env);
+void		rt_sdl_keys_events_light_debug(Environment *env);
 
 void		rt_rendering(Environment *env);
 void		rt_render_loop(Environment *env);
@@ -61,8 +62,7 @@ Color		rt_calculate_light(Environment *env, t_clhelp *h,
 
 Object		*rt_closest_inter(const t_v o,
 							const t_v d,
-							Environment *env,
-							bool is_shadow);
+							Environment *env);
 
 void		rt_fps(Fps *fps, double_t cam_speed);
 
