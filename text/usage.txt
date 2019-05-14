@@ -7,9 +7,9 @@ Usage:
 
     [X] - Switch movements binds to control light.
         After press [X] binds are:
-        [W A S D] - Move light origin Up Left Down & Right.
-        [Q E] - Dec\Increase light intensity.
+        [W A S D] - Move all lights origin Up Left Down & Right.
+        [Q E] - Dec\Increase all light sintensity.
 
-        P.S. None Z-position light movements because
-            light calculating not dependence on distance to objects,
-            only angle calculating.
+        [C] - Switch to control lights Z-position.
+        After press [C] binds are:
+            [Q E] - Dec\Increase all lights Z-position.
