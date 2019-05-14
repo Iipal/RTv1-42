@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 18:49:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 20:00:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@
 # define VLEN(v) sqrt(X(v) * X(v) + Y(v) * Y(v) + Z(v) * Z(v))
 # define VDOT(v1, v2) (X(v1) * X(v2) + Y(v1) * Y(v2) + Z(v1) * Z(v2))
 # define VNORM(v) X(v)/sqrt(VDOT(v,v)),Y(v)/sqrt(VDOT(v,v)),Z(v)/sqrt(VDOT(v,v))
-# define VMUL(v, d) (t_v){X(v) * d, Y(v) * d, Z(v) * d}
-# define VMULR(v, d) (t_v){d * X(v), d * Y(v), d * Z(v)}
+# define VMUL(v, d) (Vector){X(v) * d, Y(v) * d, Z(v) * d}
+# define VMULR(v, d) (Vector){d * X(v), d * Y(v), d * Z(v)}
 
 # define SEKEY env->sdl->e.key.keysym.sym
 

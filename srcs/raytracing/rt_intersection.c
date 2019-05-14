@@ -6,20 +6,20 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 18:07:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 20:02:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline fDot	rt_intersection(const t_v o,
-									const t_v d,
+static inline fDot	rt_intersection(const Vector o,
+									const Vector d,
 									const double_t d_dot_d,
 									const Object obj)
 {
 	const float_t	r = (float_t)obj.radius;
-	const t_v		oc = o - obj.pos;
-	const t_v		k = {d_dot_d, 2.0f * VDOT(oc, d), VDOT(oc, oc) - r * r};
+	const Vector	oc = o - obj.pos;
+	const Vector	k = {d_dot_d, 2.0f * VDOT(oc, d), VDOT(oc, oc) - r * r};
 	const double_t	disc = Y(k) * Y(k) - 4.0f * X(k) * Z(k);
 
 	if (.0f > disc)
@@ -28,8 +28,8 @@ static inline fDot	rt_intersection(const t_v o,
 					(-Y(k) - sqrt(disc)) / (2.0f * X(k)) });
 }
 
-Object				*rt_closest_inter(const t_v o,
-									const t_v d,
+Object				*rt_closest_inter(const Vector o,
+									const Vector d,
 									Environment *env)
 {
 	fDot			t;

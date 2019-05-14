@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:44:49 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 21:48:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 20:00:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool		u_inrange(const t_v v,
+inline bool		u_inrange(const Vector v,
 	const bool check_min, const bool check_max)
 {
 	if (check_max

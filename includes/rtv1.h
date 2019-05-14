@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 18:19:14 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 20:00:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ bool		rt_fhelp(Flags *f, strtab av, const size_t ac, size_t *av_i);
 bool		rt_fvps(Flags *f, strtab av, const size_t ac, size_t *av_i);
 bool		rt_fsb(Flags *f, strtab av, const size_t ac, size_t *av_i);
 
-bool		u_inrange(const t_v v,
+bool		u_inrange(const Vector v,
 					const bool check_min,
 					const bool check_max);
 double_t	u_inrangev(const double_t v,
@@ -54,14 +54,14 @@ void		rt_rendering(Environment *env);
 void		rt_render_loop(Environment *env);
 void		rt_render_fps_counter(Environment *env);
 
-void		rt_raytracing(Environment *env);
+void		rt_raytracing(Environment *env, Dot i);
 
 Color		rt_calculate_light(Environment *env, t_clhelp *h,
 						const Object *obj,
-						const t_v d);
+						const Vector d);
 
-Object		*rt_closest_inter(const t_v o,
-							const t_v d,
+Object		*rt_closest_inter(const Vector o,
+							const Vector d,
 							Environment *env);
 
 void		rt_fps(Fps *fps, double_t cam_speed);

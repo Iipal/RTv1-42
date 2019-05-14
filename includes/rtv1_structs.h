@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 18:43:17 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 20:01:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@
 #  include <SDL2/SDL.h>
 # endif
 
-typedef double	t_v __attribute__((vector_size(32),aligned));
+# define VEC typedef double Vector __attribute__((vector_size(32),aligned));
+
+VEC;
 
 # define X(vec) vec[0]
 # define Y(vec) vec[1]
@@ -45,21 +47,21 @@ ETYPE;
 
 struct	s_camera
 {
-	t_v		pos;
-	t_v		dir;
+	Vector	pos;
+	Vector	dir;
 	bool	is;
 };
 
 struct	s_light
 {
-	t_v		pos;
+	Vector	pos;
 	float_t	intens;
 };
 
 struct	s_object
 {
-	t_v		pos;
-	t_v		dir;
+	Vector	pos;
+	Vector	dir;
 	Color	clr;
 	int16_t	radius;
 	float_t	spec;
@@ -150,12 +152,12 @@ ENV;
 
 struct	s_calc_light_helper
 {
-	t_v			c;
-	t_v			p;
-	t_v			n;
-	t_v			l;
-	t_v			h;
-	t_v			d;
+	Vector		c;
+	Vector		p;
+	Vector		n;
+	Vector		l;
+	Vector		h;
+	Vector		d;
 	double_t	dnl;
 	double_t	h_intense;
 	double_t	i;
