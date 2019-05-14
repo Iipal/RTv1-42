@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 11:36:07 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 16:54:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@
 # include "rtv1_structs.h"
 # include "rtv1_macroses.h"
 
-bool		rt_scam(Scene *sc, string s, size_t *o);
-bool		rt_slight(Scene *sc, string s, size_t *o);
-bool		rt_ssphere(Scene *sc, string s, size_t *o);
 bool		rt_read_scene(Environment *env, string scene_file);
+
+bool		rt_scam(Camera *cam, string s);
+bool		rt_slight(Light *l, string s);
+
+bool		rt_ssphere(Object *obj, string s);
+bool		rt_splane(Object *obj, string s);
+bool		rt_scylinder(Object *obj, string s);
 
 bool		rt_init(Environment *env);
 
@@ -51,7 +55,9 @@ void		rt_render_fps_counter(Environment *env);
 
 void		rt_raytracing(Environment *env);
 
-Color		rt_calculate_light(Environment *env, Object *obj, t_v d);
+Color		rt_calculate_light(Environment *env, t_clhelp *h,
+						const Object *obj,
+						const t_v d);
 
 Object		*rt_closest_inter(const t_v o,
 							const t_v d,
