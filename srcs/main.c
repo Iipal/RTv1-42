@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/13 20:00:34 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 11:36:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int					main(int argc, string argv[])
 	MEM(Environment, env, 1, E_ALLOC);
 	NO_F(rt_read_scene(env, argv[argc - 1]));
 	NO_F(rt_init(env));
-	NODO_F(rt_fparser(&env->flags, argv, argc - 1), rt_free(&env));
+	NODO_F(rt_flags_parser(&env->flags, argv, argc - 1), rt_free(&env));
 	ft_putfile(RTV1_USAGE);
 	rt_render_loop(env);
 	rt_free(&env);
