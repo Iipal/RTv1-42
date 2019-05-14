@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/13 15:11:44 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 10:57:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static inline fDot	rt_intersection(const t_v o,
 
 	if (.0f > disc)
 		return ((fDot){-1, -1});
-	return  ((fDot){(-Y(k) + sqrt(disc)) / (2.0f * X(k)),
-					(-Y(k) - sqrt(disc)) / (2.0f * X(k))});
+	return ((fDot){ (-Y(k) + sqrt(disc)) / (2.0f * X(k)),
+					(-Y(k) - sqrt(disc)) / (2.0f * X(k)) });
 }
 
 Object				*rt_closest_inter(const t_v o,

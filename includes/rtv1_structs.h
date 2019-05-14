@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/13 20:32:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 10:58:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@
 #  include <SDL2/SDL.h>
 # endif
 
-typedef double t_v __attribute__ ((vector_size(32), aligned));
+typedef double	t_v __attribute__((vector_size(32),aligned));
 
-#  define X(vec) vec[0]
-#  define Y(vec) vec[1]
-#  define Z(vec) vec[2]
-#  define W(vec) vec[3]
+# define X(vec) vec[0]
+# define Y(vec) vec[1]
+# define Z(vec) vec[2]
+# define W(vec) vec[3]
 
 enum	e_type
 {
