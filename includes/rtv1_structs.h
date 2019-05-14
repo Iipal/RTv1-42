@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 10:58:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 16:51:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef double	t_v __attribute__((vector_size(32),aligned));
 enum	e_type
 {
 	sphere,
-	plain,
+	plane,
 	cone,
 	cylinder,
 	max_objs
@@ -59,6 +59,7 @@ struct	s_light
 struct	s_object
 {
 	t_v		pos;
+	t_v		dir;
 	Color	clr;
 	int16_t	radius;
 	float_t	spec;
