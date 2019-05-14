@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 17:35:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/13 21:11:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 10:18:45 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static bool	add_fparse_curr_flags(Flags *f, strtab av,
 	i = ~0L;
 	is_valid_flag = false;
 	while (MAX_FLAGS > ++i)
-		if (ft_is_one_of_str(av[*i_av], 2, false, flags[i], sflags[i]))
+		if (ft_is_one_of_str(av[*i_av], false, 2, flags[i], sflags[i]))
 		{
 			is_valid_flag = true;
 			return (fns[i](f, av, ac, i_av));

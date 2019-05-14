@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 19:00:16 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 14:09:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 10:24:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ inline Color	sdl_clrs_mul(Color src, const Color mul)
 {
 	Color	out;
 
+	out = src;
 	if (!SDL_CLR_CMP(src, 0x0) && !SDL_CLR_CMP(mul, 0x0))
 		out = (Color) { INRANGE(src.r * mul.r),
 						INRANGE(src.g * mul.g),

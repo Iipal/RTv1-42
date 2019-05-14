@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 19:04:08 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/12 14:10:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 10:19:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ Color	*sdl_clrs_gradient(Color start,
 	FColor	diff;
 	size_t	i;
 
+	i = ~0L;
 	IFR(1 > len, NULL);
 	NO_R(out = (Color*)malloc(sizeof(Color) * len), NULL);
 	*out = start;
 	if (SDL_CLRS_CMP(start, end) || 1 == len)
 	{
-		i = ~0L;
 		while (len > ++i)
 			out[i] = start;
 		return (out);

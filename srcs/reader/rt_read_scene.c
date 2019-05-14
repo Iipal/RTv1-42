@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/13 20:39:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 10:18:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static bool	add_valid_objs_counter(int32_t *fd, Scene *s, const string file)
 			NULL;
 		else if (!ft_strncmp(temp, FP_LIGHT, ft_strlen(FP_LIGHT)))
 			++s->ins_l;
-		else if (ft_is_one_of_str(temp, FP_MAX_OBJS, true,
+		else if (ft_is_one_of_str(temp, true, FP_MAX_OBJS,
 					FP_SPHERE, FP_CONE, FP_CYLINDER, FP_PLANE))
 			++s->ins_objs;
 		ft_strdel(&temp);
