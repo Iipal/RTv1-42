@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 17:17:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/14 18:12:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static inline void	add_specular_reflect(Light l, t_clhelp *h,
 		Y(h->h) / VLEN(h->h), Z(h->h) / VLEN(h->h)};
 	h->h_intense = l.intens * fmax(0, h->dnl) + obj_spec
 		* l.intens * pow(fmax(0, VDOT(h->n, h->h)), obj_spec);
-	h->d = h->p - l.pos;
+	h->d = h->n - l.pos;
 	h->i += h->h_intense / VLEN(h->d);
 }
 
@@ -37,7 +37,8 @@ Color				rt_calculate_light(Environment *env, t_clhelp *h,
 		if (.0f >= env->s.l[i].intens)
 			continue ;
 		h->l = env->s.l[i].pos - h->p;
-		if ((shadow = rt_closest_inter(h->p, h->l, env, true)))
+		env->t_max = 1.0f;
+		if ((shadow = rt_closest_inter(h->p, h->l, env)))
 			continue ;
 		h->dnl = VDOT(h->n, h->l);
 		if (.0f < h->dnl)
