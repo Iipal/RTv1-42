@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 20:01:43 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 12:41:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,6 @@ ENV;
 
 struct	s_calc_light_helper
 {
-	Vector		c;
 	Vector		p;
 	Vector		n;
 	Vector		l;
