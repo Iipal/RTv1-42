@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 19:59:09 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 12:21:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 12:52:26 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ SDL;
 **	\param height: Window height what will created.
 **	\param title: Title for window.
 */
-bool		sdl_init(Sdl *sdl,
-					const int32_t width,
-					const int32_t height,
-					const string title);
+extern bool			sdl_init(Sdl *sdl,
+						const int32_t width,
+						const int32_t height,
+						const string title);
 
 /*
 **	Free all data in Sdl*.
 */
-void		sdl_free(Sdl **sdl);
+extern void			sdl_free(Sdl **sdl);
 
 /*
 **	mlx_pixelput implementation on SDL2 for copy workflow from MLX library.
@@ -57,11 +57,12 @@ void		sdl_free(Sdl **sdl);
 **	Protected from segfault when x && y pixel doesnt exist on Surface,
 **	and if Surface doesnt exist too.
 */
-void		sdl_pixelput(SDL_Surface *surf, const Dot p, const Color clr);
+extern void			sdl_pixelput(SDL_Surface *surf,
+						const Dot p, const Color clr);
 
-SDL_Surface	*sdl_optimize_font_load(const string text,
-									const SDL_Color text_color,
-										TTF_Font *font,
-									const SDL_PixelFormat *format);
+extern  SDL_Surface	*sdl_optimize_font_load(TTF_Font *font,
+						const string text,
+						const SDL_Color text_color,
+						const SDL_PixelFormat *format);
 
 #endif
