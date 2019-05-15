@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 20:03:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:16:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 17:41:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c)
+inline void	ft_putchar(const uchar c)
 {
 	write(1, &c, 1);
 }

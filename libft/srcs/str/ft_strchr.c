@@ -6,16 +6,16 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:37:20 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 22:28:42 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 18:40:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-string	ft_strchr(cstring s, uchar c)
+inline string	ft_strchr(cstring s, uchar c)
 {
 	while (*s != c)
 		if (!*s++)
-			return (0);
+			return (NULL);
 	return ((string)s);
 }

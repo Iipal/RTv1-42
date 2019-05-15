@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 12:53:46 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 12:54:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 17:37:18 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_cwap(char *a, char *b)
+inline void	ft_cwap(char *a, char *b)
 {
 	char	temp;
 

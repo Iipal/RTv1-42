@@ -6,21 +6,20 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 18:19:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:42:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 18:42:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-string	ft_strstr(cstring str, cstring to_find)
+inline string	ft_strstr(cstring str, cstring to_find)
 {
 	string cp;
 	string s1;
 	string s2;
 
 	cp = (string)str;
-	if (!*to_find)
-		return ((string)str);
+	NO_R(*to_find, (string)str);
 	while (*cp)
 	{
 		s1 = cp;
@@ -30,9 +29,8 @@ string	ft_strstr(cstring str, cstring to_find)
 			s1++;
 			s2++;
 		}
-		if (!*s2)
-			return (cp);
+		NO_R(*s2, cp);
 		cp++;
 	}
-	return (0);
+	return (NULL);
 }

@@ -6,21 +6,18 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 12:08:57 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/12 13:27:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 18:34:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-string	ft_strlwr(string str)
+inline string	ft_strlwr(string str)
 {
-	string	s;
+	size_t	i;
 
-	s = str;
-	while (*s)
-	{
-		*s = ft_tolower((uint8_t)(*s));
-		++s;
-	}
+	i = ~0L;
+	while (str[++i])
+		str[i] = ft_tolower((uchar)(str[i]));
 	return (str);
 }

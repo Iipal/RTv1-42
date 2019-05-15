@@ -6,18 +6,18 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 11:17:58 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 22:47:42 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 18:52:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-pvoid	ft_memset(pvoid dest, int c, size_t len)
+inline pvoid	ft_memset(pvoid dest, const int32_t c, size_t len)
 {
 	ustring	out;
 
 	out = (ustring)dest;
-	while (len-- > 0)
+	while (len--)
 		*out++ = c;
 	return (dest);
 }

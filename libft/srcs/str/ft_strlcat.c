@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 17:43:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:34:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 18:31:16 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ size_t	ft_strlcat(string dest,
 	dst = dest;
 	sc = src;
 	n = dstsize;
-	while (n-- != 0 && *dst != '\0')
-		dst++;
+	while (n-- && *dst++)
+		;
 	dlen = dst - dest;
 	n = dstsize - dlen;
-	if (n == 0)
-		return (dlen + ft_strlen(sc));
+	NO_R(n, dlen + ft_strlen(sc));
 	while (*sc != '\0')
 	{
 		if (n != 1)

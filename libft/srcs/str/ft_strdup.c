@@ -6,25 +6,20 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:03:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:31:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 18:37:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-string	ft_strdup(cstring src)
+inline string	ft_strdup(cstring src)
 {
 	string	out;
 	size_t	i;
 
-	i = 0;
-	if ((out = (string)malloc(sizeof(char) * (ft_strlen(src) + 1))) == NULL)
-		return (NULL);
-	while (src[i] != '\0')
-	{
+	i = ~0L;
+	NO_R(out = ft_strnew(ft_strlen(src)), NULL);
+	while (src[++i])
 		out[i] = src[i];
-		++i;
-	}
-	out[i] = '\0';
 	return (out);
 }

@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/27 13:39:54 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:17:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 17:40:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char const *s, int32_t fd)
+inline void	ft_putendl_fd(char const *s, int32_t fd)
 {
 	if (s)
 	{

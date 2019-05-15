@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/27 10:24:50 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:17:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 17:44:30 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int32_t n)
+inline void	ft_putnbr(int32_t n)
 {
 	if (n == -2147483648)
 		ft_putstr("-2147483648");
@@ -30,7 +30,6 @@ void	ft_putnbr(int32_t n)
 			ft_putnbr(n / 10);
 			ft_putchar(n % 10 + '0');
 		}
-		if (n < 10)
-			ft_putchar(n % 10 + '0');
+		IFDO(10 > n, ft_putchar(n % 10 + '0'));
 	}
 }

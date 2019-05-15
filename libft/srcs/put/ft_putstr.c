@@ -6,19 +6,18 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/27 13:36:48 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:18:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 17:43:25 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+inline void	ft_putstr(char const *s)
 {
 	size_t	i;
 
-	i = 0;
-	if (s == NULL)
-		return ;
-	while (s[i])
-		ft_putchar(s[i++]);
+	i = ~0l;
+	if (NULL != s)
+		while (s[++i])
+			ft_putchar(s[i]);
 }

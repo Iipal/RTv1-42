@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 12:46:54 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 12:48:11 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 17:32:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_swap(int32_t *a, int32_t *b)
+inline void	ft_swap(int32_t *a, int32_t *b)
 {
 	int32_t	temp;
 

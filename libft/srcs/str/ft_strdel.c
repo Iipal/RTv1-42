@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 17:21:54 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:30:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 17:52:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strdel(string *as)
+inline void	ft_strdel(string *as)
 {
 	if (as && *as)
 	{

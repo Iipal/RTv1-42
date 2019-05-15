@@ -6,29 +6,26 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 13:43:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/05 14:19:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 18:54:42 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-pvoid	ft_memmove(pvoid dest, void const *src, size_t len)
+inline pvoid	ft_memmove(pvoid dest, void const *src, size_t len)
 {
 	size_t	i;
 	ustring	dst;
 	ustring	sc;
 
-	dst = (ustring)dest;
+	i = ~0L;
 	sc = (ustring)src;
-	i = 0;
+	dst = (ustring)dest;
 	if (sc < dst)
-		while ((int64_t)(--len) >= 0)
+		while (--len)
 			dst[len] = sc[len];
 	else
-		while (i < len)
-		{
+		while (++i < len)
 			dst[i] = sc[i];
-			++i;
-		}
 	return (dest);
 }

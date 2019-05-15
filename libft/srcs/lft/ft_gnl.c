@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/03 12:31:02 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/08 21:06:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 19:01:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,23 @@
 static int32_t	catline_recursive(int32_t fd, string *data,
 								string *line, ssize_t nbytes)
 {
-	int32_t	to_nl;
+	size_t	to_nl;
 	string	temp_nl;
 
-	to_nl = -1;
-	while (data[fd][++to_nl] != '\n' &&
-			data[fd][to_nl] != '\0')
+	to_nl = ~0L;
+	while (data[fd][++to_nl] && data[fd][to_nl] != '\n')
 		;
 	if (data[fd][to_nl] == '\n')
 	{
-		*line = ft_strndup(data[fd], (size_t)to_nl);
+		*line = ft_strndup(data[fd], to_nl);
 		temp_nl = ft_strdup(data[fd] + ++to_nl);
 		free(data[fd]);
 		data[fd] = temp_nl;
-		if (data[fd][0] == '\0')
-			ft_strdel(&data[fd]);
+		NODO(data[fd][0], ft_strdel(&data[fd]));
 	}
 	else if (data[fd][to_nl] == '\0')
 	{
-		if (nbytes == BUFF_SIZE)
-			return (ft_gnl(fd, line));
+		IFR(BUFF_SIZE == nbytes, ft_gnl(fd, line));
 		*line = ft_strdup(data[fd]);
 		ft_strdel(&data[fd]);
 	}
@@ -48,23 +45,18 @@ int8_t			ft_gnl(const int32_t fd, string *line)
 	char			buff[BUFF_SIZE + 1];
 	ssize_t			nbytes;
 
-	if (fd < 0 || !line)
-		return (-1);
-	while ((nbytes = read(fd, buff, BUFF_SIZE)) > 0)
+	IFR(0 > fd || !line, -1);
+	while (0 < (nbytes = read(fd, buff, BUFF_SIZE)))
 	{
 		buff[nbytes] = '\0';
-		if (!data[fd])
-			data[fd] = ft_strnew(0);
+		IFDO(!data[fd], data[fd] = ft_strnew(0));
 		temp = ft_strjoin(data[fd], buff);
 		free(data[fd]);
 		data[fd] = temp;
 		if (ft_strchr(buff, '\n'))
 			break ;
 	}
-	if (nbytes < 0)
-		return (-1);
-	if (nbytes == 0 &&
-		(!data[fd] || data[fd][0] == '\0'))
-		return (0);
+	IFR(0 > nbytes, -1);
+	IFR(!nbytes && (!data[fd] || !data[fd][0]), 0);
 	return (catline_recursive(fd, data, line, nbytes));
 }

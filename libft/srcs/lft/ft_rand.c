@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 01:54:18 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:09:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 17:20:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_rand(size_t limit)
+inline size_t	ft_rand(size_t limit)
 {
 	size_t	ponies;
 	int32_t	fd;
