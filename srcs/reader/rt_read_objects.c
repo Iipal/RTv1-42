@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:31:21 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 17:08:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 10:48:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ inline bool	rt_scylinder(Object *obj, string s)
 	IF_F(*s++ != '0' || *s++ != 'x');
 	NO_F(clr = ft_atoi_base(s, 16));
 	IF_F(' ' != *(s += ft_skip_to_blank(s)) || !*s++);
+	IF_F(' ' != *(s += ft_digits(obj->radius = ft_atoi(s))) || !*s++);
 	IF_F(*(s += ft_digits(obj->spec = ft_atoi(s))));
 	if (Y(obj->pos) != 0.0f)
 		Y(obj->pos) = -Y(obj->pos);
