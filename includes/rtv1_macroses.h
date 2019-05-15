@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 20:00:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 12:15:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@
 
 # define MAX_SPSP   5000
 # define MIN_SPSP   0
+
+# define MAX_ROT_ANGLE  360.0f
+# define MIN_ROT_ANGLE  -MAX_ROT_ANGLE
 
 # define RT_CANVAS_STARTX   -(WIN_X / 2)
 # define RT_CANVAS_STARTY   -(WIN_Y / 2)
