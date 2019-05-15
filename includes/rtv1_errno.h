@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 11:25:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 10:55:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@
 # define E_CAMPOS   ERR "Camera position" E_INRANGE
 # define E_LIGHTPOS ERR "Light position" E_INRANGE
 # define E_LINTENSE ERR "Light intensity" E_INRANGE
-# define E_SPPOS    ERR "Sphere position" E_INRANGE
-# define E_SPRAD    ERR "Sphere radius" E_INRANGE
-# define E_SPSPEC   ERR "Sphere specular intensity" E_INRANGE
+# define E_OPOS     ERR "Object position" E_INRANGE
+# define E_ORAD     ERR "Object radius" E_INRANGE
+# define E_OSPEC    ERR "Object specular intensity" E_INRANGE
 
 # define E_AT " Error occured at line: "
 # define ERR_AT_NL(nl) MSG(E_AT);ft_putnbr(nl)
