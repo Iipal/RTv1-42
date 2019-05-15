@@ -6,16 +6,16 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:15:15 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/11 23:58:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 12:52:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftsdl.h"
 
-SDL_Surface	*sdl_optimize_font_load(const string text,
-									const SDL_Color text_color,
-									TTF_Font *font,
-									const SDL_PixelFormat *format)
+SDL_Surface	*sdl_optimize_font_load(TTF_Font *font,
+				const string text,
+				const SDL_Color text_color,
+				const SDL_PixelFormat *format)
 {
 	SDL_Surface	*optimize_out;
 	SDL_Surface	*temp_load;
