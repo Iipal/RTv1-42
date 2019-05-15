@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 19:54:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 20:03:07 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 12:13:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static inline Color	add_prepare_light_calc(Environment *env,
 	return (rt_calculate_light(env, &h, obj, d));
 }
 
-void				rt_raytracing(Environment *env, Dot i)
+inline void			rt_raytracing(Environment *env, Dot i)
 {
 	Vector	d;
 

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:12:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 18:19:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 10:41:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 static inline void	add_camera_keys_events(Environment *env)
 {
 	if (env->isr.is_up)
-		Y(env->s.cam.pos) = u_inrangev(Y(env->s.cam.pos) - env->fps.move, 1, 0);
+		Y(env->s.cam.pos) = u_inranged(Y(env->s.cam.pos) - env->fps.move, 1, 0);
 	if (env->isr.is_down)
-		Y(env->s.cam.pos) = u_inrangev(Y(env->s.cam.pos) + env->fps.move, 0, 1);
+		Y(env->s.cam.pos) = u_inranged(Y(env->s.cam.pos) + env->fps.move, 0, 1);
 	if (env->isr.is_left)
-		X(env->s.cam.pos) = u_inrangev(X(env->s.cam.pos) - env->fps.move, 1, 0);
+		X(env->s.cam.pos) = u_inranged(X(env->s.cam.pos) - env->fps.move, 1, 0);
 	if (env->isr.is_right)
-		X(env->s.cam.pos) = u_inrangev(X(env->s.cam.pos) + env->fps.move, 0, 1);
+		X(env->s.cam.pos) = u_inranged(X(env->s.cam.pos) + env->fps.move, 0, 1);
 	if (env->isr.is_zdec)
-		Z(env->s.cam.pos) = u_inrangev(Z(env->s.cam.pos) - env->fps.move, 1, 0);
+		Z(env->s.cam.pos) = u_inranged(Z(env->s.cam.pos) - env->fps.move, 1, 0);
 	if (env->isr.is_zinc)
-		Z(env->s.cam.pos) = u_inrangev(Z(env->s.cam.pos) + env->fps.move, 0, 1);
+		Z(env->s.cam.pos) = u_inranged(Z(env->s.cam.pos) + env->fps.move, 0, 1);
 }
 
 inline void			rt_sdl_keys_events(Environment *env)

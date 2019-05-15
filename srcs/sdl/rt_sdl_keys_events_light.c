@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 18:15:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 18:19:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 10:41:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static inline void	rt_light_z_or_intens(Environment *env, size_t i)
 	{
 		if (env->isr.is_zdec)
 			Z(env->s.l[i].pos) =
-				u_inrangev(Z(env->s.l[i].pos) - env->fps.move * 5, 0, 1);
+				u_inranged(Z(env->s.l[i].pos) - env->fps.move * 5, 0, 1);
 		if (env->isr.is_zinc)
 			Z(env->s.l[i].pos) =
-				u_inrangev(Z(env->s.l[i].pos) + env->fps.move * 5, 0, 1);
+				u_inranged(Z(env->s.l[i].pos) + env->fps.move * 5, 0, 1);
 	}
 	else
 	{
@@ -43,16 +43,16 @@ inline void			rt_sdl_keys_events_light_debug(Environment *env)
 	{
 		if (env->isr.is_up)
 			Y(env->s.l[i].pos) =
-				u_inrangev(Y(env->s.l[i].pos) - env->fps.move * 5, 1, 0);
+				u_inranged(Y(env->s.l[i].pos) - env->fps.move * 5, 1, 0);
 		if (env->isr.is_down)
 			Y(env->s.l[i].pos) =
-				u_inrangev(Y(env->s.l[i].pos) + env->fps.move * 5, 0, 1);
+				u_inranged(Y(env->s.l[i].pos) + env->fps.move * 5, 0, 1);
 		if (env->isr.is_left)
 			X(env->s.l[i].pos) =
-				u_inrangev(X(env->s.l[i].pos) - env->fps.move * 5, 1, 0);
+				u_inranged(X(env->s.l[i].pos) - env->fps.move * 5, 1, 0);
 		if (env->isr.is_right)
 			X(env->s.l[i].pos) =
-				u_inrangev(X(env->s.l[i].pos) + env->fps.move * 5, 0, 1);
+				u_inranged(X(env->s.l[i].pos) + env->fps.move * 5, 0, 1);
 		rt_light_z_or_intens(env, i);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:20:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 19:48:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/15 12:04:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ void			rt_render_loop(Environment *env)
 			else if (env->sdl->e.type == SDL_KEYUP)
 				rt_sdl_keys_release(env);
 		rt_sdl_keys_events(env);
-		SDL_FillRect(env->sdl->wsurf, NULL, RGB_BLACK);
 		rt_rendering(env);
 		rt_fps(&env->fps, env->cam_speed);
-		SDL_UpdateWindowSurface(env->sdl->w);
 	}
 }
