@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:31:21 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 10:48:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/16 19:39:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ inline bool	rt_ssphere(Object *obj, string s)
 	if (Y(obj->pos) != 0.0f)
 		Y(obj->pos) = -Y(obj->pos);
 	obj->clr = (Color){clr >> 16, (clr >> 8) & 0xff, clr & 0xff};
+	obj->fn_inter_calc  = rt_inter_sphere;
+	obj->fn_normal_calc = rt_normal_sphere;
 	obj->type = sphere;
 	return (true);
 }

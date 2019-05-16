@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 12:41:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/16 19:38:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,21 @@ struct	s_light
 	float_t	intens;
 };
 
+typedef Vector	(*t_fn_inter)(const Vector, const Vector, const void*restrict);
+typedef Vector	(*t_fn_normal)(const Vector,
+							const struct s_camera *restrict,
+							const void *restrict);
+
 struct	s_object
 {
-	Vector	pos;
-	Vector	dir;
-	Color	clr;
-	int16_t	radius;
-	float_t	spec;
-	Type	type;
+	Vector		pos;
+	Vector		dir;
+	Color		clr;
+	int16_t		radius;
+	int16_t		spec;
+	Type		type;
+	t_fn_inter	fn_inter_calc;
+	t_fn_normal	fn_normal_calc;
 };
 
 struct	s_isrender

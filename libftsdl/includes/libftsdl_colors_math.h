@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 23:24:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 12:50:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/16 17:57:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 COLOR;
 FCOLOR;
 
-extern Uint8	sdl_clr_inrange(const int16_t color);
+extern int32_t	sdl_clr_inrange(const int32_t color);
 
 extern Color	sdl_clr_bright_inc(Color src, const float_t percent);
 extern Color	sdl_clr_bright_dec(Color src, const float_t percent);

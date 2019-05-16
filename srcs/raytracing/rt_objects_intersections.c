@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sdl_clr_inrange.c                                  :+:      :+:    :+:   */
+/*   rt_objects_intersections.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 15:17:21 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/16 17:57:16 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/05/16 18:06:24 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/05/16 19:50:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftsdl_colors_math.h"
+#include "rtv1.h"
 
-inline int32_t	sdl_clr_inrange(const int32_t color)
+inline Vector	rt_inter_sphere(const Vector a,
+								const Vector b,
+								const void *restrict obj_ptr)
 {
-	if (COLOR_MAX <= color)
-		return (COLOR_MAX);
-	else if (COLOR_MIN >= color)
-		return (COLOR_MIN);
-	return ((int32_t)color);
+	const float_t	r = (float_t)(((Object*)obj_ptr)->radius);
+
+	return ((Vector){VDOT(b, b), 2.0f * VDOT(a, b), VDOT(a, a) - r * r});
 }

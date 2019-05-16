@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 12:24:17 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 12:26:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/16 18:03:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@
 
 struct	s_color
 {
-	int16_t	r;
-	int16_t	g;
-	int16_t	b;
+	int32_t	r;
+	int32_t	g;
+	int32_t	b;
 };
 
 struct	s_fcolor
 {
-	float_t	r;
-	float_t	g;
-	float_t	b;
+	double_t	r;
+	double_t	g;
+	double_t	b;
 };
 
 #endif
