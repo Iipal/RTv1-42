@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/16 19:38:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 00:35:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ struct	s_isrender
 	bool	is_speedup;
 	bool	is_speeddown;
 	bool	is_light_debug;
-	bool	is_zmove_light;
+	bool	is_objs_debug;
+	bool	is_debug_zorintens;
 };
 
 struct	s_time

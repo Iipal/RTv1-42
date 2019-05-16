@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/16 21:22:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/16 23:55:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ extern void		rt_camera_speed_movements(double_t *cam_speed,
 extern void		rt_sdl_keys_press(Environment *env);
 extern void		rt_sdl_keys_release(Environment *env);
 extern void		rt_sdl_keys_events(Environment *env);
+extern void		rt_sdl_keys_events_objs_debug(Environment *env);
 extern void		rt_sdl_keys_events_light_debug(Environment *env);
 
 extern void		rt_rendering(Environment *env);
