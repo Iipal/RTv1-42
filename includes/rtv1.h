@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/16 19:40:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/16 21:22:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,33 @@ extern bool		rt_scam(Camera *cam, string s);
 extern bool		rt_slight(Light *l, string s);
 
 extern bool		rt_ssphere(Object *obj, string s);
+extern bool		rt_scone(Object *obj, string s);
 extern bool		rt_splane(Object *obj, string s);
 extern bool		rt_scylinder(Object *obj, string s);
 
 extern Vector	rt_inter_sphere(const Vector a,
 								const Vector b,
 								const void *restrict obj_ptr);
+extern Vector	rt_inter_cone(const Vector a,
+								const Vector b,
+								const void *restrict obj_ptr);
+extern Vector	rt_inter_plane(const Vector a,
+								const Vector b,
+								const void *restrict obj_ptr);
+extern Vector	rt_inter_cylinder(const Vector a,
+								const Vector b,
+								const void *restrict obj_ptr);
 
 extern Vector	rt_normal_sphere(const Vector p,
+								const Camera *restrict cam,
+								const void *restrict obj_ptr);
+extern Vector	rt_normal_cone(const Vector p,
+								const Camera *restrict cam,
+								const void *restrict obj_ptr);
+extern Vector	rt_normal_plane(const Vector p,
+								const Camera *restrict cam,
+								const void *restrict obj_ptr);
+extern Vector	rt_normal_cylinder(const Vector p,
 								const Camera *restrict cam,
 								const void *restrict obj_ptr);
 
