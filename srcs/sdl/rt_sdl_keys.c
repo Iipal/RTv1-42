@@ -6,18 +6,28 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:07:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 19:01:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 00:41:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline void	rt_sdl_keys_press(Environment *env)
+static inline void	add_sdl_keys_mode_switch(Environment *env)
+{
+	if (env->isr.is_objs_debug)
+		env->isr.is_objs_debug = false;
+	else if (env->isr.is_light_debug)
+		env->isr.is_objs_debug = true;
+	else
+		env->isr.is_light_debug = !env->isr.is_light_debug;
+}
+
+inline void			rt_sdl_keys_press(Environment *env)
 {
 	if (SDLK_x == SEKEY)
-		env->isr.is_light_debug = !env->isr.is_light_debug;
+		add_sdl_keys_mode_switch(env);
 	else if (SDLK_c == SEKEY)
-		env->isr.is_zmove_light = !env->isr.is_zmove_light;
+		env->isr.is_debug_zorintens = !env->isr.is_debug_zorintens;
 	else if (SDLK_z == SEKEY)
 		env->isr.is_render_fps = !env->isr.is_render_fps;
 	else if (SDLK_w == SEKEY)
@@ -38,7 +48,7 @@ inline void	rt_sdl_keys_press(Environment *env)
 		env->isr.is_speeddown = true;
 }
 
-inline void	rt_sdl_keys_release(Environment *env)
+inline void			rt_sdl_keys_release(Environment *env)
 {
 	if (SDLK_w == SEKEY)
 		env->isr.is_up = false;

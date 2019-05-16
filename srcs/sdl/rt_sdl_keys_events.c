@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:12:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 10:41:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 00:44:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,14 @@ static inline void	add_camera_keys_events(Environment *env)
 inline void			rt_sdl_keys_events(Environment *env)
 {
 	if (env->isr.is_light_debug)
-		rt_sdl_keys_events_light_debug(env);
+	{
+		if (env->isr.is_objs_debug)
+			env->isr.is_light_debug = false;
+		else
+			rt_sdl_keys_events_light_debug(env);
+	}
+	else if (env->isr.is_objs_debug)
+		rt_sdl_keys_events_objs_debug(env);
 	else
 		add_camera_keys_events(env);
 	rt_camera_speed_movements(&env->cam_speed,
