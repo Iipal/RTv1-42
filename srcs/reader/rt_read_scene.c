@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 10:54:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/16 21:22:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static bool	add_valid_saved_data(Scene *sc)
 
 static bool	add_parser(Scene *sc, string *str, t_pfhelp *pfh)
 {
-	const fns_parse	fns[] = {rt_ssphere, rt_splane, rt_scylinder};
-	const string	params[] = {FP_SPHERE, FP_PLANE, FP_CYLINDER};
+	const fns_parse	fns[] = {rt_ssphere, rt_scone, rt_splane, rt_scylinder};
+	const string	params[] = {FP_SPHERE, FP_CONE, FP_PLANE, FP_CYLINDER};
 	bool			is_valid_data;
 	bool			is_known;
 	size_t			i;
