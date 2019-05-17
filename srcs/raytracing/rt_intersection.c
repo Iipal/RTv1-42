@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 19:31:13 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 22:37:42 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static inline fDot	rt_intersection(const Vector o,
 									const Object *obj)
 {
 	const Vector	oc = o - obj->pos;
-	const Vector	k = obj->type != 1 ? obj->fn_inter_calc(oc, d, obj) : o;
-	const double_t	disc = obj->type != 1 ? Y(k) * Y(k) - 4.0 * X(k) * Z(k) : 0;
+	const Vector	k = 1 != obj->type ? obj->fn_inter_calc(oc, d, obj) : o;
+	const double_t	disc = 1 == obj->type ? : (Y(k) * Y(k) - 4.0 * X(k) * Z(k));
 
 	if (obj->type == plane)
 		return ((fDot){ !VDOT(d, obj->dir) ? -1
