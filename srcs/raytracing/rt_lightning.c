@@ -6,21 +6,21 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 19:32:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 22:26:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	add_specular_reflect(Light l, t_clhelp *h,
+static inline void	add_specular_reflect(Light *l, t_clhelp *h,
 									const float_t obj_spec, Vector v)
 {
 	h->h = v + h->l;
 	h->h = (Vector){X(h->h) / VLEN(h->h),
 		Y(h->h) / VLEN(h->h), Z(h->h) / VLEN(h->h)};
-	h->h_intense = l.intens * fmax(0, h->dnl) + obj_spec
-		* l.intens * pow(fmax(0, VDOT(h->n, h->h)), obj_spec);
-	h->d = h->n - l.pos;
+	h->h_intense = (l->intens * fmax(0, h->dnl) + obj_spec * 0.75f)
+		* l->intens * pow(fmax(0.0f, VDOT(h->n, h->h)), obj_spec);
+	h->d = h->n - l->pos;
 	h->i += h->h_intense / VLEN(h->d);
 }
 
@@ -44,8 +44,8 @@ Color				rt_calculate_light(Environment *env, t_clhelp *h,
 		h->dnl = VDOT(h->n, h->l);
 		if (.0f < h->dnl)
 			h->i += env->s.l[i].intens * h->dnl / (VLEN(h->n) * VLEN(h->l));
-		if (.0f < obj->spec || obj->type != plane)
-			add_specular_reflect(env->s.l[i], h, obj->spec, -d);
+		if (.0f < obj->spec)
+			add_specular_reflect(&env->s.l[i], h, obj->spec, -d);
 	}
 	return (.0f < h->i ? sdl_clrs_bright_inc(bg_clr, obj->clr, h->i) : bg_clr);
 }
