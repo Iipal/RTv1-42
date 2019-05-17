@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 12:05:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 22:27:26 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # endif
 
 # ifdef __linux__
-#  define WIN_X 1000
-#  define WIN_Y 500
+#  define WIN_X 1300
+#  define WIN_Y 650
 # endif
 
 # define MAX_X  1500
