@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 23:55:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 00:42:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 11:20:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static inline void	rt_objs_z_or_spec(Environment *env, size_t i)
 {
-	if (env->isr.is_debug_zorintens)
+	if (!env->isr.is_debug_zorintens)
 	{
 		if (env->isr.is_zdec)
 			Z(env->s.objs[i].pos) =
@@ -27,12 +27,12 @@ static inline void	rt_objs_z_or_spec(Environment *env, size_t i)
 	{
 		if (env->isr.is_zdec)
 			env->s.objs[i].spec =
-				MIN_SPSP > env->s.objs[i].spec - env->fps.move * 100
-				? MIN_SPSP : env->s.objs[i].spec - env->fps.move * 100;
+				(MIN_SPSP > env->s.objs[i].spec - env->fps.move * 100)
+				? MIN_SPSP : (env->s.objs[i].spec - env->fps.move * 100);
 		if (env->isr.is_zinc)
 			env->s.objs[i].spec =
-				MAX_SPSP < env->s.objs[i].spec + env->fps.move * 100
-				? MAX_SPSP : env->s.objs[i].spec + env->fps.move * 100;
+				(MAX_SPSP < env->s.objs[i].spec + env->fps.move * 100)
+				? MAX_SPSP : (env->s.objs[i].spec + env->fps.move * 100);
 	}
 }
 
