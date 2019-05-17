@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 16:59:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 12:59:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 17:35:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,6 @@ UIARR;
 UINT;
 
 enum	e_bool {false, true} __attribute__((packed));
-
-struct	s_dot
-{
-	int32_t	x;
-	int32_t	y;
-};
 
 # define BOOL   typedef enum e_bool     bool
 # define DOT    typedef int32_t  Dot __attribute__((vector_size(16),aligned))
