@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/16 23:55:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 15:51:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,19 @@ extern Vector	rt_inter_cylinder(const Vector a,
 								const void *restrict obj_ptr);
 
 extern Vector	rt_normal_sphere(const Vector p,
+								const Vector d,
 								const Camera *restrict cam,
 								const void *restrict obj_ptr);
 extern Vector	rt_normal_cone(const Vector p,
+								const Vector d,
 								const Camera *restrict cam,
 								const void *restrict obj_ptr);
 extern Vector	rt_normal_plane(const Vector p,
+								const Vector d,
 								const Camera *restrict cam,
 								const void *restrict obj_ptr);
 extern Vector	rt_normal_cylinder(const Vector p,
+								const Vector d,
 								const Camera *restrict cam,
 								const void *restrict obj_ptr);
 
@@ -60,6 +64,7 @@ extern bool		rt_flags_parser(Flags *f, strtab av, const size_t ac);
 extern bool		rt_fhelp(Flags *f, strtab av, const size_t ac, size_t *av_i);
 extern bool		rt_fvps(Flags *f, strtab av, const size_t ac, size_t *av_i);
 extern bool		rt_fsb(Flags *f, strtab av, const size_t ac, size_t *av_i);
+extern bool		rt_fftc(Flags *f, strtab av, const size_t ac, size_t *av_i);
 
 extern void		rt_camera_speed_movements(double_t *cam_speed,
 					const bool is_speed_up, const bool is_speed_down);
