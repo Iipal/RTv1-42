@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/16 22:31:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 11:35:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static bool	add_valid_saved_data(Scene *sc)
 static bool	add_parser(Scene *sc, string *str, t_pfhelp *pfh)
 {
 	const fns_parse	fns[] = {rt_ssphere, rt_scone, rt_splane, rt_scylinder};
-	const string	params[] = {FP_SPHERE, FP_CONE, FP_PLANE, FP_CYLINDER};
+	const string	objects[] = {FP_SPHERE, FP_CONE, FP_PLANE, FP_CYLINDER};
 	bool			is_valid_data;
 	bool			is_known;
 	size_t			i;
@@ -58,8 +58,8 @@ static bool	add_parser(Scene *sc, string *str, t_pfhelp *pfh)
 	else if (!ft_strncmp(*str, FP_CAM, ft_strlen(FP_CAM)) && (is_known = true))
 		is_valid_data = rt_scam(&sc->cam, *str);
 	else
-		while ((sizeof(params) / sizeof(*params)) > ++i)
-			if (!ft_strncmp(*str, params[i], ft_strlen(params[i]))
+		while (max_objs > ++i)
+			if (!ft_strncmp(*str, objects[i], ft_strlen(objects[i]))
 			&& (is_known = true))
 				is_valid_data = fns[i](&sc->objs[pfh->obj_counter++], *str);
 	IFDOM(E_OBJ, !is_known, is_valid_data = false);
