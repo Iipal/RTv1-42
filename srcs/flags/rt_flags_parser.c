@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 17:35:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 11:35:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 12:04:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static bool	add_curr_fparse(Flags *f, strtab av,
 							const size_t ac, size_t *i_av)
 {
-	const string		flags[] = {F_HELP, F_VPS, F_SB};
-	const string		sflags[] = {SF_HELP, SF_VPS, SF_SB};
-	const t_fn_fparse	fns[] = {rt_fhelp, rt_fvps, rt_fsb};
+	const string		flags[] = {F_HELP, F_VPS, F_SB, F_FTC};
+	const string		sflags[] = {SF_HELP, SF_VPS, SF_SB, SF_FTC};
+	const t_fn_fparse	fns[] = {rt_fhelp, rt_fvps, rt_fsb, rt_fftc};
 	size_t				i;
 	bool				is_valid_flag;
 
