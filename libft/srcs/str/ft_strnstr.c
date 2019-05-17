@@ -6,18 +6,17 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 17:41:32 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 18:42:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 13:18:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline string	ft_strnstr(cstring str, cstring to_find, size_t len)
+string	ft_strnstr(string str, string to_find, size_t len)
 {
-	size_t		n;
+	const size_t	n = ft_strlen(to_find);
 
 	NO_R(*to_find, (string)str);
-	n = ft_strlen(to_find);
 	while (*str && len-- >= n)
 	{
 		if (*str && *to_find

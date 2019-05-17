@@ -6,18 +6,18 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 16:43:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/17 12:36:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 13:27:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_skip_to_blank(cstring str)
+size_t	ft_skip_to_blank(const string str)
 {
 	size_t	i;
 
-	i = 0;
-	while (str[i] && !ft_isblank(str[i]))
-		++i;
+	i = ~0L;
+	while (str[++i] && !ft_isblank(str[i]))
+		;
 	return (i);
 }

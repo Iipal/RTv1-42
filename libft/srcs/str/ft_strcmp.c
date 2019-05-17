@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 13:26:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 18:29:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 13:09:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline int8_t	ft_strcmp(cstring s1, cstring s2)
+inline uchar	ft_strcmp(string s1, string s2)
 {
 	while (*s1 && (*s1 == *s2))
 	{

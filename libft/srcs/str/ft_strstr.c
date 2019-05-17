@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 18:19:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 18:42:33 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 13:16:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline string	ft_strstr(cstring str, cstring to_find)
+string	ft_strstr(string str, string to_find)
 {
 	string cp;
 	string s1;

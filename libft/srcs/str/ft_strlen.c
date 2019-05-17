@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:05:59 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 18:30:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 13:10:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline size_t	ft_strlen(cstring str)
+size_t	ft_strlen(const string str)
 {
 	size_t	i;
 

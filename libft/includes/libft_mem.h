@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:08:05 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 18:56:11 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 13:25:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,19 @@ extern void		ft_memdel(pvoid *ap);
 **	\return \param dest where fills the first \param len bytes of
 **	 \param dest with the \param c.
 */
-extern pvoid	ft_memset(pvoid dest, const int32_t c, size_t len);
+pvoid			ft_memset(pvoid dest, const int32_t c, const size_t len);
 
 /*
 **	\return \param dest where copies \param n bytes from
 **	 \param src to \param dest.
 */
-extern pvoid	ft_memcpy(pvoid dest, const pvoid src, size_t n);
+pvoid			ft_memcpy(pvoid dest, const pvoid src, const size_t n);
 
 /*
 **	\return \param dest where copies no more than \param n bytes from
 **	 \param src to \pararm dest, stopping when the symbol \param c is found.
 */
-extern pvoid	ft_memccpy(pvoid dest,
+pvoid			ft_memccpy(pvoid dest,
 					const pvoid src,
 					uint8_t c,
 					const size_t n);
@@ -53,13 +53,13 @@ extern pvoid	ft_memccpy(pvoid dest,
 **	\return \param dest where copies
 **	\param len bytes from \param src to \param dest.
 */
-extern pvoid	ft_memmove(pvoid dest, void const *src, size_t len);
+pvoid			ft_memmove(pvoid dest, void const *src, size_t len);
 
 /*
 **	\return matching byte of \param s after scans the initial \param n bytes
 **	 of \param s for the first instance of c.
 */
-extern pvoid	ft_memchr(const pvoid s, const uchar c, size_t n);
+pvoid			ft_memchr(const pvoid s, const uchar c, size_t n);
 
 /*
 **	\return pointer to allocated \param size bytes.
@@ -73,5 +73,5 @@ extern pvoid	ft_memalloc(size_t size);
 **	 respectively, to be less than, to match,
 **	 or be greater than the first \param n bytes of \param s2.
 */
-extern int32_t	ft_memcmp(const pvoid s1, const pvoid s2, size_t n);
+int32_t			ft_memcmp(const pvoid s1, const pvoid s2, size_t n);
 #endif

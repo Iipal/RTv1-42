@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:09:12 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 17:37:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 13:27:25 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@
 **	 1 - Successful readed 1 line from file.
 **	 -1 - Reading error.]
 */
-extern int8_t	ft_gnl(const int32_t fd, string *line);
+int8_t	ft_gnl(const int32_t fd, string *line);
 
 /*
 **	Randomize unsigned decimal number.
 **	\param limits: Max random number.
 **	\return random: number from 0 to \ref limits.
 */
-extern size_t	ft_rand(size_t limits);
+size_t	ft_rand(size_t limits);
 
 /*
 **	Compare if one of \param n va_list arguments is equal to \param cmp.
@@ -42,7 +42,7 @@ extern size_t	ft_rand(size_t limits);
 **	\param ...: va_list.
 **	\return true if one of argument is equal to \param cmp, else - false.
 */
-extern bool		ft_is_one_of_n(int64_t cmp, size_t n, ...);
+bool	ft_is_one_of_n(int64_t cmp, size_t n, ...);
 
 /*
 **	Compare if one of \param n va_list arguments is equal to \param cmp.
@@ -52,35 +52,41 @@ extern bool		ft_is_one_of_n(int64_t cmp, size_t n, ...);
 **	\param ...: va_list.
 **	\return true if one of argument is equal to \param cmp, else - false.
 */
-extern bool		ft_is_one_of_str(cstring cmp, bool cmp_len, size_t n, ...);
+bool	ft_is_one_of_str(const string cmp, const bool cmp_len, size_t n, ...);
 
 /*
 **	\return How many digits in \param n.
 */
-extern size_t	ft_digits(int32_t n);
+size_t	ft_digits(int32_t n);
 
 /*
 **	\return true is \param str contain only digits or false if not.
 */
-extern bool		ft_isdigits_str(const string str);
+bool	ft_isdigits_str(const string str);
+
+/*
+**	\return true is \param str contain only hex digits or false if not.
+*/
+bool	ft_ishex_str(const string str);
 
 /*
 **	\return How many blanks skips in string \param str.
 */
-extern size_t	ft_skip_blanks(cstring str);
+size_t	ft_skip_blanks(const string str);
 
 /*
 **	\return How many symbols to first blank symbol in string \param str.
 */
-extern size_t	ft_skip_to_blank(cstring str);
+size_t	ft_skip_to_blank(const string str);
 
 /*
 **	Swap int32_t values.
 */
-extern void		ft_swap(int32_t *a, int32_t *b);
+void	ft_swap(int32_t *a, int32_t *b);
 
 /*
 **	Swap char values.
 */
-extern void		ft_cwap(char *a, char *b);
+void	ft_cwap(char *a, char *b);
+
 #endif

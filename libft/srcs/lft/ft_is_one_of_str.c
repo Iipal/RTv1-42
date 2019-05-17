@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 23:08:35 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 10:18:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 13:26:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_is_one_of_str(cstring cmp, bool cmp_len, size_t n, ...)
+bool	ft_is_one_of_str(const string cmp, const bool cmp_len, size_t n, ...)
 {
 	va_list	ap;
 	bool	is_one_of;

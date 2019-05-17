@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrepchr.c                                     :+:      :+:    :+:   */
+/*   ft_ishex_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/14 11:20:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 13:08:33 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/05/17 12:23:15 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/05/17 12:54:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_strrepchr(const string str,
-			const char search,
-			const char replace)
+bool	ft_ishex_str(const string str)
 {
-	string ptr;
+	size_t			i;
+	size_t			j;
+	const string	valid_hex = "0123456789abcdef";
 
-	NO_F(str);
-	ptr = (string)str;
-	while ((ptr = ft_strchr(ptr, search)))
-		*ptr++ = replace;
+	i = ~0L;
+	while (str[++i] && (j = 16))
+		while (valid_hex[--j])
+			if (ft_tolower(str[i]) != valid_hex[j])
+				return (false);
 	return (true);
 }

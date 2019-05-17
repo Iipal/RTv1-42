@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 10:03:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 18:37:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 13:11:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline string	ft_strdup(cstring src)
+string	ft_strdup(const string src)
 {
 	string	out;
 	size_t	i;

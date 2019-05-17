@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 13:43:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 18:54:42 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 13:24:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline pvoid	ft_memmove(pvoid dest, void const *src, size_t len)
+pvoid	ft_memmove(pvoid dest, void const *src, size_t len)
 {
 	size_t	i;
 	ustring	dst;

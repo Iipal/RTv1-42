@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 19:11:48 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 18:47:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 13:28:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ inline string	ft_strjoin(char const *s1, char const *s2)
 
 	out = NULL;
 	IFR(!s1 || !s2, out);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
+	len1 = ft_strlen((const string)s1);
+	len2 = ft_strlen((const string)s2);
 	NO_R(out = ft_strnew((len1 ? len1 : 1) + (len2 ? len2 : 1)), out);
-	out = ft_strcpy(out, s1);
-	out = ft_strcpy(out + len1, s2);
+	out = ft_strcpy(out, (const string)s1);
+	out = ft_strcpy(out + len1, (const string)s2);
 	return (out - len1);
 }

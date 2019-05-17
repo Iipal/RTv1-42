@@ -6,23 +6,23 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 17:43:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 18:31:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 13:10:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 size_t	ft_strlcat(string dest,
-					cstring src,
-					size_t dstsize)
+			const string src,
+			size_t dstsize)
 {
+	string	sc;
 	string	dst;
-	cstring	sc;
 	size_t	n;
 	size_t	dlen;
 
 	dst = dest;
-	sc = src;
+	sc = (string)src;
 	n = dstsize;
 	while (n-- && *dst++)
 		;
@@ -36,7 +36,7 @@ size_t	ft_strlcat(string dest,
 			*dst++ = *sc;
 			n--;
 		}
-		sc++;
+		++sc;
 	}
 	*dst = '\0';
 	return (dlen + (sc - src));

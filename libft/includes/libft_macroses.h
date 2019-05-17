@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 16:59:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 17:16:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 12:59:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,17 @@
 
 # define ABS(var) ((var) < 0) ? -(var) : (var)
 
-# define DOT    typedef struct s_dot    Dot
-# define FDOT   typedef struct s_fdot   fDot
 # define STR    typedef char*           string
-# define CSTR   typedef const char*     cstring
 # define USTR   typedef unsigned char*  ustring
 # define UCHAR  typedef unsigned char   uchar
 # define STRTAB typedef char**          strtab
 # define PVOID  typedef void*           pvoid
-# define BOOL   typedef enum e_bool     bool
 # define IARR   typedef int32_t*        iarr
 # define ITAB   typedef int32_t**       itab
 # define UIARR  typedef uint32_t*       uiarr
 # define UINT   typedef uint32_t        uint
 
 STR;
-CSTR;
 USTR;
 UCHAR;
 STRTAB;
@@ -84,14 +79,19 @@ struct	s_dot
 	int32_t	y;
 };
 
-struct	s_fdot
-{
-	double_t	x;
-	double_t	y;
-};
+# define BOOL   typedef enum e_bool     bool
+# define DOT    typedef int32_t  Dot __attribute__((vector_size(16),aligned))
+# define FDOT   typedef double_t fDot __attribute__((vector_size(16),aligned))
+# define VEC    typedef double_t Vector __attribute__((vector_size(32),aligned))
 
 BOOL;
 DOT;
 FDOT;
+VEC;
+
+# define X(v) v[0]
+# define Y(v) v[1]
+# define Z(v) v[2]
+# define W(v) v[3]
 
 #endif

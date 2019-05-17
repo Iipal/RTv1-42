@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 16:37:20 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 18:40:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 13:15:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline string	ft_strchr(cstring s, uchar c)
+string	ft_strchr(string s, const uchar c)
 {
 	while (*s != c)
 		if (!*s++)

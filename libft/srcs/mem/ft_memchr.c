@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 15:04:22 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 18:55:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 13:25:16 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline pvoid	ft_memchr(const pvoid s, const uchar c, size_t n)
+pvoid	ft_memchr(const pvoid s, const uchar c, size_t n)
 {
 	ustring			out;
 	size_t			i;

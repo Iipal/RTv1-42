@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 18:41:43 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/04/04 01:37:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 13:10:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int8_t	ft_strncmp(cstring s1, cstring s2, size_t n)
+uchar	ft_strncmp(string s1, string s2, size_t n)
 {
 	uchar	u1;
 	uchar	u2;
@@ -23,7 +23,7 @@ int8_t	ft_strncmp(cstring s1, cstring s2, size_t n)
 		u2 = (uchar)*s2++;
 		if (u1 != u2)
 			return (u1 - u2);
-		if (u1 == '\0')
+		if (!u1)
 			return (0);
 	}
 	return (0);
