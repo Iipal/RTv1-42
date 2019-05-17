@@ -1,8 +1,8 @@
 Camera: 0,0,0 0,0,0
 Light: 0,20,0 100
-Sphere: 0,0,10 0xaa11ff 1 100
-Sphere: 2,1,13 0xffacaa 1 100
-Sphere: 1,0,11 0xabcdef 1 100
-Sphere: -1,2,16 0xfedcba 1 100
-Sphere: 3,0,10 0x123456 1 100
-Light: 20,10,0 50
+Sphere: 0,0,10 0xaa11fa 1 100
+Sphere: 2,1,13 0xccacaa 1 100
+Sphere: 1,0,11 0x11cdf0 1 100
+Sphere: -1,2,16 0x11fa1a 1 100
+Sphere: 3,0,10 0x424242 1 100
+Light: 15,20,0 50
