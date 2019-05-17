@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_sdl_keys_events_light.c                         :+:      :+:    :+:   */
+/*   rt_sdl_keys_events_lights.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 18:15:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 00:42:14 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 11:20:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static inline void	rt_light_zorintens(Environment *env, size_t i)
 	else
 	{
 		if (env->isr.is_zdec)
-			env->s.l[i].intens = 0.0f > env->s.l[i].intens - env->fps.move / 2
-				? 0.0f : env->s.l[i].intens - env->fps.move / 2;
+			env->s.l[i].intens = (0.0f > env->s.l[i].intens - env->fps.move / 2)
+				? 0.0f : (env->s.l[i].intens - env->fps.move / 2);
 		if (env->isr.is_zinc)
-			env->s.l[i].intens = 1.0f < env->s.l[i].intens + env->fps.move / 2
-				? 1.0f : env->s.l[i].intens + env->fps.move / 2;
+			env->s.l[i].intens = (1.0f < env->s.l[i].intens + env->fps.move / 2)
+				? 1.0f : (env->s.l[i].intens + env->fps.move / 2);
 	}
 }
 
