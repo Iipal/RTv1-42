@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 12:22:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/16 15:37:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 12:38:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@
 # define SDL_CLRS_ISONE(c1, c2) (c1.r == c2.r || c1.g == c2.g || c1.b == c2.b)
 
 # define SDL_CLR_TO_RGB(clr) (clr.r << 16 | clr.g << 8 | clr.b)
-# define SDL_RGB_TO_CLR(hex) (Color) {hex >> 16, (hex >> 8)  & 0xff, hex & 0xff}
+# define SDL_RGB_TO_CLR(hex) (Color){hex >> 16, (hex >> 8)  & 0xff, hex & 0xff}
+# define SDL_HEX_TO_CLR(h)   (SDL_Color){h >> 16, (h >> 8)  & 0xff, h & 0xff, 0}
 
 # define SDL_CLR_ADD(c, a) (Color){INRANGE(c.r+a),INRANGE(c.g+a),INRANGE(c.b+a)}
 # define SDL_CLR_SUB(c, a) (Color){INRANGE(c.r-a),INRANGE(c.g-a),INRANGE(c.b-a)}
