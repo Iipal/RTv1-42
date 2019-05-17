@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/16 18:03:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 19:32:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ Color				rt_calculate_light(Environment *env, t_clhelp *h,
 		h->dnl = VDOT(h->n, h->l);
 		if (.0f < h->dnl)
 			h->i += env->s.l[i].intens * h->dnl / (VLEN(h->n) * VLEN(h->l));
-		if (.0f < obj->spec)
+		if (.0f < obj->spec || obj->type != plane)
 			add_specular_reflect(env->s.l[i], h, obj->spec, -d);
 	}
 	return (.0f < h->i ? sdl_clrs_bright_inc(bg_clr, obj->clr, h->i) : bg_clr);

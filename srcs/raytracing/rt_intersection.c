@@ -6,23 +6,26 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 11:36:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 19:31:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
+/*
+**	obj->type == 1 if it's plane. For plane don't neccessary calc discriminant.
+*/
 static inline fDot	rt_intersection(const Vector o,
 									const Vector d,
 									const Object *obj)
 {
 	const Vector	oc = o - obj->pos;
-	const Vector	k = obj->fn_inter_calc(oc, d, obj);
-	const double_t	disc = Y(k) * Y(k) - 4.0f * X(k) * Z(k);
+	const Vector	k = obj->type != 1 ? obj->fn_inter_calc(oc, d, obj) : o;
+	const double_t	disc = obj->type != 1 ? Y(k) * Y(k) - 4.0 * X(k) * Z(k) : 0;
 
 	if (obj->type == plane)
 		return ((fDot){ !VDOT(d, obj->dir) ? -1
-					: -VDOT(oc, obj->dir) / VDOT(d, obj->dir), -1});
+				: -VDOT(oc, obj->dir) / VDOT(d, obj->dir), -1});
 	else if (.0f > disc)
 		return ((fDot){ -1, -1 });
 	return ((fDot){ (-Y(k) + sqrt(disc)) / (2.0f * X(k)),

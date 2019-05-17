@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 18:06:24 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 18:02:17 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 18:39:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ inline Vector	rt_inter_cylinder(const Vector a,
 								const Vector b,
 								const void *restrict obj_ptr)
 {
+	const Vector	obj_dir = ((Object*)obj_ptr)->dir;
 	const float_t	r = (float_t)(((Object*)obj_ptr)->radius);
 
-	return ((Vector){VDOT(b, b), 2.0f * VDOT(a, b), VDOT(a, a) - r * r});
+	return ((Vector){VDOT(b, b) - pow(VDOT(b, obj_dir), 2),
+		(VDOT(b, a) - (VDOT(b, obj_dir) * VDOT(a, obj_dir))),
+		VDOT(a, a) - pow(VDOT(a, obj_dir), 2) - r * r});
 }
