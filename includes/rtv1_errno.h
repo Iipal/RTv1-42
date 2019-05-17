@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 10:55:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 12:52:45 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,31 @@
 # define ERRAT(msg, nl) {ERR_AT_NL(nl);MSG(" \"");MSG(msg);MSGN("\"");}
 
 # define E_IFLAG    ERR "Invalid flag."
-
 # define E_VPS      "Viewport-Scale"
 # define E_SB       "Shadow bright"
+# define E_FTC      "FPS text color"
 
 # define E_MISPARM  "Missed param for flag "
-
 # define E_MP_VPS   ERR E_MISPARM F_VPS "."
 # define E_MP_SB    ERR E_MISPARM F_SB "."
+# define E_MP_FTC   ERR E_MISPARM E_FTC "."
 
 # define E_UNSIGN   ERR "Only unsigned param values."
 # define E_DIGITS   ERR "Only digits in param values string."
 
-# define E_WVPSZERO WARNING E_VPS " flag param is 0. Min is 1."
-# define E_WSBZERO  WARNING E_SB " flag param is 0. Min is 1."
+# define E_WVPSZERO WARNING E_VPS " param is 0. Min is 1."
+# define E_WSBZERO  WARNING E_SB " param is 0. Min is 1."
+# define E_WFTCZERO WARNING E_FTC " param invalid or 0x0."
 
-# define E_WF_10 " flag param was greate than 10. Max is 10."
+# define E_MAX_10   " flag param greate than 10. Max is 10."
+# define E_MAX_CLR  " flag param color greate than 0xffffff. Max is 0xffffff."
 
-# define E_WARNVPS  WARNING E_VPS E_WF_10
-# define E_WARNSB   WARNING E_SB E_WF_10
+# define E_WARNVPS  WARNING E_VPS E_MAX_10
+# define E_WARNSB   WARNING E_SB E_MAX_10
+# define E_WARNFTC  WARNING E_FTC E_MAX_CLR
+
+# define E_FTC0X    "0x"
+# define E_FTC_NO0X ERR "missed \'0x\' for color"
+# define E_FTC_HEX  ERR "invalid hex number."
 
 #endif
