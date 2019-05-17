@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/16 18:22:34 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 12:05:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,18 @@
 # define F_HELP     "--help"
 # define F_VPS      "--viewport-scale"
 # define F_SB       "--shadow-bright"
+# define F_FTC      "--fps-text-color"
 
 # define SF_HELP    "-h"
 # define SF_VPS     "-vps"
 # define SF_SB      "-sb"
+# define SF_FTC     "-ftc"
 
-# define MAX_FLAGS  3
+# define MAX_FLAGS  4
+
+# define DEF_VIEWPORT_SCALE 1.0f
+# define DEF_SHADOW_BRIGHT  100.0f
+# define DEF_FPS_TEXT_COLOR 0x7FFF00
 
 # define REFRESH_FPS_COUNTER .1f
 
