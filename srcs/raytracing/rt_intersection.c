@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/16 23:52:14 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 11:36:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ static inline fDot	rt_intersection(const Vector o,
 	const double_t	disc = Y(k) * Y(k) - 4.0f * X(k) * Z(k);
 
 	if (obj->type == plane)
-		return ((fDot){!VDOT(d, obj->dir) ? -1
+		return ((fDot){ !VDOT(d, obj->dir) ? -1
 					: -VDOT(oc, obj->dir) / VDOT(d, obj->dir), -1});
-	if (.0f > disc)
-		return ((fDot){-1, -1});
+	else if (.0f > disc)
+		return ((fDot){ -1, -1 });
 	return ((fDot){ (-Y(k) + sqrt(disc)) / (2.0f * X(k)),
 					(-Y(k) - sqrt(disc)) / (2.0f * X(k)) });
 }
@@ -43,14 +43,14 @@ Object				*rt_closest_inter(const Vector o,
 	while (++i < env->s.ins_objs)
 	{
 		t = rt_intersection(o, d, &env->s.objs[i]);
-		if (t.x >= env->t_min && t.x < env->t_max && t.x < env->s.cobj)
+		if (X(t) >= env->t_min && X(t) < env->t_max && X(t) < env->s.cobj)
 		{
-			env->s.cobj = t.x;
+			env->s.cobj = X(t);
 			out_obj = &env->s.objs[i];
 		}
-		if (t.y >= env->t_min && t.y < env->t_max && t.y < env->s.cobj)
+		if (Y(t) >= env->t_min && Y(t) < env->t_max && Y(t) < env->s.cobj)
 		{
-			env->s.cobj = t.y;
+			env->s.cobj = Y(t);
 			out_obj = &env->s.objs[i];
 		}
 	}
