@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 15:50:56 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 23:51:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,11 @@ struct	s_scene
 
 struct	s_fps
 {
-	Time	time;
-	float_t	move;
+	Time		time;
+	double_t	move;
+	double_t	lights_move;
+	double_t	lights_intens;
+	double_t	objs_spec_intens;
 };
 
 struct	s_flags
