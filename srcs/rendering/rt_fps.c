@@ -6,30 +6,30 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 18:51:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 12:53:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 12:48:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static void	add_render_fps(const SDL_Surface *text,
+static void	add_render_fps(SDL_Surface *text,
 						uiarr screen,
 						const bool pos)
 {
 	Dot		tp;
 	Dot		p;
-	uiarr	pixels;
 
-	pixels = text->pixels;
-	tp.y = pos ? 20 : 0;
-	p.y = -1;
-	while (text->h > ++(p.y) && (p.x = -1)
-	&& (tp.x = -1))
+	Y(p) = -1;
+	Y(tp) = pos ? 20 : 0;
+	while (text->h > ++Y(p) && (X(p) = -1)
+							&& (X(tp) = -1))
 	{
-		while (text->w > ++(p.x))
-			screen[tp.y * WIN_X + ++(tp.x)] = pixels[p.y * text->w + p.x];
-		++(tp.y);
+		while (text->w > ++X(p))
+			screen[Y(tp) * WIN_X + ++X(tp)] =
+				((uiarr)(text->pixels))[Y(p) * text->w + X(p)];
+		++Y(tp);
 	}
+	SDL_FreeSurface(text);
 }
 
 static void	add_fps_prepare_and_draw(const float_t dfps,
@@ -39,7 +39,6 @@ static void	add_fps_prepare_and_draw(const float_t dfps,
 	const string	data_info[] = {" fps", " ms"};
 	string			data[2];
 	string			temp[2];
-	SDL_Surface		*text;
 	int8_t			i;
 
 	i = -1;
@@ -48,12 +47,11 @@ static void	add_fps_prepare_and_draw(const float_t dfps,
 		data[i] = (i ? ft_itoa(dms) : ft_itoa(dfps));
 		temp[i] = data[i];
 		data[i] = ft_strjoin(data[i], data_info[i]);
-		text = sdl_optimize_font_load(env->sdl->font, data[i],
-			(SDL_Color){127, 255, 0, 0}, env->sdl->wsurf->format);
+		add_render_fps(sdl_optimize_font_load(env->sdl->font, data[i],
+			SDL_HEX_TO_CLR(env->flags.fps_text_color), env->sdl->wsurf->format),
+			env->sdl->pxls, i);
 		ft_strdel(&(temp[i]));
 		ft_strdel(&(data[i]));
-		add_render_fps(text, env->sdl->pxls, i);
-		SDL_FreeSurface(text);
 	}
 }
 
