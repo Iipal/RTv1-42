@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 11:35:03 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 23:40:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,22 @@ static bool	add_valid_saved_data(Scene *sc)
 	NOM_F(E_NOCAM, sc->cam.is);
 	NOM_F(E_CAMPOS, u_inrangev(sc->cam.pos, true, true));
 	sc->cam.dir = u_inrange_dir_max(sc->cam.dir);
-	sc->cam.dir = u_inrange_dir_max(sc->cam.dir);
+	sc->cam.dir = u_inrange_dir_min(sc->cam.dir);
 	i = ~0L;
 	while (sc->ins_l > ++i)
 	{
 		NOM_F(E_LIGHTPOS, u_inrangev(sc->l[i].pos, true, true));
-		IFM_F(E_LINTENSE, .0f > sc->l[i].intens || 1.0f < sc->l[i].intens);
+		IFM_F(E_LINTENSE, MIN_L_INTENS > sc->l[i].intens
+						|| MAX_L_INTENS < sc->l[i].intens);
 	}
 	i = ~0L;
 	while (sc->ins_objs > ++i)
 	{
 		NOM_F(E_OPOS, u_inrangev(sc->objs[i].pos, true, true));
-		IFM_F(E_ORAD, MIN_SPR > sc->objs[i].radius
-			|| MAX_SPR < sc->objs[i].radius);
-		IFM_F(E_OSPEC, MIN_SPSP > sc->objs[i].spec
-			|| MAX_SPSP < sc->objs[i].spec);
+		IFM_F(E_ORAD, MIN_RADIUS > sc->objs[i].radius
+					|| MAX_RADIUS < sc->objs[i].radius);
+		IFM_F(E_OSPEC, MIN_SPEC > sc->objs[i].spec
+					|| MAX_SPEC < sc->objs[i].spec);
 		sc->objs[i].dir = u_inrange_dir_max(sc->objs[i].dir);
 		sc->objs[i].dir = u_inrange_dir_min(sc->objs[i].dir);
 	}
