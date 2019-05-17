@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 18:51:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 12:48:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 23:51:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,22 +57,25 @@ static void	add_fps_prepare_and_draw(const float_t dfps,
 
 inline void	rt_render_fps_counter(Environment *env)
 {
-	static float_t	delta;
+	static float_t	delta_refresh;
 
-	(delta > REFRESH_FPS_COUNTER) ? (delta = 0) : 0;
-	if (.0f == delta)
+	(delta_refresh < REFRESH_FPS_COUNTER) ? 1 : (delta_refresh = 0);
+	if (.0f == delta_refresh)
 	{
-		env->fps.time.fps = 1.0 / env->fps.time.res;
-		env->fps.time.ms = env->fps.time.res * 1000;
+		env->fps.time.fps = 1.0f / env->fps.time.res;
+		env->fps.time.ms = env->fps.time.res * 1000.0f;
 	}
 	add_fps_prepare_and_draw(env->fps.time.fps, env->fps.time.ms, env);
-	delta += env->fps.time.res;
+	delta_refresh += env->fps.time.res;
 }
 
 inline void	rt_fps(Fps *fps, const double_t cam_speed)
 {
 	fps->time.old = fps->time.current;
 	fps->time.current = SDL_GetTicks();
-	fps->time.res = (fps->time.current - fps->time.old) / 1000.0;
+	fps->time.res = (fps->time.current - fps->time.old) / 1000.0f;
 	fps->move = fps->time.res * MOVE_INC * cam_speed;
+	fps->lights_move = fps->move * 5.0f;
+	fps->lights_intens = fps->move / 5.0f;
+	fps->objs_spec_intens = fps->move * 100.0f;
 }
