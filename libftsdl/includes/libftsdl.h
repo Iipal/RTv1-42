@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 19:59:09 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 12:52:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 12:56:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "libftsdl_macroses.h"
 # include "libftsdl_errno.h"
 
-struct		s_sdl
+struct				s_sdl
 {
 	SDL_Window	*w;
 	SDL_Surface	*wsurf;
@@ -60,7 +60,7 @@ extern void			sdl_free(Sdl **sdl);
 extern void			sdl_pixelput(SDL_Surface *surf,
 						const Dot p, const Color clr);
 
-extern  SDL_Surface	*sdl_optimize_font_load(TTF_Font *font,
+extern SDL_Surface	*sdl_optimize_font_load(TTF_Font *font,
 						const string text,
 						const SDL_Color text_color,
 						const SDL_PixelFormat *format);
