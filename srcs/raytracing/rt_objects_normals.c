@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 19:17:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 19:17:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 22:35:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@ inline Vector	rt_normal_plane(const Vector p,
 								const Camera *restrict cam,
 								const void *restrict obj_ptr)
 {
+	const Vector	obj_dir = ((Object*)obj_ptr)->dir;
+
 	(void)p;
 	(void)cam;
-	return (0 < VDOT(d, ((Object*)obj_ptr)->dir)
-		? -((Object*)obj_ptr)->dir : ((Object*)obj_ptr)->dir);
+	return (0 < VDOT(d, obj_dir) ? -obj_dir : obj_dir);
 }
 
 inline Vector	rt_normal_cylinder(const Vector p,
@@ -54,11 +55,8 @@ inline Vector	rt_normal_cylinder(const Vector p,
 								const void *restrict obj_ptr)
 {
 	const Vector	obj_dir = ((Object*)obj_ptr)->dir;
-	const Vector	obj_pos = ((Object*)obj_ptr)->pos;
 	const double_t	m = (VDOT(d, obj_dir) * TMAX) + VDOT(p, obj_dir);
 
 	(void)cam;
-	// c = b - rt.obj[a].o_pos - vec_mult(rt.obj[a].o_rot, d);
-
-	return (p - obj_pos - VMUL(obj_dir, m));
+	return (p - ((Object*)obj_ptr)->pos - VMUL(obj_dir, m));
 }
