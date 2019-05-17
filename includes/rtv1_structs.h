@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 00:35:48 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/17 15:50:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,6 @@
 # ifdef __linux__
 #  include <SDL2/SDL.h>
 # endif
-
-# define VEC typedef double Vector __attribute__((vector_size(32),aligned));
-
-VEC;
-
-# define X(vec) vec[0]
-# define Y(vec) vec[1]
-# define Z(vec) vec[2]
-# define W(vec) vec[3]
 
 enum	e_type
 {
@@ -59,7 +50,7 @@ struct	s_light
 };
 
 typedef Vector	(*t_fn_inter)(const Vector, const Vector, const void*restrict);
-typedef Vector	(*t_fn_normal)(const Vector,
+typedef Vector	(*t_fn_normal)(const Vector, const Vector,
 							const struct s_camera *restrict,
 							const void *restrict);
 
@@ -132,6 +123,7 @@ struct	s_flags
 {
 	float_t	viewport_scale;
 	float_t	shadows_bright;
+	Uint32	fps_text_color;
 };
 
 # define SCENE typedef struct s_scene   Scene
