@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 16:59:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 17:35:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/18 09:40:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define IFR(ex, ret) if ((ex)) {return (ret);}
 # define IF_F(ex) if ((ex)) return (false);
 # define IFDO(ex, do) if ((ex)) {do;}
+# define IFDO_F(ex, do) if ((ex)) {do; return (false);}
 # define IFDOM(msg, ex, do) if ((ex)) {MSGN(msg); do;}
 # define IFDOR(ex, do, ret) {if ((ex)) {do; return(ret);}}
 # define IFDOMR(msg, ex, do, ret) if ((ex)) {MSGN(msg); do; return (ret);}
