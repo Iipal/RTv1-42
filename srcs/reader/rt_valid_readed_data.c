@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 10:05:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/18 10:12:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/18 17:44:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ bool		rt_valid_readed_data(Scene *s)
 		NODO_F(u_inrangev(s->objs[i].pos, true, true),
 			ERRIN(E_OBJPOS, i + 1, E_IN_OBJ));
 		IFDO_F(MIN_RADIUS > s->objs[i].radius
-		|| MAX_RADIUS > s->objs[i].radius, ERRIN(E_OBJRAD, i + 1, E_IN_OBJ));
+		|| MAX_RADIUS < s->objs[i].radius, ERRIN(E_OBJRAD, i + 1, E_IN_OBJ));
 		IFDO_F(MIN_SPEC > s->objs[i].spec || MAX_SPEC < s->objs[i].spec,
 			ERRIN(E_OBJRAD, i + 1, E_IN_OBJ));
 		s->objs[i].dir = u_inrange_dir_max(s->objs[i].dir);
