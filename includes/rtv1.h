@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 15:51:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/18 10:07:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "rtv1_macroses.h"
 
 extern bool		rt_read_scene(Environment *env, string scene_file);
+extern bool		rt_valid_readed_data(Scene *s);
 
 extern bool		rt_scam(Camera *cam, string s);
 extern bool		rt_slight(Light *l, string s);
