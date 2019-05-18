@@ -6,14 +6,16 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/18 09:29:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 00:43:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	add_specular_reflect(Light *l, t_clhelp *h,
-									const float_t obj_spec, Vector v)
+static inline void	add_specular_reflect(Light *restrict const l,
+									t_clhelp *restrict const h,
+									const float_t obj_spec,
+									const Vector v)
 {
 	h->h = v + h->l;
 	h->h = (Vector){X(h->h) / VLEN(h->h),
@@ -24,8 +26,10 @@ static inline void	add_specular_reflect(Light *l, t_clhelp *h,
 	h->i += h->h_intense / VLEN(h->d);
 }
 
-Color				rt_calculate_light(Environment *env, t_clhelp *h,
-								const Object *obj, const Vector d)
+Color				rt_calculate_light(Environment *restrict env,
+								t_clhelp *restrict const h,
+								Object const *restrict const obj,
+								const Vector d)
 {
 	Object		*shadow;
 	size_t		i;

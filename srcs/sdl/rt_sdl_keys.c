@@ -6,64 +6,66 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:07:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 00:41:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 00:20:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	add_sdl_keys_mode_switch(Environment *env)
+static inline void	add_sdl_keys_mode_switch(Isr *restrict const isr)
 {
-	if (env->isr.is_objs_debug)
-		env->isr.is_objs_debug = false;
-	else if (env->isr.is_light_debug)
-		env->isr.is_objs_debug = true;
+	if (isr->is_objs_debug)
+		isr->is_objs_debug = false;
+	else if (isr->is_light_debug)
+		isr->is_objs_debug = true;
 	else
-		env->isr.is_light_debug = !env->isr.is_light_debug;
+		isr->is_light_debug = !isr->is_light_debug;
 }
 
-inline void			rt_sdl_keys_press(Environment *env)
+inline void			rt_sdl_keys_press(Isr *restrict const isr,
+										const SDL_Keycode key)
 {
-	if (SDLK_x == SEKEY)
-		add_sdl_keys_mode_switch(env);
-	else if (SDLK_c == SEKEY)
-		env->isr.is_debug_zorintens = !env->isr.is_debug_zorintens;
-	else if (SDLK_z == SEKEY)
-		env->isr.is_render_fps = !env->isr.is_render_fps;
-	else if (SDLK_w == SEKEY)
-		env->isr.is_up = true;
-	else if (SDLK_s == SEKEY)
-		env->isr.is_down = true;
-	else if (SDLK_a == SEKEY)
-		env->isr.is_left = true;
-	else if (SDLK_d == SEKEY)
-		env->isr.is_right = true;
-	else if (SDLK_q == SEKEY)
-		env->isr.is_zdec = true;
-	else if (SDLK_e == SEKEY)
-		env->isr.is_zinc = true;
-	else if (SDLK_LSHIFT == SEKEY)
-		env->isr.is_speedup = true;
-	else if (SDLK_LCTRL == SEKEY)
-		env->isr.is_speeddown = true;
+	if (SDLK_x == key)
+		add_sdl_keys_mode_switch(isr);
+	else if (SDLK_c == key)
+		isr->is_debug_zorintens = !isr->is_debug_zorintens;
+	else if (SDLK_z == key)
+		isr->is_render_fps = !isr->is_render_fps;
+	else if (SDLK_w == key)
+		isr->is_up = true;
+	else if (SDLK_s == key)
+		isr->is_down = true;
+	else if (SDLK_a == key)
+		isr->is_left = true;
+	else if (SDLK_d == key)
+		isr->is_right = true;
+	else if (SDLK_q == key)
+		isr->is_zdec = true;
+	else if (SDLK_e == key)
+		isr->is_zinc = true;
+	else if (SDLK_LSHIFT == key)
+		isr->is_speedup = true;
+	else if (SDLK_LCTRL == key)
+		isr->is_speeddown = true;
 }
 
-inline void			rt_sdl_keys_release(Environment *env)
+inline void			rt_sdl_keys_release(Isr *restrict const isr,
+										const SDL_Keycode key)
 {
-	if (SDLK_w == SEKEY)
-		env->isr.is_up = false;
-	else if (SDLK_s == SEKEY)
-		env->isr.is_down = false;
-	else if (SDLK_a == SEKEY)
-		env->isr.is_left = false;
-	else if (SDLK_d == SEKEY)
-		env->isr.is_right = false;
-	else if (SDLK_q == SEKEY)
-		env->isr.is_zdec = false;
-	else if (SDLK_e == SEKEY)
-		env->isr.is_zinc = false;
-	else if (SDLK_LSHIFT == SEKEY)
-		env->isr.is_speedup = false;
-	else if (SDLK_LCTRL == SEKEY)
-		env->isr.is_speeddown = false;
+	if (SDLK_w == key)
+		isr->is_up = false;
+	else if (SDLK_s == key)
+		isr->is_down = false;
+	else if (SDLK_a == key)
+		isr->is_left = false;
+	else if (SDLK_d == key)
+		isr->is_right = false;
+	else if (SDLK_q == key)
+		isr->is_zdec = false;
+	else if (SDLK_e == key)
+		isr->is_zinc = false;
+	else if (SDLK_LSHIFT == key)
+		isr->is_speedup = false;
+	else if (SDLK_LCTRL == key)
+		isr->is_speeddown = false;
 }

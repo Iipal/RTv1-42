@@ -6,19 +6,20 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/18 10:08:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 00:06:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static bool	add_parser(Scene *sc, string *str, t_pfhelp *pfh)
+static bool	add_parser(Scene *restrict const sc, string *str,
+					t_pfhelp *restrict const pfh)
 {
-	const fns_parse	fns[] = {rt_ssphere, rt_scone, rt_splane, rt_scylinder};
-	const string	objects[] = {FP_SPHERE, FP_CONE, FP_PLANE, FP_CYLINDER};
-	bool			is_valid_data;
-	bool			is_known;
-	size_t			i;
+	const t_fn_sparse	fns[] = {rt_ssphere, rt_scone, rt_splane, rt_scylinder};
+	const string		objects[] = {FP_SPHERE, FP_CONE, FP_PLANE, FP_CYLINDER};
+	bool				is_valid_data;
+	bool				is_known;
+	size_t				i;
 
 	i = ~0L;
 	++pfh->nline;
@@ -40,7 +41,9 @@ static bool	add_parser(Scene *sc, string *str, t_pfhelp *pfh)
 	return (is_valid_data);
 }
 
-static bool	add_valid_objs_counter(int32_t *fd, Scene *s, const string file)
+static bool	add_valid_objs_counter(int32_t *restrict const fd,
+								Scene *restrict const s,
+								const char *restrict const file)
 {
 	string			temp;
 
@@ -66,7 +69,8 @@ static bool	add_valid_objs_counter(int32_t *fd, Scene *s, const string file)
 	return (true);
 }
 
-bool		rt_read_scene(Environment *env, string scene_file)
+bool		rt_read_scene(Environment *restrict env,
+							char const *restrict const scene_file)
 {
 	int32_t		fd;
 	string		tmp;

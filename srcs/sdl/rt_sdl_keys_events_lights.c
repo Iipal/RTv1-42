@@ -6,55 +6,53 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 18:15:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 23:36:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/18 21:23:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	rt_light_zorintens(Environment *env, size_t i)
+static inline void	add_light_zorintens(Light *restrict l,
+									Isr const *restrict isr,
+									const double_t move,
+									const double_t l_move)
 {
-	if (!env->isr.is_debug_zorintens)
+	if (!isr->is_debug_zorintens)
 	{
-		if (env->isr.is_zdec)
-			Z(env->s.l[i].pos) =
-				u_inranged(Z(env->s.l[i].pos) - env->fps.lights_move, 1, 0);
-		if (env->isr.is_zinc)
-			Z(env->s.l[i].pos) =
-				u_inranged(Z(env->s.l[i].pos) + env->fps.lights_move, 0, 1);
+		if (isr->is_zdec)
+			Z(l->pos) = u_d_range(Z(l->pos) - move, MAX_Z, MIN_Z);
+		if (isr->is_zinc)
+			Z(l->pos) = u_d_range(Z(l->pos) + move, MAX_Z, MIN_Z);
 	}
 	else
 	{
-		if (env->isr.is_zdec)
-			env->s.l[i].intens =
-				(MIN_L_INTENS > env->s.l[i].intens - env->fps.lights_intens)
-				? MIN_L_INTENS : (env->s.l[i].intens - env->fps.lights_intens);
-		if (env->isr.is_zinc)
-			env->s.l[i].intens =
-				(MAX_L_INTENS < env->s.l[i].intens + env->fps.lights_intens)
-				? MAX_L_INTENS : (env->s.l[i].intens + env->fps.lights_intens);
+		if (isr->is_zdec)
+			l->intens = u_d_range(l->intens - l_move,
+				MAX_L_INTENS, MIN_L_INTENS);
+		if (isr->is_zinc)
+			l->intens = u_d_range(l->intens + l_move,
+				MAX_L_INTENS, MIN_L_INTENS);
 	}
 }
 
-void				rt_sdl_keys_events_light_debug(Environment *env)
+void				rt_sdl_keys_events_lights_debug(Light *restrict l,
+												Fps const *restrict fps,
+												Isr const *restrict isr,
+												const size_t in_scene_lights)
 {
 	size_t	i;
 
 	i = ~0L;
-	while (env->s.ins_l > ++i)
+	while (in_scene_lights > ++i)
 	{
-		if (env->isr.is_up)
-			Y(env->s.l[i].pos) =
-				u_inranged(Y(env->s.l[i].pos) - env->fps.lights_move, 1, 0);
-		if (env->isr.is_down)
-			Y(env->s.l[i].pos) =
-				u_inranged(Y(env->s.l[i].pos) + env->fps.lights_move, 0, 1);
-		if (env->isr.is_left)
-			X(env->s.l[i].pos) =
-				u_inranged(X(env->s.l[i].pos) - env->fps.lights_move, 1, 0);
-		if (env->isr.is_right)
-			X(env->s.l[i].pos) =
-				u_inranged(X(env->s.l[i].pos) + env->fps.lights_move, 0, 1);
-		rt_light_zorintens(env, i);
+		if (isr->is_up)
+			Y(l[i].pos) = u_d_range(Y(l[i].pos) - fps->l_move, MAX_Y, MIN_Y);
+		if (isr->is_down)
+			Y(l[i].pos) = u_d_range(Y(l[i].pos) + fps->l_move, MAX_Y, MIN_Y);
+		if (isr->is_left)
+			X(l[i].pos) = u_d_range(X(l[i].pos) - fps->l_move, MAX_X, MIN_X);
+		if (isr->is_right)
+			X(l[i].pos) = u_d_range(X(l[i].pos) + fps->l_move, MAX_X, MIN_X);
+		add_light_zorintens(&l[i], isr, fps->l_move, fps->l_intens);
 	}
 }

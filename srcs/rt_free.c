@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:50:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/13 15:21:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 00:06:26 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline void	rt_free(Environment **env)
+inline void	rt_free(Environment * restrict* env)
 {
 	IFDO(*env && (*env)->sdl, sdl_free(&(*env)->sdl));
 	IFDO(*env && (*env)->s.objs, FREE((*env)->s.objs, free));

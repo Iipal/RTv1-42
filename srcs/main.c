@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 11:36:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 00:05:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #ifdef DEBUG
 
-static inline bool	add_valid_exe_path(string path)
+static inline bool	add_valid_exe_path(char *restrict const path)
 {
 	(void)path;
 	return (true);
@@ -23,7 +23,7 @@ static inline bool	add_valid_exe_path(string path)
 
 #else
 
-static inline bool	add_valid_exe_path(string path)
+static inline bool	add_valid_exe_path(char *restrict const path)
 {
 	IFM_F(E_DIR, ft_strcmp(path, RTV1_EXE_PATH));
 	return (true);
@@ -31,7 +31,7 @@ static inline bool	add_valid_exe_path(string path)
 
 #endif
 
-static inline bool	add_valid_filename(string file)
+static inline bool	add_valid_filename(char *restrict const file)
 {
 	NOM_F(E_FILEXT,
 	!ft_strcmp(file + (ft_strlen(file) - ft_strlen(RTV1_FILEXT)), RTV1_FILEXT));
@@ -41,7 +41,7 @@ static inline bool	add_valid_filename(string file)
 
 int					main(int argc, string argv[])
 {
-	Environment	*env;
+	Environment *restrict	env;
 
 	NO_F(add_valid_exe_path(*argv));
 	ISARGS(argc, argv);

@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:31:21 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/16 21:25:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/18 23:52:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool	rt_ssphere(Object *obj, string s)
+inline bool	rt_ssphere(Object *restrict const obj, string s)
 {
 	Uint32	clr;
 
@@ -36,7 +36,7 @@ inline bool	rt_ssphere(Object *obj, string s)
 	return (true);
 }
 
-inline bool	rt_scone(Object *obj, string s)
+inline bool	rt_scone(Object *restrict const obj, string s)
 {
 	Uint32	clr;
 
@@ -63,7 +63,7 @@ inline bool	rt_scone(Object *obj, string s)
 	return (true);
 }
 
-inline bool	rt_splane(Object *obj, string s)
+inline bool	rt_splane(Object *restrict const obj, string s)
 {
 	Uint32	clr;
 
@@ -89,7 +89,7 @@ inline bool	rt_splane(Object *obj, string s)
 	return (true);
 }
 
-inline bool	rt_scylinder(Object *obj, string s)
+inline bool	rt_scylinder(Object *restrict const obj, string s)
 {
 	Uint32	clr;
 

@@ -6,18 +6,18 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 23:54:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 00:54:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
 /*
-**	obj->type == 1 if it's plane. For plane don't neccessary calc discriminant.
+**	1 == obj->type if it's plane. For plane don't neccessary calc discriminant.
 */
-static inline fDot	rt_intersection(const Vector o,
+static inline fDot	add_intersection(const Vector o,
 									const Vector d,
-									const Object *obj)
+									const Object *restrict const obj)
 {
 	const Vector	oc = o - obj->pos;
 	const Vector	k = 1 != obj->type ? obj->fn_inter_calc(oc, d, obj) : o;
@@ -34,7 +34,7 @@ static inline fDot	rt_intersection(const Vector o,
 
 Object				*rt_closest_inter(const Vector o,
 									const Vector d,
-									Environment *env)
+									Environment *restrict env)
 {
 	fDot			t;
 	size_t			i;
@@ -45,7 +45,7 @@ Object				*rt_closest_inter(const Vector o,
 	env->s.cobj = env->t_max;
 	while (++i < env->s.ins_objs)
 	{
-		t = rt_intersection(o, d, &env->s.objs[i]);
+		t = add_intersection(o, d, &env->s.objs[i]);
 		if (X(t) >= env->t_min && X(t) < env->t_max && X(t) < env->s.cobj)
 		{
 			env->s.cobj = X(t);

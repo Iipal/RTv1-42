@@ -6,41 +6,45 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:12:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 11:33:14 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 00:23:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	add_camera_keys_events(Environment *env)
+static inline void	add_camera_keys_events(Isr const *restrict const isr,
+										Camera *restrict const cam,
+										const double_t move)
 {
-	if (env->isr.is_up)
-		Y(env->s.cam.pos) = u_inranged(Y(env->s.cam.pos) - env->fps.move, 1, 0);
-	if (env->isr.is_down)
-		Y(env->s.cam.pos) = u_inranged(Y(env->s.cam.pos) + env->fps.move, 0, 1);
-	if (env->isr.is_left)
-		X(env->s.cam.pos) = u_inranged(X(env->s.cam.pos) - env->fps.move, 1, 0);
-	if (env->isr.is_right)
-		X(env->s.cam.pos) = u_inranged(X(env->s.cam.pos) + env->fps.move, 0, 1);
-	if (env->isr.is_zdec)
-		Z(env->s.cam.pos) = u_inranged(Z(env->s.cam.pos) - env->fps.move, 1, 0);
-	if (env->isr.is_zinc)
-		Z(env->s.cam.pos) = u_inranged(Z(env->s.cam.pos) + env->fps.move, 0, 1);
+	if (isr->is_up)
+		Y(cam->pos) = u_d_range(Y(cam->pos) - move, MAX_Y, MIN_Y);
+	if (isr->is_down)
+		Y(cam->pos) = u_d_range(Y(cam->pos) + move, MAX_Y, MIN_Y);
+	if (isr->is_left)
+		X(cam->pos) = u_d_range(X(cam->pos) - move, MAX_X, MIN_X);
+	if (isr->is_right)
+		X(cam->pos) = u_d_range(X(cam->pos) + move, MAX_X, MIN_X);
+	if (isr->is_zdec)
+		Z(cam->pos) = u_d_range(Z(cam->pos) - move, MAX_Z, MIN_Z);
+	if (isr->is_zinc)
+		Z(cam->pos) = u_d_range(Z(cam->pos) + move, MAX_Z, MIN_Z);
 }
 
-inline void			rt_sdl_keys_events(Environment *env)
+inline void			rt_sdl_keys_events(Environment *restrict env)
 {
 	if (env->isr.is_light_debug)
 	{
 		if (env->isr.is_objs_debug)
 			env->isr.is_light_debug = false;
 		else
-			rt_sdl_keys_events_light_debug(env);
+			rt_sdl_keys_events_lights_debug(env->s.l,
+				&env->fps, &env->isr, env->s.ins_l);
 	}
 	else if (env->isr.is_objs_debug)
-		rt_sdl_keys_events_objs_debug(env);
+		rt_sdl_keys_events_objs_debug(env->s.objs,
+			&env->fps, &env->isr, env->s.ins_objs);
 	else
-		add_camera_keys_events(env);
+		add_camera_keys_events(&env->isr, &env->s.cam, env->fps.move);
 	rt_camera_speed_movements(&env->cam_speed,
 			env->isr.is_speedup, env->isr.is_speeddown);
 }

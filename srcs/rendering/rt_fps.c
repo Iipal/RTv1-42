@@ -6,14 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 18:51:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 23:51:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 00:26:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static void	add_render_fps(SDL_Surface *text,
-						uiarr screen,
+static void	add_render_fps(SDL_Surface *restrict text,
+						uint32_t *restrict const screen,
 						const bool pos)
 {
 	Dot		tp;
@@ -34,7 +34,7 @@ static void	add_render_fps(SDL_Surface *text,
 
 static void	add_fps_prepare_and_draw(const float_t dfps,
 									const float_t dms,
-									const Environment *env)
+									const Environment *restrict env)
 {
 	const string	data_info[] = {" fps", " ms"};
 	string			data[2];
@@ -55,7 +55,7 @@ static void	add_fps_prepare_and_draw(const float_t dfps,
 	}
 }
 
-inline void	rt_render_fps_counter(Environment *env)
+inline void	rt_render_fps_counter(Environment *restrict env)
 {
 	static float_t	delta_refresh;
 
@@ -69,13 +69,13 @@ inline void	rt_render_fps_counter(Environment *env)
 	delta_refresh += env->fps.time.res;
 }
 
-inline void	rt_fps(Fps *fps, const double_t cam_speed)
+inline void	rt_fps(Fps *restrict const fps, const double_t cam_speed)
 {
 	fps->time.old = fps->time.current;
 	fps->time.current = SDL_GetTicks();
 	fps->time.res = (fps->time.current - fps->time.old) / 1000.0f;
 	fps->move = fps->time.res * MOVE_INC * cam_speed;
-	fps->lights_move = fps->move * 5.0f;
-	fps->lights_intens = fps->move / 5.0f;
-	fps->objs_spec_intens = fps->move * 100.0f;
+	fps->l_move = fps->move * 5.0f;
+	fps->l_intens = fps->move / 5.0f;
+	fps->o_spec_intens = fps->move * 100.0f;
 }

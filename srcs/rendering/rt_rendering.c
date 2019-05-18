@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 17:31:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 00:24:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	rt_rendering(Environment *env)
+void	rt_rendering(Environment *restrict env)
 {
 	Color	clr;
 	Dot		i;
