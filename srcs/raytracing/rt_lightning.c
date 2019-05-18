@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 22:26:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/18 09:29:26 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static inline void	add_specular_reflect(Light *l, t_clhelp *h,
 	h->h = v + h->l;
 	h->h = (Vector){X(h->h) / VLEN(h->h),
 		Y(h->h) / VLEN(h->h), Z(h->h) / VLEN(h->h)};
-	h->h_intense = (l->intens * fmax(0, h->dnl) + obj_spec * 0.75f)
-		* l->intens * pow(fmax(0.0f, VDOT(h->n, h->h)), obj_spec);
+	h->h_intense = (l->intens * fmax(0, h->dnl) + obj_spec)
+		* (l->intens * pow(fmax(0.0f, VDOT(h->n, h->h)), obj_spec));
 	h->d = h->n - l->pos;
 	h->i += h->h_intense / VLEN(h->d);
 }
