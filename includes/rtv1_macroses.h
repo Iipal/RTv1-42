@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 23:47:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/18 12:20:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,6 @@
 # define DEF_FPS_TEXT_COLOR 0x7FFF00
 
 # define REFRESH_FPS_COUNTER .25f
-
-# define VLEN(v) sqrt(X(v) * X(v) + Y(v) * Y(v) + Z(v) * Z(v))
-# define VDOT(v1, v2) (X(v1) * X(v2) + Y(v1) * Y(v2) + Z(v1) * Z(v2))
-# define VNORM(v) X(v)/sqrt(VDOT(v,v)),Y(v)/sqrt(VDOT(v,v)),Z(v)/sqrt(VDOT(v,v))
-# define VMUL(v, d) (Vector){X(v) * d, Y(v) * d, Z(v) * d}
-# define VMULR(v, d) (Vector){d * X(v), d * Y(v), d * Z(v)}
-# define VDISC(k) (Y(k) * Y(k) - 4.0 * X(k) * Z(k))
 
 typedef bool	(*t_fn_fparse)(Flags*, char**, const size_t, size_t*);
 # define FNSCP typedef bool (*fns_parse)(Object*, char*);
