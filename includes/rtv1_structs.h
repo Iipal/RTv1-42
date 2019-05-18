@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 23:51:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/18 23:50:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,22 +45,25 @@ struct	s_camera
 
 struct	s_light
 {
-	Vector	pos;
-	float_t	intens;
+	Vector		pos;
+	double_t	intens;
 };
 
-typedef Vector	(*t_fn_inter)(const Vector, const Vector, const void*restrict);
-typedef Vector	(*t_fn_normal)(const Vector, const Vector,
-							const struct s_camera *restrict,
-							const void *restrict);
+typedef Vector	(*t_fn_inter)(const Vector,
+							const Vector,
+							void const *restrict const);
+typedef Vector	(*t_fn_normal)(const Vector,
+							const Vector,
+							struct s_camera const *restrict const,
+							void const *restrict const);
 
 struct	s_object
 {
 	Vector		pos;
 	Vector		dir;
 	Color		clr;
-	int16_t		radius;
-	int16_t		spec;
+	double_t	radius;
+	double_t	spec;
 	Type		type;
 	t_fn_inter	fn_inter_calc;
 	t_fn_normal	fn_normal_calc;
@@ -117,9 +120,9 @@ struct	s_fps
 {
 	Time		time;
 	double_t	move;
-	double_t	lights_move;
-	double_t	lights_intens;
-	double_t	objs_spec_intens;
+	double_t	l_move;
+	double_t	l_intens;
+	double_t	o_spec_intens;
 };
 
 struct	s_flags
