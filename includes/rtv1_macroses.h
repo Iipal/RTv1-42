@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/18 12:20:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/18 23:45:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,5 @@
 # define DEF_FPS_TEXT_COLOR 0x7FFF00
 
 # define REFRESH_FPS_COUNTER .25f
-
-typedef bool	(*t_fn_fparse)(Flags*, char**, const size_t, size_t*);
-# define FNSCP typedef bool (*fns_parse)(Object*, char*);
-
-FNSCP;
 
 #endif
