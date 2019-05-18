@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 12:52:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/18 10:10:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,25 @@
 # define E_MLIGHTS  ERR "Maximum lights in scene: 5."
 
 # define E_NOCAM    ERR "No camera in scene founded."
-# define E_NOLIGHT  ERR "No origin light in scene founded."
+# define E_NOLIGHT  ERR "No origin lights in scene founded."
 # define E_NOOBJS   ERR "No objects in scene founded."
 
-# define E_INRANGE  " not in available range."
+# define E_INRANGE  " not in available range"
+# define E_CAMDIR   "Camera destination point(rotation)" E_INRANGE
+# define E_CAMPOS   "Camera position" E_INRANGE
+# define E_LIGHTPOS "Light position" E_INRANGE
+# define E_LINTENSE "Light intensity" E_INRANGE
+# define E_OBJPOS   "Object position" E_INRANGE
+# define E_OBJRAD   "Object radius" E_INRANGE
+# define E_OBJSPEC  "Object specular intensity" E_INRANGE
 
-# define E_CAMDIR   ERR "Camera destination point" E_INRANGE
-# define E_CAMPOS   ERR "Camera position" E_INRANGE
-# define E_LIGHTPOS ERR "Light position" E_INRANGE
-# define E_LINTENSE ERR "Light intensity" E_INRANGE
-# define E_OPOS     ERR "Object position" E_INRANGE
-# define E_ORAD     ERR "Object radius" E_INRANGE
-# define E_OSPEC    ERR "Object specular intensity" E_INRANGE
+# define ERR_IN_NUM(msg, n) MSG(msg);ft_putnbr(n)
+# define ERRIN(msg, n, err) {ERR_IN_NUM(err,n);MSG(" \"");MSG(msg);MSGN("\"");}
 
-# define E_AT " Error occured at line: "
-# define ERR_AT_NL(nl) MSG(E_AT);ft_putnbr(nl)
-# define ERRAT(msg, nl) {ERR_AT_NL(nl);MSG(" \"");MSG(msg);MSGN("\"");}
+# define E_OCCURED  " Error occured "
+# define E_IN_LINE  E_OCCURED "at line: "
+# define E_IN_LIGHT E_OCCURED "in light origin: "
+# define E_IN_OBJ   E_OCCURED "in object: "
 
 # define E_IFLAG    ERR "Invalid flag."
 # define E_VPS      "Viewport-Scale"
