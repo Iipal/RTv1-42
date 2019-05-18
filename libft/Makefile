@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/04/10 22:07:45 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/05/19 00:59:28 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ endif
 
 LC += rcs
 
-CC := gcc -march=native -mtune=native -flto -Ofast
+CC := gcc -march=native -mtune=native -flto -Ofast -pipe
 CFLAGS := -Wall -Wextra -Werror -Wunused
 INC := -I $(CURDIR)/includes/
 
