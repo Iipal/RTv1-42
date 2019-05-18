@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 12:16:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/18 12:22:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/18 21:42:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,17 @@ VEC;
 # define VMULR(v, d) (Vector){d * X(v), d * Y(v), d * Z(v)}
 # define VDISC(k) (Y(k) * Y(k) - 4.0 * X(k) * Z(k))
 
-extern bool	ft_vec_inrange(const Vector v,
-						const double_t max_range,
-						const double_t min_range);
+/*
+**	u_ prefix is short name for utils.
+*/
+extern bool		u_vec_range(Vector v,
+					const double_t max_range,
+					const double_t min_range);
+extern bool		u_isd_range(double_t a,
+					const double_t max_range,
+					const double_t min_range);
+extern double_t	u_d_range(double_t x,
+					const double_t max_range,
+					const double_t min_range);
 
 #endif
