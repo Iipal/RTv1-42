@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/05/19 00:59:28 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/05/19 12:37:51 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ endif
 LC += rcs
 
 CC := gcc -march=native -mtune=native -flto -Ofast -pipe
+CC_DEBUG := gcc -march=native -mtune=native -g3 -D DEBUG
 CFLAGS := -Wall -Wextra -Werror -Wunused
 INC := -I $(CURDIR)/includes/
 
@@ -56,6 +57,16 @@ $(OBJS): %.o: %.c
 	@$(ECHO) -n ' $@: '
 	@$(CC) -c $(CFLAGS) $(INC) $< -o $@
 	@$(ECHO) "$(SUCCESS)"
+
+del:
+	@$(DEL) $(OBJS)
+	@$(DEL) $(NAME)
+pre: del $(NAME)
+	@$(ECHO) "$(INVERT)$(GREEN)Successed re-build.$(WHITE)"
+set_cc_debug:
+	@$(eval CC=$(CC_DEBUG))
+debug: set_cc_debug pre
+	@$(ECHO) "$(INVERT)$(GREEN)Ready for debug.$(WHITE)"
 
 clean:
 	@$(DEL) $(OBJS)
