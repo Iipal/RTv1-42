@@ -52,11 +52,12 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 ```
 ### Flags:
 
-| Flag             | Description                                                               | Shortcut | Valid values   | Default value | Value type |
-| ---------------- | ------------------------------------------------------------------------- | -------- | -------------- | ------------- | ---------- |
-| --help           | Print short flags description. After print RTv1 will automatically close. | -h       | none           | none          | none       |
-| --viewport-scale | How many times will be increased viewport.                                | -vps     | 1-10           | 1             | Integer    |
-| --shadow-bright  | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10           | 100           | Integer    |
+| Flag             | Description                                                               | Shortcut | Valid values | Default value | Value type |
+| ---------------- | ------------------------------------------------------------------------- | -------- | ------------ | ------------- | ---------- |
+| --help           | Print short flags description. After print RTv1 will automatically close. | -h       | none         | none          | none       |
+| --viewport-scale | How many times will be increased viewport.                                | -vps     | 1-10         | 1             | Integer    |
+| --shadow-bright  | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10         | 100           | Integer    |  | --help | Print short flags description. After print RTv1 will automaticly close. | -h | none | none | none |
+
 | --fps-text-color | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        |
 #### Example:
 ```bash
@@ -73,11 +74,11 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f scenes/sphere.rtv1
 | Exit.                      | <kbd>Esc</kbd> |
 
 ## Keybinds mode switcher binds:
-| Name                                                                                  | Description                                                                                                                                                                                                                                                                             | Keybinding        |
-| ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| Switcher keybind mode to control all light origins or objects.                        | After first press is active [__`Lights Control Mode`__](lcm) keybinds, after second press - [__`Objects Control Mode`__](ocm). Keybinds after third press retruns to [__`Default Camera Control Mode`__](dccm). All keybinds valid for all light origins or objects dependecny on mode. | <kbd>X</kbd>      |
-| Increase speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                         | <kbd>LShift</kbd> |
-| Decrease speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                         | <kbd>LCtrl</kbd>  |
+| Name                                                                                  | Description                                                                                                                                                                                                                                                                                | Keybinding        |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------- |
+| Switcher keybind mode to control all light origins or objects.                        | After first press is active [__`Lights Control Mode`__](#lcm) keybinds, after second press - [__`Objects Control Mode`__](#ocm). Keybinds after third press retruns to [__`Default Camera Control Mode`__](#dccm). All keybinds valid for all light origins or objects dependecny on mode. | <kbd>X</kbd>      |
+| Increase speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                            | <kbd>LShift</kbd> |
+| Decrease speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                            | <kbd>LCtrl</kbd>  |
 
 ### [[__`Default Camera Control Mode`__](#dccm)]:
 | Description           | Keybinding   |
