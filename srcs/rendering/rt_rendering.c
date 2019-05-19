@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 00:24:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 11:28:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	rt_rendering(Environment *restrict env)
 			clr = rt_raytracing(env, (Vector){X(i) * WIN_X / (1000.0f * WIN_X),
 											Y(i) * WIN_Y / (1000.0f * WIN_Y),
 											env->flags.viewport_scale});
-			if (!SDL_CLR_CMP(clr, RGB_BLACK))
+			if (!SDL_CLR_CMP(clr.c, RGB_BLACK))
 				sdl_pixelput(env->sdl->wsurf,
 					CONVERT_FROM_CANVAS(X(i), Y(i), WIN_X, WIN_Y), clr);
 		}
