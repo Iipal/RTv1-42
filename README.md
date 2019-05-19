@@ -74,13 +74,13 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f scenes/sphere.rtv1
 | Exit.                      | <kbd>Esc</kbd> |
 
 ## Keybinds mode switcher binds:
-| Name                                                                                  | Description                                                                                                                                                                                                                                                                                | Keybinding        |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------- |
-| Switcher keybind mode to control all light origins or objects.                        | After first press is active [__`Lights Control Mode`__](#lcm) keybinds, after second press - [__`Objects Control Mode`__](#ocm). Keybinds after third press retruns to [__`Default Camera Control Mode`__](#dccm). All keybinds valid for all light origins or objects dependecny on mode. | <kbd>X</kbd>      |
-| Increase speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                            | <kbd>LShift</kbd> |
-| Decrease speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                            | <kbd>LCtrl</kbd>  |
+| Name                                                                                  | Description                                                                                                                                                                                                                                                                                                                                        | Keybinding        |
+| ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| Switcher keybind mode to control all light origins or objects.                        | After first press is active [__`Lights Control Mode`__](#lights-control-mode) keybinds, after second press - [__`Objects Control Mode`__](#objects-control-mode). Keybinds after third press retruns to [__`Default Camera Control Mode`__](#default-camera-control-mode). All keybinds valid for all light origins or objects dependecny on mode. | <kbd>X</kbd>      |
+| Increase speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                                                                                    | <kbd>LShift</kbd> |
+| Decrease speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                                                                                    | <kbd>LCtrl</kbd>  |
 
-### [[__`Default Camera Control Mode`__](#dccm)]:
+### [[__`Default Camera Control Mode`__](#default-camera-control-mode)]:
 | Description           | Keybinding   |
 | --------------------- | ------------ |
 | Move camera up.       | <kbd>W</kbd> |
@@ -90,7 +90,7 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f scenes/sphere.rtv1
 | Move camera backward. | <kbd>Q</kbd> |
 | Move camera forward.  | <kbd>E</kbd> |
 
-### [[__`Lights Control Mode`__](#lcm)]:
+### [[__`Lights Control Mode`__](#lights-control-mode)]:
 | Description                          | Keybinding   |
 | ------------------------------------ | ------------ |
 | Move lights up.                      | <kbd>W</kbd> |
@@ -102,7 +102,7 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f scenes/sphere.rtv1
 | Switch to control lights intensity.  | <kbd>C</kbd> |
 | Decrease lights inensity. [optional] | <kbd>Q</kbd> |
 | Increase lights inensity. [optional] | <kbd>E</kbd> |
-## [[__`Objects Control Mode`__](#ocm)]:
+## [[__`Objects Control Mode`__](#objects-control-mode)]:
 | Description                           | Keybinding   |
 | ------------------------------------- | ------------ |
 | Move objects up.                      | <kbd>W</kbd> |
