@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:31:21 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 11:49:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 12:44:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ inline bool	rt_ssphere(Object *restrict const obj, string s)
 	IF_F(',' != *(s += ft_digits(Y(obj->pos) = ft_atoi(s))) || !*s++);
 	IF_F(' ' != *(s += ft_digits(Z(obj->pos) = ft_atoi(s))) || !*s++);
 	IF_F(*s++ != '0' || *s++ != 'x');
-	NO_F(ft_ishex_str(s));
+	NO_F(ft_ishex_strn(s, ft_skip_to_blank(s)));
 	NO_F(obj->clr.hex = ft_atoi_base(s, 16));
 	IF_F(' ' != *(s += ft_skip_to_blank(s)) || !*s++);
 	IF_F(' ' != *(s += ft_digits(obj->radius = ft_atoi(s))) || !*s++);
@@ -46,7 +46,7 @@ inline bool	rt_scone(Object *restrict const obj, string s)
 	IF_F(',' != *(s += ft_digits(Y(obj->dir) = ft_atoi(s))) || !*s++);
 	IF_F(' ' != *(s += ft_digits(Z(obj->dir) = ft_atoi(s))) || !*s++);
 	IF_F(*s++ != '0' || *s++ != 'x');
-	NO_F(ft_ishex_str(s));
+	NO_F(ft_ishex_strn(s, ft_skip_to_blank(s)));
 	NO_F(obj->clr.hex = ft_atoi_base(s, 16));
 	IF_F(' ' != *(s += ft_skip_to_blank(s)) || !*s++);
 	IF_F(' ' != *(s += ft_digits(obj->radius = ft_atoi(s))) || !*s++);
@@ -71,7 +71,7 @@ inline bool	rt_splane(Object *restrict const obj, string s)
 	IF_F(',' != *(s += ft_digits(Y(obj->dir) = ft_atoi(s))) || !*s++);
 	IF_F(' ' != *(s += ft_digits(Z(obj->dir) = ft_atoi(s))) || !*s++);
 	IF_F(*s++ != '0' || *s++ != 'x');
-	NO_F(ft_ishex_str(s));
+	NO_F(ft_ishex_strn(s, ft_skip_to_blank(s)));
 	NO_F(obj->clr.hex = ft_atoi_base(s, 16));
 	IF_F(' ' != *(s += ft_skip_to_blank(s)) || !*s++);
 	IF_F(*(s += ft_digits(obj->spec = ft_atoi(s))));
@@ -95,7 +95,7 @@ inline bool	rt_scylinder(Object *restrict const obj, string s)
 	IF_F(',' != *(s += ft_digits(Y(obj->dir) = ft_atoi(s))) || !*s++);
 	IF_F(' ' != *(s += ft_digits(Z(obj->dir) = ft_atoi(s))) || !*s++);
 	IF_F(*s++ != '0' || *s++ != 'x');
-	NO_F(ft_ishex_str(s));
+	NO_F(ft_ishex_strn(s, ft_skip_to_blank(s)));
 	NO_F(obj->clr.hex = ft_atoi_base(s, 16));
 	IF_F(' ' != *(s += ft_skip_to_blank(s)) || !*s++);
 	IF_F(' ' != *(s += ft_digits(obj->radius = ft_atoi(s))) || !*s++);
