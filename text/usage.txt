@@ -4,20 +4,20 @@ Usage:
     [Q E]          - Dec\Increase camera Z-position.
     [LCtrl LShift] - Dec\Increase camera movements speed.
 
-    [X] - Switch key binds to control lights or objects.
-        First type on  [X] - switch to lights control. \
-            [W A S D]      - Move all lights origin Up Left Down & Right.
+    [X] - Switch key binds to control light origins or objects.
+        First press on  [X] - switch to light origins control.\
+            [W A S D]      - Move all lights Up Left Down & Right.
             [Q E]          - Dec\Increase all lights Z-position or intesity.
             [C]            - Switch between control lights Z-position or intesity.
             [LCtrl LShift] - Dec\Increase lights positions or intesity change speed.
-            /                                         /
-        Second type on [X] - switch to objects control.
+            /                                          /
+        Second press on [X] - switch to objects control.
             [W A S D]      - Move all objects Up Left Down & Right.
             [Q E]          - Dec\Increase all objects Z-position or specular.
             [C]            - Switch between control objects Z-position or specular.
             [LCtrl LShift] - Dec\Increase objects positions or specular change speed.
-           /                                                        /
-        Third type on  [X] - returns to default camera control binds.
+           /                                                         /
+        Third press on  [X] - returns to default camera control binds.
        /                                /
     [Z]   - Toggle FPS\ms rendering info.
     [ESC] - exit.
