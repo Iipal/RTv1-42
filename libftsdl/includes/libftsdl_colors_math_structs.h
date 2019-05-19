@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 12:24:17 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/16 18:03:48 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 11:16:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,20 @@
 # include <stdint.h>
 # include <math.h>
 
-struct	s_color
+typedef struct	s_clr
 {
-	int32_t	r;
-	int32_t	g;
-	int32_t	b;
+	uint8_t	r;
+	uint8_t	g;
+	uint8_t	b;
+}				t_clr;
+
+union				u_color
+{
+	uint32_t	hex;
+	t_clr		c;
 };
 
-struct	s_fcolor
+struct				s_fcolor
 {
 	double_t	r;
 	double_t	g;
