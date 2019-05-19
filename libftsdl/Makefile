@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/05/19 00:59:37 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/05/19 11:36:22 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ endif
 LC += rcs
 
 CC := gcc -march=native -mtune=native -Ofast -flto -pipe
-CFLAGS := -Wall -Wextra -Werror -Wunused
+CFLAGS := -Wall -Wextra -Werror -Wunused -Wno-type-limits
 INC := -F $(CURDIR)/frameworks -I $(CURDIR)/includes/
 
 SRC_D := srcs/
