@@ -1,8 +1,8 @@
 # RTv1-42
-## Ray Tracing Engine on C (project from school 42)
-#### made by tmaluh __(\_ipal)__
+## Ray Tracing Engine on C using SDL2. (project from [UNIT Factory](https://unit.ua/en/))
+###### made by tmaluh __(\_ipal)__
 
-## Pre-installation:
+## Addiitonal pre-installation:
 
 ### SDL2
 
@@ -27,15 +27,18 @@ __*Windows:*__
 - [MinGW](http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/mingw/index.php).
 - [Visual Studio](http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/msvsnet2010u/index.php).
 
+## Additional info:
+This project inlcudes also a few my other projects. It's library [libft] and [libftsdl]
+
 ## Compiling
 
 Use [make](https://en.wikipedia.org/wiki/Makefile) for compiling all files.
 
 When you have already installed SDL2 library you can use this simple rules:
 - **make**: Compile all.
-- **make clean**: Delete temporary files.
+- **make clean**: Delete all RTv1, libft and libftsdl temporary files.
 - **makde del**: Delete temporary RTv1 files only.
-- **make fclean**: Delete executable RTv1 file & libft.
+- **make fclean**: Expands `make clean` to delete also executable RTv1, libraries libft and libftsdl.
 - **make re**: It's rules - **make fclean** & **make** in one.
 - **make pre**: It's rules - **make del** & **make** in one.
 - **make debug**: Re-compile RTv1 without optimization flags but with `-g3` for debug.
@@ -49,15 +52,18 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 ```
 ### Flags:
 
-| Flag             | Description                                       | Shortcut | Valid values   | Default value | Value type |
-| ---------------- | ------------------------------------------------- | -------- | -------------- | ------------- | ---------- |
-| --viewport-scale | How many times will be increased viewport         | -vps     | 1-10           | 1             | Integer    |
-| --shadow-bright  | How dark the shadows should be. (Less - brighter) | -sb      | 1-10           | 100           | Integer    |
-| --fps-text-color | Render info text color.                           | -ftc     | All HEX values | 0x7FFF00      | HEX        |
+| Flag             | Description                                                               | Shortcut | Valid values   | Default value | Value type |
+| ---------------- | ------------------------------------------------------------------------- | -------- | -------------- | ------------- | ---------- |
+| --help           | Print short flags description. After print RTv1 will automatically close. | -h       | none           | none          | none       |
+| --viewport-scale | How many times will be increased viewport.                                | -vps     | 1-10           | 1             | Integer    |
+| --shadow-bright  | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10           | 100           | Integer    |
+| --fps-text-color | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        |
 #### Example:
 ```bash
 $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f scenes/sphere.rtv1
 ```
+###### Note: always put scene file in arguments line, because flags will parse only after successful read scene file.
+
 ## Keybinds:
 
 ### General keybinds in all keybind modes:
@@ -67,23 +73,23 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f scenes/sphere.rtv1
 | Exit.                      | <kbd>Esc</kbd> |
 
 ## Keybinds mode switcher binds:
-| Name                                                                                  | Description                                                                                                                                                                                                                                           | Keybinding        |
-| ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| Switch keybinds mode to control all light origins or objects.                         | After first press is active [Lights Control Mode] keybinds, after second press - [Objects Control Mode]. Keybinds after third press retruns to [Default Camera Control Mode]. All keybinds valid for all light origins or objects dependecny on mode. | <kbd>X</kbd>      |
-| Increase speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                       | <kbd>LShift</kbd> |
-| Decrease speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                       | <kbd>LCtrl</kbd>  |
+| Name                                                                                  | Description                                                                                                                                                                                                                                                                             | Keybinding        |
+| ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| Switcher keybind mode to control all light origins or objects.                        | After first press is active [__`Lights Control Mode`__](lcm) keybinds, after second press - [__`Objects Control Mode`__](ocm). Keybinds after third press retruns to [__`Default Camera Control Mode`__](dccm). All keybinds valid for all light origins or objects dependecny on mode. | <kbd>X</kbd>      |
+| Increase speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                         | <kbd>LShift</kbd> |
+| Decrease speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                         | <kbd>LCtrl</kbd>  |
 
-### [Default Camera Control Mode]:
+### [[__`Default Camera Control Mode`__](#dccm)]:
 | Description           | Keybinding   |
 | --------------------- | ------------ |
 | Move camera up.       | <kbd>W</kbd> |
 | Move camera left.     | <kbd>A</kbd> |
 | Move camera down.     | <kbd>S</kbd> |
 | Move camera right.    | <kbd>D</kbd> |
-| Move camera forward.  | <kbd>E</kbd> |
 | Move camera backward. | <kbd>Q</kbd> |
+| Move camera forward.  | <kbd>E</kbd> |
 
-### [Lights Control Mode]:
+### [[__`Lights Control Mode`__](#lcm)]:
 | Description                          | Keybinding   |
 | ------------------------------------ | ------------ |
 | Move lights up.                      | <kbd>W</kbd> |
@@ -95,7 +101,7 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f scenes/sphere.rtv1
 | Switch to control lights intensity.  | <kbd>C</kbd> |
 | Decrease lights inensity. [optional] | <kbd>Q</kbd> |
 | Increase lights inensity. [optional] | <kbd>E</kbd> |
-## [Objects Control Mode]:
+## [[__`Objects Control Mode`__](#ocm)]:
 | Description                           | Keybinding   |
 | ------------------------------------- | ------------ |
 | Move objects up.                      | <kbd>W</kbd> |
