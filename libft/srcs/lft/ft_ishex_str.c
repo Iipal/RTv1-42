@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:23:15 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 12:54:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 12:53:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,17 @@ bool	ft_ishex_str(const string str)
 	size_t			i;
 	size_t			j;
 	const string	valid_hex = "0123456789abcdef";
+	bool			is_valid;
 
 	i = ~0L;
-	while (str[++i] && (j = 16))
-		while (valid_hex[--j])
-			if (ft_tolower(str[i]) != valid_hex[j])
-				return (false);
+	while (str[++i] && (j = ~0L))
+	{
+		is_valid = false;
+		while (valid_hex[++j])
+			if (ft_tolower(str[i]) == valid_hex[j])
+				is_valid = true;
+		if (false == is_valid)
+			return (false);
+	}
 	return (true);
 }
