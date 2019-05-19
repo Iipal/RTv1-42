@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 19:53:42 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/16 17:55:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 11:22:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ inline Color	sdl_clrs_bright_inc(Color clr1,
 
 	out = clr1;
 	if (.0f < percent)
-		out = (Color) { INRANGE(clr1.r + (clr2.r * percent)),
-						INRANGE(clr1.g + (clr2.g * percent)),
-						INRANGE(clr1.b + (clr2.b * percent)) };
+		out.c = (t_clr){INRANGE(clr1.c.r + (clr2.c.r * percent)),
+						INRANGE(clr1.c.g + (clr2.c.g * percent)),
+						INRANGE(clr1.c.b + (clr2.c.b * percent))};
 	return (out);
 }

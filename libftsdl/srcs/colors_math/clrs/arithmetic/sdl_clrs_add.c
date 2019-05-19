@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:14:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/14 10:40:11 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 11:23:45 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 inline Color	sdl_clrs_add(Color src, const Color add)
 {
-	return ((Color){INRANGE(src.r + add.r),
-					INRANGE(src.g + add.g),
-					INRANGE(src.b + add.b)});
+	return ((Color){.c.r = INRANGE(src.c.r + add.c.r),
+					.c.g = INRANGE(src.c.g + add.c.g),
+					.c.b = INRANGE(src.c.b + add.c.b)});
 }
