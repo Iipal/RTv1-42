@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/18 10:10:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 11:50:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,9 @@
 # define E_WFTCZERO WARNING E_FTC " param invalid or 0x0."
 
 # define E_MAX_10   " flag param greate than 10. Max is 10."
-# define E_MAX_CLR  " flag param color greate than 0xffffff. Max is 0xffffff."
 
 # define E_WARNVPS  WARNING E_VPS E_MAX_10
 # define E_WARNSB   WARNING E_SB E_MAX_10
-# define E_WARNFTC  WARNING E_FTC E_MAX_CLR
 
 # define E_FTC0X    "0x"
 # define E_FTC_NO0X ERR "missed \'0x\' for color"
