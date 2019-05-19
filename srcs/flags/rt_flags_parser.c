@@ -6,21 +6,21 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 17:35:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/18 23:59:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 15:20:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static bool	add_curr_fparse(Flags *restrict const f, strtab av,
+static bool	add_curr_fparse(Flags *const f, strtab av,
 							const size_t ac,
-							size_t *restrict const i_av)
+							size_t *const i_av)
 {
 	const string		flags[] = {F_HELP, F_VPS, F_SB, F_FTC};
 	const string		sflags[] = {SF_HELP, SF_VPS, SF_SB, SF_FTC};
 	const t_fn_fparse	fns[] = {rt_fhelp, rt_fvps, rt_fsb, rt_fftc};
-	size_t				i;
 	bool				is_valid_flag;
+	size_t				i;
 
 	i = ~0L;
 	is_valid_flag = false;
@@ -34,7 +34,7 @@ static bool	add_curr_fparse(Flags *restrict const f, strtab av,
 	return (is_valid_flag);
 }
 
-bool		rt_flags_parser(Flags *restrict const f, strtab av, const size_t ac)
+bool		rt_flags_parser(Flags *const f, strtab av, const size_t ac)
 {
 	size_t	i;
 

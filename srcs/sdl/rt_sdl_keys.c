@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:07:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 00:20:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 15:12:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	add_sdl_keys_mode_switch(Isr *restrict const isr)
+static inline void	add_sdl_keys_mode_switch(Isr *const isr)
 {
 	if (isr->is_objs_debug)
 		isr->is_objs_debug = false;
@@ -22,8 +22,8 @@ static inline void	add_sdl_keys_mode_switch(Isr *restrict const isr)
 		isr->is_light_debug = !isr->is_light_debug;
 }
 
-inline void			rt_sdl_keys_press(Isr *restrict const isr,
-										const SDL_Keycode key)
+inline void			rt_sdl_keys_press(Isr *const isr,
+									const SDL_Keycode key)
 {
 	if (SDLK_x == key)
 		add_sdl_keys_mode_switch(isr);
@@ -49,8 +49,8 @@ inline void			rt_sdl_keys_press(Isr *restrict const isr,
 		isr->is_speeddown = true;
 }
 
-inline void			rt_sdl_keys_release(Isr *restrict const isr,
-										const SDL_Keycode key)
+inline void			rt_sdl_keys_release(Isr *const isr,
+									const SDL_Keycode key)
 {
 	if (SDLK_w == key)
 		isr->is_up = false;

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 18:06:24 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 00:28:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 15:08:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 inline Vector	rt_inter_sphere(const Vector a,
 								const Vector b,
-								const void *restrict obj_ptr)
+								const void *const obj_ptr)
 {
 	const double_t	r = ((Object*)obj_ptr)->radius;
 
@@ -23,7 +23,7 @@ inline Vector	rt_inter_sphere(const Vector a,
 
 inline Vector	rt_inter_cone(const Vector a,
 								const Vector b,
-								const void *restrict obj_ptr)
+								const void *const obj_ptr)
 {
 	const Object	*obj = (Object*)obj_ptr;
 	const double_t	r = obj->radius;
@@ -37,7 +37,7 @@ inline Vector	rt_inter_cone(const Vector a,
 
 inline Vector	rt_inter_plane(const Vector a,
 								const Vector b,
-								const void *restrict obj_ptr)
+								const void *const obj_ptr)
 {
 	(void)a;
 	(void)b;
@@ -47,7 +47,7 @@ inline Vector	rt_inter_plane(const Vector a,
 
 inline Vector	rt_inter_cylinder(const Vector a,
 								const Vector b,
-								const void *restrict obj_ptr)
+								const void *const obj_ptr)
 {
 	const Vector	obj_dir = ((Object*)obj_ptr)->dir;
 	const double_t	r = ((Object*)obj_ptr)->radius;

@@ -6,14 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 23:55:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/18 21:25:11 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 15:12:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	rt_objs_z_or_spec(Object *restrict o,
-									Isr const *restrict isr,
+static inline void	rt_objs_z_or_spec(Object *const o,
+									const Isr *const isr,
 									const double_t move,
 									const double_t s_move)
 {
@@ -33,9 +33,9 @@ static inline void	rt_objs_z_or_spec(Object *restrict o,
 	}
 }
 
-void				rt_sdl_keys_events_objs_debug(Object *restrict o,
-												Fps const *restrict fps,
-												Isr const *restrict isr,
+void				rt_sdl_keys_events_objs_debug(Object *const o,
+												const Fps *const fps,
+												const Isr *const isr,
 												const size_t in_scene_objects)
 {
 	size_t	i;

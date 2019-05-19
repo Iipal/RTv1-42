@@ -6,14 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:12:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 00:23:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 15:35:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	add_camera_keys_events(Isr const *restrict const isr,
-										Camera *restrict const cam,
+static inline void	add_camera_keys_events(const Isr *const isr,
+										Camera *const cam,
 										const double_t move)
 {
 	if (isr->is_up)
@@ -30,7 +30,7 @@ static inline void	add_camera_keys_events(Isr const *restrict const isr,
 		Z(cam->pos) = u_d_range(Z(cam->pos) + move, MAX_Z, MIN_Z);
 }
 
-inline void			rt_sdl_keys_events(Environment *restrict env)
+inline void			rt_sdl_keys_events(Environment *const env)
 {
 	if (env->isr.is_light_debug)
 	{

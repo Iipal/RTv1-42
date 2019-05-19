@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 00:54:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 15:33:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 */
 static inline fDot	add_intersection(const Vector o,
 									const Vector d,
-									const Object *restrict const obj)
+									const Object *const obj)
 {
 	const Vector	oc = o - obj->pos;
 	const Vector	k = 1 != obj->type ? obj->fn_inter_calc(oc, d, obj) : o;
@@ -34,7 +34,7 @@ static inline fDot	add_intersection(const Vector o,
 
 Object				*rt_closest_inter(const Vector o,
 									const Vector d,
-									Environment *restrict env)
+									Environment *const env)
 {
 	fDot			t;
 	size_t			i;

@@ -6,14 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 18:30:12 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 11:50:14 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 15:06:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool	rt_fhelp(Flags *restrict const f, strtab av,
-				const size_t ac, size_t *restrict const av_i)
+inline bool	rt_fhelp(Flags *const f, strtab av,
+				const size_t ac, size_t *const av_i)
 {
 	(void)f;
 	(void)ac;
@@ -24,8 +24,8 @@ inline bool	rt_fhelp(Flags *restrict const f, strtab av,
 	return (true);
 }
 
-inline bool	rt_fvps(Flags *restrict const f, strtab av,
-				const size_t ac, size_t *restrict const av_i)
+inline bool	rt_fvps(Flags *const f, strtab av,
+				const size_t ac, size_t *const av_i)
 {
 	IFM_F(E_MP_VPS, ac <= ++*av_i);
 	av[*av_i] += ft_skip_blanks(av[*av_i]);
@@ -36,8 +36,8 @@ inline bool	rt_fvps(Flags *restrict const f, strtab av,
 	return (true);
 }
 
-inline bool	rt_fsb(Flags *restrict const f, strtab av,
-				const size_t ac, size_t *restrict const av_i)
+inline bool	rt_fsb(Flags *const f, strtab av,
+				const size_t ac, size_t *const av_i)
 {
 	IFM_F(E_MP_SB, ac <= ++*av_i);
 	av[*av_i] += ft_skip_blanks(av[*av_i]);
@@ -48,8 +48,8 @@ inline bool	rt_fsb(Flags *restrict const f, strtab av,
 	return (true);
 }
 
-inline bool	rt_fftc(Flags *restrict const f, strtab av,
-				const size_t ac, size_t *restrict const av_i)
+inline bool	rt_fftc(Flags *const f, strtab av,
+				const size_t ac, size_t *const av_i)
 {
 	IFM_F(E_MP_FTC, ac <= ++*av_i);
 	av[*av_i] += ft_skip_blanks(av[*av_i]);

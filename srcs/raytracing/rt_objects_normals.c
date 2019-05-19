@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 19:17:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 22:35:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 15:08:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 inline Vector	rt_normal_sphere(const Vector p,
 								const Vector d,
-								const Camera *restrict cam,
-								const void *restrict obj_ptr)
+								const Camera *const cam,
+								const void *const obj_ptr)
 {
 	(void)cam;
 	(void)d;
@@ -24,8 +24,8 @@ inline Vector	rt_normal_sphere(const Vector p,
 
 inline Vector	rt_normal_cone(const Vector p,
 								const Vector d,
-								const Camera *restrict cam,
-								const void *restrict obj_ptr)
+								const Camera *const cam,
+								const void *const obj_ptr)
 {
 	const Object	*obj = (Object*)obj_ptr;
 	const double_t	c = (VDOT(d, ((Object*)obj_ptr)->dir) * TMAX)
@@ -39,8 +39,8 @@ inline Vector	rt_normal_cone(const Vector p,
 
 inline Vector	rt_normal_plane(const Vector p,
 								const Vector d,
-								const Camera *restrict cam,
-								const void *restrict obj_ptr)
+								const Camera *const cam,
+								const void *const obj_ptr)
 {
 	const Vector	obj_dir = ((Object*)obj_ptr)->dir;
 
@@ -51,8 +51,8 @@ inline Vector	rt_normal_plane(const Vector p,
 
 inline Vector	rt_normal_cylinder(const Vector p,
 								const Vector d,
-								const Camera *restrict cam,
-								const void *restrict obj_ptr)
+								const Camera *const cam,
+								const void *const obj_ptr)
 {
 	const Vector	obj_dir = ((Object*)obj_ptr)->dir;
 	const double_t	m = (VDOT(d, obj_dir) * TMAX) + VDOT(p, obj_dir);

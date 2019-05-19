@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:20:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 00:24:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 15:13:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void			rt_render_loop(Environment *restrict env)
+void			rt_render_loop(Environment *const env)
 {
 	bool	quit;
 

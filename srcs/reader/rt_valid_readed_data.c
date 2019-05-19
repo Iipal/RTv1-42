@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 10:05:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/18 23:55:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 15:10:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static bool	add_valid_lights_data(Light const *restrict l,
+static bool	add_valid_lights_data(Light const *l,
 									const double_t ins_l)
 {
 	size_t	i;
@@ -28,7 +28,7 @@ static bool	add_valid_lights_data(Light const *restrict l,
 	return (true);
 }
 
-bool		rt_valid_readed_data(Scene *restrict const s)
+bool		rt_valid_readed_data(Scene *const s)
 {
 	size_t	i;
 

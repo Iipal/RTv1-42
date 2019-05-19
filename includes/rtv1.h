@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 00:32:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 15:34:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,103 +18,103 @@
 # include "rtv1_structs.h"
 # include "rtv1_macroses.h"
 
-extern bool		rt_read_scene(Environment *restrict env,
-							char const *restrict const scene_file);
+bool			rt_read_scene(Environment *env,
+							char const *const scene_file);
 
-extern bool		rt_scam(Camera *restrict const cam, string s);
-extern bool		rt_slight(Light *restrict const l, string s);
+extern bool		rt_scam(Camera *const cam, string s);
+extern bool		rt_slight(Light *const l, string s);
 
-typedef bool	(*t_fn_sparse)(Object *restrict const, char*);
-extern bool		rt_ssphere(Object *restrict const obj, string s);
-extern bool		rt_scone(Object *restrict const obj, string s);
-extern bool		rt_splane(Object *restrict const obj, string s);
-extern bool		rt_scylinder(Object *restrict const obj, string s);
+typedef bool	(*t_fn_sparse)(Object *const, char*);
+extern bool		rt_ssphere(Object *const obj, string s);
+extern bool		rt_scone(Object *const obj, string s);
+extern bool		rt_splane(Object *const obj, string s);
+extern bool		rt_scylinder(Object *const obj, string s);
 
-extern bool		rt_valid_readed_data(Scene *restrict const s);
+bool			rt_valid_readed_data(Scene *const s);
 
-extern bool		rt_init(Environment *restrict env);
+extern bool		rt_init(Environment *env);
 
-extern bool		rt_flags_parser(Flags *restrict const f, strtab av,
-								const size_t ac);
+bool			rt_flags_parser(Flags *const f, strtab av, const size_t ac);
 
-typedef bool	(*t_fn_fparse)(Flags *restrict, char**,
-							const size_t, size_t *restrict const);
-extern bool		rt_fhelp(Flags *restrict const f, strtab av,
-					const size_t ac, size_t *restrict const av_i);
-extern bool		rt_fvps(Flags *restrict const f, strtab av,
-					const size_t ac, size_t *restrict const av_i);
-extern bool		rt_fsb(Flags *restrict const f, strtab av,
-					const size_t ac, size_t *restrict const av_i);
-extern bool		rt_fftc(Flags *restrict const f, strtab av,
-					const size_t ac, size_t *restrict const av_i);
+typedef bool	(*t_fn_fparse)(Flags *, char**,
+							const size_t, size_t *const);
+extern bool		rt_fhelp(Flags *const f, strtab av,
+					const size_t ac, size_t *const av_i);
+extern bool		rt_fvps(Flags *const f, strtab av,
+					const size_t ac, size_t *const av_i);
+extern bool		rt_fsb(Flags *const f, strtab av,
+					const size_t ac, size_t *const av_i);
+extern bool		rt_fftc(Flags *const f, strtab av,
+					const size_t ac, size_t *const av_i);
 
-extern void		rt_camera_speed_movements(double_t *cam_speed,
+extern void		rt_camera_speed_movements(double_t *const cam_speed,
 					const bool is_speed_up, const bool is_speed_down);
 
-extern void		rt_sdl_keys_press(Isr *restrict const isr,
+extern void		rt_sdl_keys_press(Isr *const isr,
 					const SDL_Keycode key);
-extern void		rt_sdl_keys_release(Isr *restrict const isr,
+extern void		rt_sdl_keys_release(Isr *const isr,
 					const SDL_Keycode key);
-extern void		rt_sdl_keys_events(Environment *restrict env);
+extern void		rt_sdl_keys_events(Environment *env);
 
-extern void		rt_sdl_keys_events_objs_debug(Object *restrict o,
-											Fps const *restrict fps,
-											Isr const *restrict isr,
-											const size_t in_scene_objects);
-extern void		rt_sdl_keys_events_lights_debug(Light *restrict l,
-											Fps const *restrict fps,
-											Isr const *restrict isr,
-											const size_t in_scene_lights);
+void			rt_sdl_keys_events_objs_debug(Object *o,
+										const Fps *const fps,
+										const Isr *const isr,
+										const size_t in_scene_objects);
+void			rt_sdl_keys_events_lights_debug(Light *l,
+										const Fps *const fps,
+										const Isr *const isr,
+										const size_t in_scene_lights);
 
-extern void		rt_rendering(Environment *restrict env);
-extern void		rt_render_loop(Environment *restrict env);
-extern void		rt_render_fps_counter(Environment *restrict env);
+void			rt_rendering(Environment *const env);
+void			rt_render_loop(Environment *const env);
+extern void		rt_render_fps_counter(Environment *const env);
 
-extern Color	rt_raytracing(Environment *restrict env, const Vector d);
+extern Color	rt_raytracing(Environment *const env, const Vector d);
 
 extern Vector	rt_inter_sphere(const Vector a,
 								const Vector b,
-								void const *restrict const obj_ptr);
+								void const *const obj_ptr);
 extern Vector	rt_inter_cone(const Vector a,
 								const Vector b,
-								void const *restrict const obj_ptr);
+								void const *const obj_ptr);
 extern Vector	rt_inter_plane(const Vector a,
 								const Vector b,
-								void const *restrict const obj_ptr);
+								void const *const obj_ptr);
 extern Vector	rt_inter_cylinder(const Vector a,
 								const Vector b,
-								void const *restrict const obj_ptr);
+								void const *const obj_ptr);
 
 extern Vector	rt_normal_sphere(const Vector p,
 								const Vector d,
-								Camera const *restrict const cam,
-								void const *restrict const obj_ptr);
+								Camera const *const cam,
+								void const *const obj_ptr);
 extern Vector	rt_normal_cone(const Vector p,
 								const Vector d,
-								Camera const *restrict const cam,
-								void const *restrict const obj_ptr);
+								Camera const *const cam,
+								void const *const obj_ptr);
 extern Vector	rt_normal_plane(const Vector p,
 								const Vector d,
-								Camera const *restrict const cam,
-								void const *restrict const obj_ptr);
+								Camera const *const cam,
+								void const *const obj_ptr);
 extern Vector	rt_normal_cylinder(const Vector p,
 								const Vector d,
-								Camera const *restrict const cam,
-								void const *restrict const obj_ptr);
+								Camera const *const cam,
+								void const *const obj_ptr);
 
-extern Color	rt_calculate_light(Environment *restrict env,
-					t_clhelp *restrict const h,
-					Object const *restrict const obj,
-					const Vector d);
+Color			rt_calculate_light(Environment *env,
+								t_clhelp *const h,
+								Object const *const obj,
+								const Vector d);
 
-extern Object	*rt_closest_inter(const Vector o,
-					const Vector d, Environment *restrict env);
+Object			*rt_closest_inter(const Vector o,
+								const Vector d,
+								Environment *const env);
 
-extern void		rt_fps(Fps *restrict const fps, double_t cam_speed);
+extern void		rt_fps(Fps *const fps, double_t cam_speed);
 
-extern void		rt_free(Environment * restrict* env);
+extern void		rt_free(Environment **env);
 
-extern Vector	u_inrange_dir_max(Vector dir);
-extern Vector	u_inrange_dir_min(Vector dir);
+Vector			u_inrange_dir_max(Vector dir);
+Vector			u_inrange_dir_min(Vector dir);
 
 #endif

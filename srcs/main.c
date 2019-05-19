@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 00:05:56 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 15:06:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #ifdef DEBUG
 
-static inline bool	add_valid_exe_path(char *restrict const path)
+static inline bool	add_valid_exe_path(char *const path)
 {
 	(void)path;
 	return (true);
@@ -23,7 +23,7 @@ static inline bool	add_valid_exe_path(char *restrict const path)
 
 #else
 
-static inline bool	add_valid_exe_path(char *restrict const path)
+static inline bool	add_valid_exe_path(char *const path)
 {
 	IFM_F(E_DIR, ft_strcmp(path, RTV1_EXE_PATH));
 	return (true);
@@ -31,7 +31,7 @@ static inline bool	add_valid_exe_path(char *restrict const path)
 
 #endif
 
-static inline bool	add_valid_filename(char *restrict const file)
+static inline bool	add_valid_filename(char *const file)
 {
 	NOM_F(E_FILEXT,
 	!ft_strcmp(file + (ft_strlen(file) - ft_strlen(RTV1_FILEXT)), RTV1_FILEXT));
@@ -41,7 +41,7 @@ static inline bool	add_valid_filename(char *restrict const file)
 
 int					main(int argc, string argv[])
 {
-	Environment *restrict	env;
+	Environment *env;
 
 	NO_F(add_valid_exe_path(*argv));
 	ISARGS(argc, argv);

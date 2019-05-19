@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:32:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/15 18:19:17 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 15:15:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool	rt_scam(Camera *cam, string s)
+inline bool	rt_scam(Camera *const cam, string s)
 {
 	IFM_F(E_DCAMERA, cam->is);
 	s += ft_skip_to_blank(s);
@@ -30,7 +30,7 @@ inline bool	rt_scam(Camera *cam, string s)
 	return (true);
 }
 
-inline bool	rt_slight(Light *l, string s)
+inline bool	rt_slight(Light *const l, string s)
 {
 	s += ft_skip_to_blank(s);
 	IF_F(*s++ != ' ');
