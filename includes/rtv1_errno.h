@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 11:50:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/19 14:07:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@
 # define E_WARNSB   WARNING E_SB E_MAX_10
 
 # define E_FTC0X    "0x"
-# define E_FTC_NO0X ERR "missed \'0x\' for color"
-# define E_FTC_HEX  ERR "invalid hex number."
+# define E_FTC_NO0X ERR "Missed \'0x\' for color param."
+# define E_FTC_HEX  ERR "Invalid hex number for flag " E_FTC "."
 
 #endif
