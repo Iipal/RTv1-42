@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 19:23:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 20:02:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ struct	s_scene
 	size_t		ins_l;
 	size_t		ins_objs;
 	double_t	cobj;
+	bool		is_render_shadow;
 };
 
 struct	s_fps

@@ -6,12 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:07:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 18:49:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 20:19:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-
 
 static inline void	add_sdl_keys_rot_press(Isr *const isr,
 									const SDL_Keycode key)

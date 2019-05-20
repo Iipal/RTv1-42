@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 19:27:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 20:01:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@
 
 # define FP_CAM         "Camera:"
 # define FP_LIGHT       "Light:"
+# define FP_SHADOWS     "enable Shadows."
 
 # define FP_MAX_OBJS    4
 # define FP_SPHERE      "Sphere:"

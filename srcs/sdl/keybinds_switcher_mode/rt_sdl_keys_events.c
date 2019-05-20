@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:12:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 15:35:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 19:43:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ inline void			rt_sdl_keys_events(Environment *const env)
 	{
 		if (env->isr.is_objs_debug)
 			env->isr.is_light_debug = false;
-		else
+		else if (!env->flags.not_calc_lights)
 			rt_sdl_keys_events_lights_debug(env->s.l,
 				&env->fps, &env->isr, env->s.ins_l);
 	}

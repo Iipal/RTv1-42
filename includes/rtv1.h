@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 19:23:56 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 19:57:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,17 @@ extern void		rt_camera_speed_movements(double_t *const cam_speed,
 
 extern Color	rt_raytracing(Environment *const env, const Vector d);
 
-extern Vector	rt_inter_sphere(const Vector a,
-								const Vector b,
+extern Vector	rt_inter_sphere(const Vector x,
+								const Vector d,
 								void const *const obj_ptr);
-extern Vector	rt_inter_cone(const Vector a,
-								const Vector b,
+extern Vector	rt_inter_cone(const Vector x,
+								const Vector d,
 								void const *const obj_ptr);
-extern Vector	rt_inter_plane(const Vector a,
-								const Vector b,
+extern Vector	rt_inter_plane(const Vector x,
+								const Vector d,
 								void const *const obj_ptr);
-extern Vector	rt_inter_cylinder(const Vector a,
-								const Vector b,
+extern Vector	rt_inter_cylinder(const Vector x,
+								const Vector d,
 								void const *const obj_ptr);
 
 extern Vector	rt_normal_sphere(const Vector p,
