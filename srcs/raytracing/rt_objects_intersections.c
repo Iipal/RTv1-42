@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 18:06:24 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 15:08:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 16:34:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,11 @@ inline Vector	rt_inter_cone(const Vector a,
 								const void *const obj_ptr)
 {
 	const Object	*obj = (Object*)obj_ptr;
-	const double_t	r = obj->radius;
+	const double_t	k = 1 + pow(tan(obj->radius / 2.0f), 2);
 
-	return ((Vector){
-		VDOT(b, b) - (pow(VDOT(b, obj->dir), 2) * (1 + pow(r / 2.0f, 2))),
-		2.0f * (VDOT(b, a) - ((1.0f * pow(tan(r / 2.0f), 2))
-			* VDOT(b, obj->dir) * VDOT(a, obj->dir))),
-	VDOT(a, a) - (pow(VDOT(a, obj->dir), 2) * (1 + pow(tan(r / 2.0f), 2))) });
+	return ((Vector){VDOT(b, b) - k * pow(VDOT(b, obj->dir), 2),
+		2.0f * (VDOT(b, a) - k * (VDOT(b, obj->dir) * VDOT(a, obj->dir))),
+		VDOT(a, a) - k * (pow(VDOT(a, obj->dir), 2))});
 }
 
 inline Vector	rt_inter_plane(const Vector a,
