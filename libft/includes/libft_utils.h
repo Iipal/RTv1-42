@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:09:12 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 12:44:03 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 12:17:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ bool	ft_isdigits_str(const string str);
 /*
 **	\return true is \param str contain only hex digits or false if not.
 */
-bool	ft_ishex_str(const string str);
+bool	ft_ishex_str(string str);
 
 /*
 **	\return true if \param n symbols in string \param str
 **		contains only hex digits or false if not.
 */
-bool	ft_ishex_strn(const string str, const size_t n);
+bool	ft_ishex_strn(string str, size_t n);
 
 /*
 **	\return How many blanks skips in string \param str.
