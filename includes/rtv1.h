@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 10:39:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 16:10:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ extern bool		rt_fvps(Flags *const f, strtab av,
 extern bool		rt_fsb(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
 extern bool		rt_fftc(Flags *const f, strtab av,
+					const size_t ac, size_t *const av_i);
+extern bool		rt_fdbg(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
 
 extern void		rt_camera_speed_movements(double_t *const cam_speed,

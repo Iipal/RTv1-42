@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 18:30:12 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 12:10:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 16:19:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,15 @@ inline bool	rt_fftc(Flags *const f, strtab av,
 	av[*av_i] += 2;
 	NOM_F(E_FTC_HEX, ft_ishex_str(av[*av_i]));
 	NOM_F(E_WFTCZERO, f->fps_text_color = ft_atoi_base(av[*av_i], 16));
+	return (true);
+}
+
+inline bool	rt_fdbg(Flags *const f, strtab av,
+				const size_t ac, size_t *const av_i)
+{
+	(void)av;
+	(void)ac;
+	(void)av_i;
+	f->debug_mode = true;
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 15:06:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 16:37:30 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@ static inline bool	add_valid_filename(char *const file)
 	return (true);
 }
 
+static inline void	add_fake_render_loop(Environment *const env)
+{
+	bool	quit;
+
+	quit = false;
+	rt_rendering(env);
+	while (!quit)
+		while (SDL_PollEvent(&env->sdl->e) > 0)
+			if (SDL_QUIT == env->sdl->e.type)
+				quit = true;
+			else if (SDL_KEYDOWN == env->sdl->e.type && SDLK_ESCAPE == SEKEY)
+				quit = true;
+}
+
 int					main(int argc, string argv[])
 {
 	Environment *env;
@@ -50,7 +64,12 @@ int					main(int argc, string argv[])
 	NO_F(rt_read_scene(env, argv[argc - 1]));
 	NO_F(rt_init(env));
 	NODO_F(rt_flags_parser(&env->flags, argv, argc - 1), rt_free(&env));
-	ft_putfile(RTV1_USAGE);
-	rt_render_loop(env);
+	if (env->flags.debug_mode)
+	{
+		ft_putfile(RTV1_USAGE);
+		rt_render_loop(env);
+	}
+	else
+		add_fake_render_loop(env);
 	rt_free(&env);
 }

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/18 23:50:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 16:11:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ struct	s_flags
 	float_t	viewport_scale;
 	float_t	shadows_bright;
 	Uint32	fps_text_color;
+	bool	debug_mode;
 };
 
 # define SCENE typedef struct s_scene   Scene
