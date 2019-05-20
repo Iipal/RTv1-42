@@ -116,3 +116,6 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
 | Switch to control objects specular.   | <kbd>C</kbd> |
 | Decrease objects specular. [optional] | <kbd>Q</kbd> |
 | Increase objects specular. [optional] | <kbd>E</kbd> |
+| Rotate objects by X-axis.             | <kbd>R</kbd> |
+| Rotate objects by Y-axis.             | <kbd>F</kbd> |
+| Rotate objects by Z-axis.             | <kbd>V</kbd> |
