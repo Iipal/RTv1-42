@@ -3,4 +3,5 @@ Flags usage:
  -vps, --viewport-scale: integer param 1-10. Default: 1.
  -sb, --shadow-bright: integer param 1-10. Default: 10.
  -ftc, --fps-text-color: hex param 0x1-0xffffff. Default: 0x80ff00.
- -dbg, --debug: activate switcher binds mode.
+ -dbg, --debug: activate switcher binds mode. Default: not enable.
+ -ncl, -not-calc-light: disable calc all light origins. Default: not enable.
