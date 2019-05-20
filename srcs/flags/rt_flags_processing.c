@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 18:30:12 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 15:06:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 12:10:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ inline bool	rt_fftc(Flags *const f, strtab av,
 	IFM_F(E_UNSIGN, '-' == av[*av_i][0]);
 	IFM_F(E_FTC_NO0X, ft_strncmp(av[*av_i], E_FTC0X, ft_strlen(E_FTC0X)));
 	av[*av_i] += 2;
-	IFM_F(E_FTC_HEX, ft_ishex_str(av[*av_i]));
-	NOM_F(E_WFTCZERO, f->fps_text_color);
+	NOM_F(E_FTC_HEX, ft_ishex_str(av[*av_i]));
+	NOM_F(E_WFTCZERO, f->fps_text_color = ft_atoi_base(av[*av_i], 16));
 	return (true);
 }
