@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/05/19 00:53:51 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/05/20 10:50:47 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,18 @@ fclean: clean
 	@$(LMAKE) fclean
 	@$(DEL) $(NAME)
 	@$(ECHO) "$(INVERT)$(RED)deleted$(WHITE)$(INVERT): $(NPWD)$(WHITE)"
+
+norme:
+	@norminette includes/
+	@norminette $(SRC)
+	@norminette libft/includes/
+	@norminette libft/srcs/*/*.c
+	@norminette libftsdl/includes/
+	@norminette libftsdl/srcs/*.c \
+		libftsdl/srcs/colors_math/clr/*.c \
+		libftsdl/srcs/colors_math/clr/*/*.c \
+		libftsdl/srcs/colors_math/clrs/*.c \
+		libftsdl/srcs/colors_math/clrs/*/*.c
 
 re: fclean all
 
