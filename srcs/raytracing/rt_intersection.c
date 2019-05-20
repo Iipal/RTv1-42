@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 15:33:33 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 10:38:18 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 **	1 == obj->type if it's plane. For plane don't neccessary calc discriminant.
 */
+
 static inline fDot	add_intersection(const Vector o,
 									const Vector d,
 									const Object *const obj)

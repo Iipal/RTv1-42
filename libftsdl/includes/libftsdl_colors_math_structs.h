@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 12:24:17 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 11:16:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 10:44:57 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 # include <stdint.h>
 # include <math.h>
 
-typedef struct	s_clr
+typedef struct		s_clr
 {
 	uint8_t	r;
 	uint8_t	g;
 	uint8_t	b;
-}				t_clr;
+}					t_clr;
 
 union				u_color
 {

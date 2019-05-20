@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 19:17:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 15:08:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 10:44:26 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ inline Vector	rt_normal_cone(const Vector p,
 								const void *const obj_ptr)
 {
 	const Object	*obj = (Object*)obj_ptr;
-	const double_t	c = (VDOT(d, ((Object*)obj_ptr)->dir) * TMAX)
-		+ VDOT((cam->pos - ((Object*)obj_ptr)->pos), ((Object*)obj_ptr)->dir);
+	double_t		c;
 
 	(void)cam;
 	(void)d;
+	c = (VDOT(d, ((Object*)obj_ptr)->dir) * TMAX)
+		+ VDOT((cam->pos - ((Object*)obj_ptr)->pos), ((Object*)obj_ptr)->dir);
 	return (p - obj->pos - VMUL(obj->dir,
 		(c * (1 + pow(tan(obj->radius / 2.0f), 2)))));
 }

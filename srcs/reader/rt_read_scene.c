@@ -6,14 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 15:09:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 10:39:17 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
 static bool	add_parser(Scene *const sc, string *str,
-					t_pfhelp *const pfh)
+				t_pfhelp *const pfh)
 {
 	const t_fn_sparse	fns[] = {rt_ssphere, rt_scone, rt_splane, rt_scylinder};
 	const string		objects[] = {FP_SPHERE, FP_CONE, FP_PLANE, FP_CYLINDER};
@@ -41,9 +41,8 @@ static bool	add_parser(Scene *const sc, string *str,
 	return (is_valid_data);
 }
 
-bool	add_valid_objs_counter(int32_t *const fd,
-							Scene *const s,
-							const char *const file)
+bool		add_valid_objs_counter(int32_t *const fd,
+				Scene *const s, const char *const file)
 {
 	string			temp;
 
@@ -70,7 +69,7 @@ bool	add_valid_objs_counter(int32_t *const fd,
 }
 
 bool		rt_read_scene(Environment *env,
-					char const *const scene_file)
+					const char *const scene_file)
 {
 	int32_t		fd;
 	string		tmp;
