@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 19:17:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 16:34:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 18:03:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ inline Vector	rt_normal_cone(const Vector p,
 								const void *const obj_ptr)
 {
 	const Object	*obj = (Object*)obj_ptr;
-	const double_t	t = VDOT(-p, obj->dir) / VDOT(d, obj->dir);
+	const Vector	x = cam->pos - obj->pos;
+	const double_t	t = VDOT(-x, obj->dir) / VDOT(d, obj->dir);
 	const double_t	m = VDOT(d, obj->dir) * t + VDOT(p, obj->dir);
 	const double_t	k = 1 + pow(tan(obj->radius / 2.0f), 2);
 	const Vector	mul = VMUL(obj->dir, k);
@@ -55,9 +56,10 @@ inline Vector	rt_normal_cylinder(const Vector p,
 								const Camera *const cam,
 								const void *const obj_ptr)
 {
-	const Vector	obj_dir = ((Object*)obj_ptr)->dir;
-	const double_t	m = (VDOT(d, obj_dir) * TMAX) + VDOT(p, obj_dir);
+	const Object	*obj = (Object*)obj_ptr;
+	const Vector	x = cam->pos - obj->pos;
+	const double_t	t = VDOT(-x, obj->dir) / VDOT(d, obj->dir);
+	const double_t	m = VDOT(d, obj->dir) * t + VDOT(p, obj->dir);
 
-	(void)cam;
-	return (p - ((Object*)obj_ptr)->pos - VMUL(obj_dir, m));
+	return (p - obj->pos - VMUL(obj->dir, m));
 }

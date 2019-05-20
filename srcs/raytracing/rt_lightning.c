@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 16:34:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 17:51:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static inline void	add_specular_reflect(Light *const l,
 		Y(h->h) / VLEN(h->h), Z(h->h) / VLEN(h->h)};
 	h->h_intense = (l->intens * fmax(0, h->dnl) + obj_spec)
 		* (l->intens * pow(fmax(0.0f, VDOT(h->n, h->h)), obj_spec));
-	h->d = h->n - l->pos;
-	h->i += h->h_intense / VLEN(h->d);
+	h->d = h->p - l->pos;
+	h->i += h->h_intense / pow(VLEN(h->d), 2);
 }
 
 Color				rt_calculate_light(Environment *const env,

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 16:11:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 18:06:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ struct	s_light
 
 typedef Vector	(*t_fn_inter)(const Vector,
 							const Vector,
-							void const *restrict const);
+							const void *const);
 typedef Vector	(*t_fn_normal)(const Vector,
 							const Vector,
-							struct s_camera const *restrict const,
-							void const *restrict const);
+							const struct s_camera *const,
+							const void *const);
 
 struct	s_object
 {
