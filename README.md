@@ -57,9 +57,11 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 | ---------------- | ------------------------------------------------------------------------- | -------- | -------------- | ------------- | ---------- |
 | --help           | Print short flags description. After print RTv1 will automatically close. | -h       | none           | none          | none       |
 | --viewport-scale | How many times will be increased viewport.                                | -vps     | 1-10           | 1             | Integer    |
-| --shadow-bright  | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10           | 100           | Integer    |  | --help | Print short flags description. After print RTv1 will automaticly close. | -h | none | none | none |
+| --shadow-bright  | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10           | 100           | Integer    |
+| --help           | Print short flags description. After print RTv1 will automaticly close.   | -h       | none           | none          | none       |
 | --fps-text-color | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        |
-| --debug          | Activate keybinds switcher mode.                                          | -dbg     | none           | none          | none       |
+| --debug          | Activate keybinds switcher mode.                                          | -dbg     | none           | false         | none       |
+| --not-calc-light | Disable calc all light origins                                            | -ncl     | none           | false         | none       |
 #### Example:
 ```bash
 $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1

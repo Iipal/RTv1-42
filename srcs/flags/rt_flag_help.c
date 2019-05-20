@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_init.c                                          :+:      :+:    :+:   */
+/*   rt_flag_help.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/10 15:22:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 19:27:11 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/05/20 19:22:31 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/05/20 19:22:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool	rt_init(Environment *env)
+inline bool	rt_fhelp(Flags *const f, strtab av,
+				const size_t ac, size_t *const av_i)
 {
-	MEM(Sdl, env->sdl, 1, E_ALLOC);
-	NODO_F(sdl_init(env->sdl, WIN_X, WIN_Y, RTV1_TITLE), rt_free(&env));
-	env->cam_speed = MOVE_SPEED_PERCENT_DEFAULT;
-	env->flags = (Flags){DEF_VIEWPORT_SCALE,
-						DEF_SHADOW_BRIGHT,
-						DEF_FPS_TEXT_COLOR,
-						DEF_DEBUG_MODE,
-						DEF_NOT_CALC_LIGHT};
+	(void)f;
+	(void)ac;
+	(void)av;
+	(void)av_i;
+	ft_putfile(RTV1_FHELP);
+	exit(1);
 	return (true);
 }

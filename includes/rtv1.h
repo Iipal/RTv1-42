@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 16:10:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 19:23:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,8 @@ extern bool		rt_fftc(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
 extern bool		rt_fdbg(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
-
-extern void		rt_camera_speed_movements(double_t *const cam_speed,
-					const bool is_speed_up, const bool is_speed_down);
+extern bool		rt_fncl(Flags *const f, strtab av,
+					const size_t ac, size_t *const av_i);
 
 extern void		rt_sdl_keys_press(Isr *const isr,
 					const SDL_Keycode key);
@@ -70,6 +69,9 @@ void			rt_sdl_keys_events_lights_debug(Light *l,
 void			rt_rendering(Environment *const env);
 void			rt_render_loop(Environment *const env);
 extern void		rt_render_fps_counter(Environment *const env);
+
+extern void		rt_camera_speed_movements(double_t *const cam_speed,
+					const bool is_speed_up, const bool is_speed_down);
 
 extern Color	rt_raytracing(Environment *const env, const Vector d);
 
