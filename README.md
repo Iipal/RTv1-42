@@ -53,26 +53,28 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 ```
 ### Flags:
 
-| Flag             | Description                                                               | Shortcut | Valid values | Default value | Value type |
-| ---------------- | ------------------------------------------------------------------------- | -------- | ------------ | ------------- | ---------- |
-| --help           | Print short flags description. After print RTv1 will automatically close. | -h       | none         | none          | none       |
-| --viewport-scale | How many times will be increased viewport.                                | -vps     | 1-10         | 1             | Integer    |
-| --shadow-bright  | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10         | 100           | Integer    |  | --help | Print short flags description. After print RTv1 will automaticly close. | -h | none | none | none |
+| Flag             | Description                                                               | Shortcut | Valid values   | Default value | Value type |
+| ---------------- | ------------------------------------------------------------------------- | -------- | -------------- | ------------- | ---------- |
+| --help           | Print short flags description. After print RTv1 will automatically close. | -h       | none           | none          | none       |
+| --viewport-scale | How many times will be increased viewport.                                | -vps     | 1-10           | 1             | Integer    |
+| --shadow-bright  | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10           | 100           | Integer    |  | --help | Print short flags description. After print RTv1 will automaticly close. | -h | none | none | none |
 | --fps-text-color | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        |
+| --debug          | Activate keybinds switcher mode.                                          | -dbg     | none           | none          | none       |
 #### Example:
 ```bash
-$> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f scenes/sphere.rtv1
+$> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
 ```
 ###### Note: always put scene file in arguments line, because flags will parse only after successful read scene file.
 
 ## Keybinds:
 
 ### General keybinds in all keybind modes:
-| Description                | Keybinding     |
-| -------------------------- | -------------- |
-| Show render info. (FPS\ms) | <kbd>Z</kbd>   |
-| Exit.                      | <kbd>Esc</kbd> |
+| Description                                             | Keybinding     |
+| ------------------------------------------------------- | -------------- |
+| Show render info. (FPS\ms, works only with `-dbg` flag) | <kbd>Z</kbd>   |
+| Exit.                                                   | <kbd>Esc</kbd> |
 
+###### All binds below works only with `-dbg` flag.
 ## Keybinds mode switcher binds:
 | Name                                                                                  | Description                                                                                                                                                                                                                                                                                                                                        | Keybinding        |
 | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
