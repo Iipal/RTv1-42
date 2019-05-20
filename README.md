@@ -57,7 +57,6 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 | --help           | Print short flags description. After print RTv1 will automatically close. | -h       | none         | none          | none       |
 | --viewport-scale | How many times will be increased viewport.                                | -vps     | 1-10         | 1             | Integer    |
 | --shadow-bright  | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10         | 100           | Integer    |  | --help | Print short flags description. After print RTv1 will automaticly close. | -h | none | none | none |
-
 | --fps-text-color | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        |
 #### Example:
 ```bash
