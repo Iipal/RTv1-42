@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 18:06:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 18:40:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,9 @@ struct	s_isrender
 	bool	is_right;
 	bool	is_zinc;
 	bool	is_zdec;
+	bool	is_rot_x;
+	bool	is_rot_y;
+	bool	is_rot_z;
 	bool	is_render_fps;
 	bool	is_speedup;
 	bool	is_speeddown;

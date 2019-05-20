@@ -6,11 +6,23 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:07:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 16:29:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/20 18:49:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+
+static inline void	add_sdl_keys_rot_press(Isr *const isr,
+									const SDL_Keycode key)
+{
+	if (SDLK_r == key)
+		isr->is_rot_x = true;
+	else if (SDLK_f == key)
+		isr->is_rot_y = true;
+	else if (SDLK_v == key)
+		isr->is_rot_z = true;
+}
 
 static inline void	add_sdl_keys_mode_switch(Isr *const isr)
 {
@@ -47,6 +59,8 @@ inline void			rt_sdl_keys_press(Isr *const isr,
 		isr->is_speedup = true;
 	else if (SDLK_LCTRL == key)
 		isr->is_speeddown = true;
+	else
+		add_sdl_keys_rot_press(isr, key);
 }
 
 inline void			rt_sdl_keys_release(Isr *const isr,
@@ -68,4 +82,10 @@ inline void			rt_sdl_keys_release(Isr *const isr,
 		isr->is_speedup = false;
 	else if (SDLK_LCTRL == key)
 		isr->is_speeddown = false;
+	else if (SDLK_r == key)
+		isr->is_rot_x = false;
+	else if (SDLK_f == key)
+		isr->is_rot_y = false;
+	else if (SDLK_v == key)
+		isr->is_rot_z = false;
 }
