@@ -28,7 +28,7 @@ __*Windows:*__
 - [Visual Studio](http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/msvsnet2010u/index.php).
 
 ## Additional info:
-This project inlcudes also a few my other projects. It's library [libft] and [libftsdl]
+This project inlcudes also a few my other projects. It's libraries [libft](https://github.com/Iipal/lft) and [libftsdl](https://github.com/Iipal/libftsdl).
 
 ## Compiling
 
@@ -37,11 +37,12 @@ Use [make](https://en.wikipedia.org/wiki/Makefile) for compiling all files.
 When you have already installed SDL2 library you can use this simple rules:
 - **make**: Compile all.
 - **make clean**: Delete all RTv1, libft and libftsdl temporary files.
-- **makde del**: Delete temporary RTv1 files only.
+- **make del**: Delete temporary RTv1 files only.
 - **make fclean**: Expands `make clean` to delete also executable RTv1, libraries libft and libftsdl.
 - **make re**: It's rules - **make fclean** & **make** in one.
 - **make pre**: It's rules - **make del** & **make** in one.
 - **make debug**: Re-compile RTv1 without optimization flags but with `-g3` for debug.
+- **make norme**: Check all libft, libftsdl and RTv1 `*.c` and `*.h` files for norme errors. (Works only on MacOS in school42)
 ###### If you change code use: `make del & make` or equal rule - `make pre` for re-compile only RTv1 executable without re-compile libft and libftsdl.
 ###### If you wants to re-compile libft and libftsdl for debug use: `make -C libft debug` and `make -C libftsdl debug`.
 
