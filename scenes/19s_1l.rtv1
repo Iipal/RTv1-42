@@ -1,21 +1,21 @@
 Camera: 0,0,0 0,0,0
-Light: 0,20,0 100
-Sphere: 0,0,10 0xaa11ff 1 100
-Sphere: 0,1,12 0xffacaa 1 100
-Sphere: 0,2,14 0xabcdef 1 100
-Sphere: 0,3,16 0xfedcba 1 100
-Sphere: 0,4,18 0x123456 1 100
-Sphere: 0,5,20 0x654321 1 100
-Sphere: 0,6,22 0x135791 1 100
-Sphere: 0,7,24 0x197531 1 100
-Sphere: 0,8,26 0x782351 1 100
-Sphere: 0,9,28 0x156595 1 100
-Sphere: 0,10,30 0x595651 1 100
-Sphere: 0,11,32 0xfc9a1f 1 100
-Sphere: 0,12,34 0xfacaff 1 100
-Sphere: 0,13,36 0xf123ff 1 100
-Sphere: 0,14,38 0xff123f 1 100
-Sphere: 0,15,40 0xfaaf12 1 100
-Sphere: 0,16,42 0x12faaf 1 100
-Sphere: 0,17,44 0x121133 1 100
-Sphere: 0,18,46 0xf4133f 1 100
+Light: 0,20,0 0,0,0 100
+Sphere: 0,0,10 0,0,0 0xaa11ff 1 100
+Sphere: 0,1,12 0,0,0 0xffacaa 1 100
+Sphere: 0,2,14 0,0,0 0xabcdef 1 100
+Sphere: 0,3,16 0,0,0 0xfedcba 1 100
+Sphere: 0,4,18 0,0,0 0x123456 1 100
+Sphere: 0,5,20 0,0,0 0x654321 1 100
+Sphere: 0,6,22 0,0,0 0x135791 1 100
+Sphere: 0,7,24 0,0,0 0x197531 1 100
+Sphere: 0,8,26 0,0,0 0x782351 1 100
+Sphere: 0,9,28 0,0,0 0x156595 1 100
+Sphere: 0,10,30 0,0,0 0x595651 1 100
+Sphere: 0,11,32 0,0,0 0xfc9a1f 1 100
+Sphere: 0,12,34 0,0,0 0xfacaff 1 100
+Sphere: 0,13,36 0,0,0 0xf123ff 1 100
+Sphere: 0,14,38 0,0,0 0xff123f 1 100
+Sphere: 0,15,40 0,0,0 0xfaaf12 1 100
+Sphere: 0,16,42 0,0,0 0x12faaf 1 100
+Sphere: 0,17,44 0,0,0 0x121133 1 100
+Sphere: 0,18,46 0,0,0 0xf4133f 1 100
