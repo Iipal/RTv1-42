@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 18:30:12 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 19:24:18 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 09:59:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ inline bool	rt_fncl(Flags *const f, strtab av,
 	(void)av;
 	(void)ac;
 	(void)av_i;
-	f->not_calc_lights = true;
+	f->no_calc_light = true;
 	return (true);
 }
