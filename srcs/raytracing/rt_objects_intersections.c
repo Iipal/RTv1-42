@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 18:06:24 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 19:03:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 22:38:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ inline Vector	rt_inter_cylinder(const Vector x,
 								const Vector d,
 								const void *const obj_ptr)
 {
-	const Vector	obj_dir = ((Object*)obj_ptr)->dir;
+	const Vector	obj_dir = u_vec_norm(((Object*)obj_ptr)->dir);
 	const double_t	r = ((Object*)obj_ptr)->radius;
 
 	return ((Vector){VDOT(d, d) - pow(VDOT(d, obj_dir), 2.0f),

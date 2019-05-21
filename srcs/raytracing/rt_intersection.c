@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 17:54:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 23:32:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,22 @@ Object				*rt_closest_inter(const Vector o,
 	size_t			i;
 	Object			*out_obj;
 
-
 	i = ~0L;
 	out_obj = NULL;
-	env->s.cobj = env->t_max;
+	env->s.cam.closes_t = env->t_max;
 	while (++i < env->s.ins_objs)
 	{
 		t = add_intersection(o, d, &env->s.objs[i]);
-		if (X(t) > env->t_min && X(t) < env->t_max && X(t) < env->s.cobj)
+		if (X(t) > env->t_min && X(t) < env->t_max
+		&& X(t) < env->s.cam.closes_t)
 		{
-			env->s.cobj = X(t);
+			env->s.cam.closes_t = X(t);
 			out_obj = &env->s.objs[i];
 		}
-		if (Y(t) > env->t_min && Y(t) < env->t_max && Y(t) < env->s.cobj)
+		if (Y(t) > env->t_min && Y(t) < env->t_max
+		&& Y(t) < env->s.cam.closes_t)
 		{
-			env->s.cobj = Y(t);
+			env->s.cam.closes_t = Y(t);
 			out_obj = &env->s.objs[i];
 		}
 	}

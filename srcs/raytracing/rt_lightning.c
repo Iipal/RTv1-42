@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 19:44:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 22:40:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ Color				rt_calc_light(Environment *const env,
 		h->l = env->s.l[i].pos - h->p;
 		env->t_max = 1.0f;
 		if (env->s.is_render_shadow
-		&& (shadow = rt_closest_inter(h->p, h->l, env)))
+		&& (shadow = rt_closest_inter(h->p, u_vec_norm(h->l), env)))
 			continue ;
 		h->dnl = VDOT(h->n, h->l);
 		if (.0f < h->dnl)
