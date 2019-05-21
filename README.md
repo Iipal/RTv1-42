@@ -60,7 +60,7 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 | --shadow-bright  | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10           | 100           | Integer    |
 | --fps-text-color | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        |
 | --debug          | Enable keybinds switcher mode.                                            | -dbg     | none           | not enable    | none       |
-| --not-calc-light | Disable calc all light origins                                            | -ncl     | none           | not enable    | none       |
+| --no-calc-light  | Disable calc all light origins                                            | -ncl     | none           | not enable    | none       |
 #### Example:
 ```bash
 $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
