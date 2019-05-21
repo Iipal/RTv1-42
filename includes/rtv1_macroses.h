@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 20:01:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 09:39:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@
 # define F_SB       "--shadow-bright"
 # define F_FTC      "--fps-text-color"
 # define F_DBG      "--debug"
-# define F_NCL      "--not-calc-light"
+# define F_NCL      "--no-calc-light"
 
 # define SF_HELP    "-h"
 # define SF_VPS     "-vps"
