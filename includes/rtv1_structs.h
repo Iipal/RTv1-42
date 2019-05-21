@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 18:53:17 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 23:06:17 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ ETYPE;
 
 struct	s_camera
 {
-	Vector	pos;
-	Vector	dir;
-	bool	is;
+	Vector		pos;
+	Vector		dir;
+	double_t	closes_t;
+	bool		is;
 };
 
 struct	s_light
@@ -117,7 +118,6 @@ struct	s_scene
 	Object		*objs;
 	size_t		ins_l;
 	size_t		ins_objs;
-	double_t	cobj;
 	bool		is_render_shadow;
 };
 
