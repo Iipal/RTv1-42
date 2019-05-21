@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:20:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 18:03:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 23:31:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	rt_render_loop(Environment *const env)
 			{
 				if (SEKEY == SDLK_ESCAPE)
 					quit = true;
+				else if (SEKEY == SDLK_g)
+					env->s.is_render_shadow = !env->s.is_render_shadow;
 				else
 					rt_sdl_keys_press(&env->isr, SEKEY);
 			}
