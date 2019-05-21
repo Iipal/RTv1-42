@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 14:26:48 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 17:54:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static inline fDot	add_intersection(const Vector o,
 	if (obj->type == plane)
 		return ((fDot){!VDOT(d, obj->dir) ? -1
 				: (-VDOT(x, obj->dir) / VDOT(d, obj->dir)), -1});
-	else if (.0f >= disc)
+	else if (.0f > disc)
 		return ((fDot){ -1, -1 });
 	return ((fDot){ (-Y(k) + sqrt(disc)) / (2.0f * X(k)),
 					(-Y(k) - sqrt(disc)) / (2.0f * X(k)) });
@@ -40,6 +40,7 @@ Object				*rt_closest_inter(const Vector o,
 	fDot			t;
 	size_t			i;
 	Object			*out_obj;
+
 
 	i = ~0L;
 	out_obj = NULL;

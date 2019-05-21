@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 15:42:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 18:01:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ extern void		rt_render_fps_counter(Environment *const env);
 extern void		rt_camera_speed_movements(double_t *const cam_speed,
 					const bool is_speed_up, const bool is_speed_down);
 
-extern Color	rt_raytracing(Environment *const env, const Vector d);
+extern Color	rt_raytracing(Environment *const env, Vector d);
 
 extern Vector	rt_inter_sphere(const Vector x,
 								const Vector d,

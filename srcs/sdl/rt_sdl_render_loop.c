@@ -6,11 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:20:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 16:45:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 18:03:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+#include <stdio.h>
 
 void	rt_render_loop(Environment *const env)
 {

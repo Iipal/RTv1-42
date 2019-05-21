@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 15:41:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 18:21:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,15 @@ Color				rt_calc_light(Environment *const env,
 		if (.0f >= env->s.l[i].intens)
 			continue ;
 		h->l = env->s.l[i].pos - h->p;
+		// if (obj->type == cone || obj->type == cylinder)
+			h->l = (Vector){VNORM(h->l)};
 		env->t_max = 1.0f;
-		if (env->s.is_render_shadow &&
-			(shadow = rt_closest_inter(h->p, h->l, env)))
+		if (env->s.is_render_shadow
+		&& (shadow = rt_closest_inter(h->p, h->l, env)))
 			continue ;
 		h->dnl = VDOT(h->n, h->l);
 		if (.0f < h->dnl)
-			h->i += env->s.l[i].intens * h->dnl / (VLEN(h->n) * VLEN(h->l));
+			h->i += env->s.l[i].intens * h->dnl;
 		if (.0f < obj->spec)
 			add_specular_reflect(&env->s.l[i], h, obj->spec, -d);
 	}

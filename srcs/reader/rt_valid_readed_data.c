@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 10:05:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 14:57:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 17:17:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ bool		rt_valid_readed_data(Scene *const s)
 	NOM_F(E_CAMPOS, u_vec_range(s->cam.pos, MAX_X, MIN_X));
 	s->cam.dir = u_inrange_dir_max(s->cam.dir);
 	s->cam.dir = u_inrange_dir_min(s->cam.dir);
+	s->cam.dir = (Vector){VNORM(s->cam.dir)};
 	NO_F(add_valid_lights_data(s->l, s->ins_l));
 	while (s->ins_objs > ++i)
 	{
