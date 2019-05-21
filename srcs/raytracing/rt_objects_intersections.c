@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 18:06:24 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 17:54:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 19:03:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ inline Vector	rt_inter_cone(const Vector x,
 	const Object	*obj = (Object*)obj_ptr;
 	const double_t	k = 1 + pow(tan(obj->radius / 2.0f), 2);
 
-	return ((Vector){VDOT(d, d) - k * pow(VDOT(d, obj->n_dir), 2),
-		2.0f * (VDOT(d, x) - k * (VDOT(d, obj->n_dir) * VDOT(x, obj->n_dir))),
-		VDOT(x, x) - k * (pow(VDOT(x, obj->n_dir), 2))});
+	return ((Vector){VDOT(d, d) - k * pow(VDOT(d, obj->dir), 2),
+		2.0f * (VDOT(d, x) - k * (VDOT(d, obj->dir) * VDOT(x, obj->dir))),
+		VDOT(x, x) - k * (pow(VDOT(x, obj->dir), 2))});
 }
 
 inline Vector	rt_inter_plane(const Vector x,
@@ -47,7 +47,7 @@ inline Vector	rt_inter_cylinder(const Vector x,
 								const Vector d,
 								const void *const obj_ptr)
 {
-	const Vector	obj_dir = ((Object*)obj_ptr)->n_dir;
+	const Vector	obj_dir = ((Object*)obj_ptr)->dir;
 	const double_t	r = ((Object*)obj_ptr)->radius;
 
 	return ((Vector){VDOT(d, d) - pow(VDOT(d, obj_dir), 2.0f),

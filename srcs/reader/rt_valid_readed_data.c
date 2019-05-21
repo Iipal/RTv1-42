@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 10:05:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 17:17:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 18:52:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ bool		rt_valid_readed_data(Scene *const s)
 			ERRIN(E_OBJRAD, i + 1, E_IN_OBJ));
 		NODO_F(u_isd_range(s->objs[i].spec, MAX_SPEC, MIN_SPEC),
 			ERRIN(E_OBJRAD, i + 1, E_IN_OBJ));
-		s->objs[i].dir = u_inrange_dir_max(s->objs[i].dir);
-		s->objs[i].dir = u_inrange_dir_min(s->objs[i].dir);
+		s->objs[i].dir = (Vector){VNORM(s->objs[i].dir)};
 	}
 	return (true);
 }

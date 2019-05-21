@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 19:17:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 18:23:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 18:56:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ inline Vector	rt_normal_cone(const Vector p,
 	const Object	*obj = (Object*)obj_ptr;
 	const Vector	div_t = cam->pos - d;
 	const double_t	t = VLEN(div_t);
-	const double_t	m = VDOT(d, obj->n_dir) * t + VDOT(p, obj->n_dir);
-	const Vector	mul = VMUL(obj->n_dir, 1 + pow(tan(obj->radius / 2.0f), 2));
+	const double_t	m = VDOT(d, obj->dir) * t + VDOT(p, obj->dir);
+	const Vector	mul = VMUL(obj->dir, 1 + pow(tan(obj->radius / 2.0f), 2));
 
 	return ((p - obj->pos) - VMUL(mul, m));
 }
@@ -57,7 +57,7 @@ inline Vector	rt_normal_cylinder(const Vector p,
 	const Vector	x = cam->pos - obj->pos;
 	const Vector	div_t = cam->pos - d;
 	const double_t	t = VLEN(div_t);
-	const double_t	m = VDOT(d, obj->n_dir) * t + VDOT(x, obj->n_dir);
+	const double_t	m = VDOT(d, obj->dir) * t + VDOT(x, obj->dir);
 
-	return (p - obj->pos - VMUL(obj->n_dir, m));
+	return (p - obj->pos - VMUL(obj->dir, m));
 }

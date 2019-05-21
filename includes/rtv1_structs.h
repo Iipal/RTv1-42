@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 17:52:19 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 18:53:17 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ struct	s_light
 {
 	Vector		pos;
 	Vector		dir;
-	Vector		n_pos;
 	double_t	intens;
 };
 
@@ -63,7 +62,6 @@ struct	s_object
 {
 	Vector		pos;
 	Vector		dir;
-	Vector		n_dir;
 	Color		clr;
 	double_t	radius;
 	double_t	spec;
