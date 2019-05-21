@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 18:06:24 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 20:19:14 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 14:29:40 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ inline Vector	rt_inter_plane(const Vector x,
 	(void)x;
 	(void)d;
 	(void)obj_ptr;
-	return ((Vector){0, 0});
+	return ((Vector){-1, -1});
 }
 
 inline Vector	rt_inter_cylinder(const Vector x,
@@ -50,7 +50,7 @@ inline Vector	rt_inter_cylinder(const Vector x,
 	const Vector	obj_dir = ((Object*)obj_ptr)->dir;
 	const double_t	r = ((Object*)obj_ptr)->radius;
 
-	return ((Vector){VDOT(d, d) - pow(VDOT(d, obj_dir), 2),
-		2 * (VDOT(x, d) - (VDOT(d, obj_dir) * VDOT(x, obj_dir))),
-		VDOT(x, x) - pow(VDOT(x, obj_dir), 2) - r * r});
+	return ((Vector){VDOT(d, d) - pow(VDOT(d, obj_dir), 2.0f),
+		2.0f * (VDOT(x, d) - VDOT(x, obj_dir) * VDOT(d, obj_dir)),
+		VDOT(x, x) - pow(VDOT(x, obj_dir), 2.0f) - r * r});
 }

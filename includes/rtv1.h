@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 19:57:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 15:42:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,9 @@ extern Vector	rt_normal_cylinder(const Vector p,
 								Camera const *const cam,
 								void const *const obj_ptr);
 
-Color			rt_calculate_light(Environment *env,
-								t_clhelp *const h,
-								Object const *const obj,
+Color			rt_calc_light(Environment *env,
+								t_clhelp *restrict const h,
+								const Object *const obj,
 								const Vector d);
 
 Object			*rt_closest_inter(const Vector o,

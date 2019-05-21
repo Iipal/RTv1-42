@@ -6,30 +6,34 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 20:09:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 15:41:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	add_specular_reflect(Light *const l,
-									t_clhelp *const h,
+static inline void	add_specular_reflect(Light *restrict const l,
+									t_clhelp *restrict const h,
 									const float_t obj_spec,
 									const Vector v)
 {
-	h->h = v + h->l;
-	h->h = (Vector){X(h->h) / VLEN(h->h),
-		Y(h->h) / VLEN(h->h), Z(h->h) / VLEN(h->h)};
-	h->h_intense = (l->intens * fmax(0, h->dnl) + obj_spec)
-		* (l->intens * pow(fmax(0.0f, VDOT(h->n, h->h)), obj_spec));
-	h->d = h->p - l->pos;
-	h->i += h->h_intense / pow(VLEN(h->d), 2);
+	const Vector	d = h->p - l->pos;
+	Vector			hi;
+	double_t		vlen_h;
+	double_t		h_intens;
+
+	hi = v + h->l;
+	vlen_h = VLEN(hi);
+	hi = (Vector){X(hi) / vlen_h, Y(hi) / vlen_h, Z(hi) / vlen_h};
+	h_intens = (l->intens * fmax(0, h->dnl) + obj_spec)
+		* (l->intens * pow(fmax(0.0f, VDOT(h->n, hi)), obj_spec));
+	h->i += h_intens / pow(VLEN(d), 2);
 }
 
-Color				rt_calculate_light(Environment *const env,
-									t_clhelp *const h,
-									const Object *const obj,
-									const Vector d)
+Color				rt_calc_light(Environment *const env,
+								t_clhelp *restrict const h,
+								const Object *const obj,
+								const Vector d)
 {
 	Object		*shadow;
 	size_t		i;

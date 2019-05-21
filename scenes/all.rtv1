@@ -2,6 +2,6 @@ Camera: 0,0,0 0,0,0
 Light: 0,3,1 15234123,0,0 100
 Sphere: 0,-1,10 0,0,0 0xaaaaaa 1 1000
 Cone: 0,-1,20 1,1,0 0xbaaf32 1 1000
-#Cylinder: 0,-2,10 1,1,0 0xbaaf32 1 1000
+Cylinder: 0,-2,10 1,1,0 0xbaaf32 1 1000
 Plane: 0,-5,0 0,1,0 0xfa1bff 5000
 enable Shadows.

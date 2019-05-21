@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 09:39:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 13:03:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define MIN_Y  -MAX_Y
 
 # define TMAX           10000.0f
-# define TMIN           0.001f
+# define TMIN           0.000001f
 
 # define MAX_RADIUS     500
 # define MIN_RADIUS     0

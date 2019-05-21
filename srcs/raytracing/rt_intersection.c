@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 19:57:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 14:26:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ Object				*rt_closest_inter(const Vector o,
 	while (++i < env->s.ins_objs)
 	{
 		t = add_intersection(o, d, &env->s.objs[i]);
-		if (X(t) >= env->t_min && X(t) < env->t_max && X(t) < env->s.cobj)
+		if (X(t) > env->t_min && X(t) < env->t_max && X(t) < env->s.cobj)
 		{
 			env->s.cobj = X(t);
 			out_obj = &env->s.objs[i];
 		}
-		if (Y(t) >= env->t_min && Y(t) < env->t_max && Y(t) < env->s.cobj)
+		if (Y(t) > env->t_min && Y(t) < env->t_max && Y(t) < env->s.cobj)
 		{
 			env->s.cobj = Y(t);
 			out_obj = &env->s.objs[i];

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 16:59:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/18 12:19:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 15:01:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ UINT;
 
 enum	e_bool {false, true} __attribute__((packed));
 
-# define BOOL   typedef enum e_bool     bool
-# define FDOT   typedef double_t fDot __attribute__((vector_size(16),aligned))
+# define BOOL typedef enum e_bool bool
+# define FDOT typedef double_t fDot __attribute__((vector_size(16),aligned))
 
 BOOL;
 FDOT;
