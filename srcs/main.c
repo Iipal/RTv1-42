@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 16:37:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 10:54:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static inline bool	add_valid_filename(char *const file)
 	return (true);
 }
 
-static inline void	add_fake_render_loop(Environment *const env)
+static void			add_fake_render_loop(Environment *const env)
 {
 	bool	quit;
 
