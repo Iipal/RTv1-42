@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 20:02:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 08:41:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ struct	s_camera
 struct	s_light
 {
 	Vector		pos;
+	Vector		dir;
 	double_t	intens;
 };
 

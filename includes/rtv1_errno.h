@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 14:07:13 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 09:16:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 # define E_OBJPOS   "Object position" E_INRANGE
 # define E_OBJRAD   "Object radius" E_INRANGE
 # define E_OBJSPEC  "Object specular intensity" E_INRANGE
+# define E_OCONERAD "Cone radius" E_INRANGE ". min 1 - max 3."
 
 # define ERR_IN_NUM(msg, n) MSG(msg);ft_putnbr(n)
 # define ERRIN(msg, n, err) {ERR_IN_NUM(err,n);MSG(" \"");MSG(msg);MSGN("\"");}

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:32:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 15:15:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/21 08:45:25 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ inline bool	rt_slight(Light *const l, string s)
 	IF_F(',' != *(s += ft_digits(X(l->pos) = ft_atoi(s))) || !*s++);
 	IF_F(',' != *(s += ft_digits(Y(l->pos) = ft_atoi(s))) || !*s++);
 	IF_F(' ' != *(s += ft_digits(Z(l->pos) = ft_atoi(s))) || !*s++);
+	IF_F(',' != *(s += ft_digits(X(l->dir) = ft_atoi(s))) || !*s++);
+	IF_F(',' != *(s += ft_digits(Y(l->dir) = ft_atoi(s))) || !*s++);
+	IF_F(' ' != *(s += ft_digits(Z(l->dir) = ft_atoi(s))) || !*s++);
 	IF_F(*(s += ft_digits(l->intens = ft_atoi(s))));
 	if (Y(l->pos) != 0.0f)
 		Y(l->pos) = -Y(l->pos);
