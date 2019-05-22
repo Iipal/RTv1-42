@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:32:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 08:45:25 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 14:44:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ inline bool	rt_scam(Camera *const cam, string s)
 	IF_F(' ' != *(s += ft_digits(Z(cam->pos) = ft_atoi(s))) || !*s++);
 	IF_F(',' != *(s += ft_digits(X(cam->dir) = ft_atoi(s))) || !*s++);
 	IF_F(',' != *(s += ft_digits(Y(cam->dir) = ft_atoi(s))) || !*s++);
-	IF_F(*(s += ft_digits(Z(cam->dir) = -ft_atoi(s))));
+	IF_F(*(s += ft_digits(Z(cam->dir) = ft_atoi(s))));
 	if (Y(cam->pos) != 0.0f)
 		Y(cam->pos) = -Y(cam->pos);
 	cam->is = true;
