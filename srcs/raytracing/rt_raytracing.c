@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 19:54:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 23:13:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 09:38:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ inline Color		rt_raytracing(Environment *const env, Vector d)
 	t_clhelp		h;
 	Object			*obj;
 
-	d = u_vec_norm(d);
+	d = u_vnorm(d);
 	obj = rt_closest_inter(env->s.cam.pos, d, env);
 	NO_R(obj, U_CLR_BLACK);
-	h.p = env->s.cam.pos + VMUL(d, env->s.cam.closes_t);
+	h.p = env->s.cam.pos + u_vmul(d, env->s.cam.closes_t);
 	h.n = obj->fn_normal_calc(h.p, d, &env->s.cam, obj);
-	h.n = u_vec_norm(h.n);
+	h.n = u_vnorm(h.n);
 	return (env->flags.no_calc_light
 		? obj->clr : rt_calc_light(env, &h, obj, d));
 }

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 23:32:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 10:46:25 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static inline fDot	add_intersection(const Vector o,
 	const double_t	disc = 1 != obj->type ? VDISC(k) : 0;
 
 	if (obj->type == plane)
-		return ((fDot){!VDOT(d, obj->dir) ? -1
-				: (-VDOT(x, obj->dir) / VDOT(d, obj->dir)), -1});
+		return ((fDot){!u_vdot(d, obj->dir) ? -1
+				: (u_vdot(-x, obj->dir) / u_vdot(d, obj->dir)), -1});
 	else if (.0f > disc)
 		return ((fDot){ -1, -1 });
 	return ((fDot){ (-Y(k) + sqrt(disc)) / (2.0f * X(k)),
