@@ -69,7 +69,7 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
 
 ## Keybinds:
 
-### General keybinds in all keybind modes:
+### General keybinds what works in all keybind modes:
 | Description                      | Keybinding     |
 | -------------------------------- | -------------- |
 | Toggle rendering info.           | <kbd>Z</kbd>   |
@@ -83,7 +83,6 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
 | Switcher keybind mode to control all light origins or objects.                        | After first press is active [__`Lights Control Mode`__](#lights-control-mode) keybinds, after second press - [__`Objects Control Mode`__](#objects-control-mode). Keybinds after third press retruns to [__`Default Camera Control Mode`__](#default-camera-control-mode). All keybinds valid for all light origins or objects dependecny on mode. | <kbd>X</kbd>      |
 | Increase speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                                                                                    | <kbd>LShift</kbd> |
 | Decrease speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                                                                                    | <kbd>LCtrl</kbd>  |
-| Enable\Disable calc and render shadows                                                | "eShadow." Param in [scene file](#about-scene-file-params).                                                                                                                                                                                                                                                                                        | <kbd>G</kbd>      |
 
 ### [[__`Default Camera Control Mode`__](#default-camera-control-mode)]:
 | Description             | Keybinding   |
