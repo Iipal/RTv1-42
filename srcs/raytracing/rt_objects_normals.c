@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 19:17:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 23:33:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 10:43:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,12 @@ inline Vector	rt_normal_sphere(const Vector p,
 inline Vector	rt_normal_cone(const Vector p,
 								const Vector d,
 								const Camera *const cam,
-							 	const void *const obj_ptr)
+								const void *const obj_ptr)
 {
-	const Object	*obj = (Object*)obj_ptr;
-	const Vector	x = cam->pos - obj->pos;
-	const double_t	m = VDOT(d, obj->dir) * cam->closes_t + VDOT(x, obj->dir);
-	const Vector	mul = VMUL(obj->dir, 1 + pow(tan(obj->radius / 2.0f), 2));
+	const Object	*o = (Object*)obj_ptr;
 
-	return (p - obj->pos - VMUL(mul, m));
+	return (p - o->pos - u_vmul(u_vmul(o->dir, 1 + pow(tan(o->radius / 2), 2)),
+		u_vdot(d, o->dir) * cam->closes_t + u_vdot(cam->pos - o->pos, o->dir)));
 }
 
 inline Vector	rt_normal_plane(const Vector p,
@@ -44,7 +42,7 @@ inline Vector	rt_normal_plane(const Vector p,
 
 	(void)p;
 	(void)cam;
-	return (0 < VDOT(d, obj_dir) ? -obj_dir : obj_dir);
+	return (0 < u_vdot(d, obj_dir) ? -obj_dir : obj_dir);
 }
 
 inline Vector	rt_normal_cylinder(const Vector p,
@@ -52,10 +50,9 @@ inline Vector	rt_normal_cylinder(const Vector p,
 								const Camera *const cam,
 								const void *const obj_ptr)
 {
-	const Vector	obj_pos = ((Object*)obj_ptr)->pos;
-	const Vector	obj_dir = ((Object*)obj_ptr)->dir;
-	const Vector	x = cam->pos - obj_pos;
-	const double_t	m = VDOT(d, obj_dir) * cam->closes_t + VDOT(x, obj_dir);
+	const Vector	o_pos = ((Object*)obj_ptr)->pos;
+	const Vector	o_dir = ((Object*)obj_ptr)->dir;
 
-	return (p - obj_pos - VMUL(obj_dir, m));
+	return (p - o_pos - u_vmul(o_dir,
+		u_vdot(d, o_dir) * cam->closes_t + u_vdot(cam->pos - o_pos, o_dir)));
 }

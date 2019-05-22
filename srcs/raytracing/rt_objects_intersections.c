@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 18:06:24 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 22:38:56 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 10:42:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ inline Vector	rt_inter_sphere(const Vector x,
 {
 	const double_t	r = ((Object*)obj_ptr)->radius;
 
-	return ((Vector){VDOT(d, d), 2.0f * VDOT(x, d), VDOT(x, x) - r * r});
+	return ((Vector){u_vdot(d, d), 2.0f * u_vdot(x, d), u_vdot(x, x) - r * r});
 }
 
 inline Vector	rt_inter_cone(const Vector x,
@@ -28,9 +28,9 @@ inline Vector	rt_inter_cone(const Vector x,
 	const Object	*obj = (Object*)obj_ptr;
 	const double_t	k = 1 + pow(tan(obj->radius / 2.0f), 2);
 
-	return ((Vector){VDOT(d, d) - k * pow(VDOT(d, obj->dir), 2),
-		2.0f * (VDOT(d, x) - k * (VDOT(d, obj->dir) * VDOT(x, obj->dir))),
-		VDOT(x, x) - k * (pow(VDOT(x, obj->dir), 2))});
+	return ((Vector){u_vdot(d, d) - k * pow(u_vdot(d, obj->dir), 2),
+		2.0f * (u_vdot(d, x) - k * u_vdot(d, obj->dir) * u_vdot(x, obj->dir)),
+		u_vdot(x, x) - k * pow(u_vdot(x, obj->dir), 2)});
 }
 
 inline Vector	rt_inter_plane(const Vector x,
@@ -40,17 +40,17 @@ inline Vector	rt_inter_plane(const Vector x,
 	(void)x;
 	(void)d;
 	(void)obj_ptr;
-	return ((Vector){-1, -1});
+	return ((Vector){0, 0, 0});
 }
 
 inline Vector	rt_inter_cylinder(const Vector x,
 								const Vector d,
 								const void *const obj_ptr)
 {
-	const Vector	obj_dir = u_vec_norm(((Object*)obj_ptr)->dir);
+	const Vector	obj_dir = u_vnorm(((Object*)obj_ptr)->dir);
 	const double_t	r = ((Object*)obj_ptr)->radius;
 
-	return ((Vector){VDOT(d, d) - pow(VDOT(d, obj_dir), 2.0f),
-		2.0f * (VDOT(x, d) - VDOT(x, obj_dir) * VDOT(d, obj_dir)),
-		VDOT(x, x) - pow(VDOT(x, obj_dir), 2.0f) - r * r});
+	return ((Vector){u_vdot(d, d) - pow(u_vdot(d, obj_dir), 2.0f),
+		2.0f * (u_vdot(x, d) - u_vdot(x, obj_dir) * u_vdot(d, obj_dir)),
+		u_vdot(x, x) - pow(u_vdot(x, obj_dir), 2.0f) - r * r});
 }
