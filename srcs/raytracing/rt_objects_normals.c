@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 19:17:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 10:43:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 13:38:18 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ inline Vector	rt_normal_plane(const Vector p,
 
 	(void)p;
 	(void)cam;
-	return (0 < u_vdot(d, obj_dir) ? -obj_dir : obj_dir);
+	return (0 < u_vdot(d, obj_dir) ? -obj_dir : p);
 }
 
 inline Vector	rt_normal_cylinder(const Vector p,

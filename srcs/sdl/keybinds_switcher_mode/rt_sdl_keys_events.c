@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:12:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 09:59:56 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 13:43:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ static inline void	add_camera_keys_events(const Isr *const isr,
 		Z(cam->pos) = u_d_range(Z(cam->pos) - move, MAX_Z, MIN_Z);
 	if (isr->is_zinc)
 		Z(cam->pos) = u_d_range(Z(cam->pos) + move, MAX_Z, MIN_Z);
+	if (isr->is_rot_x)
+		X(cam->dir) = X(cam->dir) + move >= 360 ? 0.0f : X(cam->dir) + move;
+	if (isr->is_rot_y)
+		Y(cam->dir) = Y(cam->dir) + move >= 360 ? 0.0f : Y(cam->dir) + move;
+	if (isr->is_rot_z)
+		Z(cam->dir) = Z(cam->dir) + move >= 360 ? 0.0f : Z(cam->dir) + move;
 }
 
 inline void			rt_sdl_keys_events(Environment *const env)
