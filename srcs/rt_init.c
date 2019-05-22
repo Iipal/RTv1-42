@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:22:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 20:06:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 23:35:45 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ inline bool	rt_init(Environment *env)
 	env->cam_speed = MOVE_SPEED_PERCENT_DEFAULT;
 	env->flags = (Flags){DEF_VIEWPORT_SCALE,
 						DEF_SHADOW_BRIGHT,
-						DEF_FPS_TEXT_COLOR,
+						DEF_FPS_TEXT_COLOR, false,
 						DEF_DEBUG_MODE,
 						DEF_NOT_CALC_LIGHT};
 	return (true);
