@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 12:16:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 22:35:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 09:52:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,17 @@
 DOT;
 VEC;
 
-# define VLEN(v) sqrt(X(v) * X(v) + Y(v) * Y(v) + Z(v) * Z(v))
-# define VDOT(v1, v2) (X(v1) * X(v2) + Y(v1) * Y(v2) + Z(v1) * Z(v2))
-# define VMUL(v, d) (Vector){X(v) * d, Y(v) * d, Z(v) * d}
 # define VDISC(k) (Y(k) * Y(k) - 4.0 * X(k) * Z(k))
 
 /*
 **	u_ prefix is short name for utils.
 */
-extern Vector	u_vec_norm(const Vector v);
+extern double_t	u_vlen(const Vector v);
+extern double_t	u_vdot(const Vector v1, const Vector v2);
+
+extern Vector	u_vnorm(const Vector v);
+extern Vector	u_vmul(const Vector v, const double_t d);
+
 extern bool		u_vec_range(Vector v,
 					const double_t max_range,
 					const double_t min_range);
