@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   u_vec_norm.c                                       :+:      :+:    :+:   */
+/*   u_vmul.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/21 22:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 22:37:22 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/05/22 09:29:43 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/05/22 09:31:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline Vector	u_vec_norm(const Vector v)
+inline Vector	u_vmul(const Vector v, const double_t d)
 {
-	const double_t	sqrt_vdv = sqrt(VDOT(v, v));
-	return ((Vector){X(v) / sqrt_vdv, Y(v) / sqrt_vdv, Z(v) / sqrt_vdv, 0});
+	return ((Vector){X(v) * d, Y(v) * d, Z(v) * d});
 }
