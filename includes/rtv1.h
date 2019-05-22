@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 13:58:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 14:46:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ extern Color	rt_raytracing(Environment *const env, Vector d);
 extern Vector	rt_camera_rotate(Vector d, const Vector dir);
 
 extern void		rt_render_fps_counter(Environment *const env);
-
 
 extern Vector	rt_inter_sphere(const Vector x,
 								const Vector d,

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 19:17:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 13:38:18 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 15:11:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ inline Vector	rt_normal_cone(const Vector p,
 {
 	const Object	*o = (Object*)obj_ptr;
 
-	return (p - o->pos - u_vmul(u_vmul(o->dir, 1 + pow(tan(o->radius / 2), 2)),
-		u_vdot(d, o->dir) * cam->closes_t + u_vdot(cam->pos - o->pos, o->dir)));
+	return (p - o->pos
+		- u_vmul(u_vmul(o->dir, 1 + pow(tan(o->radius / 2), 2)),
+			u_vdot(d, o->dir) * cam->closes_t
+				+ u_vdot(cam->pos - o->pos, o->dir)));
 }
 
 inline Vector	rt_normal_plane(const Vector p,
@@ -42,7 +44,7 @@ inline Vector	rt_normal_plane(const Vector p,
 
 	(void)p;
 	(void)cam;
-	return (0 < u_vdot(d, obj_dir) ? -obj_dir : p);
+	return (0 < u_vdot(d, obj_dir) ? -obj_dir : obj_dir);
 }
 
 inline Vector	rt_normal_cylinder(const Vector p,

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 10:05:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 13:56:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 15:11:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ static bool	add_valid_lights_data(Light *const l,
 								const double_t ins_l)
 {
 	size_t		i;
-	double_t	summ_light;
 
 	i = ~0L;
-	summ_light = 0.0f;
 	while (ins_l > ++i)
 	{
 		NODO_F(u_vec_range(l[i].pos, MAX_X, MIN_X),
@@ -28,8 +26,6 @@ static bool	add_valid_lights_data(Light *const l,
 			ERRIN(E_LINTENSE, i + 1, E_IN_LIGHT));
 		l[i].dir = u_inrange_dir_max(l[i].dir);
 		l[i].dir = u_inrange_dir_min(l[i].dir);
-		IFDO_F((summ_light += l[i].intens) > 1.0f,
-			ERRIN("ti pidor", i + 1, E_IN_LIGHT));
 	}
 	return (true);
 }

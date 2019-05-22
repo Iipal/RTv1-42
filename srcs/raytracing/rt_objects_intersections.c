@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 18:06:24 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 10:42:48 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 15:11:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ inline Vector	rt_inter_cone(const Vector x,
 	const double_t	k = 1 + pow(tan(obj->radius / 2.0f), 2);
 
 	return ((Vector){u_vdot(d, d) - k * pow(u_vdot(d, obj->dir), 2),
-		2.0f * (u_vdot(d, x) - k * u_vdot(d, obj->dir) * u_vdot(x, obj->dir)),
-		u_vdot(x, x) - k * pow(u_vdot(x, obj->dir), 2)});
+	2.0f * (u_vdot(d, x) - k * u_vdot(d, obj->dir) * u_vdot(x, obj->dir)),
+	u_vdot(x, x) - k * pow(u_vdot(x, obj->dir), 2)});
 }
 
 inline Vector	rt_inter_plane(const Vector x,
