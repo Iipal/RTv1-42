@@ -73,7 +73,7 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
 | Description                      | Keybinding     |
 | -------------------------------- | -------------- |
 | Toggle rendering info.           | <kbd>Z</kbd>   |
-| Toggled shadows render and calc. | <kbd>H</kbd>   |
+| Toggle shadows render and calc.  | <kbd>H</kbd>   |
 | Exit.                            | <kbd>Esc</kbd> |
 
 ###### All binds below works only with `-dbg` flag.
