@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 13:03:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 10:07:57 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define TMAX           10000.0f
 # define TMIN           0.000001f
 
-# define MAX_RADIUS     500
+# define MAX_RADIUS     50
 # define MIN_RADIUS     0
 
 # define MAX_SPEC       10000
@@ -68,7 +68,7 @@
 
 # define FP_CAM         "Camera:"
 # define FP_LIGHT       "Light:"
-# define FP_SHADOWS     "enable Shadows."
+# define FP_SHADOWS     "enable_shadows."
 
 # define FP_MAX_OBJS    4
 # define FP_SPHERE      "Sphere:"
