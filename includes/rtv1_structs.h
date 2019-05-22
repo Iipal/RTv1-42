@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 14:13:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 23:34:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ struct	s_flags
 	float_t	viewport_scale;
 	float_t	shadows_bright;
 	Uint32	fps_text_color;
+	bool	is_parsed_ftc;
 	bool	debug_mode;
 	bool	no_calc_light;
 };
