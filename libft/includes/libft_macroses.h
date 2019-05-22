@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 16:59:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 15:01:34 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 23:26:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define ISARGS(ac, av) {--ac;++av; IFM_F(E_USAGE, !ac);}
 
 # define IFR(ex, ret) if ((ex)) {return (ret);}
+# define IFMR(msg, ex, ret) if ((ex)) {MSGN(msg); return (ret);}
 # define IF_F(ex) if ((ex)) return (false);
 # define IFDO(ex, do) if ((ex)) {do;}
 # define IFDO_F(ex, do) if ((ex)) {do; return (false);}
