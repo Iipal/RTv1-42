@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 23:06:17 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 14:13:47 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ struct	s_object
 {
 	Vector		pos;
 	Vector		dir;
+	Vector		n_dir;
 	Color		clr;
 	double_t	radius;
 	double_t	spec;
@@ -82,6 +83,9 @@ struct	s_isrender
 	bool	is_rot_x;
 	bool	is_rot_y;
 	bool	is_rot_z;
+	bool	is_dec_rot_x;
+	bool	is_dec_rot_y;
+	bool	is_dec_rot_z;
 	bool	is_render_fps;
 	bool	is_speedup;
 	bool	is_speeddown;
