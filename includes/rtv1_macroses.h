@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 13:21:19 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 23:42:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # endif
 
 # ifdef __linux__
-#  define WIN_X 1300
-#  define WIN_Y 650
+#  define WIN_X 900
+#  define WIN_Y 450
 # endif
 
 # define MAX_X  1500
@@ -78,10 +78,10 @@
 
 # define MAX_FLAGS  6
 # define F_HELP     "--help"
+# define F_DBG      "--debug"
 # define F_VPS      "--viewport-scale"
 # define F_SB       "--shadow-bright"
 # define F_FTC      "--fps-text-color"
-# define F_DBG      "--debug"
 # define F_NCL      "--no-calc-light"
 
 # define SF_HELP    "-h"
