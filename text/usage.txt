@@ -3,6 +3,8 @@ Usage:
     [W A S D]      - Move camera Up Left Down & Right.
     [Q E]          - Dec\Increase camera Z-position.
     [LCtrl LShift] - Dec\Increase camera movements speed.
+    [R F V]        - Increase camera rotation axis.
+    [T G B]        - Increase camera rotation axis.
 
     [X] - Switch key binds to control light origins or objects.
         First press on  [X] - switch to light origins control.\
@@ -16,8 +18,11 @@ Usage:
             [Q E]          - Dec\Increase all objects Z-position or specular.
             [C]            - Switch between control objects Z-position or specular.
             [LCtrl LShift] - Dec\Increase objects positions or specular change speed.
-           /                                                         /
+            [R F V]        - Increase objects rotation axis.
+            [T G B]        - Increase objects rotation axis.
+           /                                               \
         Third press on  [X] - returns to default camera control binds.
-       /                                /
+       /                       /
+    [H]   - Toggle shadows calc.
     [Z]   - Toggle FPS\ms rendering info.
     [ESC] - exit.
