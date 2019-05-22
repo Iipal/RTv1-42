@@ -82,18 +82,23 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
 | Switcher keybind mode to control all light origins or objects.                        | After first press is active [__`Lights Control Mode`__](#lights-control-mode) keybinds, after second press - [__`Objects Control Mode`__](#objects-control-mode). Keybinds after third press retruns to [__`Default Camera Control Mode`__](#default-camera-control-mode). All keybinds valid for all light origins or objects dependecny on mode. | <kbd>X</kbd>      |
 | Increase speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                                                                                    | <kbd>LShift</kbd> |
 | Decrease speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                                                                                    | <kbd>LCtrl</kbd>  |
-| Enable\Disable calc and render shadows                                                | "eShadow." Param in [scene file](#about-scene-file-params).                                                                                                                                                                                                                                                                                                             | <kbd>G</kbd>      |
+| Enable\Disable calc and render shadows                                                | "eShadow." Param in [scene file](#about-scene-file-params).                                                                                                                                                                                                                                                                                        | <kbd>G</kbd>      |
 
 ### [[__`Default Camera Control Mode`__](#default-camera-control-mode)]:
-| Description           | Keybinding   |
-| --------------------- | ------------ |
-| Move camera up.       | <kbd>W</kbd> |
-| Move camera left.     | <kbd>A</kbd> |
-| Move camera down.     | <kbd>S</kbd> |
-| Move camera right.    | <kbd>D</kbd> |
-| Move camera backward. | <kbd>Q</kbd> |
-| Move camera forward.  | <kbd>E</kbd> |
-
+| Description             | Keybinding   |
+| ----------------------- | ------------ |
+| Move camera up.         | <kbd>W</kbd> |
+| Move camera left.       | <kbd>A</kbd> |
+| Move camera down.       | <kbd>S</kbd> |
+| Move camera right.      | <kbd>D</kbd> |
+| Move camera backward.   | <kbd>Q</kbd> |
+| Move camera forward.    | <kbd>E</kbd> |
+| Increase camera X-axis. | <kbd>R</kbd> |
+| Increase camera Y-axis. | <kbd>F</kbd> |
+| Increase camera Z-axis. | <kbd>V</kbd> |
+| Decrease camera X-axis. | <kbd>T</kbd> |
+| Decrease camera Y-axis. | <kbd>G</kbd> |
+| Decrease camera Z-axis. | <kbd>B</kbd> |
 ### [[__`Lights Control Mode`__](#lights-control-mode)]:
 | Description                          | Keybinding   |
 | ------------------------------------ | ------------ |
@@ -118,21 +123,24 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
 | Switch to control objects specular.   | <kbd>C</kbd> |
 | Decrease objects specular. [optional] | <kbd>Q</kbd> |
 | Increase objects specular. [optional] | <kbd>E</kbd> |
-| Rotate objects by X-axis.             | <kbd>R</kbd> |
-| Rotate objects by Y-axis.             | <kbd>F</kbd> |
-| Rotate objects by Z-axis.             | <kbd>V</kbd> |
+| Increase objects X-axis.              | <kbd>R</kbd> |
+| Increase objects Y-axis.              | <kbd>F</kbd> |
+| Increase objects Z-axis.              | <kbd>V</kbd> |
+| Decrease objects X-axis.              | <kbd>T</kbd> |
+| Decrease objects Y-axis.              | <kbd>G</kbd> |
+| Decrease objects Z-axis.              | <kbd>B</kbd> |
 
 # [[__`About scene file params`__](#about-scene-file-params)]:
 
-| Param name | Description                                              | Position | Direction\Rotate  | Color | Radius\Angle | Specular\Intensity |
-| ---------- | -------------------------------------------------------- | -------- | ----------------- | ----- | ------------ | ------------------ |
-| Camera     | Scene camera. Only 1 camera can be in scene.             | 0,0,10   | 1,0,0             | none  | none         | none               |
-| Light      | Scene light origin. Max 5 light origins can be in scene. | 0,0,10   | 0,1,0 (not used.) | none  | none         | 100                |
-| Sphere     | Sphere object.                                           | 0,0,10   | 0,0,1 (not used.) | HEX.  | 1            | 10000              |
-| Cone       | Cone object.                                             | 0,0,10   | 0,1,0             | HEX.  | 1            | 10000              |
-| Cylinder   | Cylinder object.                                         | 0,0,10   | 1,0,0             | HEX.  | 1            | 10000              |
-| Plane      | Cylinder object.                                         | 0,0,10   | 0,1,0             | HEX.  | none         | 10000              |
-| eShadow.   | Enable shadows render and calc in scene.                 | none     | none              | noen  | none         | none               |
+| Param name | Description                                              | Position | Direction\Rotate    | Color | Radius\Angle | Specular\Intensity |
+| ---------- | -------------------------------------------------------- | -------- | ------------------- | ----- | ------------ | ------------------ |
+| Camera     | Scene camera. Only 1 camera can be in scene.             | X,Y,Z    | X,Y,Z (Z not used.) | none  | none         | none               |
+| Light      | Scene light origin. Max 5 light origins can be in scene. | X,Y,Z    | X,Y,Z (not used.)   | none  | none         | 100                |
+| Sphere     | Sphere object.                                           | X,Y,Z    | X,Y,Z (not used.)   | HEX.  | 1            | 10000              |
+| Cone       | Cone object.                                             | X,Y,Z    | X,Y,Z               | HEX.  | 1            | 10000              |
+| Cylinder   | Cylinder object.                                         | X,Y,Z    | X,Y,Z               | HEX.  | 1            | 10000              |
+| Plane      | Cylinder object.                                         | X,Y,Z    | X,Y,Z               | HEX.  | none         | 10000              |
+| eShadow.   | Enable shadows render and calc in scene.                 | none     | none                | noen  | none         | none               |
 
 Example:
 ```bash
