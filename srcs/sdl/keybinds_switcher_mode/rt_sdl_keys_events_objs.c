@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 23:55:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 12:01:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 14:42:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,19 @@ static inline void	add_objs_z_or_spec(Object *const o,
 }
 
 static inline void	add_objs_rot(Object *const o,
-							const Fps *const fps,
+							const double_t move,
 							const Isr *const isr)
 {
 	if (isr->is_rot_x)
-		X(o->dir) =
-			X(o->dir) + fps->move >= 360 ? 0.0f : X(o->dir) + fps->move;
+		X(o->dir) = u_d_range(X(o->dir) + (move / 5.0f), 360.0f, -360.0f);
 	if (isr->is_rot_y)
-		Y(o->dir) =
-			Y(o->dir) + fps->move >= 360 ? 0.0f : Y(o->dir) + fps->move;
+		Y(o->dir) = u_d_range(Y(o->dir) + (move / 5.0f), 360.0f, -360.0f);
 	if (isr->is_rot_z)
-		Z(o->dir) =
-			Z(o->dir) + fps->move >= 360 ? 0.0f : Z(o->dir) + fps->move;
+		Z(o->dir) = u_d_range(Z(o->dir) + (move / 5.0f), 360.0f, -360.0f);
+	if (isr->is_dec_rot_x)
+		X(o->dir) = u_d_range(X(o->dir) - (move / 5.0f), 360.0f, -360.0f);
+	if (isr->is_dec_rot_x)
+		X(o->dir) = u_d_range(X(o->dir) - (move / 5.0f), 360.0f, -360.0f);
 }
 
 void				rt_sdl_keys_events_objs_debug(Object *const o,
@@ -67,6 +68,6 @@ void				rt_sdl_keys_events_objs_debug(Object *const o,
 		if (isr->is_right)
 			X(o[i].pos) = u_d_range(X(o[i].pos) + fps->move, MAX_X, MIN_X);
 		add_objs_z_or_spec(&o[i], isr, fps->move, fps->o_spec_intens);
-		add_objs_rot(&o[i], fps, isr);
+		add_objs_rot(&o[i], fps->move, isr);
 	}
 }
