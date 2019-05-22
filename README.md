@@ -82,6 +82,7 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
 | Switcher keybind mode to control all light origins or objects.                        | After first press is active [__`Lights Control Mode`__](#lights-control-mode) keybinds, after second press - [__`Objects Control Mode`__](#objects-control-mode). Keybinds after third press retruns to [__`Default Camera Control Mode`__](#default-camera-control-mode). All keybinds valid for all light origins or objects dependecny on mode. | <kbd>X</kbd>      |
 | Increase speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                                                                                    | <kbd>LShift</kbd> |
 | Decrease speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                                                                                    | <kbd>LCtrl</kbd>  |
+| Enable\Disable calc and render shadows                                                | "eShadow." Param in [scene file](#about-scene-file-params).                                                                                                                                                                                                                                                                                                             | <kbd>G</kbd>      |
 
 ### [[__`Default Camera Control Mode`__](#default-camera-control-mode)]:
 | Description           | Keybinding   |
@@ -120,3 +121,26 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
 | Rotate objects by X-axis.             | <kbd>R</kbd> |
 | Rotate objects by Y-axis.             | <kbd>F</kbd> |
 | Rotate objects by Z-axis.             | <kbd>V</kbd> |
+
+# [[__`About scene file params`__](#about-scene-file-params)]:
+
+| Param name | Description                                              | Position | Direction\Rotate  | Color | Radius\Angle | Specular\Intensity |
+| ---------- | -------------------------------------------------------- | -------- | ----------------- | ----- | ------------ | ------------------ |
+| Camera     | Scene camera. Only 1 camera can be in scene.             | 0,0,10   | 1,0,0             | none  | none         | none               |
+| Light      | Scene light origin. Max 5 light origins can be in scene. | 0,0,10   | 0,1,0 (not used.) | none  | none         | 100                |
+| Sphere     | Sphere object.                                           | 0,0,10   | 0,0,1 (not used.) | HEX.  | 1            | 10000              |
+| Cone       | Cone object.                                             | 0,0,10   | 0,1,0             | HEX.  | 1            | 10000              |
+| Cylinder   | Cylinder object.                                         | 0,0,10   | 1,0,0             | HEX.  | 1            | 10000              |
+| Plane      | Cylinder object.                                         | 0,0,10   | 0,1,0             | HEX.  | none         | 10000              |
+| eShadow.   | Enable shadows render and calc in scene.                 | none     | none              | noen  | none         | none               |
+
+Example:
+```bash
+Camera: 0,0,0 0,0,0
+Light: 0,3,1 0,0,0 100
+Sphere: 0,-1,10 0,0,0 0xaaaaaa 1 30
+Cone: -2,5,25 -1,-3,0 0xbaaf32 1 5000
+Plane: 0,-5,0 0,1,0 0xfa1bff 500
+Cylinder: 2,-2,5 -2,4,-3 0xbaaf32 1 1000
+eShadow.
+```
