@@ -70,10 +70,11 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
 ## Keybinds:
 
 ### General keybinds in all keybind modes:
-| Description                                             | Keybinding     |
-| ------------------------------------------------------- | -------------- |
-| Show render info. (FPS\ms, works only with `-dbg` flag) | <kbd>Z</kbd>   |
-| Exit.                                                   | <kbd>Esc</kbd> |
+| Description                      | Keybinding     |
+| -------------------------------- | -------------- |
+| Toggle rendering info.           | <kbd>Z</kbd>   |
+| Toggled shadows render and calc. | <kbd>H</kbd>   |
+| Exit.                            | <kbd>Esc</kbd> |
 
 ###### All binds below works only with `-dbg` flag.
 ## Keybinds mode switcher binds:
