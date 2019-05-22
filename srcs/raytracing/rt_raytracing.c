@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 19:54:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 15:54:42 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/23 00:17:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ inline Color		rt_raytracing(Environment *const env, Vector d)
 	t_clhelp		h;
 	Object			*obj;
 
-	d = u_vnorm(rt_camera_rotate(d, env->s.cam.dir));
+	d = u_vnorm(rt_camera_rotate(d, u_vmul(env->s.cam.dir, 0.01745f)));
 	obj = rt_closest_inter(env->s.cam.pos, d, env);
 	NO_R(obj, U_CLR_BLACK);
 	obj->dir = u_vnorm(obj->dir);
