@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 09:16:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/22 23:51:14 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,13 @@
 # define E_IN_OBJ   E_OCCURED "in object: "
 
 # define E_IFLAG    ERR "Invalid flag."
-# define E_VPS      "Viewport-Scale"
-# define E_SB       "Shadow bright"
-# define E_FTC      "FPS text color"
+# define E_DBG      "--debug flag"
+# define E_VPS      "--viewport-scale flag"
+# define E_SB       "--shadow-bright flag"
+# define E_FTC      "--fps-text-color flag"
+# define E_NCL      "--no-calc-light flag"
 
-# define E_MISPARM  "Missed param for flag "
+# define E_MISPARM  "Missed param for "
 # define E_MP_VPS   ERR E_MISPARM F_VPS "."
 # define E_MP_SB    ERR E_MISPARM F_SB "."
 # define E_MP_FTC   ERR E_MISPARM E_FTC "."
@@ -69,17 +71,19 @@
 # define E_UNSIGN   ERR "Only unsigned param values."
 # define E_DIGITS   ERR "Only digits in param values string."
 
-# define E_WVPSZERO WARNING E_VPS " param is 0. Min is 1."
-# define E_WSBZERO  WARNING E_SB " param is 0. Min is 1."
-# define E_WFTCZERO WARNING E_FTC " param invalid or 0x0."
+# define E_WVPSZERO ERR E_VPS " param is 0. Min is 1."
+# define E_WSBZERO  ERR E_SB " param is 0. Min is 1."
+# define E_WFTCZERO ERR E_FTC " param invalid or 0x0."
 
-# define E_MAX_10   " flag param greate than 10. Max is 10."
+# define E_MAX_10   " param greate than 10. Max is 10."
 
-# define E_WARNVPS  WARNING E_VPS E_MAX_10
-# define E_WARNSB   WARNING E_SB E_MAX_10
+# define E_WARNVPS  ERR E_VPS E_MAX_10
+# define E_WARNSB   ERR E_SB E_MAX_10
 
 # define E_FTC0X    "0x"
-# define E_FTC_NO0X ERR "Missed \'0x\' for color param."
-# define E_FTC_HEX  ERR "Invalid hex number for flag " E_FTC "."
+# define E_FTC_NO0X ERR "Missed \'0x\' for HEX color param in " E_FTC "."
+# define E_FTC_HEX  ERR "Invalid HEX color for " E_FTC "."
 
+# define E_USELESS_FTC WARNING E_FTC " useless because you don't use " E_DBG "."
+# define E_USELESS_SB WARNING E_SB " useles because you use " E_NCL "."
 #endif
