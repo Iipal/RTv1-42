@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 23:55:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 14:42:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/23 16:56:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ static inline void	add_objs_rot(Object *const o,
 		Z(o->dir) = u_d_range(Z(o->dir) + (move / 5.0f), 360.0f, -360.0f);
 	if (isr->is_dec_rot_x)
 		X(o->dir) = u_d_range(X(o->dir) - (move / 5.0f), 360.0f, -360.0f);
-	if (isr->is_dec_rot_x)
-		X(o->dir) = u_d_range(X(o->dir) - (move / 5.0f), 360.0f, -360.0f);
+	if (isr->is_dec_rot_y)
+		Y(o->dir) = u_d_range(Y(o->dir) - (move / 5.0f), 360.0f, -360.0f);
+	if (isr->is_dec_rot_z)
+		Z(o->dir) = u_d_range(Z(o->dir) - (move / 5.0f), 360.0f, -360.0f);
 }
 
 void				rt_sdl_keys_events_objs_debug(Object *const o,
