@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 14:46:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/25 13:46:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include "rtv1_structs.h"
 # include "rtv1_macroses.h"
 
+/*
+** Read and validate scene file:
+*/
 bool			rt_read_scene(Environment *env,
 							const char *const scene_file);
 
@@ -34,10 +37,12 @@ bool			rt_valid_readed_data(Scene *const s);
 
 extern bool		rt_init(Environment *env);
 
+/*
+**	Flags parsing:
+*/
 bool			rt_flags_parser(Flags *const f, strtab av, const size_t ac);
 
-typedef bool	(*t_fn_fparse)(Flags *, char**,
-							const size_t, size_t *const);
+typedef bool	(*t_fn_fparse)(Flags *, char**, const size_t, size_t *const);
 extern bool		rt_fhelp(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
 extern bool		rt_fvps(Flags *const f, strtab av,
@@ -51,75 +56,83 @@ extern bool		rt_fdbg(Flags *const f, strtab av,
 extern bool		rt_fncl(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
 
-extern void		rt_sdl_keys_press(Isr *const isr,
-					const SDL_Keycode key);
-extern void		rt_sdl_keys_release(Isr *const isr,
-					const SDL_Keycode key);
+/*
+** SDL render loop, keypresses and keybinds mode switcher:
+*/
+extern void		rt_sdl_keys_press(Isr *const isr, const SDL_Keycode key);
+extern void		rt_sdl_keys_release(Isr *const isr, const SDL_Keycode key);
 extern void		rt_sdl_keys_events(Environment *env);
-
 void			rt_sdl_keys_events_objs_debug(Object *o,
-										const Fps *const fps,
-										const Isr *const isr,
-										const size_t in_scene_objects);
+					const Fps *const fps, const Isr *const isr,
+					const size_t in_scene_objects);
 void			rt_sdl_keys_events_lights_debug(Light *l,
-										const Fps *const fps,
-										const Isr *const isr,
-										const size_t in_scene_lights);
-
+					const Fps *const fps, const Isr *const isr,
+					const size_t in_scene_lights);
 extern void		rt_camera_speed_movements(double_t *const cam_speed,
 					const bool is_speed_up, const bool is_speed_down);
-
-void			rt_render_loop(Environment *const env);
-void			rt_rendering(Environment *const env);
-extern Color	rt_raytracing(Environment *const env, Vector d);
-
 extern Vector	rt_camera_rotate(Vector d, const Vector dir);
 
+void			rt_render_loop(Environment *const env);
+
+/*
+** Ray Tracing:
+*/
+void			rt_rendering(Environment *const env);
+
+extern Color	rt_raytracing(Environment *const env, Vector d);
+
+/*
+** Objects intersection calc:
+*/
+Object			*rt_closest_inter(const Vector o, const Vector d,
+								Environment *const env);
+extern Vector	rt_inter_sphere(const Vector x, const Vector d,
+								void const *const obj_ptr);
+extern Vector	rt_inter_cone(const Vector x, const Vector d,
+								void const *const obj_ptr);
+extern Vector	rt_inter_plane(const Vector x, const Vector d,
+								void const *const obj_ptr);
+extern Vector	rt_inter_cylinder(const Vector x, const Vector d,
+								void const *const obj_ptr);
+
+/*
+** Objects nomrals cala:
+*/
+extern Vector	rt_normal_sphere(const Vector p, const Vector d,
+								Camera const *const cam,
+								void const *const obj_ptr);
+extern Vector	rt_normal_cone(const Vector p, const Vector d,
+								Camera const *const cam,
+								void const *const obj_ptr);
+extern Vector	rt_normal_plane(const Vector p, const Vector d,
+								Camera const *const cam,
+								void const *const obj_ptr);
+extern Vector	rt_normal_cylinder(const Vector p, const Vector d,
+								Camera const *const cam,
+								void const *const obj_ptr);
+
+/*
+** Calc light:
+*/
+Color			rt_calc_light(Environment *env, t_clhelp *restrict const h,
+							const Object *const obj, const Vector d);
+
+/*
+** FPS counter and drawing this counter:
+*/
+extern void		rt_fps(Fps *const fps, double_t cam_speed);
 extern void		rt_render_fps_counter(Environment *const env);
 
-extern Vector	rt_inter_sphere(const Vector x,
-								const Vector d,
-								void const *const obj_ptr);
-extern Vector	rt_inter_cone(const Vector x,
-								const Vector d,
-								void const *const obj_ptr);
-extern Vector	rt_inter_plane(const Vector x,
-								const Vector d,
-								void const *const obj_ptr);
-extern Vector	rt_inter_cylinder(const Vector x,
-								const Vector d,
-								void const *const obj_ptr);
-
-extern Vector	rt_normal_sphere(const Vector p,
-								const Vector d,
-								Camera const *const cam,
-								void const *const obj_ptr);
-extern Vector	rt_normal_cone(const Vector p,
-								const Vector d,
-								Camera const *const cam,
-								void const *const obj_ptr);
-extern Vector	rt_normal_plane(const Vector p,
-								const Vector d,
-								Camera const *const cam,
-								void const *const obj_ptr);
-extern Vector	rt_normal_cylinder(const Vector p,
-								const Vector d,
-								Camera const *const cam,
-								void const *const obj_ptr);
-
-Color			rt_calc_light(Environment *env,
-								t_clhelp *restrict const h,
-								const Object *const obj,
-								const Vector d);
-
-Object			*rt_closest_inter(const Vector o,
-								const Vector d,
-								Environment *const env);
-
-extern void		rt_fps(Fps *const fps, double_t cam_speed);
-
+/*
+** Free all malloced memory:
+*/
 extern void		rt_free(Environment **env);
 
+/*
+** Ohter util funcs:
+**  Used only when validating readed data for convert direction\rotate
+**   from 365 degress to 360;
+*/
 Vector			u_inrange_dir_max(Vector dir);
 Vector			u_inrange_dir_min(Vector dir);
 
