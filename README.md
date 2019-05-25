@@ -2,6 +2,8 @@
 ## Ray Tracing Engine on C using SDL2. (project from [UNIT Factory](https://unit.ua/en/))
 ###### made by tmaluh __(\_ipal)__
 
+![screenshot](https://github.com/Iipal/RTv1-42/blob/master/screenshot_all.png)
+
 ## Addiitonal pre-installation:
 
 ### SDL2
