@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 13:46:41 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/23 00:21:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/23 10:39:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,20 @@ inline Vector	rt_camera_rotate(Vector d, const Vector dir)
 	if (X(dir))
 	{
 		temp = Y(d);
-		Y(d) = temp * cos(X(dir)) + Z(d) * sin(X(dir));
-		Z(d) = -temp * sin(X(dir)) + Z(d) * cos(X(dir));
+		Y(d) = temp * COS_RAD(X(dir)) + Z(d) * SIN_RAD(X(dir));
+		Z(d) = -temp * SIN_RAD(X(dir)) + Z(d) * COS_RAD(X(dir));
 	}
 	if (Y(dir))
 	{
 		temp = X(d);
-		X(d) = temp * cos(Y(dir)) + Z(d) * sin(Y(dir));
-		Z(d) = -temp * sin(Y(dir)) + Z(d) * cos(Y(dir));
+		X(d) = temp * COS_RAD(Y(dir)) + Z(d) * SIN_RAD(Y(dir));
+		Z(d) = -temp * SIN_RAD(Y(dir)) + Z(d) * COS_RAD(Y(dir));
+	}
+	if (Z(dir))
+	{
+		temp = X(d);
+		X(d) = temp * COS_RAD(Z(dir)) - Y(d) * SIN_RAD(Z(dir));
+		Y(d) = temp * SIN_RAD(Z(dir)) + Y(d) * COS_RAD(Z(dir));
 	}
 	return (d);
 }

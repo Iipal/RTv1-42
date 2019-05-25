@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 23:42:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/23 10:21:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@
 # define RT_CANVAS_STARTY   -(WIN_Y / 2)
 # define RT_CANVAS_ENDX     WIN_X / 2
 # define RT_CANVAS_ENDY     WIN_Y / 2
+
+# define TO_RAD(deg) (((deg) * M_PI) / 180.0)
+# define COS_RAD(angle) cos(TO_RAD(angle))
+# define SIN_RAD(angle) sin(TO_RAD(angle))
 
 # define MOVE_INC 5
 # define MOVE_SPEED_PERCENT_DEFAULT 1.0f
