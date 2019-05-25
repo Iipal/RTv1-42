@@ -17,7 +17,7 @@ $> sudo apt-get install libsdl2-dev libsdl2-ttf-dev
 __*Fedora:*__
 
 ```bash
-$> sudo dnf install SDL2-devel SSDL2_ttf-devel
+$> sudo dnf install SDL2-devel SDL2_ttf-devel
 ```
 
 __*MacOS:*__
