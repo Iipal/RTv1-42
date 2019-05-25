@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 23:51:14 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/25 17:12:57 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@
 # define E_WSBZERO  ERR E_SB " param is 0. Min is 1."
 # define E_WFTCZERO ERR E_FTC " param invalid or 0x0."
 
-# define E_MAX_10   " param greate than 10. Max is 10."
+# define E_MAX_10   " param greate than 25. Max is 25."
 
 # define E_WARNVPS  ERR E_VPS E_MAX_10
 # define E_WARNSB   ERR E_SB E_MAX_10

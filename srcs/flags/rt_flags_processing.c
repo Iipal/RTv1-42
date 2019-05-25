@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 18:30:12 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 23:49:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/25 17:13:18 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ inline bool	rt_fvps(Flags *const f, strtab av,
 	av[*av_i] += ft_skip_blanks(av[*av_i]);
 	IFM_F(E_UNSIGN, '-' == av[*av_i][0] && ft_isdigit(av[*av_i][1]));
 	NOM_F(E_DIGITS, ft_isdigits_str(av[*av_i]));
-	IFM_F(E_WARNVPS, 10.0f < (f->viewport_scale = ft_atoi(av[*av_i])));
+	IFM_F(E_WARNVPS, 10 < (f->viewport_scale = ft_atoi(av[*av_i])));
 	NOM_F(E_WVPSZERO, f->viewport_scale);
 	return (true);
 }
@@ -31,7 +31,7 @@ inline bool	rt_fsb(Flags *const f, strtab av,
 	av[*av_i] += ft_skip_blanks(av[*av_i]);
 	IFM_F(E_UNSIGN, '-' == av[*av_i][0] && ft_isdigit(av[*av_i][1]));
 	NOM_F(E_DIGITS, ft_isdigits_str(av[*av_i]));
-	IFM_F(E_WARNSB, 10.0f < (f->shadows_bright = ft_atoi(av[*av_i])));
+	IFM_F(E_WARNSB, 25 < (f->shadows_bright = ft_atoi(av[*av_i])));
 	NOM_F(E_WSBZERO, f->shadows_bright);
 	return (true);
 }
