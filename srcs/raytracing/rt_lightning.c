@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 13:36:07 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/25 17:10:57 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,13 @@ static inline void	add_specular_reflect(Light *restrict const l,
 {
 	const Vector	d = h->p - l->pos;
 	Vector			h_l;
-	double_t		vlen_h;
 	double_t		h_intens;
 
 	h_l = v + h->l;
-	vlen_h = u_vlen(h_l);
-	h_l = (Vector){X(h_l) / vlen_h, Y(h_l) / vlen_h, Z(h_l) / vlen_h};
+	h_l = u_vnorm(h_l);
 	h_intens = (l->intens * fmax(0, h->dnl) + obj_spec)
 		* (l->intens * pow(fmax(0.0f, u_vdot(h->n, h_l)), obj_spec));
-	h->i += h_intens / pow(u_vlen(d), 2.6);
+	h->i += h_intens / pow(u_vlen(d), 1.4);
 }
 
 Color				rt_calc_light(Environment *const env,
