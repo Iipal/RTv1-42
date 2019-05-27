@@ -61,7 +61,7 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 | --viewport-scale    | How many times will be increased viewport.                                | -vps     | 1-10           | 1             | Integer    |
 | --shadow-bright     | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10           | 100           | Integer    |
 | --fps-text-color    | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        |
-| --fps-refresh-timer | How often will refresh fps counter.                                       | -frt     | 0-500          | 25            | Integer    |
+| --fps-refresh-timer | How often will refresh fps counter. (in ms)                               | -frt     | 0-500          | 25            | Integer    |
 | --debug             | Enable keybinds switcher mode.                                            | -dbg     | none           | none          | none       |
 | --no-calc-light     | Disable calc all light origins                                            | -ncl     | none           | none          | none       |
 #### Example:
