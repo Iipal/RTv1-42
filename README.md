@@ -55,28 +55,53 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 ```
 ### Flags:
 
-| Flag             | Description                                                               | Shortcut | Valid values   | Default value | Value type |
-| ---------------- | ------------------------------------------------------------------------- | -------- | -------------- | ------------- | ---------- |
-| --help           | Print short flags description. After print RTv1 will automatically close. | -h       | none           | none          | none       |
-| --viewport-scale | How many times will be increased viewport.                                | -vps     | 1-10           | 1             | Integer    |
-| --shadow-bright  | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10           | 100           | Integer    |
-| --fps-text-color | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        |
-| --debug          | Enable keybinds switcher mode.                                            | -dbg     | none           | not enable    | none       |
-| --no-calc-light  | Disable calc all light origins                                            | -ncl     | none           | not enable    | none       |
+| Flag                | Description                                                               | Shortcut | Valid values   | Default value | Value type |
+| ------------------- | ------------------------------------------------------------------------- | -------- | -------------- | ------------- | ---------- |
+| --help              | Print short flags description. After print RTv1 will automatically close. | -h       | none           | none          | none       |
+| --viewport-scale    | How many times will be increased viewport.                                | -vps     | 1-10           | 1             | Integer    |
+| --shadow-bright     | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10           | 100           | Integer    |
+| --fps-text-color    | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        |
+| --fps-refresh-timer | How often will refresh fps counter.                                       | -frt     | 0-500          | 25            | Integer    |
+| --debug             | Enable keybinds switcher mode.                                            | -dbg     | none           | none          | none       |
+| --no-calc-light     | Disable calc all light origins                                            | -ncl     | none           | none          | none       |
 #### Example:
 ```bash
 $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
 ```
 ###### Note: always put scene file in arguments line, because flags will parse only after successful read scene file.
 
+# [[__`About scene file params`__](#about-scene-file-params)]:
+
+| Param name | Description                                              | Position | Direction\Rotate    | Color | Radius\Angle | Specular\Intensity |
+| ---------- | -------------------------------------------------------- | -------- | ------------------- | ----- | ------------ | ------------------ |
+| Camera     | Scene camera. Only 1 camera can be in scene.             | X,Y,Z    | X,Y,Z (Z not used.) | none  | none         | none               |
+| Light      | Scene light origin. Max 5 light origins can be in scene. | X,Y,Z    | X,Y,Z (not used.)   | none  | none         | 100                |
+| Sphere     | Sphere object.                                           | X,Y,Z    | X,Y,Z (not used.)   | HEX.  | 1            | 10000              |
+| Cone       | Cone object.                                             | X,Y,Z    | X,Y,Z               | HEX.  | 1            | 10000              |
+| Cylinder   | Cylinder object.                                         | X,Y,Z    | X,Y,Z               | HEX.  | 1            | 10000              |
+| Plane      | Cylinder object.                                         | X,Y,Z    | X,Y,Z               | HEX.  | none         | 10000              |
+| eShadow.   | Enable shadows render and calc in scene.                 | none     | none                | noen  | none         | none               |
+
+#### Example:
+```bash
+Camera: 0,0,0 0,0,0
+Light: 0,3,1 0,0,0 100
+Sphere: 0,-1,10 0,0,0 0xaaaaaa 1 30
+Cone: -2,5,25 -1,-3,0 0xbaaf32 1 5000
+Plane: 0,-5,0 0,1,0 0xfa1bff 500
+Cylinder: 2,-2,5 -2,4,-3 0xbaaf32 1 1000
+eShadow.
+```
+
+
 ## Keybinds:
 
 ### General keybinds what works in all keybind modes:
-| Description                      | Keybinding     |
-| -------------------------------- | -------------- |
-| Toggle rendering info.           | <kbd>Z</kbd>   |
-| Toggle shadows render and calc.  | <kbd>H</kbd>   |
-| Exit.                            | <kbd>Esc</kbd> |
+| Description                     | Keybinding     |
+| ------------------------------- | -------------- |
+| Toggle rendering info.          | <kbd>Z</kbd>   |
+| Toggle shadows render and calc. | <kbd>H</kbd>   |
+| Exit.                           | <kbd>Esc</kbd> |
 
 ###### All binds below works only with `-dbg` flag.
 ## Keybinds mode switcher binds:
@@ -131,26 +156,3 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
 | Decrease objects X-axis.              | <kbd>T</kbd> |
 | Decrease objects Y-axis.              | <kbd>G</kbd> |
 | Decrease objects Z-axis.              | <kbd>B</kbd> |
-
-# [[__`About scene file params`__](#about-scene-file-params)]:
-
-| Param name | Description                                              | Position | Direction\Rotate    | Color | Radius\Angle | Specular\Intensity |
-| ---------- | -------------------------------------------------------- | -------- | ------------------- | ----- | ------------ | ------------------ |
-| Camera     | Scene camera. Only 1 camera can be in scene.             | X,Y,Z    | X,Y,Z (Z not used.) | none  | none         | none               |
-| Light      | Scene light origin. Max 5 light origins can be in scene. | X,Y,Z    | X,Y,Z (not used.)   | none  | none         | 100                |
-| Sphere     | Sphere object.                                           | X,Y,Z    | X,Y,Z (not used.)   | HEX.  | 1            | 10000              |
-| Cone       | Cone object.                                             | X,Y,Z    | X,Y,Z               | HEX.  | 1            | 10000              |
-| Cylinder   | Cylinder object.                                         | X,Y,Z    | X,Y,Z               | HEX.  | 1            | 10000              |
-| Plane      | Cylinder object.                                         | X,Y,Z    | X,Y,Z               | HEX.  | none         | 10000              |
-| eShadow.   | Enable shadows render and calc in scene.                 | none     | none                | noen  | none         | none               |
-
-Example:
-```bash
-Camera: 0,0,0 0,0,0
-Light: 0,3,1 0,0,0 100
-Sphere: 0,-1,10 0,0,0 0xaaaaaa 1 30
-Cone: -2,5,25 -1,-3,0 0xbaaf32 1 5000
-Plane: 0,-5,0 0,1,0 0xfa1bff 500
-Cylinder: 2,-2,5 -2,4,-3 0xbaaf32 1 1000
-eShadow.
-```
