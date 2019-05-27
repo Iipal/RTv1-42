@@ -2,6 +2,8 @@
 ## Ray Tracing Engine on C using SDL2. (project from [UNIT Factory](https://unit.ua/en/))
 ###### made by tmaluh __(\_ipal)__
 
+![screenshot](https://github.com/Iipal/RTv1-42/blob/master/screenshot_all.png)
+
 ## Addiitonal pre-installation:
 
 ### SDL2
@@ -15,7 +17,7 @@ $> sudo apt-get install libsdl2-dev libsdl2-ttf-dev
 __*Fedora:*__
 
 ```bash
-$> sudo dnf install SDL2-devel SSDL2_ttf-devel
+$> sudo dnf install SDL2-devel SDL2_ttf-devel
 ```
 
 __*MacOS:*__
