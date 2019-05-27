@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 14:22:34 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/27 14:23:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/27 16:07:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_vectors.h"
 
-inline const Vector	u_vinvert(const Vector v)
+inline Vector	u_vinvert(const Vector v)
 {
 	const Vector	out = {-X(v), -Y(v), -Z(v), 0.0};
 

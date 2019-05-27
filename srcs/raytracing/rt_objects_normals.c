@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 19:17:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/27 14:27:25 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/27 16:02:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ inline Vector	rt_normal_cone(const Vector p,
 	const Object	*o = (Object*)obj_ptr;
 
 	return (u_vsubv(u_vsubv(p, o->pos),
-		u_vmul(u_vmul(o->dir, 1 + pow(tan(o->radius / 2), 2)),
+		u_vmuld(u_vmuld(o->dir, 1 + pow(tan(o->radius / 2), 2)),
 			u_vdot(d, o->dir) * cam->closes_t
 				+ u_vdot(u_vsubv(cam->pos, o->pos), o->dir))));
 }
@@ -44,7 +44,7 @@ inline Vector	rt_normal_plane(const Vector p,
 
 	(void)p;
 	(void)cam;
-	return (0 < u_vdot(d, obj_dir) ? -obj_dir : obj_dir);
+	return (0 < u_vdot(d, obj_dir) ? u_vinvert(obj_dir) : obj_dir);
 }
 
 inline Vector	rt_normal_cylinder(const Vector p,
@@ -55,6 +55,6 @@ inline Vector	rt_normal_cylinder(const Vector p,
 	const Vector	o_pos = ((Object*)obj_ptr)->pos;
 	const Vector	o_dir = ((Object*)obj_ptr)->dir;
 
-	return (p - o_pos - u_vmul(o_dir,
-		u_vdot(d, o_dir) * cam->closes_t + u_vdot(cam->pos - o_pos, o_dir)));
+	return (u_vsubv(u_vsubv(p, o_pos), u_vmuld(o_dir,
+u_vdot(d, o_dir) * cam->closes_t + u_vdot(u_vsubv(cam->pos, o_pos), o_dir))));
 }

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 14:37:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/27 15:06:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static inline fDot	add_intersection(const Vector o,
 									const Vector d,
 									const Object *const obj)
 {
-	const Vector	x = o - obj->pos;
+	const Vector	x = u_vsubv(o, obj->pos);
 	const Vector	k = 1 != obj->type ? obj->fn_inter_calc(x, d, obj) : o;
 	const double_t	disc = 1 != obj->type ? VDISC(k) : 0;
 

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 12:16:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/27 14:22:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/27 16:06:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,19 @@
 
 # include <math.h>
 # include <stdint.h>
+# include "libft_macroses.h"
 
 typedef struct s_dot
 {
 	int32_t	x;
 	int32_t	y;
 } __attribute__((aligned(8)))	Dot;
+
+typedef struct s_fdot
+{
+	double_t	x;
+	double_t	y;
+} __attribute__((aligned(16)))	fDot;
 
 typedef struct s_vector
 {
