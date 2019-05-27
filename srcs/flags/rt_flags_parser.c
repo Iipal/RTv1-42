@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 17:35:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 23:53:03 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/27 23:07:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ static bool		add_curr_fparse(Flags *const f, strtab av,
 							const size_t ac,
 							size_t *const i_av)
 {
-	const string		flags[] = {F_HELP, F_VPS, F_SB, F_FTC, F_DBG, F_NCL};
-	const string		sflags[] = {SF_HELP, SF_VPS, SF_SB, SF_FTC, SF_DBG,
-								SF_NCL};
-	const t_fn_fparse	fns[] = {rt_fhelp, rt_fvps, rt_fsb, rt_fftc, rt_fdbg,
-								rt_fncl};
+	const string		flags[] = {F_HELP, F_VPS, F_SB, F_FTC, F_FRT,
+							F_DBG, F_NCL};
+	const string		sflags[] = {SF_HELP, SF_VPS, SF_SB, SF_FTC, SF_FRT,
+							SF_DBG, SF_NCL};
+	const t_fn_fparse	fns[] = {rt_fhelp, rt_fvps, rt_fsb, rt_fftc, rt_ffrt,
+							rt_fdbg, rt_fncl};
 	bool				is_valid_flag;
 	size_t				i;
 
@@ -42,6 +43,8 @@ static inline void	add_validate_parsed_flags(const Flags *const f)
 		MSGN(E_USELESS_FTC);
 	if (f->shadows_bright <= 10 && f->no_calc_light)
 		MSGN(E_USELESS_SB);
+	if (f->is_parsed_frt && !f->debug_mode)
+		MSGN(E_USELESS_FRT);
 }
 
 bool			rt_flags_parser(Flags *const f, strtab av, const size_t ac)
