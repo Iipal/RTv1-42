@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 12:16:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/27 16:06:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/27 20:21:17 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,18 @@
 # include <stdint.h>
 # include "libft_macroses.h"
 
-typedef struct s_dot
-{
-	int32_t	x;
-	int32_t	y;
-} __attribute__((aligned(8)))	Dot;
+# define DOT  typedef int32_t  Dot __attribute__((vector_size(16),aligned))
+# define FDOT typedef double_t fDot __attribute__((vector_size(16),aligned))
+# define VEC  typedef double_t Vector __attribute__((vector_size(32),aligned))
 
-typedef struct s_fdot
-{
-	double_t	x;
-	double_t	y;
-} __attribute__((aligned(16)))	fDot;
+# define X(v) v[0]
+# define Y(v) v[1]
+# define Z(v) v[2]
+# define W(v) v[3]
 
-typedef struct s_vector
-{
-	double_t	x;
-	double_t	y;
-	double_t	z;
-	double_t	w;
-} __attribute__((aligned(32)))	Vector;
-
-// # define DOT typedef int32_t  Dot __attribute__((vector_size(16),aligned))
-// # define VEC typedef double_t Vector __attribute__((vector_size(32),aligned))
-
-# define X(v) v.x
-# define Y(v) v.y
-# define Z(v) v.z
-# define W(v) v.w
+DOT;
+FDOT;
+VEC;
 
 # define VDISC(k) (Y(k) * Y(k) - 4.0 * X(k) * Z(k))
 
