@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 12:16:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 09:52:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/27 14:22:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,27 @@
 # include <math.h>
 # include <stdint.h>
 
-# define DOT typedef int32_t  Dot __attribute__((vector_size(16),aligned))
-# define VEC typedef double_t Vector __attribute__((vector_size(32),aligned))
+typedef struct s_dot
+{
+	int32_t	x;
+	int32_t	y;
+} __attribute__((aligned(8)))	Dot;
 
-# define X(v) v[0]
-# define Y(v) v[1]
-# define Z(v) v[2]
-# define W(v) v[3]
+typedef struct s_vector
+{
+	double_t	x;
+	double_t	y;
+	double_t	z;
+	double_t	w;
+} __attribute__((aligned(32)))	Vector;
 
-DOT;
-VEC;
+// # define DOT typedef int32_t  Dot __attribute__((vector_size(16),aligned))
+// # define VEC typedef double_t Vector __attribute__((vector_size(32),aligned))
+
+# define X(v) v.x
+# define Y(v) v.y
+# define Z(v) v.z
+# define W(v) v.w
 
 # define VDISC(k) (Y(k) * Y(k) - 4.0 * X(k) * Z(k))
 
@@ -36,7 +47,18 @@ extern double_t	u_vlen(const Vector v);
 extern double_t	u_vdot(const Vector v1, const Vector v2);
 
 extern Vector	u_vnorm(const Vector v);
-extern Vector	u_vmul(const Vector v, const double_t d);
+
+extern Vector	u_vmuld(const Vector v, const double_t d);
+extern Vector	u_vaddd(const Vector v, const double_t d);
+extern Vector	u_vsubd(const Vector v, const double_t d);
+extern Vector	u_vdivd(const Vector v, const double_t d);
+
+extern Vector	u_vmulv(const Vector a, const Vector b);
+extern Vector	u_vaddv(const Vector a, const Vector b);
+extern Vector	u_vsubv(const Vector a, const Vector b);
+extern Vector	u_vdivv(const Vector a, const Vector b);
+
+extern Vector	u_vinvert(const Vector v);
 
 extern bool		u_vec_range(Vector v,
 					const double_t max_range,

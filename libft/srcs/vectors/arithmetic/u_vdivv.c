@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   u_vdot.c                                           :+:      :+:    :+:   */
+/*   u_vdivv.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/22 09:17:59 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/27 14:18:21 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/05/27 14:11:31 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/05/27 14:11:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft_vectors.h"
 
-inline double_t	u_vdot(const Vector v1, const Vector v2)
+inline const Vector	u_vdivv(const Vector a, const Vector b)
 {
-	const double_t	out = X(v1) * X(v2) + Y(v1) * Y(v2) + Z(v1) * Z(v2);
+	const Vector	c = {X(a) / X(b), Y(a) / Y(b), Z(a) / Z(b), 0.0};
 
-	return (out);
+	return (c);
 }

@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   u_vmul.c                                           :+:      :+:    :+:   */
+/*   u_vmulv.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/22 09:29:43 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 09:31:04 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/05/27 14:11:58 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/05/27 14:12:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft_vectors.h"
 
-inline Vector	u_vmul(const Vector v, const double_t d)
+inline const Vector	u_vmulv(const Vector a, const Vector b)
 {
-	return ((Vector){X(v) * d, Y(v) * d, Z(v) * d});
+	const Vector	c = {X(a) * X(b), Y(a) * Y(b), Z(a) * Z(b), 0.0};
+
+	return (c);
 }

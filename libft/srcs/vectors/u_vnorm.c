@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 22:34:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 10:21:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/27 14:18:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 inline Vector	u_vnorm(const Vector v)
 {
-	const double_t	sqrt_vdv = sqrt(u_vdot(v, v));
+	const double_t	sqrtvdv = sqrt(u_vdot(v, v));
+	const Vector	c = {X(v) / sqrtvdv, Y(v) / sqrtvdv, Z(v) / sqrtvdv, 0.0};
 
-	return ((Vector){X(v) / sqrt_vdv, Y(v) / sqrt_vdv, Z(v) / sqrt_vdv});
+	return (c);
 }
