@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:20:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 14:21:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:11:37 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <stdio.h>
 
-void	rt_render_loop(Environment *const env)
+void	rt_render_loop(Environment *restrict const env)
 {
 	bool	quit;
 
@@ -29,7 +29,7 @@ void	rt_render_loop(Environment *const env)
 				if (SEKEY == SDLK_ESCAPE)
 					quit = true;
 				else if (SEKEY == SDLK_h)
-					env->s.is_render_shadow = !env->s.is_render_shadow;
+					env->scene.is_render_shadow = !env->scene.is_render_shadow;
 				else
 					rt_sdl_keys_press(&env->isr, SEKEY);
 			}

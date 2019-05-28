@@ -6,14 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:12:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/23 10:09:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:12:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	add_camera_keys_events(const Isr *const isr,
-										Camera *const cam,
+static inline void	add_camera_keys_events(const Isr *restrict const isr,
+										Camera *restrict const cam,
 										const double_t move)
 {
 	if (isr->is_up)
@@ -42,21 +42,21 @@ static inline void	add_camera_keys_events(const Isr *const isr,
 		Z(cam->dir) = u_d_range(Z(cam->dir) - (move * 2), 360.0f, -360.0f);
 }
 
-inline void			rt_sdl_keys_events(Environment *const env)
+inline void			rt_sdl_keys_events(Environment *restrict const env)
 {
 	if (env->isr.is_light_debug)
 	{
 		if (env->isr.is_objs_debug)
 			env->isr.is_light_debug = false;
 		else if (!env->flags.no_calc_light)
-			rt_sdl_keys_events_lights_debug(env->s.l,
-				&env->fps, &env->isr, env->s.ins_l);
+			rt_sdl_keys_events_lights_debug(env->scene.lights,
+				&env->fps, &env->isr, env->scene.ins_lights);
 	}
 	else if (env->isr.is_objs_debug)
-		rt_sdl_keys_events_objs_debug(env->s.objs,
-			&env->fps, &env->isr, env->s.ins_objs);
+		rt_sdl_keys_events_objs_debug(env->scene.objs,
+			&env->fps, &env->isr, env->scene.ins_objs);
 	else
-		add_camera_keys_events(&env->isr, &env->s.cam, env->fps.move);
+		add_camera_keys_events(&env->isr, &env->scene.cam, env->fps.move);
 	rt_camera_speed_movements(&env->cam_speed,
 			env->isr.is_speedup, env->isr.is_speeddown);
 }

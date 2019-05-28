@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/28 10:55:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:08:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static bool	add_parser(Scene *const sc, string *str,
 	if (!ft_strncmp(*str, FP_SHADOWS, ft_strlen(FP_SHADOWS)) && (is = true))
 		data = true;
 	else if (!ft_strncmp(*str, FP_LIGHT, ft_strlen(FP_LIGHT)) && (is = true))
-		data = rt_slight(&sc->l[pfh->light_counter++], *str);
+		data = rt_slight(&sc->lights[pfh->light_counter++], *str);
 	else if (!ft_strncmp(*str, FP_CAM, ft_strlen(FP_CAM)) && (is = true))
 		data = rt_scam(&sc->cam, *str);
 	else
@@ -43,7 +43,7 @@ static bool	add_parser(Scene *const sc, string *str,
 }
 
 bool		add_valid_objs_counter(int32_t *const fd,
-				Scene *const s, const char *const file)
+				Scene *const sc, const char *const file)
 {
 	string			temp;
 
@@ -52,26 +52,26 @@ bool		add_valid_objs_counter(int32_t *const fd,
 		if (*temp != '#')
 		{
 			if (!ft_strncmp(temp, FP_LIGHT, ft_strlen(FP_LIGHT)))
-				++s->ins_l;
+				++sc->ins_lights;
 			else if (ft_is_one_of_str(temp, true, FP_MAX_OBJS,
 						FP_SPHERE, FP_CONE, FP_CYLINDER, FP_PLANE))
-				++s->ins_objs;
+				++sc->ins_objs;
 			else if (!ft_strncmp(temp, FP_SHADOWS, ft_strlen(FP_SHADOWS)))
-				s->is_render_shadow = true;
+				sc->is_render_shadow = true;
 		}
 		ft_strdel(&temp);
 	}
 	close(*fd);
-	NOM_F(E_NOOBJS, s->ins_objs);
-	NOM_F(E_NOLIGHT, s->ins_l);
-	IFM_F(E_MLIGHTS, MAX_LIGHTS < s->ins_l);
-	MEM(Object, s->objs, s->ins_objs, E_ALLOC);
-	MEM(Light, s->l, s->ins_l, E_ALLOC);
+	NOM_F(E_NOOBJS, sc->ins_objs);
+	NOM_F(E_NOLIGHT, sc->ins_lights);
+	IFM_F(E_MLIGHTS, MAX_LIGHTS < sc->ins_lights);
+	MEM(Object, sc->objs, sc->ins_objs, E_ALLOC);
+	MEM(Light, sc->lights, sc->ins_lights, E_ALLOC);
 	IFME(PERR, 0 > (*fd = open(file, O_RDONLY)), (void)0, false);
 	return (true);
 }
 
-bool		rt_read_scene(Environment *env,
+bool		rt_read_scene(Environment *restrict env,
 					const char *const scene_file)
 {
 	int32_t		fd;
@@ -80,11 +80,11 @@ bool		rt_read_scene(Environment *env,
 
 	C(t_pfhelp, &pfh, 1);
 	IFME(PERR, 0 > (fd = open(scene_file, O_RDONLY)), rt_free(&env), false);
-	NODO_F(add_valid_objs_counter(&fd, &env->s, scene_file), rt_free(&env));
+	NODO_F(add_valid_objs_counter(&fd, &env->scene, scene_file), rt_free(&env));
 	while (0 < ft_gnl(fd, &tmp))
-		NODO_F(add_parser(&env->s, &tmp, &pfh), rt_free(&env));
+		NODO_F(add_parser(&env->scene, &tmp, &pfh), rt_free(&env));
 	close(fd);
 	NO(E_EFILE, pfh.nline, rt_free(&env), false);
-	NO_F(rt_valid_readed_data(&env->s));
+	NODO_F(rt_valid_readed_data(&env->scene), rt_free(&env));
 	return (true);
 }

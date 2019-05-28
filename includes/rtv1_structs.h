@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/28 11:48:33 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:23:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ struct	s_light
 
 typedef Vector	(*t_fn_inter)(const Vector,
 							const Vector,
-							const void *const);
+							const void *restrict const);
 typedef Vector	(*t_fn_normal)(const Vector,
 							const Vector,
-							const struct s_camera *const,
-							const void *const);
+							const struct s_camera *restrict const,
+							const void *restrict const);
 
 struct	s_object
 {
@@ -118,9 +118,9 @@ TIME;
 struct	s_scene
 {
 	Camera		cam;
-	Light		*l;
+	Light		*lights;
 	Object		*objs;
-	size_t		ins_l;
+	size_t		ins_lights;
 	size_t		ins_objs;
 	bool		is_render_shadow;
 };
@@ -158,7 +158,7 @@ FLAGS;
 struct	s_environment
 {
 	Sdl			*sdl;
-	Scene		s;
+	Scene		scene;
 	Isr			isr;
 	Fps			fps;
 	double_t	cam_speed;

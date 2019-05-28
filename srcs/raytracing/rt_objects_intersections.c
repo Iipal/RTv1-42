@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 18:06:24 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/27 15:21:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:25:37 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 inline Vector	rt_inter_sphere(const Vector x,
 								const Vector d,
-								const void *const obj_ptr)
+								const void *restrict const obj_ptr)
 {
 	const double_t	r = ((Object*)obj_ptr)->radius;
 
@@ -24,7 +24,7 @@ inline Vector	rt_inter_sphere(const Vector x,
 
 inline Vector	rt_inter_cone(const Vector x,
 								const Vector d,
-								const void *const obj_ptr)
+								const void *restrict const obj_ptr)
 {
 	const Object	*obj = (Object*)obj_ptr;
 	const double_t	k = 1 + pow(tan(obj->radius / 2.0f), 2);
@@ -36,7 +36,7 @@ inline Vector	rt_inter_cone(const Vector x,
 
 inline Vector	rt_inter_plane(const Vector x,
 								const Vector d,
-								const void *const obj_ptr)
+								const void *restrict const obj_ptr)
 {
 	(void)x;
 	(void)d;
@@ -46,7 +46,7 @@ inline Vector	rt_inter_plane(const Vector x,
 
 inline Vector	rt_inter_cylinder(const Vector x,
 								const Vector d,
-								const void *const obj_ptr)
+								const void *restrict const obj_ptr)
 {
 	const Vector	obj_dir = u_vnorm(((Object*)obj_ptr)->dir);
 	const double_t	r = ((Object*)obj_ptr)->radius;

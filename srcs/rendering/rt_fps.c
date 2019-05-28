@@ -6,11 +6,22 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 18:51:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/27 22:17:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:27:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+inline void	rt_fps(Fps *restrict const fps, const double_t cam_speed)
+{
+	fps->time.old = fps->time.current;
+	fps->time.current = SDL_GetTicks();
+	fps->time.res = (fps->time.current - fps->time.old) / 1000.0f;
+	fps->move = fps->time.res * MOVE_INC * cam_speed;
+	fps->l_move = fps->move * 5.0f;
+	fps->l_intens = fps->move / 5.0f;
+	fps->o_spec_intens = fps->move * 100.0f;
+}
 
 static void	add_render_fps(SDL_Surface *const text,
 						uint32_t *const screen,
@@ -67,15 +78,4 @@ inline void	rt_render_fps_counter(Environment *const env)
 	}
 	add_fps_prepare_and_draw(env->fps.time.fps, env->fps.time.ms, env);
 	delta_refresh += env->fps.time.res;
-}
-
-inline void	rt_fps(Fps *const fps, const double_t cam_speed)
-{
-	fps->time.old = fps->time.current;
-	fps->time.current = SDL_GetTicks();
-	fps->time.res = (fps->time.current - fps->time.old) / 1000.0f;
-	fps->move = fps->time.res * MOVE_INC * cam_speed;
-	fps->l_move = fps->move * 5.0f;
-	fps->l_intens = fps->move / 5.0f;
-	fps->o_spec_intens = fps->move * 100.0f;
 }

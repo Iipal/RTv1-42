@@ -19,4 +19,4 @@ Sphere: 3,-6,20 0,0,0 0xfaaf12 1 100
 Sphere: 1,-4,24 0,0,0 0x12faaf 1 100
 Sphere: -3,-2,10 0,0,0 0x1211ff 1 100
 Sphere: -6,-1,10 0,0,0 0xf4133f 1 100
-enable_shadows.
+eShadows.

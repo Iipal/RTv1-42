@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 10:05:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/28 10:56:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:26:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static bool	add_valid_lights_data(Light *const l,
+static bool	add_valid_lights_data(Light *restrict const l,
 								const double_t ins_l)
 {
 	size_t		i;
@@ -30,7 +30,7 @@ static bool	add_valid_lights_data(Light *const l,
 	return (true);
 }
 
-bool		rt_valid_readed_data(Scene *const s)
+bool		rt_valid_readed_data(Scene *restrict const s)
 {
 	size_t	i;
 
@@ -39,7 +39,7 @@ bool		rt_valid_readed_data(Scene *const s)
 	NOM_F(E_CAMPOS, u_vec_range(s->cam.pos, MAX_X, MIN_X));
 	s->cam.dir = u_inrange_dir_max(s->cam.dir);
 	s->cam.dir = u_inrange_dir_min(s->cam.dir);
-	NO_F(add_valid_lights_data(s->l, s->ins_l));
+	NO_F(add_valid_lights_data(s->lights, s->ins_lights));
 	while (s->ins_objs > ++i)
 	{
 		NODO_F(u_vec_range(s->objs[i].pos, MAX_X, MIN_X),

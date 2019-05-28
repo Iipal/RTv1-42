@@ -6,16 +6,16 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/28 11:06:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:25:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	rt_rendering(Environment *const env)
+void	rt_rendering(Environment *restrict const env)
 {
-	Color	clr;
-	fDot	i;
+	Color			clr;
+	fDot			i;
 
 	SDL_FillRect(env->sdl->wsurf, NULL, RGB_BLACK);
 	Y(i) = RT_CANVAS_STARTY;

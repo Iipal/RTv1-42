@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/28 12:23:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:08:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ Color				rt_calc_light(Environment *restrict const env,
 
 	i = ~0L;
 	h->i = 0.0f;
-	while (++i < env->s.ins_l)
+	while (++i < env->scene.ins_lights)
 	{
-		curr_l = &env->s.l[i];
+		curr_l = &env->scene.lights[i];
 		if (.0 >= curr_l->intens)
 			continue ;
 		h->l = curr_l->pos - h->p;
 		env->tmax = 1.0f;
-		if (env->s.is_render_shadow)
+		if (env->scene.is_render_shadow)
 		{
 			shadow = rt_closest_inter(h->p, h->l, env);
 			if (shadow)

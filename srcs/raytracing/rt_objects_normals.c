@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 19:17:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/27 16:02:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:24:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 inline Vector	rt_normal_sphere(const Vector p,
 								const Vector d,
-								const Camera *const cam,
-								const void *const obj_ptr)
+								const Camera *restrict const cam,
+								const void *restrict const obj_ptr)
 {
 	(void)d;
 	(void)cam;
@@ -24,10 +24,10 @@ inline Vector	rt_normal_sphere(const Vector p,
 
 inline Vector	rt_normal_cone(const Vector p,
 								const Vector d,
-								const Camera *const cam,
-								const void *const obj_ptr)
+								const Camera *restrict const cam,
+								const void *restrict const obj_ptr)
 {
-	const Object	*o = (Object*)obj_ptr;
+	const Object *restrict	o = (Object*)obj_ptr;
 
 	return (u_vsubv(u_vsubv(p, o->pos),
 		u_vmuld(u_vmuld(o->dir, 1 + pow(tan(o->radius / 2), 2)),
@@ -37,8 +37,8 @@ inline Vector	rt_normal_cone(const Vector p,
 
 inline Vector	rt_normal_plane(const Vector p,
 								const Vector d,
-								const Camera *const cam,
-								const void *const obj_ptr)
+								const Camera *restrict const cam,
+								const void *restrict const obj_ptr)
 {
 	const Vector	obj_dir = ((Object*)obj_ptr)->dir;
 
@@ -49,8 +49,8 @@ inline Vector	rt_normal_plane(const Vector p,
 
 inline Vector	rt_normal_cylinder(const Vector p,
 								const Vector d,
-								const Camera *const cam,
-								const void *const obj_ptr)
+								const Camera *restrict const cam,
+								const void *restrict const obj_ptr)
 {
 	const Vector	o_pos = ((Object*)obj_ptr)->pos;
 	const Vector	o_dir = ((Object*)obj_ptr)->dir;

@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:31:21 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 17:08:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:21:37 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool	rt_ssphere(Object *const obj, string s)
+inline bool	rt_ssphere(Object *restrict const obj, char *restrict s)
 {
 	s += ft_skip_to_blank(s);
 	IF_F(*s++ != ' ');
@@ -37,7 +37,7 @@ inline bool	rt_ssphere(Object *const obj, string s)
 	return (true);
 }
 
-inline bool	rt_scone(Object *const obj, string s)
+inline bool	rt_scone(Object *restrict const obj, char *restrict s)
 {
 	s += ft_skip_to_blank(s);
 	IF_F(*s++ != ' ');
@@ -62,7 +62,7 @@ inline bool	rt_scone(Object *const obj, string s)
 	return (true);
 }
 
-inline bool	rt_splane(Object *const obj, string s)
+inline bool	rt_splane(Object *restrict const obj, char *restrict s)
 {
 	s += ft_skip_to_blank(s);
 	IF_F(*s++ != ' ');
@@ -86,7 +86,7 @@ inline bool	rt_splane(Object *const obj, string s)
 	return (true);
 }
 
-inline bool	rt_scylinder(Object *const obj, string s)
+inline bool	rt_scylinder(Object *restrict const obj, char *restrict s)
 {
 	s += ft_skip_to_blank(s);
 	IF_F(*s++ != ' ');

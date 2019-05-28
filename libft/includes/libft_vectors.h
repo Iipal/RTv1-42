@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 12:16:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/27 20:21:17 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:36:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdint.h>
 # include "libft_macroses.h"
 
-# define DOT  typedef int32_t  Dot __attribute__((vector_size(16),aligned))
+# define DOT  typedef int32_t  Dot __attribute__((vector_size(8),aligned))
 # define FDOT typedef double_t fDot __attribute__((vector_size(16),aligned))
 # define VEC  typedef double_t Vector __attribute__((vector_size(32),aligned))
 

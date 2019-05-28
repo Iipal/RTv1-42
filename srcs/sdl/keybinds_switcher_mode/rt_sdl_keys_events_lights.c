@@ -6,14 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 18:15:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/21 17:43:19 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:14:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	add_light_zorintens(Light *const l,
-									const Isr *const isr,
+static inline void	add_light_zorintens(Light *restrict const l,
+									const Isr *restrict const isr,
 									const double_t move,
 									const double_t l_move)
 {
@@ -35,9 +35,9 @@ static inline void	add_light_zorintens(Light *const l,
 	}
 }
 
-void				rt_sdl_keys_events_lights_debug(Light *const l,
-												const Fps *const fps,
-												const Isr *const isr,
+void				rt_sdl_keys_events_lights_debug(Light *restrict const l,
+												const Fps *restrict const fps,
+												const Isr *restrict const isr,
 												const size_t in_scene_lights)
 {
 	size_t	i;
