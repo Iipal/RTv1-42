@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/27 22:59:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 11:48:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,12 +137,13 @@ struct	s_fps
 struct	s_flags
 {
 	float_t	viewport_scale;
-	float_t	shadows_bright;
+	float_t	shadow_bright;
 	Uint32	fps_text_color;
 	bool	is_parsed_ftc;
 	float_t	fps_refresh_timer;
 	bool	is_parsed_frt;
 	bool	debug_mode;
+	bool	print_usage;
 	bool	no_calc_light;
 };
 
@@ -161,8 +162,8 @@ struct	s_environment
 	Isr			isr;
 	Fps			fps;
 	double_t	cam_speed;
-	double_t	t_max;
-	double_t	t_min;
+	double_t	tmax;
+	double_t	tmin;
 	Flags		flags;
 };
 

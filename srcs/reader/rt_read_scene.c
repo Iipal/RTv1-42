@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 20:17:56 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 10:55:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static bool	add_parser(Scene *const sc, string *str,
 			if (!ft_strncmp(*str, objs[i], ft_strlen(objs[i])) && (is = true))
 				data = fns[i](&sc->objs[pfh->obj_counter++], *str);
 	IFDOM(E_OBJ, !is, data = false);
-	IFDOMR(E_ISYNTAX, !data, ERRIN(*str, pfh->nline, E_IN_LINE), false);
+	IFDOMR(E_ISYNTAX, !data, ERRIN_N(*str, pfh->nline, E_IN_LINE), false);
 	ft_strdel(str);
 	return (data);
 }

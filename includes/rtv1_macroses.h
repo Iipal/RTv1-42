@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/27 22:59:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 10:12:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@
 # define FP_PLANE       "Plane:"
 # define FP_CYLINDER    "Cylinder:"
 
-# define MAX_FLAGS  7
+# define MAX_FLAGS  8
 # define F_HELP     "--help"
 # define F_DBG      "--debug"
 # define F_VPS      "--viewport-scale"
@@ -100,6 +100,7 @@
 # define F_FTC      "--fps-text-color"
 # define F_FRT      "--fps-refresh-timer"
 # define F_NCL      "--no-calc-light"
+# define F_PU       "--print-usage"
 
 # define SF_HELP    "-h"
 # define SF_VPS     "-vps"
@@ -108,6 +109,7 @@
 # define SF_FRT     "-frt"
 # define SF_DBG     "-dbg"
 # define SF_NCL     "-ncl"
+# define SF_PU      "-pu"
 
 # define DEF_VIEWPORT_SCALE     1.0f
 # define DEF_SHADOW_BRIGHT      100.0f
@@ -115,5 +117,6 @@
 # define DEF_FPS_REFRESH_TIMER  .25f
 # define DEF_DEBUG_MODE         false
 # define DEF_NOT_CALC_LIGHT     false
+# define DEF_PRINT_USAGE        false
 
 #endif

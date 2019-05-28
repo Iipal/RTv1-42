@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 22:19:34 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/27 22:42:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 12:36:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,15 @@ inline bool	rt_fncl(Flags *const f, strtab av,
 	(void)ac;
 	(void)av_i;
 	f->no_calc_light = true;
+	return (true);
+}
+
+inline bool	rt_fpu(Flags *const f, strtab av,
+				const size_t ac, size_t *const av_i)
+{
+	(void)av;
+	(void)ac;
+	(void)av_i;
+	f->print_usage = true;
 	return (true);
 }

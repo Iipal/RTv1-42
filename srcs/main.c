@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 16:01:34 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 12:19:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int					main(int argc, string argv[])
 	NODO_F(rt_flags_parser(&env->flags, argv, argc - 1), rt_free(&env));
 	if (env->flags.debug_mode)
 	{
-		ft_putfile(RTV1_USAGE);
+		if (env->flags.print_usage)
+			ft_putfile(RTV1_USAGE);
 		rt_render_loop(env);
 	}
 	else

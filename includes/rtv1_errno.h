@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:05:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/27 22:58:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 10:55:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,24 @@
 # define E_OBJSPEC  "Object specular intensity" E_INRANGE
 # define E_OCONERAD "Cone radius" E_INRANGE ". min 1 - max 3."
 
-# define ERR_IN_NUM(msg, n) MSG(msg);ft_putnbr(n)
-# define ERRIN(msg, n, err) {ERR_IN_NUM(err,n);MSG(" \"");MSG(msg);MSGN("\"");}
-
+# define ERRIN_NUM(msg, n) MSG(msg);ft_putnbr(n)
+# define ERRIN_N(msg, n, err) {ERRIN_NUM(err,n);MSG(" \"");MSG(msg);MSGN("\"");}
+# define ERRIN(err, msg) {MSG(err); MSGN(msg);}
 # define E_OCCURED  " Error occured "
 # define E_IN_LINE  E_OCCURED "at line: "
 # define E_IN_LIGHT E_OCCURED "in light origin: "
 # define E_IN_OBJ   E_OCCURED "in object: "
 
-# define E_IFLAG    ERR "Invalid flag."
+# define E_IFLAG    " Invalid flag occured: "
+# define E_NOFLAG   ERR "Not valid flags given."
+
 # define E_DBG      "--debug flag"
 # define E_VPS      "--viewport-scale flag"
 # define E_SB       "--shadow-bright flag"
 # define E_FTC      "--fps-text-color flag"
 # define E_FRT      "--fps-refresh-time flag"
 # define E_NCL      "--no-calc-light flag"
+# define E_PU       "--print-usage flag"
 
 # define E_MAX_VPS  10
 # define E_MAX_SB   25
@@ -93,8 +96,9 @@
 # define E_FTC_NO0X ERR "Missed \'0x\' for HEX color param in " E_FTC "."
 # define E_FTC_HEX  ERR "Invalid HEX color for " E_FTC "."
 
-# define E_USELESS_FTC WARNING E_FTC " useless because you don't use " E_DBG "."
 # define E_USELESS_FRT WARNING E_FRT " useless because you don't use " E_DBG "."
+# define E_USELESS_FTC WARNING E_FTC " useless because you don't use " E_DBG "."
+# define E_USELESS_PU  WARNING E_PU " useless because you don't use " E_DBG "."
 # define E_USELESS_SB  WARNING E_SB " useles because you use " E_NCL "."
 
 #endif

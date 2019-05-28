@@ -55,15 +55,16 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 ```
 ### Flags:
 
-| Flag                | Description                                                               | Shortcut | Valid values   | Default value | Value type |
-| ------------------- | ------------------------------------------------------------------------- | -------- | -------------- | ------------- | ---------- |
-| --help              | Print short flags description. After print RTv1 will automatically close. | -h       | none           | none          | none       |
-| --viewport-scale    | How many times will be increased viewport.                                | -vps     | 1-10           | 1             | Integer    |
-| --shadow-bright     | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10           | 100           | Integer    |
-| --fps-text-color    | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        |
-| --fps-refresh-timer | How often will refresh fps counter. (in ms)                               | -frt     | 0-500          | 25            | Integer    |
-| --debug             | Enable keybinds switcher mode.                                            | -dbg     | none           | none          | none       |
-| --no-calc-light     | Disable calc all light origins                                            | -ncl     | none           | none          | none       |
+| Flag                | Description                                                               | Shortcut | Valid values   | Default value | Value type | Dependency on `-dbg` mode |
+| ------------------- | ------------------------------------------------------------------------- | -------- | -------------- | ------------- | ---------- | ------------------------- |
+| --help              | Print short flags description. After print RTv1 will automatically close. | -h       | none           | none          | none       | no                        |
+| --viewport-scale    | How many times will be increased viewport.                                | -vps     | 1-10           | 1             | Integer    | no                        |
+| --shadow-bright     | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10           | 100           | Integer    | no                        |
+| --fps-text-color    | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        | yes                       |
+| --fps-refresh-timer | How often will refresh fps counter. (in ms)                               | -frt     | 0-500          | 25            | Integer    | yes                       |
+| --debug             | Enable keybinds switcher mode.                                            | -dbg     | none           | none          | none       |                           |
+| --print-usage       | Print usage for -dbg mode.                                                | -pu      | none           | none          | none       | yes                       |
+| --no-calc-light     | Disable calc all light origins.                                           | -ncl     | none           | none          | none       | no                        |
 #### Example:
 ```bash
 $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
@@ -80,7 +81,7 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
 | Cone       | Cone object.                                             | X,Y,Z    | X,Y,Z               | HEX.  | 1            | 10000              |
 | Cylinder   | Cylinder object.                                         | X,Y,Z    | X,Y,Z               | HEX.  | 1            | 10000              |
 | Plane      | Cylinder object.                                         | X,Y,Z    | X,Y,Z               | HEX.  | none         | 10000              |
-| eShadow.   | Enable shadows render and calc in scene.                 | none     | none                | noen  | none         | none               |
+| eShadow.   | Enable shadows calc and render in scene.                 | none     | none                | noen  | none         | none               |
 
 #### Example:
 ```bash
@@ -97,35 +98,35 @@ eShadow.
 ## Keybinds:
 
 ### General keybinds what works in all keybind modes:
-| Description                     | Keybinding     |
-| ------------------------------- | -------------- |
-| Toggle rendering info.          | <kbd>Z</kbd>   |
-| Toggle shadows render and calc. | <kbd>H</kbd>   |
-| Exit.                           | <kbd>Esc</kbd> |
+| Description                   | Keybinding     |
+| ----------------------------- | -------------- |
+| Toggle on\off rendering info. | <kbd>Z</kbd>   |
+| Exit.                         | <kbd>Esc</kbd> |
 
 ###### All binds below works only with `-dbg` flag.
-## Keybinds mode switcher binds:
+## [[__`Keybinds mode switcher binds`__](#keybinds-mode-switcher-binds)]:
 | Name                                                                                  | Description                                                                                                                                                                                                                                                                                                                                        | Keybinding        |
 | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
 | Switcher keybind mode to control all light origins or objects.                        | After first press is active [__`Lights Control Mode`__](#lights-control-mode) keybinds, after second press - [__`Objects Control Mode`__](#objects-control-mode). Keybinds after third press retruns to [__`Default Camera Control Mode`__](#default-camera-control-mode). All keybinds valid for all light origins or objects dependecny on mode. | <kbd>X</kbd>      |
 | Increase speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                                                                                    | <kbd>LShift</kbd> |
 | Decrease speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                                                                                    | <kbd>LCtrl</kbd>  |
+| Toggle on\off calculating and rendering shadows.                                      |                                                                                                                                                                                                                                                                                                                                                    | <kbd>H</kbd>      |
 
 ### [[__`Default Camera Control Mode`__](#default-camera-control-mode)]:
-| Description             | Keybinding   |
-| ----------------------- | ------------ |
-| Move camera up.         | <kbd>W</kbd> |
-| Move camera left.       | <kbd>A</kbd> |
-| Move camera down.       | <kbd>S</kbd> |
-| Move camera right.      | <kbd>D</kbd> |
-| Move camera backward.   | <kbd>Q</kbd> |
-| Move camera forward.    | <kbd>E</kbd> |
-| Increase camera X-axis. | <kbd>R</kbd> |
-| Increase camera Y-axis. | <kbd>F</kbd> |
-| Increase camera Z-axis. | <kbd>V</kbd> |
-| Decrease camera X-axis. | <kbd>T</kbd> |
-| Decrease camera Y-axis. | <kbd>G</kbd> |
-| Decrease camera Z-axis. | <kbd>B</kbd> |
+| Description                       | Keybinding   |
+| --------------------------------- | ------------ |
+| Move camera up.                   | <kbd>W</kbd> |
+| Move camera left.                 | <kbd>A</kbd> |
+| Move camera down.                 | <kbd>S</kbd> |
+| Move camera right.                | <kbd>D</kbd> |
+| Move camera backward.             | <kbd>Q</kbd> |
+| Move camera forward.              | <kbd>E</kbd> |
+| Increase camera rotate by X-axis. | <kbd>R</kbd> |
+| Increase camera rotate by Y-axis. | <kbd>F</kbd> |
+| Increase camera rotate by Z-axis. | <kbd>V</kbd> |
+| Decrease camera rotate by X-axis. | <kbd>T</kbd> |
+| Decrease camera rotate by Y-axis. | <kbd>G</kbd> |
+| Decrease camera rotate by Z-axis. | <kbd>B</kbd> |
 ### [[__`Lights Control Mode`__](#lights-control-mode)]:
 | Description                          | Keybinding   |
 | ------------------------------------ | ------------ |
@@ -150,9 +151,9 @@ eShadow.
 | Switch to control objects specular.   | <kbd>C</kbd> |
 | Decrease objects specular. [optional] | <kbd>Q</kbd> |
 | Increase objects specular. [optional] | <kbd>E</kbd> |
-| Increase objects X-axis.              | <kbd>R</kbd> |
-| Increase objects Y-axis.              | <kbd>F</kbd> |
-| Increase objects Z-axis.              | <kbd>V</kbd> |
-| Decrease objects X-axis.              | <kbd>T</kbd> |
-| Decrease objects Y-axis.              | <kbd>G</kbd> |
-| Decrease objects Z-axis.              | <kbd>B</kbd> |
+| Increase objects rotate by X-axis.    | <kbd>R</kbd> |
+| Increase objects rotate by Y-axis.    | <kbd>F</kbd> |
+| Increase objects rotate by Z-axis.    | <kbd>V</kbd> |
+| Decrease objects rotate by X-axis.    | <kbd>T</kbd> |
+| Decrease objects rotate by Y-axis.    | <kbd>G</kbd> |
+| Decrease objects rotate by Z-axis.    | <kbd>B</kbd> |
