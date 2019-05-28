@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/23 10:21:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/27 22:59:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,28 @@
 # ifdef __APPLE__
 #  define WIN_X 2000
 #  define WIN_Y 1000
+
+#  define RT_CANVAS_STARTX   -1000
+#  define RT_CANVAS_STARTY   -500
+#  define RT_CANVAS_ENDX     1000
+#  define RT_CANVAS_ENDY     500
 # endif
+
+/*
+** RT_CANVAS_STARTX equals to: -(WIN_X / 2)
+** RT_CANVAS_STARTY equals to: -(WIN_Y / 2)
+** RT_CANVAS_ENDX   equals to: WIN_X / 2
+** RT_CANVAS_ENDY   equals to: WIN_Y / 2
+*/
 
 # ifdef __linux__
 #  define WIN_X 900
 #  define WIN_Y 450
+
+#  define RT_CANVAS_STARTX   -450
+#  define RT_CANVAS_STARTY   -225
+#  define RT_CANVAS_ENDX     450
+#  define RT_CANVAS_ENDY     225
 # endif
 
 # define MAX_X  1500
@@ -47,20 +64,15 @@
 # define MAX_L_INTENS   1.0f
 # define MIN_L_INTENS   .0f
 
-# define RT_CANVAS_STARTX   -(WIN_X / 2)
-# define RT_CANVAS_STARTY   -(WIN_Y / 2)
-# define RT_CANVAS_ENDX     WIN_X / 2
-# define RT_CANVAS_ENDY     WIN_Y / 2
-
 # define TO_RAD(deg) (((deg) * M_PI) / 180.0)
 # define COS_RAD(angle) cos(TO_RAD(angle))
 # define SIN_RAD(angle) sin(TO_RAD(angle))
 
 # define MOVE_INC 5
 # define MOVE_SPEED_PERCENT_DEFAULT 1.0f
-# define MOVE_SPEED_PERCENT_SUP 3.5f
-# define MOVE_SPEED_PERCENT_SDOWN .15f
-# define MOVE_SPEED_PERCENT_STEP .05f
+# define MOVE_SPEED_PERCENT_SUP     3.5f
+# define MOVE_SPEED_PERCENT_SDOWN   .15f
+# define MOVE_SPEED_PERCENT_STEP    .05f
 
 # define RTV1_TITLE     "Ray Tracing v1"
 
@@ -80,27 +92,28 @@
 # define FP_PLANE       "Plane:"
 # define FP_CYLINDER    "Cylinder:"
 
-# define MAX_FLAGS  6
+# define MAX_FLAGS  7
 # define F_HELP     "--help"
 # define F_DBG      "--debug"
 # define F_VPS      "--viewport-scale"
 # define F_SB       "--shadow-bright"
 # define F_FTC      "--fps-text-color"
+# define F_FRT      "--fps-refresh-timer"
 # define F_NCL      "--no-calc-light"
 
 # define SF_HELP    "-h"
 # define SF_VPS     "-vps"
 # define SF_SB      "-sb"
 # define SF_FTC     "-ftc"
+# define SF_FRT     "-frt"
 # define SF_DBG     "-dbg"
 # define SF_NCL     "-ncl"
 
-# define DEF_VIEWPORT_SCALE 1.0f
-# define DEF_SHADOW_BRIGHT  100.0f
-# define DEF_FPS_TEXT_COLOR 0x7FFF00
-# define DEF_DEBUG_MODE     false
-# define DEF_NOT_CALC_LIGHT false
-
-# define REFRESH_FPS_COUNTER .25f
+# define DEF_VIEWPORT_SCALE     1.0f
+# define DEF_SHADOW_BRIGHT      100.0f
+# define DEF_FPS_TEXT_COLOR     0x7FFF00
+# define DEF_FPS_REFRESH_TIMER  .25f
+# define DEF_DEBUG_MODE         false
+# define DEF_NOT_CALC_LIGHT     false
 
 #endif

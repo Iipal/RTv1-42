@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 18:51:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 15:14:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/27 22:17:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ inline void	rt_render_fps_counter(Environment *const env)
 {
 	static float_t	delta_refresh;
 
-	(delta_refresh < REFRESH_FPS_COUNTER) ? 1 : (delta_refresh = 0);
+	(delta_refresh < env->flags.fps_refresh_timer) ? 1 : (delta_refresh = 0);
 	if (.0f == delta_refresh)
 	{
 		env->fps.time.fps = 1.0f / env->fps.time.res;
