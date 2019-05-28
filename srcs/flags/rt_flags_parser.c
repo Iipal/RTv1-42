@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 17:35:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/22 23:53:03 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 09:56:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static bool		add_curr_fparse(Flags *const f, strtab av,
+static bool			add_curr_fparse(Flags *const f, strtab av,
 							const size_t ac,
 							size_t *const i_av)
 {
@@ -44,7 +44,7 @@ static inline void	add_validate_parsed_flags(const Flags *const f)
 		MSGN(E_USELESS_SB);
 }
 
-bool			rt_flags_parser(Flags *const f, strtab av, const size_t ac)
+bool				rt_flags_parser(Flags *const f, strtab av, const size_t ac)
 {
 	size_t	i;
 
