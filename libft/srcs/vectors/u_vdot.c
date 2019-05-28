@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 09:17:59 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/27 14:18:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 09:23:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 inline double_t	u_vdot(const Vector v1, const Vector v2)
 {
-	const double_t	out = X(v1) * X(v2) + Y(v1) * Y(v2) + Z(v1) * Z(v2);
-
-	return (out);
+	return (X(v1) * X(v2) + Y(v1) * Y(v2) + Z(v1) * Z(v2));
 }

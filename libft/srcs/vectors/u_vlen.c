@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 09:31:40 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/27 14:18:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/28 09:55:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 inline double_t	u_vlen(const Vector v)
 {
-	const double_t	out = sqrt(X(v) * X(v) + Y(v) * Y(v) + Z(v) * Z(v));
-
-	return (out);
+	return (sqrt(X(v) * X(v) + Y(v) * Y(v) + Z(v) * Z(v)));
 }
