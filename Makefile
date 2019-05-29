@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/05/21 11:26:03 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/05/29 11:39:03 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ ifeq ($(UNAME_S),Darwin)
 		-I $(CURDIR)/libftsdl/frameworks/SDL2.framework/Headers \
 		-I $(CURDIR)/libftsdl/frameworks/SDL2_ttf.framework/Headers
 	LIBS := -F $(CURDIR)/libftsdl/frameworks -rpath \
-		$(CURDIR)/libftsdl/frameworks -framework SDL2 -framework SDL2_ttf
+		$(CURDIR)/libftsdl/frameworks -framework SDL2 -framework SDL2_ttf -framework SDL2_image
 endif
 
 CC := gcc -march=native -mtune=native -Ofast -flto -pipe
