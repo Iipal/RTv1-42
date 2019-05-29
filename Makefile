@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/05/29 11:39:03 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/05/29 21:26:43 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NPWD := $(CURDIR)/$(NAME)
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
 	ECHO := echo -e
-	LIBS := -lSDL2 -lSDL2_ttf -lm
+	LIBS := -lSDL2 -lSDL2_ttf -lSDL2_image -lm
 endif
 ifeq ($(UNAME_S),Darwin)
 	ECHO := echo
