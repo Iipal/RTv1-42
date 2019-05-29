@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/29 17:56:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/29 20:08:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,6 @@ struct	s_calc_light_helper
 	Vector		p;
 	Vector		n;
 	Vector		l;
-	double_t	dnl;
 	double_t	i;
 	Color		curr_clr;
 	double_t	obj_spec;
