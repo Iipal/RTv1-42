@@ -6,11 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/29 20:19:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/29 23:00:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+# define MAX_ZERO(var) (((var) > 0.0) ? (var) : 0.0)
 
 static inline void	add_calc_light_intens(const Light *restrict l,
 									t_clhelp *restrict const h,
@@ -22,9 +24,10 @@ static inline void	add_calc_light_intens(const Light *restrict l,
 		h->i += l->intens * dnl / (u_vlen(h->n) * u_vlen(h->l));
 	if (.0f < h->obj_spec)
 	{
-		h->i += (l->intens * fmax(0, dnl) + h->obj_spec
-		* (l->intens * pow(fmax(0.0, u_vdot(h->n, u_vnorm(-d + h->l))),
-			h->obj_spec))) / pow(u_vlen(h->p - l->pos), 2);
+		h->i += ((l->intens * MAX_ZERO(dnl) + h->obj_spec)
+			* (l->intens * pow(MAX_ZERO(u_vdot(h->n, u_vnorm(-d + h->l))),
+				h->obj_spec)))
+		/ pow(u_vlen(h->p - l->pos), 2);
 	}
 }
 
