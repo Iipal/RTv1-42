@@ -6,32 +6,26 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/29 17:59:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/29 20:19:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	add_specular_reflect(const Light *restrict l,
-									t_clhelp *restrict const h,
-									const Vector v)
-{
-	const double_t	d = pow(u_vlen(h->p - l->pos), 2);
-	const Vector	h_l = u_vnorm(v + h->l);
-
-	h->i += (l->intens * fmax(0, h->dnl) + h->obj_spec
-		* (l->intens * pow(fmax(0.0, u_vdot(h->n, h_l)), h->obj_spec))) / d;
-}
-
 static inline void	add_calc_light_intens(const Light *restrict l,
 									t_clhelp *restrict const h,
 									const Vector d)
 {
-	h->dnl = u_vdot(h->n, h->l);
-	if (.0f < h->dnl)
-		h->i += l->intens * h->dnl / (u_vlen(h->n) * u_vlen(h->l));
+	const double_t	dnl = u_vdot(h->n, h->l);
+
+	if (.0f < dnl)
+		h->i += l->intens * dnl / (u_vlen(h->n) * u_vlen(h->l));
 	if (.0f < h->obj_spec)
-		add_specular_reflect(l, h, -d);
+	{
+		h->i += (l->intens * fmax(0, dnl) + h->obj_spec
+		* (l->intens * pow(fmax(0.0, u_vdot(h->n, u_vnorm(-d + h->l))),
+			h->obj_spec))) / pow(u_vlen(h->p - l->pos), 2);
+	}
 }
 
 Color				rt_calc_light(Environment *restrict const env,
@@ -52,12 +46,9 @@ Color				rt_calc_light(Environment *restrict const env,
 			continue ;
 		h->l = curr_l->pos - h->p;
 		env->tmax = 1.0f;
-		if (env->scene.is_render_shadow)
-		{
-			shadow = rt_closest_inter(h->p, h->l, env);
-			if (shadow)
+		if (env->scene.is_render_shadow
+		&& (shadow = rt_closest_inter(h->p, h->l, env)))
 				continue ;
-		}
 		add_calc_light_intens(curr_l, h, d);
 	}
 	return (.0f < h->i ? sdl_clrs_bright_inc(bg, h->curr_clr, h->i) : bg);
