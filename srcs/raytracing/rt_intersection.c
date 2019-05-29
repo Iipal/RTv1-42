@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/28 19:39:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/29 17:57:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static inline fDot	add_intersection(const Vector o,
 					(-Y(k) - sqrt(disc)) / (2.0f * X(k)) });
 }
 
-static inline fDot	add_plane_calc(const Vector d, const Vector o,
+static inline fDot	add_plane_inter(const Vector d, const Vector o,
 						const Object *restrict const obj)
 {
 	return ((fDot){!u_vdot(d, obj->dir) ? -1
@@ -47,22 +47,20 @@ Object				*rt_closest_inter(const Vector o,
 
 	i = ~0L;
 	out_obj = NULL;
-	env->scene.cam.closes_t = env->tmax;
+	env->scene.cam.t = env->tmax;
 	while (++i < env->scene.ins_objs)
 	{
 		(plane == env->scene.objs[i].type)
-			? (t = add_plane_calc(d, o, &env->scene.objs[i]))
+			? (t = add_plane_inter(d, o, &env->scene.objs[i]))
 			: (t = add_intersection(o, d, &env->scene.objs[i]));
-		if (X(t) > env->tmin && X(t) < env->tmax
-		&& X(t) < env->scene.cam.closes_t)
+		if (X(t) > env->tmin && X(t) < env->tmax && X(t) < env->scene.cam.t)
 		{
-			env->scene.cam.closes_t = X(t);
+			env->scene.cam.t = X(t);
 			out_obj = &env->scene.objs[i];
 		}
-		if (Y(t) > env->tmin && Y(t) < env->tmax
-		&& Y(t) < env->scene.cam.closes_t)
+		if (Y(t) > env->tmin && Y(t) < env->tmax && Y(t) < env->scene.cam.t)
 		{
-			env->scene.cam.closes_t = Y(t);
+			env->scene.cam.t = Y(t);
 			out_obj = &env->scene.objs[i];
 		}
 	}

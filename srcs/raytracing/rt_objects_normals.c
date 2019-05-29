@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 19:17:13 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/28 19:24:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/29 17:57:16 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ inline Vector	rt_normal_cone(const Vector p,
 
 	return (u_vsubv(u_vsubv(p, o->pos),
 		u_vmuld(u_vmuld(o->dir, 1 + pow(tan(o->radius / 2), 2)),
-			u_vdot(d, o->dir) * cam->closes_t
+			u_vdot(d, o->dir) * cam->t
 				+ u_vdot(u_vsubv(cam->pos, o->pos), o->dir))));
 }
 
@@ -56,5 +56,5 @@ inline Vector	rt_normal_cylinder(const Vector p,
 	const Vector	o_dir = ((Object*)obj_ptr)->dir;
 
 	return (u_vsubv(u_vsubv(p, o_pos), u_vmuld(o_dir,
-u_vdot(d, o_dir) * cam->closes_t + u_vdot(u_vsubv(cam->pos, o_pos), o_dir))));
+u_vdot(d, o_dir) * cam->t + u_vdot(u_vsubv(cam->pos, o_pos), o_dir))));
 }

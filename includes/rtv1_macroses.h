@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/28 19:36:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/29 17:32:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@
 # define RTV1_USAGE     "text/usage.txt"
 # define RTV1_FHELP     "text/flags_usage.txt"
 
+# define TEX_SPHERE     "resources/sphere_texture.jpg"
+
 # define FP_CAM         "Camera:"
 # define FP_LIGHT       "Light:"
 # define FP_SHADOWS     "eShadow"
@@ -92,7 +94,7 @@
 # define FP_PLANE       "Plane:"
 # define FP_CYLINDER    "Cylinder:"
 
-# define MAX_FLAGS  8
+# define MAX_FLAGS  9
 # define F_HELP     "--help"
 # define F_DBG      "--debug"
 # define F_VPS      "--viewport-scale"
@@ -100,6 +102,7 @@
 # define F_FTC      "--fps-text-color"
 # define F_FRT      "--fps-refresh-timer"
 # define F_NCL      "--no-calc-light"
+# define F_TEX      "--textured"
 # define F_PU       "--print-usage"
 
 # define SF_HELP    "-h"
@@ -109,14 +112,16 @@
 # define SF_FRT     "-frt"
 # define SF_DBG     "-dbg"
 # define SF_NCL     "-ncl"
+# define SF_TEX     "-t"
 # define SF_PU      "-pu"
 
 # define DEF_VIEWPORT_SCALE     1.0f
 # define DEF_SHADOW_BRIGHT      100.0f
-# define DEF_FPS_TEXT_COLOR     0x7FFF00
+# define DEF_FPS_TEXT_COLOR     (Color){0x7FFF00}
 # define DEF_FPS_REFRESH_TIMER  .25f
 # define DEF_DEBUG_MODE         false
 # define DEF_NOT_CALC_LIGHT     false
 # define DEF_PRINT_USAGE        false
+# define DEF_TEXTURED           false
 
 #endif

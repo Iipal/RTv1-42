@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/28 19:23:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/29 17:56:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ struct	s_camera
 {
 	Vector		pos;
 	Vector		dir;
-	double_t	closes_t;
+	double_t	t;
 	bool		is;
 };
 
@@ -68,6 +68,7 @@ struct	s_object
 	double_t	radius;
 	double_t	spec;
 	Type		type;
+	SDL_Surface	*texture;
 	t_fn_inter	fn_inter_calc;
 	t_fn_normal	fn_normal_calc;
 };
@@ -138,13 +139,14 @@ struct	s_flags
 {
 	float_t	viewport_scale;
 	float_t	shadow_bright;
-	Uint32	fps_text_color;
+	Color	fps_text_color;
 	bool	is_parsed_ftc;
 	float_t	fps_refresh_timer;
 	bool	is_parsed_frt;
 	bool	debug_mode;
 	bool	print_usage;
 	bool	no_calc_light;
+	bool	textured;
 };
 
 # define SCENE typedef struct s_scene   Scene
@@ -178,6 +180,8 @@ struct	s_calc_light_helper
 	Vector		l;
 	double_t	dnl;
 	double_t	i;
+	Color		curr_clr;
+	double_t	obj_spec;
 };
 
 typedef struct s_calc_light_helper	t_clhelp;

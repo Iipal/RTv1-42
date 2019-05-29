@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/28 19:29:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/29 17:36:47 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ extern bool		rt_ffrt(Flags *const f, strtab av,
 extern bool		rt_fdbg(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
 extern bool		rt_fncl(Flags *const f, strtab av,
+					const size_t ac, size_t *const av_i);
+extern bool		rt_ftex(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
 extern bool		rt_fpu(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
@@ -124,7 +126,6 @@ extern Vector	rt_normal_cylinder(const Vector p, const Vector d,
 */
 Color			rt_calc_light(Environment *restrict const env,
 					t_clhelp *restrict const h,
-					const Object *restrict const obj,
 					const Vector d);
 
 /*

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 16:59:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/28 10:52:18 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/29 11:14:30 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ BOOL;
 # define NODO(ex, do) if (!(ex)) {do;}
 # define NODO_F(ex, do) if (!(ex)) {do; return(false);}
 # define NOM_F(msg, ex) if (!(ex)) {MSGN(msg); return (false);}
+# define NOM_R(msg, ex, ret) if (!(ex)) {MSGN(msg); return (ret);}
 
 # define C(type, dest, x) ft_bzero(dest, sizeof(type) * (x))
 # define MEM(t, d, x, m) NO(m,d=(t*)malloc(sizeof(t)*(x)),exit(1),0);C(t,d,x)
