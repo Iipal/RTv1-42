@@ -23,6 +23,7 @@ Usage:
            /                                               \
         Third press on  [X] - returns to default camera control binds.
        /                       /
+    [Y]   - Toggle textured render.
     [H]   - Toggle shadows calc.
     [Z]   - Toggle FPS\ms rendering info.
     [ESC] - exit.
