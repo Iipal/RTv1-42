@@ -6,22 +6,23 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 19:54:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/29 18:17:43 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/29 23:10:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline Color	add_texture_mapping_sphere(Object *restrict const obj,
+static inline Color	add_uv_sphere(const Vector obj_pos,
+								SDL_Surface *restrict const texture,
 								const Vector p)
 {
-	const Vector	n = u_vnorm(p - obj->pos);
-	const Uint32	*pxls = obj->texture->pixels;
+	const Uint32	*pxls = (const Uint32*)texture->pixels;
+	const Vector	n = u_vnorm(p - obj_pos);
 	Dot				uv;
 
-	uv = (Dot){(0.5 + atan2(Z(n), X(n)) / (2.0 * M_PI)) * obj->texture->w,
-				(0.5 - asin(Y(n)) / M_PI) * obj->texture->h};
-	return ((Color){pxls[Y(uv) * obj->texture->w + X(uv)]});
+	uv = (Dot){(0.5 + atan2(Z(n), X(n)) / (2.0 * M_PI)) * texture->w,
+				(0.5 - asin(Y(n)) / M_PI) * texture->h};
+	return ((Color){pxls[Y(uv) * texture->w + X(uv)]});
 }
 
 inline Color		rt_raytracing(Environment *restrict const env, Vector d)
@@ -31,14 +32,20 @@ inline Color		rt_raytracing(Environment *restrict const env, Vector d)
 
 	d = u_vnorm(rt_camera_rotate(d, env->scene.cam.dir));
 	obj = rt_closest_inter(env->scene.cam.pos, d, env);
-	NO_R(obj, U_CLR_BLACK);
-	obj->dir = u_vnorm(obj->dir);
-	h.p = u_vaddv(env->scene.cam.pos, u_vmuld(d, env->scene.cam.t));
-	h.n = obj->fn_normal_calc(h.p, d, &env->scene.cam, obj);
-	h.n = u_vnorm(h.n);
-	h.curr_clr = obj->clr;
-	h.obj_spec = obj->spec;
-	if (env->flags.textured)
-		h.curr_clr = add_texture_mapping_sphere(obj, h.p);
-	return (env->flags.no_calc_light ? h.curr_clr : rt_calc_light(env, &h, d));
+	if (!obj)
+		return (U_CLR_BLACK);
+	else if (env->flags.no_calc_light)
+		return (obj->clr);
+	else
+	{
+		obj->dir = u_vnorm(obj->dir);
+		h.p = u_vaddv(env->scene.cam.pos, u_vmuld(d, env->scene.cam.t));
+		h.n = obj->fn_normal_calc(h.p, d, &env->scene.cam, obj);
+		h.n = u_vnorm(h.n);
+		h.curr_clr = obj->clr;
+		h.obj_spec = obj->spec;
+		if (env->flags.textured)
+			h.curr_clr = add_uv_sphere(obj->pos, obj->texture, h.p);
+	}
+	return (rt_calc_light(env, &h, d));
 }
