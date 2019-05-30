@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/29 17:32:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/30 09:29:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 #  define RT_CANVAS_ENDX     450
 #  define RT_CANVAS_ENDY     225
 # endif
+
+# define MAX(a, b) (((a) > (b)) ? (a) : (b))
 
 # define MAX_X  1500
 # define MAX_Z  1500
