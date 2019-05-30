@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 17:35:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/29 17:28:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/31 00:35:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static bool			add_curr_fparse(Flags *const f, strtab av,
 			is_valid_flag = true;
 			return (fns[i](f, av, ac, av_i));
 		}
-	NODO_F(is_valid_flag, ERRIN(E_IFLAG, av[*av_i]));
-	return (is_valid_flag);
+	NODO_F(is_valid_flag, ERRIN(E_INVALID_FLAG, av[*av_i]));
+	return (true);
 }
 
 static inline void	add_validate_parsed_flags(const Flags *const f)
@@ -45,7 +45,7 @@ static inline void	add_validate_parsed_flags(const Flags *const f)
 		MSGN(E_USELESS_FTC);
 	if (f->print_usage && !f->debug_mode)
 		MSGN(E_USELESS_PU);
-	if (f->shadow_bright <= 10 && f->no_calc_light)
+	if (E_MAX_SB > f->shadow_bright && f->no_calc_light)
 		MSGN(E_USELESS_SB);
 }
 
@@ -55,13 +55,14 @@ bool				rt_flags_parser(Flags *const f, strtab av, const size_t ac)
 
 	i = ~0L;
 	while (ac > ++i)
-		if (av[i][0] == '-'
-		&& (av[i][1] == '-' || ft_isalpha(av[i][1])))
+		if ('-' == av[i][0]
+		&& (('-' == av[i][1] && ft_isalpha_str(av[i] + 2))
+			|| ft_isalpha_str(av[i] + 1)))
 		{
 			NO_F(add_curr_fparse(f, av, ac, &i));
 		}
 		else
-			IFM_F(E_NOFLAG, true);
+			IFDO_F(true, ERRIN_N(av[i], i + 1, E_CEMANTIC_FLAG));
 	add_validate_parsed_flags(f);
 	return (true);
 }
