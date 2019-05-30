@@ -6,14 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:07:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/29 17:32:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/30 12:39:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	add_sdl_keys_rot_press(Isr *restrict const isr,
-									const SDL_Keycode key)
+static inline void	add_sdl_keys_press_rotate(Isr *restrict const isr,
+										const SDL_Keycode key)
 {
 	if (SDLK_r == key)
 		isr->is_rot_x = true;
@@ -29,26 +29,10 @@ static inline void	add_sdl_keys_rot_press(Isr *restrict const isr,
 		isr->is_dec_rot_z = true;
 }
 
-static inline void	add_sdl_keys_mode_switch(Isr *restrict const isr)
-{
-	if (isr->is_objs_debug)
-		isr->is_objs_debug = false;
-	else if (isr->is_light_debug)
-		isr->is_objs_debug = true;
-	else
-		isr->is_light_debug = !isr->is_light_debug;
-}
-
 inline void			rt_sdl_keys_press(Isr *restrict const isr,
-									const SDL_Keycode key)
+										const SDL_Keycode key)
 {
-	if (SDLK_x == key)
-		add_sdl_keys_mode_switch(isr);
-	else if (SDLK_c == key)
-		isr->is_debug_zorintens = !isr->is_debug_zorintens;
-	else if (SDLK_z == key)
-		isr->is_render_fps = !isr->is_render_fps;
-	else if (SDLK_w == key)
+	if (SDLK_w == key)
 		isr->is_up = true;
 	else if (SDLK_s == key)
 		isr->is_down = true;
@@ -65,5 +49,32 @@ inline void			rt_sdl_keys_press(Isr *restrict const isr,
 	else if (SDLK_LCTRL == key)
 		isr->is_speeddown = true;
 	else
-		add_sdl_keys_rot_press(isr, key);
+		add_sdl_keys_press_rotate(isr, key);
+}
+
+inline void		rt_sdl_keys_press_switcher_mode(Isr *restrict const isr,
+										const SDL_Keycode key)
+{
+	if (SDLK_x == key)
+	{
+		if (isr->is_objs_debug)
+			isr->is_objs_debug = false;
+		else if (isr->is_light_debug)
+			isr->is_objs_debug = true;
+		else
+			isr->is_light_debug = !isr->is_light_debug;
+	}
+	else if (SDLK_c == key)
+		isr->is_debug_zorintens = !isr->is_debug_zorintens;
+}
+
+inline void		rt_sdl_keys_press_add_settings(Environment *restrict const env,
+										const SDL_Keycode key)
+{
+	if (SDLK_z == key)
+		env->isr.is_render_fps = !env->isr.is_render_fps;
+	else if (SDLK_h == key)
+		env->scene.is_render_shadow = !env->scene.is_render_shadow;
+	else if (SDLK_y == key)
+		env->flags.textured = !env->flags.textured;
 }
