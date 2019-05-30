@@ -6,24 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 19:54:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/29 23:10:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/30 12:57:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-
-static inline Color	add_uv_sphere(const Vector obj_pos,
-								SDL_Surface *restrict const texture,
-								const Vector p)
-{
-	const Uint32	*pxls = (const Uint32*)texture->pixels;
-	const Vector	n = u_vnorm(p - obj_pos);
-	Dot				uv;
-
-	uv = (Dot){(0.5 + atan2(Z(n), X(n)) / (2.0 * M_PI)) * texture->w,
-				(0.5 - asin(Y(n)) / M_PI) * texture->h};
-	return ((Color){pxls[Y(uv) * texture->w + X(uv)]});
-}
 
 inline Color		rt_raytracing(Environment *restrict const env, Vector d)
 {
@@ -45,7 +32,7 @@ inline Color		rt_raytracing(Environment *restrict const env, Vector d)
 		h.curr_clr = obj->clr;
 		h.obj_spec = obj->spec;
 		if (env->flags.textured)
-			h.curr_clr = add_uv_sphere(obj->pos, obj->texture, h.p);
+			h.curr_clr = obj->fn_uv(obj->texture, u_vnorm(h.p - obj->pos));
 	}
 	return (rt_calc_light(env, &h, d));
 }
