@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/30 10:01:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/30 13:01:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef Vector	(*t_fn_normal)(const Vector,
 							const Vector,
 							const struct s_camera *restrict const,
 							const void *restrict const);
+typedef Color	(*t_fn_uv)(SDL_Surface *restrict const, const Vector);
 
 struct	s_object
 {
@@ -70,6 +71,7 @@ struct	s_object
 	SDL_Surface	*texture;
 	t_fn_inter	fn_inter_calc;
 	t_fn_normal	fn_normal_calc;
+	t_fn_uv		fn_uv;
 };
 
 struct	s_isrender
