@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/30 09:29:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/31 00:47:37 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,29 +42,8 @@
 
 # define MAX(a, b) (((a) > (b)) ? (a) : (b))
 
-# define MAX_X  1500
-# define MAX_Z  1500
-# define MAX_Y  1500
-
-# define MIN_X  -MAX_X
-# define MIN_Z  -MAX_Z
-# define MIN_Y  -MAX_Y
-
 # define TMAX           10000.0f
 # define TMIN           0.000001f
-
-# define MAX_RADIUS     50
-# define MIN_RADIUS     0
-
-# define MAX_SPEC       10000
-# define MIN_SPEC       0
-
-# define MAX_ROT_ANGLE  360.0f
-# define MIN_ROT_ANGLE  -MAX_ROT_ANGLE
-
-# define MAX_LIGHTS     5
-# define MAX_L_INTENS   1.0f
-# define MIN_L_INTENS   .0f
 
 # define TO_RAD(deg) (((deg) * M_PI) / 180.0)
 # define COS_RAD(angle) cos(TO_RAD(angle))
@@ -76,54 +55,13 @@
 # define MOVE_SPEED_PERCENT_SDOWN   .15f
 # define MOVE_SPEED_PERCENT_STEP    .05f
 
-# define RTV1_TITLE     "Ray Tracing v1"
+# define RTV1_TITLE         "Ray Tracing v1"
 
-# define RTV1_EXE_PATH  "./RTv1"
-# define RTV1_FILEXT    ".rtv1"
+# define RTV1_EXE_PATH      "./RTv1"
+# define RTV1_FILEXT        ".rtv1"
 
-# define RTV1_USAGE     "text/usage.txt"
-# define RTV1_FHELP     "text/flags_usage.txt"
-
-# define TEX_SPHERE     "resources/sphere_texture.jpg"
-
-# define FP_CAM         "Camera:"
-# define FP_LIGHT       "Light:"
-# define FP_SHADOWS     "eShadow"
-
-# define FP_MAX_OBJS    4
-# define FP_SPHERE      "Sphere:"
-# define FP_CONE        "Cone:"
-# define FP_PLANE       "Plane:"
-# define FP_CYLINDER    "Cylinder:"
-
-# define MAX_FLAGS  9
-# define F_HELP     "--help"
-# define F_DBG      "--debug"
-# define F_VPS      "--viewport-scale"
-# define F_SB       "--shadow-bright"
-# define F_FTC      "--fps-text-color"
-# define F_FRT      "--fps-refresh-timer"
-# define F_NCL      "--no-calc-light"
-# define F_TEX      "--textured"
-# define F_PU       "--print-usage"
-
-# define SF_HELP    "-h"
-# define SF_VPS     "-vps"
-# define SF_SB      "-sb"
-# define SF_FTC     "-ftc"
-# define SF_FRT     "-frt"
-# define SF_DBG     "-dbg"
-# define SF_NCL     "-ncl"
-# define SF_TEX     "-t"
-# define SF_PU      "-pu"
-
-# define DEF_VIEWPORT_SCALE     1.0f
-# define DEF_SHADOW_BRIGHT      100.0f
-# define DEF_FPS_TEXT_COLOR     (Color){0x7FFF00}
-# define DEF_FPS_REFRESH_TIMER  .25f
-# define DEF_DEBUG_MODE         false
-# define DEF_NOT_CALC_LIGHT     false
-# define DEF_PRINT_USAGE        false
-# define DEF_TEXTURED           false
+# define RTV1_MAIN_USAGE    "Usage: ./RTv1 [flags-params] <scene_name>.rtv1"
+# define RTV1_USAGE         "text/usage.txt"
+# define RTV1_FHELP         "text/flags_usage.txt"
 
 #endif

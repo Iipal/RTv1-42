@@ -6,15 +6,15 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/30 12:56:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/31 00:55:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTV1_H
 # define RTV1_H
 
+# include <math.h>
 # include "libftsdl.h"
-# include "rtv1_errno.h"
 # include "rtv1_structs.h"
 # include "rtv1_macroses.h"
 
@@ -36,31 +36,6 @@ extern bool		rt_scylinder(Object *restrict const obj, char *restrict s);
 bool			rt_valid_readed_data(Scene *restrict const s);
 
 extern bool		rt_init(Environment *restrict env);
-
-/*
-**	Flags parsing:
-*/
-bool			rt_flags_parser(Flags *const f, strtab av, const size_t ac);
-
-typedef bool	(*t_fn_fparse)(Flags *, char**, const size_t, size_t *const);
-extern bool		rt_fhelp(Flags *const f, strtab av,
-					const size_t ac, size_t *const av_i);
-extern bool		rt_fvps(Flags *const f, strtab av,
-					const size_t ac, size_t *const av_i);
-extern bool		rt_fsb(Flags *const f, strtab av,
-					const size_t ac, size_t *const av_i);
-extern bool		rt_fftc(Flags *const f, strtab av,
-					const size_t ac, size_t *const av_i);
-extern bool		rt_ffrt(Flags *const f, strtab av,
-					const size_t ac, size_t *const av_i);
-extern bool		rt_fdbg(Flags *const f, strtab av,
-					const size_t ac, size_t *const av_i);
-extern bool		rt_fncl(Flags *const f, strtab av,
-					const size_t ac, size_t *const av_i);
-extern bool		rt_ftex(Flags *const f, strtab av,
-					const size_t ac, size_t *const av_i);
-extern bool		rt_fpu(Flags *const f, strtab av,
-					const size_t ac, size_t *const av_i);
 
 /*
 ** SDL render loop, keypresses and keybinds mode switcher:
