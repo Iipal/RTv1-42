@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/29 20:08:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/30 10:01:26 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ struct	s_object
 {
 	Vector		pos;
 	Vector		dir;
-	Vector		n_dir;
 	Color		clr;
 	double_t	radius;
 	double_t	spec;
