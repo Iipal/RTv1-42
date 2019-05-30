@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/29 17:36:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/30 12:38:16 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,10 @@ extern bool		rt_fpu(Flags *const f, strtab av,
 */
 void			rt_render_loop(Environment *restrict const env);
 extern void		rt_sdl_keys_press(Isr *restrict const isr,
+								const SDL_Keycode key);
+extern void		rt_sdl_keys_press_switcher_mode(Isr *restrict const isr,
+								const SDL_Keycode key);
+extern void		rt_sdl_keys_press_add_settings(Environment *restrict const env,
 								const SDL_Keycode key);
 extern void		rt_sdl_keys_release(Isr *restrict const isr,
 								const SDL_Keycode key);
