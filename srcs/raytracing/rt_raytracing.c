@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 19:54:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/30 12:57:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/31 00:41:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,20 @@ inline Color		rt_raytracing(Environment *restrict const env, Vector d)
 	obj = rt_closest_inter(env->scene.cam.pos, d, env);
 	if (!obj)
 		return (U_CLR_BLACK);
-	else if (env->flags.no_calc_light)
+	else if (env->flags.no_calc_light && !env->flags.textured)
 		return (obj->clr);
 	else
 	{
-		obj->dir = u_vnorm(obj->dir);
+		h.curr_clr = obj->clr;
 		h.p = u_vaddv(env->scene.cam.pos, u_vmuld(d, env->scene.cam.t));
+		if (env->flags.textured || env->flags.no_calc_light)
+			h.curr_clr = obj->fn_uv(obj->texture, u_vnorm(h.p - obj->pos));
+		if (env->flags.no_calc_light)
+			return (h.curr_clr);
+		h.obj_spec = obj->spec;
+		obj->dir = u_vnorm(obj->dir);
 		h.n = obj->fn_normal_calc(h.p, d, &env->scene.cam, obj);
 		h.n = u_vnorm(h.n);
-		h.curr_clr = obj->clr;
-		h.obj_spec = obj->spec;
-		if (env->flags.textured)
-			h.curr_clr = obj->fn_uv(obj->texture, u_vnorm(h.p - obj->pos));
 	}
 	return (rt_calc_light(env, &h, d));
 }
