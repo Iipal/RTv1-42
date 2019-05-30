@@ -55,17 +55,17 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 ```
 ### Flags:
 
-| Flag                | Description                                                               | Shortcut | Valid values   | Default value | Value type | Dependency on `-dbg` mode |
-| ------------------- | ------------------------------------------------------------------------- | -------- | -------------- | ------------- | ---------- | ------------------------- |
-| --help              | Print short flags description. After print RTv1 will automatically close. | -h       | none           | none          | none       | no                        |
-| --debug             | Enable keybinds switcher mode.                                            | -dbg     | none           | none          | none       |                           |
-| --viewport-scale    | How many times will be increased viewport.                                | -vps     | 1-10           | 1             | Integer    | no                        |
-| --shadow-bright     | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10           | 100           | Integer    | no                        |
-| --fps-text-color    | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        | yes                       |
-| --fps-refresh-timer | How often will refresh fps counter. (in ms)                               | -frt     | 0-500          | 25            | Integer    | yes                       |
-| --no-calc-light     | Disable calc all light origins.                                           | -ncl     | none           | none          | none       | no                        |
-| --textured          | Enable textured rendering.                                                | -t       | none           | none          | none       | no                        |
-| --print-usage       | Print usage for -dbg mode.                                                | -pu      | none           | none          | none       | yes                       |
+| Flag              | Description                                                               | Shortcut | Valid values   | Default value | Value type | Dependency on `-dbg` mode |
+| ----------------- | ------------------------------------------------------------------------- | -------- | -------------- | ------------- | ---------- | ------------------------- |
+| --help            | Print short flags description. After print RTv1 will automatically close. | -h       | none           | none          | none       | no                        |
+| --debug           | Enable keybinds switcher mode.                                            | -dbg     | none           | none          | none       |                           |
+| --viewportScale   | How many times will be increased viewport.                                | -vps     | 1-10           | 1             | Integer    | no                        |
+| --shadowBright    | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10           | 100           | Integer    | no                        |
+| --fpsTextColor    | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        | yes                       |
+| --fpsFefreshTimer | How often will refresh fps counter. (in ms)                               | -frt     | 0-500          | 25            | Integer    | yes                       |
+| --noCalcLight     | Disable calc all light origins.                                           | -ncl     | none           | none          | none       | no                        |
+| --textured        | Enable textured rendering.                                                | -t       | none           | none          | none       | no                        |
+| --printUsage      | Print usage for -dbg mode.                                                | -pu      | none           | none          | none       | yes                       |
 #### Example:
 ```bash
 $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
