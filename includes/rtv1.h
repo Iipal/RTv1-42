@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/30 12:38:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/30 12:56:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ extern Vector	rt_inter_cylinder(const Vector x, const Vector d,
 								void const *restrict const obj_ptr);
 
 /*
-** Objects nomrals cala:
+** Objects nomrals calcs:
 */
 extern Vector	rt_normal_sphere(const Vector p, const Vector d,
 								Camera const *restrict const cam,
@@ -124,6 +124,14 @@ extern Vector	rt_normal_plane(const Vector p, const Vector d,
 extern Vector	rt_normal_cylinder(const Vector p, const Vector d,
 								Camera const *restrict const cam,
 								void const *restrict const obj_ptr);
+
+/*
+** Objects uv-mapping calcs:
+*/
+extern Color	rt_uv_sphere(SDL_Surface *restrict const tex, const Vector n);
+extern Color	rt_uv_cone(SDL_Surface *restrict const tex, const Vector n);
+extern Color	rt_uv_plane(SDL_Surface *restrict const tex, const Vector n);
+extern Color	rt_uv_cylinder(SDL_Surface *restrict const tex, const Vector n);
 
 /*
 ** Calc light:
