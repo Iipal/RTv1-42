@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:09:12 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 12:17:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/31 00:07:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,11 @@ bool	ft_isdigits_str(const string str);
 **	\return true is \param str contain only hex digits or false if not.
 */
 bool	ft_ishex_str(string str);
+
+/*
+**	\return true is \param str contain only hex digits or false if not.
+*/
+bool	ft_isalpha_str(string str);
 
 /*
 **	\return true if \param n symbols in string \param str
