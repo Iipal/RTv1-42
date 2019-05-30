@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:31:21 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/28 19:21:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/30 12:57:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ inline bool	rt_ssphere(Object *restrict const obj, char *restrict s)
 		Y(obj->pos) = -Y(obj->pos);
 	obj->fn_normal_calc = rt_normal_sphere;
 	obj->fn_inter_calc = rt_inter_sphere;
+	obj->fn_uv = rt_uv_sphere;
 	obj->type = sphere;
 	return (true);
 }
@@ -58,6 +59,7 @@ inline bool	rt_scone(Object *restrict const obj, char *restrict s)
 		Y(obj->pos) = -Y(obj->pos);
 	obj->fn_normal_calc = rt_normal_cone;
 	obj->fn_inter_calc = rt_inter_cone;
+	obj->fn_uv = rt_uv_cone;
 	obj->type = cone;
 	return (true);
 }
@@ -82,6 +84,7 @@ inline bool	rt_splane(Object *restrict const obj, char *restrict s)
 		Y(obj->pos) = -Y(obj->pos);
 	obj->fn_normal_calc = rt_normal_plane;
 	obj->fn_inter_calc = rt_inter_plane;
+	obj->fn_uv = rt_uv_plane;
 	obj->type = plane;
 	return (true);
 }
@@ -107,6 +110,7 @@ inline bool	rt_scylinder(Object *restrict const obj, char *restrict s)
 		Y(obj->pos) = -Y(obj->pos);
 	obj->fn_normal_calc = rt_normal_cylinder;
 	obj->fn_inter_calc = rt_inter_cylinder;
+	obj->fn_uv = rt_uv_cylinder;
 	obj->type = cylinder;
 	return (true);
 }
