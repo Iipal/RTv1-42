@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 16:59:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/29 11:14:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/31 00:47:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ BOOL;
 # define MSG(msg) ft_putstr_fd(msg, STDERR_FILENO)
 # define MSGN(msg) ft_putendl_fd(msg, STDERR_FILENO)
 
-# define ISARGS(ac, av) {--ac;++av; IFM_F(E_USAGE, !ac);}
+# define ISARGS(ac, av) {--ac;++av; IFM_F(RTV1_MAIN_USAGE, !ac);}
 
 # define IFR(ex, ret) if ((ex)) {return (ret);}
 # define IFMR(msg, ex, ret) if ((ex)) {MSGN(msg); return (ret);}
-# define IF_F(ex) if ((ex)) return (false);
+# define IF_F(ex) if ((ex)) {return (false);}
 # define IFDO(ex, do) if ((ex)) {do;}
 # define IFDO_F(ex, do) if ((ex)) {do; return (false);}
 # define IFDOM(msg, ex, do) if ((ex)) {MSGN(msg); do;}
@@ -46,8 +46,8 @@ BOOL;
 # define IFM_F(msg, ex) if ((ex)) {MSGN(msg); return (false);}
 
 # define NO(msg, ex, do, ret) if (!(ex)) {MSGN(msg); do; return(ret);}
-# define NO_R(ex, ret) if (!(ex)) return (ret)
-# define NO_F(ex) if (!(ex)) return (false)
+# define NO_R(ex, ret) if (!(ex)) {return (ret);}
+# define NO_F(ex) if (!(ex)) {return (false);}
 # define NODO(ex, do) if (!(ex)) {do;}
 # define NODO_F(ex, do) if (!(ex)) {do; return(false);}
 # define NOM_F(msg, ex) if (!(ex)) {MSGN(msg); return (false);}
