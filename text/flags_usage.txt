@@ -2,10 +2,10 @@ Flags usage:
  ./RTv1 [flags-params] scenes/scene_file.rtv1
  -h, --help: print this message
  -dbg, --debug: activate switcher binds mode. Default: not enable.
- -vps, --viewport-scale: integer param 1-10. Default: 1.
- -sb, --shadow-bright: integer param 1-10. Default: 10.
- -ftc, --fps-text-color: hex param 0x1-0xffffff. Default: 0x80ff00.
- -frt, --fps-refresh-timer: how often will refresh FPS counter. Default: 25(in ms).
- -ncl, --no-calc-light: disable calc all light origins. Default: not enable.
+ -vps, --viewportScale: integer param 1-10. Default: 1.
+ -sb, --shadowBright: integer param 1-10. Default: 10.
+ -ftc, --fpsTextColor: hex param 0x1-0xffffff. Default: 0x80ff00.
+ -frt, --fpsRefreshTimer: how often will refresh FPS counter. Default: 25(in ms).
+ -ncl, --noCalcLight: disable calc all light origins. Default: not enable.
  -t, --textured: enable textured rendering. Default: not enable.
- -pu, --print-usage: print -dbg mode usage. Default: not enable.
+ -pu, --printUsage: print -dbg mode usage. Default: not enable.
