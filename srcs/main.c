@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/28 12:19:03 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/31 21:04:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ int					main(int argc, string argv[])
 	NO_F(add_valid_filename(argv[argc - 1]));
 	MEM(Environment, env, 1, E_ALLOC);
 	NO_F(rt_read_scene(env, argv[argc - 1]));
-	NO_F(rt_init(env));
+	NO_F(rt_init_env(env));
+	NODO_F(rt_init_textures(env->scene.objs, env->scene.ins_objs,
+			env->sdl->wsurf->format), rt_free(&env));
 	NODO_F(rt_flags_parser(&env->flags, argv, argc - 1), rt_free(&env));
 	if (env->flags.debug_mode)
 	{
