@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:43:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/31 00:53:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/31 21:02:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,9 @@ SCENE;
 /*
 ** Scene Default constants, params and also:
 */
-# define TEX_SPHERE     "resources/sphere_texture.jpg"
+# define TEX_MAX        2
+# define TEX_WORLD      "resources/world.jpg"
+# define TEX_WOOD       "resources/wood.jpg"
 
 # define FP_CAM         "Camera:"
 # define FP_LIGHT       "Light:"
@@ -146,20 +148,19 @@ SCENE;
 # define ERR        " ERROR: "
 # define WARNING    " WARNING: "
 
+# define E_DIR      ERR "Invalid executable path."
+# define E_ALLOC    ERR "Where is memory, pal ?"
+
 # define E_FNMAE    ERR "Missing file name."
 # define E_EFILE    ERR "Empty scene file."
 # define E_FILEXT   ERR "Invalid scene file extension. (.rtv1)"
 # define E_ISYNTAX  ERR "Invalid scene file syntax."
 
-# define E_DIR      ERR "Invalid executable path."
-# define E_ALLOC    ERR "Where is memory, pal ?"
-
-# define E_OBJ      ERR "Unknown object type."
-
 # define E_DUP      ERR "In scene cannot be more than "
 # define E_DCAMERA  E_DUP "1 camera."
-
 # define E_MLIGHTS  ERR "Maximum lights in scene: 5."
+
+# define E_OBJ      ERR "Unknown object type."
 
 # define E_NOCAM    ERR "No camera in scene founded."
 # define E_NOLIGHT  ERR "No origin lights in scene founded."
