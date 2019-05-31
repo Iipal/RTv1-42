@@ -14,5 +14,5 @@
 
 inline double_t	u_vlen(const Vector v)
 {
-	return (sqrt(X(v) * X(v) + Y(v) * Y(v) + Z(v) * Z(v)));
+	return (sqrt(u_vdot(v, v)));
 }
