@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/31 00:55:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/31 20:57:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ extern bool		rt_scylinder(Object *restrict const obj, char *restrict s);
 
 bool			rt_valid_readed_data(Scene *restrict const s);
 
-extern bool		rt_init(Environment *restrict env);
+extern bool		rt_init_env(Environment *restrict env);
+extern bool		rt_init_textures(Object *restrict const objs,
+								const size_t ins_objs,
+								const SDL_PixelFormat *format);
 
 /*
 ** SDL render loop, keypresses and keybinds mode switcher:
