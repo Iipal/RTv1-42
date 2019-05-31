@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/31 00:47:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/05/31 09:44:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 */
 
 # ifdef __linux__
-#  define WIN_X 900
-#  define WIN_Y 450
+#  define WIN_X 800
+#  define WIN_Y 400
 
 #  define RT_CANVAS_STARTX   -450
 #  define RT_CANVAS_STARTY   -225
