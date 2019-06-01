@@ -6,14 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 23:24:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/29 11:49:03 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/02 00:25:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTSDL_COLORS_MATH_H
 # define LIBFTSDL_COLORS_MATH_H
 
-# include "../../libft/includes/libft.h"
+# include "libft.h"
 # include "libftsdl_colors_math_structs.h"
 # include "libftsdl_colors_math_macroses.h"
 
@@ -36,8 +36,6 @@ extern Color	sdl_clr_bright_dec(Color src, const float_t percent);
 
 extern Color	sdl_clr_div(Color src, const float_t div);
 extern Color	sdl_clr_mul(Color src, const float_t mul);
-
-extern void		sdl_clrs_swap(Color *a, Color *b);
 
 Color			*sdl_clrs_gradient(Color start,
 					const Color end, const size_t len);
