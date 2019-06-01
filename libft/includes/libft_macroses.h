@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 16:59:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/31 01:03:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/02 00:23:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,13 @@ BOOL;
 # define NOM_F(msg, ex) if (!(ex)) {MSGN(msg); return (false);}
 # define NOM_R(msg, ex, ret) if (!(ex)) {MSGN(msg); return (ret);}
 
-# define C(type, dest, x) ft_bzero(dest, sizeof(type) * (x))
-# define MEM(t, d, x, m) NO(m,d=(t*)malloc(sizeof(t)*(x)),exit(1),0);C(t,d,x)
+# define SWAP(a, b) {typeof (a) _a = (a); (a) = (b); (b) = _a;}
+
+# define SIZEOF(type, x) (sizeof(type) * (x))
+
+# define ZERO(type, dest, x) ft_bzero(dest, SIZEOF(type,x))
+# define MALLOC(dest, type, x) (dest) = (type*)malloc(SIZEOF(type, x))
+# define MEM(t, d, x, m) {NO(m,MALLOC(d,t,x),exit(1),0);ZERO(t,d,x);}
 
 # define FREE(trash, del) if ((trash)) {del((trash)); (trash) = NULL;}
 
