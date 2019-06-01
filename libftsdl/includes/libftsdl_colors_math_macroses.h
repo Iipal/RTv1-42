@@ -6,12 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 12:22:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/29 13:30:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/02 00:20:45 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTSDL_COLORS_MATH_MACROSES_H
 # define LIBFTSDL_COLORS_MATH_MACROSES_H
+
+# include "libft_macroses.h"
 
 # define COLOR_MAX  255
 # define COLOR_MIN  0
@@ -27,6 +29,8 @@
 
 # define INRANGE_MIN(c)	((COLOR_MIN > (c)) ? COLOR_MIN : (c))
 # define INRANGE(c)	((COLOR_MAX < (c)) ? COLOR_MAX : INRANGE_MIN(c))
+
+# define SDL_CLRS_SWAP(a, b) SWAP(a, b)
 
 # define SDL_CLR_CMP(clr, u) (clr.r == u && clr.g == u && clr.b == u)
 # define SDL_CLRS_CMP(c1, c2) (c1.r == c2.r && c1.g == c2.g && c1.b == c2.b)
