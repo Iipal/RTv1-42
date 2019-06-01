@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/28 19:08:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/02 00:08:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ bool		rt_read_scene(Environment *restrict env,
 	string		tmp;
 	t_pfhelp	pfh;
 
-	C(t_pfhelp, &pfh, 1);
+	ZERO(t_pfhelp, &pfh, 1);
 	IFME(PERR, 0 > (fd = open(scene_file, O_RDONLY)), rt_free(&env), false);
 	NODO_F(add_valid_objs_counter(&fd, &env->scene, scene_file), rt_free(&env));
 	while (0 < ft_gnl(fd, &tmp))
