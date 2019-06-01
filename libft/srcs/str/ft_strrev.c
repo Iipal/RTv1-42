@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 12:39:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/17 13:07:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/02 00:26:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ void	ft_strrev(string str)
 	start = ~0L;
 	end = real_end;
 	while (++start < real_end / 2)
-		ft_cwap(&str[start], &str[--end]);
+		SWAP(str[start], str[--end]);
 }
