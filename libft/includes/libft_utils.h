@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 17:09:12 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/31 00:07:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/02 00:26:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,5 @@ size_t	ft_skip_blanks(const string str);
 **	\return How many symbols to first blank symbol in string \param str.
 */
 size_t	ft_skip_to_blank(const string str);
-
-/*
-**	Swap int32_t values.
-*/
-void	ft_swap(int32_t *a, int32_t *b);
-
-/*
-**	Swap char values.
-*/
-void	ft_cwap(char *a, char *b);
 
 #endif
