@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/31 20:57:33 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/03 10:46:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 # include "libftsdl.h"
 # include "rtv1_structs.h"
 # include "rtv1_macroses.h"
+
+/*
+** Validate executable path and scene file name.
+*/
+extern bool	rt_valid_exe_path(char *const path);
+extern bool	rt_valid_filename(char *const file);
 
 /*
 ** Read and validate scene file:
@@ -42,7 +48,11 @@ extern bool		rt_init_textures(Object *restrict const objs,
 
 /*
 ** SDL render loop, keypresses and keybinds mode switcher:
+**
+** rt_sdl_fake_render_loop if RTv1 was launch without -dbg flag.
 */
+void			rt_sdl_fake_render_loop(Environment *restrict const env);
+
 void			rt_render_loop(Environment *restrict const env);
 extern void		rt_sdl_keys_press(Isr *restrict const isr,
 								const SDL_Keycode key);
