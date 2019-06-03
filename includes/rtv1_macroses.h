@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/31 09:44:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/03 09:49:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@
 
 # define MAX(a, b) (((a) > (b)) ? (a) : (b))
 
-# define TMAX           10000.0f
-# define TMIN           0.000001f
+# define TMAX           100000.0
+# define TMIN           0.000001
 
 # define TO_RAD(deg) (((deg) * M_PI) / 180.0)
 # define COS_RAD(angle) cos(TO_RAD(angle))
