@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:43:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/31 21:02:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/03 09:30:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,10 @@ SCENE;
 /*
 ** Scene Default constants, params and also:
 */
-# define TEX_MAX        2
+# define TEX_MAX        3
 # define TEX_WORLD      "resources/world.jpg"
 # define TEX_WOOD       "resources/wood.jpg"
+# define TEX_RUBBLE     "resources/rubble.jpg"
 
 # define FP_CAM         "Camera:"
 # define FP_LIGHT       "Light:"
