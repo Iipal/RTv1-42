@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:28:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/31 00:53:43 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/03 10:22:18 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,7 @@
 # define RTV1_FLAGS_H
 
 /*
-** Flags struct:
-*/
-struct	s_flags
-{
-	float_t	viewport_scale;
-	float_t	shadow_bright;
-	Color	fps_text_color;
-	bool	is_parsed_ftc;
-	float_t	fps_refresh_timer;
-	bool	is_parsed_frt;
-	bool	debug_mode;
-	bool	print_usage;
-	bool	no_calc_light;
-	bool	textured;
-};
-
-# define FLAGS typedef struct s_flags   Flags
-
-FLAGS;
-
-/*
-** Flags & shortcut definitions:
+** Flags (and shortcut for that) constant string literals definition:
 */
 # define MAX_FLAGS  9
 # define F_HELP     "--help"
@@ -119,9 +98,29 @@ FLAGS;
 # define E_USELESS_SB  WARNING E_SB " useles because you use " E_NCL "."
 
 /*
+** Flags struct:
+*/
+struct			s_flags
+{
+	float_t	viewport_scale;
+	float_t	shadow_bright;
+	Color	fps_text_color;
+	bool	is_parsed_ftc;
+	float_t	fps_refresh_timer;
+	bool	is_parsed_frt;
+	bool	debug_mode;
+	bool	print_usage;
+	bool	no_calc_light;
+	bool	textured;
+};
+
+# define FLAGS typedef struct s_flags   Flags
+
+FLAGS;
+
+/*
 **	Flags parsing:
 */
-#include "rtv1_structs.h"
 bool			rt_flags_parser(Flags *const f, strtab av, const size_t ac);
 
 typedef bool	(*t_fn_fparse)(Flags *, char**, const size_t, size_t *const);
