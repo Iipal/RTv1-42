@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:07:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/30 12:39:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/03 09:29:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,6 @@ inline void		rt_sdl_keys_press_add_settings(Environment *restrict const env,
 		env->scene.is_render_shadow = !env->scene.is_render_shadow;
 	else if (SDLK_y == key)
 		env->flags.textured = !env->flags.textured;
+	else if (SDLK_n == key)
+		env->flags.no_calc_light = !env->flags.no_calc_light;
 }
