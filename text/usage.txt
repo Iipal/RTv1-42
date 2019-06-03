@@ -23,7 +23,8 @@ Usage:
            /                                               \
         Third press on  [X] - returns to default camera control binds.
        /                       /
-    [Y]   - Toggle textured render.
-    [H]   - Toggle shadows calc.
+    [Y]   - Toggle textured render. (-t flag)
+    [H]   - Toggle shadows calc. ('eShadows' scene param)
+    [N]   - Toggle lights calc. (-ncl flag)
     [Z]   - Toggle FPS\ms rendering info.
     [ESC] - exit.
