@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/05/29 21:26:43 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/04 19:05:39 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,17 +14,19 @@ NAME := RTv1
 NPWD := $(CURDIR)/$(NAME)
 
 UNAME_S := $(shell uname -s)
+
 ifeq ($(UNAME_S),Linux)
 	ECHO := echo -e
 	LIBS := -lSDL2 -lSDL2_ttf -lSDL2_image -lm
 endif
+
 ifeq ($(UNAME_S),Darwin)
 	ECHO := echo
 	LIBSINC := -F $(CURDIR)/libftsdl/frameworks \
 		-I $(CURDIR)/libftsdl/frameworks/SDL2.framework/Headers \
 		-I $(CURDIR)/libftsdl/frameworks/SDL2_ttf.framework/Headers
-	LIBS := -F $(CURDIR)/libftsdl/frameworks -rpath \
-		$(CURDIR)/libftsdl/frameworks -framework SDL2 -framework SDL2_ttf -framework SDL2_image
+	LIBS := -F $(CURDIR)/libftsdl/frameworks -rpath $(CURDIR)/libftsdl/frameworks \
+		-framework SDL2 -framework SDL2_ttf -framework SDL2_image
 endif
 
 CC := gcc -march=native -mtune=native -Ofast -flto -pipe
