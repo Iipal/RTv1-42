@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 23:24:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/02 00:25:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/04 19:04:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,15 @@
 # ifdef __APPLE__
 #  include "../frameworks/SDL2.framework/Headers/SDL.h"
 #  include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
-# endif
-# ifdef __linux__
-#  include <SDL2/SDL.h>
-#  include <SDL2/SDL_ttf.h>
+#  include "../frameworks/SDL2_image.framework/Headers/SDL_image.h"
+# else
+#  ifdef __linux__
+#   include <SDL2/SDL.h>
+#   include <SDL2/SDL_ttf.h>
+#   include <SDL2/SDL_image.h>
+#  else
+#   error "Unsupported OS. Try to compile this on Linux or MacOS"
+#  endif
 # endif
 
 COLOR;

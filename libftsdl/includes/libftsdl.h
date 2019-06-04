@@ -6,19 +6,12 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 19:59:09 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/29 11:45:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/04 19:04:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTSDL_H
 # define LIBFTSDL_H
-
-# ifdef __APPLE__
-#  include "../frameworks/SDL2_image.framework/Headers/SDL_image.h"
-# endif
-# ifdef __linux__
-#  include <SDL2/SDL_image.h>
-# endif
 
 # include "libftsdl_colors_math.h"
 # include "libftsdl_macroses.h"
