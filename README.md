@@ -4,32 +4,33 @@
 
 ![screenshot](https://github.com/Iipal/RTv1-42/blob/master/screenshot_all.png)
 
-## Addiitonal pre-installation:
+### Addiitonal pre-installation:
+#### __SDL2__
 
-### SDL2
-
-__*Ubuntu:*__
+__Ubuntu:__
 
 ```bash
-$> sudo apt-get install libsdl2-dev libsdl2-ttf-dev
+$> sudo apt-get install libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev
 ```
 
-__*Fedora:*__
+__Fedora:__
 
 ```bash
 $> sudo dnf install SDL2-devel SDL2_ttf-devel
 ```
 
-__*MacOS:*__
+__MacOS:__
 
-All ready for use. Just type **make**.
+```bash
+$> brew install SDL2 SDL2_image SDL2_ttf
+```
 
-__*Windows:*__
+__Windows:__
 
 - [MinGW](http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/mingw/index.php).
 - [Visual Studio](http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/msvsnet2010u/index.php).
 
-## Additional info:
+### Additional info:
 This project inlcudes also a few my other projects. It's libraries [libft](https://github.com/Iipal/lft) and [libftsdl](https://github.com/Iipal/libftsdl).
 
 ## Compiling
