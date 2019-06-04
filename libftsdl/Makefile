@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/02 00:18:41 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/04 19:17:19 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ LC += rcs
 CC := gcc -march=native -mtune=native -Ofast -flto -pipe
 CC_DEBUG := gcc -march=native -mtune=native -g3 -D DEBUG
 CFLAGS := -Wall -Wextra -Werror -Wunused -Wno-type-limits
-INC := -F $(CURDIR)/frameworks -I $(CURDIR)/includes/ -I $(CURDIR)/../libft/includes
+INC := -I ~/.brew/include -I $(CURDIR)/includes/ -I $(CURDIR)/../libft/includes
 
 SRC_D := srcs/
 SRCS := $(abspath $(wildcard $(SRC_D)/*.c))

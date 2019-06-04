@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:43:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/03 09:30:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/04 19:17:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,7 @@
 # define RTV1_SCENE_H
 
 # include "libft_vectors.h"
-
-# ifdef __APPLE__
-#  include "../frameworks/SDL2.framework/Headers/SDL.h"
-# endif
-
-# ifdef __linux__
-#  include <SDL2/SDL.h>
-# endif
+# include "libftsdl.h"
 
 /*
 ** Scene structs, pointers to functions & enum:

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 23:24:44 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/04 19:04:19 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/04 19:29:30 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,12 @@
 # include "libftsdl_colors_math_structs.h"
 # include "libftsdl_colors_math_macroses.h"
 
-# ifdef __APPLE__
-#  include "../frameworks/SDL2.framework/Headers/SDL.h"
-#  include "../frameworks/SDL2_ttf.framework/Headers/SDL_ttf.h"
-#  include "../frameworks/SDL2_image.framework/Headers/SDL_image.h"
+# if defined __APPLE__ || defined __linux__
+#  include <SDL2/SDL.h>
+#  include <SDL2/SDL_image.h>
+#  include <SDL2/SDL_ttf.h>
 # else
-#  ifdef __linux__
-#   include <SDL2/SDL.h>
-#   include <SDL2/SDL_ttf.h>
-#   include <SDL2/SDL_image.h>
-#  else
-#   error "Unsupported OS. Try to compile this on Linux or MacOS"
-#  endif
+#  error "Unsupported OS. Try to compile this on MacOS or Linux"
 # endif
 
 COLOR;

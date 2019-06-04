@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/04 19:05:39 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/04 19:15:35 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,17 +17,18 @@ UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
 	ECHO := echo -e
-	LIBS := -lSDL2 -lSDL2_ttf -lSDL2_image -lm
+	LIBSINC :=
+	LIBS :=
 endif
 
 ifeq ($(UNAME_S),Darwin)
 	ECHO := echo
-	LIBSINC := -F $(CURDIR)/libftsdl/frameworks \
-		-I $(CURDIR)/libftsdl/frameworks/SDL2.framework/Headers \
-		-I $(CURDIR)/libftsdl/frameworks/SDL2_ttf.framework/Headers
-	LIBS := -F $(CURDIR)/libftsdl/frameworks -rpath $(CURDIR)/libftsdl/frameworks \
-		-framework SDL2 -framework SDL2_ttf -framework SDL2_image
+	LIBSINC := -I ~/.brew/include
+	LIBS := -L ~/.brew/lib -rpath ~/.brew/lib
 endif
+
+LIBS += -lSDL2 -lSDL2_ttf -lSDL2_image -lm
+
 
 CC := gcc -march=native -mtune=native -Ofast -flto -pipe
 CC_DEBUG := gcc -march=native -mtune=native -g3 -D DEBUG
