@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/30 09:40:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/05 23:33:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ static inline void	add_calc_light_intens(const Light *restrict l,
 	{
 		h->i += ((l->intens * MAX(dnl, 0.0) + h->obj_spec)
 			* (l->intens * pow(MAX(u_vdot(h->n, u_vnorm(-d + h->l)), 0.0),
-				h->obj_spec)))
-		/ pow(u_vlen(h->p - l->pos), 2);
+				h->obj_spec))) / pow(u_vlen(h->p - l->pos), 2);
 	}
 }
 
