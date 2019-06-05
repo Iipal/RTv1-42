@@ -1,0 +1,6 @@
+[submodule "libftsdl"]
+	path = libftsdl
+	url = git@github.com:Iipal/libftsdl.git
+[submodule "libft"]
+	path = libft
+	url = git@github.com:Iipal/lft.git
