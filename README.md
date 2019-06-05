@@ -10,13 +10,13 @@
 __Ubuntu:__
 
 ```bash
-$> sudo apt-get install libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev
+$> sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev
 ```
 
 __Fedora:__
 
 ```bash
-$> sudo dnf install SDL2-devel SDL2_ttf-devel
+$> sudo dnf install SDL2-devel SDL2-image-devel SDL2_ttf-devel
 ```
 
 __MacOS:__
