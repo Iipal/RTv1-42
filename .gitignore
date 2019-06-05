@@ -1,4 +1,3 @@
-#ignore object files in source folders
 .vscode/
 .VScode/
 **.o
