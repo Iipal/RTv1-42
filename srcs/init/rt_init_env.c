@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:22:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/31 20:56:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/05 23:42:37 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ inline bool			rt_init_env(Environment *restrict env)
 						DEF_DEBUG_MODE,
 						DEF_NOT_CALC_LIGHT,
 						DEF_PRINT_USAGE,
-						DEF_TEXTURED};
+						DEF_TEXTURED,
+						DEF_RANDOM_INTENSE};
 	return (true);
 }
