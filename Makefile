@@ -6,17 +6,19 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/05 12:57:33 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/05 18:24:45 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := RTv1
 NPWD := $(CURDIR)/$(NAME)
 
-UNAME_S := $(shell uname -s)
+ECHO := echo
 
+UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-	ECHO := echo -e
+	ECHO += -e
+
 	PACKAGE_MANAGER := sudo dnf
 	INSTALLED_LIBS_LIST := $(shell rpm -qa)
 	SDL2_NECCESSARY_LIBS := SDL2-devel-2.0.9-3.fc30.x86_64 \
@@ -24,10 +26,11 @@ ifeq ($(UNAME_S),Linux)
 							SDL2_image-devel-2.0.4-2.fc30.x86_64
 endif
 ifeq ($(UNAME_S),Darwin)
-	ECHO := echo
 	LIBSINC := -I ~/.brew/include
 	LIBS := -L ~/.brew/lib -rpath ~/.brew/lib
+
 	PACKAGE_MANAGER := brew
+	INSTALLED_LIBS_LIST := $(shell $(PACKAGE_MANAGER) list)
 	SDL2_NECCESSARY_LIBS := sdl2 sdl2_image sdl2_ttf
 endif
 
@@ -66,8 +69,6 @@ $(SDL2_NOT_INSTALLED_LIBS):
 ifneq ($(SDL2_NOT_INSTALLED_LIBS),)
 	$(warning some SDL2 neccessary libs not founded, installing:)
 	$(PACKAGE_MANAGER) install $(SDL2_NOT_INSTALLED_LIBS)
-else
-	$(info all SDL2 neccessary libs installed.)
 endif
 
 $(OBJ): %.o: %.c
