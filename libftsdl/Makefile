@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/04 19:17:19 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/05 11:21:30 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,13 @@ UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
 	ECHO += -e
 	LC := gcc-ar
+	PACKAGE_MANAGER := dnf
+	INSTALLED_LIBS_LIST := $(shell $(PACKAGE_MANAGER) list)
 endif
 ifeq ($(UNAME_S),Darwin)
 	LC := ar
+	PACKAGE_MANAGER := brew
+	INSTALLED_LIBS_LIST := $(shell $(PACKAGE_MANAGER) list)
 endif
 
 LC += rcs
@@ -31,11 +35,7 @@ CC_DEBUG := gcc -march=native -mtune=native -g3 -D DEBUG
 CFLAGS := -Wall -Wextra -Werror -Wunused -Wno-type-limits
 INC := -I ~/.brew/include -I $(CURDIR)/includes/ -I $(CURDIR)/../libft/includes
 
-SRC_D := srcs/
-SRCS := $(abspath $(wildcard $(SRC_D)/*.c))
-SRCS += $(abspath $(wildcard $(SRC_D)/*/*.c))
-SRCS += $(abspath $(wildcard $(SRC_D)/*/*/*.c))
-SRCS += $(abspath $(wildcard $(SRC_D)/*/*/*/*.c))
+SRCS := $(abspath $(wildcard srcs/*.c srcs/*/*.c srcs/*/*/*.c srcs/*/*/*/*.c))
 OBJS := $(SRCS:%.c=%.o)
 
 DEL := rm -rf
@@ -47,7 +47,17 @@ INVERT := \033[7m
 
 SUCCESS = [$(GREEN)✓$(WHITE)]
 
-all: $(NAME)
+SDL2_NECCESSARY_LIBS := sdl2 sdl2_image sdl2_ttf
+SDL2_INSTALLED_LIBS := $(filter $(SDL2_NECCESSARY_LIBS), $(INSTALLED_LIBS_LIST))
+SDL2_NOT_INSTALLED_LIBS := $(filter-out $(SDL2_INSTALLED_LIBS),$(SDL2_NECCESSARY_LIBS))
+
+all: $(SDL2_NOT_INSTALLED_LIBS) $(NAME)
+
+$(SDL2_NOT_INSTALLED_LIBS):
+ifneq ($(SDL2_NOT_INSTALLED_LIBS),)
+	$(warning some SDL2 neccessary libs not founded, installing:)
+	@$(PACKAGE_MANAGER) install $(SDL2_NOT_INSTALLED_LIBS)
+endif
 
 $(NAME): $(OBJS)
 	@$(ECHO) "$(INVERT)"
@@ -64,7 +74,7 @@ $(OBJS): %.o: %.c
 del:
 	@$(DEL) $(OBJS)
 	@$(DEL) $(NAME)
-pre: del $(NAME)
+pre: del all
 	@$(ECHO) "$(INVERT)$(GREEN)Successed re-build.$(WHITE)"
 set_cc_debug:
 	@$(eval CC=$(CC_DEBUG))

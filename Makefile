@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/04 19:15:35 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/05 11:21:11 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,16 +19,18 @@ ifeq ($(UNAME_S),Linux)
 	ECHO := echo -e
 	LIBSINC :=
 	LIBS :=
+	PACKAGE_MANAGER := dnf
+	INSTALLED_LIBS_LIST := $(shell $(PACKAGE_MANAGER) list)
 endif
-
 ifeq ($(UNAME_S),Darwin)
 	ECHO := echo
 	LIBSINC := -I ~/.brew/include
 	LIBS := -L ~/.brew/lib -rpath ~/.brew/lib
+	PACKAGE_MANAGER := brew
+	INSTALLED_LIBS_LIST := $(shell $(PACKAGE_MANAGER) list)
 endif
 
 LIBS += -lSDL2 -lSDL2_ttf -lSDL2_image -lm
-
 
 CC := gcc -march=native -mtune=native -Ofast -flto -pipe
 CC_DEBUG := gcc -march=native -mtune=native -g3 -D DEBUG
@@ -46,6 +48,8 @@ LMAKE := make -C libft
 LIBFTSDL := $(CURDIR)/libftsdl/libftsdl.a
 LSDLMAKE := make -C libftsdl
 
+DEL := rm -rf
+
 WHITE := \033[0m
 BGREEN := \033[42m
 GREEN := \033[32m
@@ -54,9 +58,17 @@ INVERT := \033[7m
 
 SUCCESS = [$(GREEN)✓$(WHITE)]
 
-DEL := rm -rf
+SDL2_NECCESSARY_LIBS := sdl2 sdl2_image sdl2_ttf
+SDL2_INSTALLED_LIBS := $(filter $(SDL2_NECCESSARY_LIBS), $(INSTALLED_LIBS_LIST))
+SDL2_NOT_INSTALLED_LIBS := $(filter-out $(SDL2_INSTALLED_LIBS),$(SDL2_NECCESSARY_LIBS))
 
-all: $(NAME)
+all: $(SDL2_NOT_INSTALLED_LIBS) $(NAME)
+
+$(SDL2_NOT_INSTALLED_LIBS):
+ifneq ($(SDL2_NOT_INSTALLED_LIBS),)
+	$(warning some SDL2 neccessary libs not founded, installing:)
+	@$(PACKAGE_MANAGER) install $(SDL2_NOT_INSTALLED_LIBS)
+endif
 
 $(OBJ): %.o: %.c
 	@$(ECHO) -n ' $@: '
@@ -78,7 +90,7 @@ del:
 	@$(DEL) $(OBJ)
 	@$(DEL) $(NAME)
 
-pre: del $(NAME)
+pre: del all
 	@$(ECHO) "$(INVERT)$(GREEN)Successed re-build.$(WHITE)"
 
 set_cc_debug:
