@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:28:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/03 10:22:18 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/05 23:54:42 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /*
 ** Flags (and shortcut for that) constant string literals definition:
 */
-# define MAX_FLAGS  9
+# define MAX_FLAGS  10
 # define F_HELP     "--help"
 # define F_DBG      "--debug"
 # define F_VPS      "--viewportScale"
@@ -25,6 +25,7 @@
 # define F_FRT      "--fpsRefreshTimer"
 # define F_NCL      "--noCalcLight"
 # define F_TEX      "--textured"
+# define F_RLI      "--randomLightsIntense"
 # define F_PU       "--printUsage"
 
 # define SF_HELP    "-h"
@@ -35,6 +36,7 @@
 # define SF_DBG     "-dbg"
 # define SF_NCL     "-ncl"
 # define SF_TEX     "-t"
+# define SF_RLI     "-rli"
 # define SF_PU      "-pu"
 
 /*
@@ -48,6 +50,7 @@
 # define DEF_NOT_CALC_LIGHT     false
 # define DEF_PRINT_USAGE        false
 # define DEF_TEXTURED           false
+# define DEF_RANDOM_INTENSE     false
 
 /*
 ** Flags parsing errno messages:
@@ -61,6 +64,7 @@
 # define E_FTC      F_FTC " flag"
 # define E_FRT      F_FRT " flag"
 # define E_NCL      F_NCL " flag"
+# define E_RLI      F_RLI " flag"
 # define E_PU       F_PU " flag"
 
 # define E_MAX_VPS  10
@@ -94,8 +98,9 @@
 
 # define E_USELESS_FRT WARNING E_FRT " useless because you don't use " E_DBG "."
 # define E_USELESS_FTC WARNING E_FTC " useless because you don't use " E_DBG "."
-# define E_USELESS_PU  WARNING E_PU " useless because you don't use " E_DBG "."
+# define E_USELESS_RLI WARNING E_RLI " useles because you use " E_NCL "."
 # define E_USELESS_SB  WARNING E_SB " useles because you use " E_NCL "."
+# define E_USELESS_PU  WARNING E_PU " useless because you don't use " E_DBG "."
 
 /*
 ** Flags struct:
@@ -112,6 +117,7 @@ struct			s_flags
 	bool	print_usage;
 	bool	no_calc_light;
 	bool	textured;
+	bool	random_lights_intense;
 };
 
 # define FLAGS typedef struct s_flags   Flags
@@ -119,7 +125,7 @@ struct			s_flags
 FLAGS;
 
 /*
-**	Flags parsing:
+**	Flags parsing funcs:
 */
 bool			rt_flags_parser(Flags *const f, strtab av, const size_t ac);
 
@@ -140,7 +146,12 @@ extern bool		rt_fncl(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
 extern bool		rt_ftex(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
+extern bool		rt_frli(Flags *const f, strtab av,
+					const size_t ac, size_t *const av_i);
 extern bool		rt_fpu(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
+
+void			rt_randomatic_lights_intense(Light *restrict const lights,
+											const size_t ins_lights);
 
 #endif
