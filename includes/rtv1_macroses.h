@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/03 09:49:07 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/05 22:06:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@
 
 # define RTV1_MAIN_USAGE    "Usage: ./RTv1 [flags-params] <scene_name>.rtv1"
 # define RTV1_USAGE         "text/usage.txt"
-# define RTV1_FHELP         "text/flags_usage.txt"
+# define RTV1_FUSAGE        "text/flags_usage.txt"
 
 #endif

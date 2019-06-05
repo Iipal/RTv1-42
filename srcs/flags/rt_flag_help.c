@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 19:22:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/20 19:22:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/05 22:06:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ inline bool	rt_fhelp(Flags *const f, strtab av,
 	(void)ac;
 	(void)av;
 	(void)av_i;
-	ft_putfile(RTV1_FHELP);
+	ft_putfile(RTV1_FUSAGE);
 	exit(1);
 	return (true);
 }

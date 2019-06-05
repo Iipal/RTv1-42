@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/03 10:45:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/05 22:06:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int					main(int argc, string argv[])
 	Environment *env;
 
 	NO_F(rt_valid_exe_path(*argv));
-	ISARGS(argc, argv);
+	ISARGS(argc, argv, RTV1_MAIN_USAGE);
 	NO_F(rt_valid_filename(argv[argc - 1]));
 	MEM(Environment, env, 1, E_ALLOC);
 	NO_F(rt_read_scene(env, argv[argc - 1]));
