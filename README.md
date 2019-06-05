@@ -4,19 +4,13 @@
 
 ![screenshot](https://github.com/Iipal/RTv1-42/blob/master/screenshot_all.png)
 
-### Addiitonal pre-installation:
-#### __SDL2__
-
-__Ubuntu:__
-
-```bash
-$> sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev
-```
+### Addiitonal SDL2 pre-installation:
+###### Correct compiling only on *MacOS* or *Fedora 30*.
 
 __Fedora:__
 
 ```bash
-$> sudo dnf install SDL2-devel SDL2-image-devel SDL2_ttf-devel
+$> sudo dnf install SDL2-devel-2.0.9-3.fc30.x86_64 SDL2_ttf-devel-2.0.15-2.fc30.x86_64 SDL2_image-devel-2.0.4-2.fc30.x86_64
 ```
 
 __MacOS:__
@@ -33,7 +27,7 @@ This project inlcudes also a few my other projects. It's libraries [libft](https
 Use [make](https://en.wikipedia.org/wiki/Makefile) for compiling all files.
 
 When you have already installed SDL2 library you can use this simple rules:
-- **make**: Compile all.
+- **make**: Compile all. (On Fedora can require password if SDL2 libraries not installed)
 - **make clean**: Delete all RTv1, libft and libftsdl temporary files.
 - **make del**: Delete temporary RTv1 files only.
 - **make fclean**: Expands `make clean` to delete also executable RTv1, libraries libft and libftsdl.
