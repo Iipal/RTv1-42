@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 12:16:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/29 18:04:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/05 19:50:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ DOT;
 FDOT;
 VEC;
 
-# define VDISC(k) (Y(k) * Y(k) - 4.0 * X(k) * Z(k))
+# define VDISC(a, b, c) ((b) * (b) - 4.0 * (a) * (c))
 
 /*
 **	u_ prefix is short name for utils.
