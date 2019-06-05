@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/05 12:56:30 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/05 18:24:37 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,8 +59,6 @@ $(SDL2_NOT_INSTALLED_LIBS):
 ifneq ($(SDL2_NOT_INSTALLED_LIBS),)
 	$(warning some SDL2 neccessary libs not founded, installing:)
 	@$(PACKAGE_MANAGER) install $(SDL2_NOT_INSTALLED_LIBS)
-else
-	$(info all SDL2 neccessary libs installed.)
 endif
 
 $(NAME): $(OBJS)
