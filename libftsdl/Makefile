@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/05 11:21:30 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/05 11:29:02 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,10 @@ endif
 
 LC += rcs
 
+SDL2_NECCESSARY_LIBS := sdl2 sdl2_image sdl2_ttf
+SDL2_INSTALLED_LIBS := $(filter $(SDL2_NECCESSARY_LIBS), $(INSTALLED_LIBS_LIST))
+SDL2_NOT_INSTALLED_LIBS := $(filter-out $(SDL2_INSTALLED_LIBS),$(SDL2_NECCESSARY_LIBS))
+
 CC := gcc -march=native -mtune=native -Ofast -flto -pipe
 CC_DEBUG := gcc -march=native -mtune=native -g3 -D DEBUG
 CFLAGS := -Wall -Wextra -Werror -Wunused -Wno-type-limits
@@ -46,10 +50,6 @@ RED := \033[31m
 INVERT := \033[7m
 
 SUCCESS = [$(GREEN)✓$(WHITE)]
-
-SDL2_NECCESSARY_LIBS := sdl2 sdl2_image sdl2_ttf
-SDL2_INSTALLED_LIBS := $(filter $(SDL2_NECCESSARY_LIBS), $(INSTALLED_LIBS_LIST))
-SDL2_NOT_INSTALLED_LIBS := $(filter-out $(SDL2_INSTALLED_LIBS),$(SDL2_NECCESSARY_LIBS))
 
 all: $(SDL2_NOT_INSTALLED_LIBS) $(NAME)
 

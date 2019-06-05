@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/05/27 16:07:54 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/05 11:29:33 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,7 @@ CFLAGS := -Wall -Wextra -Werror -Wunused
 INC := -I $(CURDIR)/includes/
 
 SRC_D := srcs/
-SRCS := $(abspath $(wildcard $(SRC_D)/*/*.c))
-SRCS += $(abspath $(wildcard $(SRC_D)/*/*/*.c))
+SRCS := $(abspath $(wildcard srcs/*/*.c srcs/*/*/*.c))
 OBJS := $(SRCS:%.c=%.o)
 
 DEL := rm -rf

@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/05 11:21:11 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/05 11:29:15 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,6 @@ UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
 	ECHO := echo -e
-	LIBSINC :=
-	LIBS :=
 	PACKAGE_MANAGER := dnf
 	INSTALLED_LIBS_LIST := $(shell $(PACKAGE_MANAGER) list)
 endif
@@ -32,15 +30,17 @@ endif
 
 LIBS += -lSDL2 -lSDL2_ttf -lSDL2_image -lm
 
+SDL2_NECCESSARY_LIBS := sdl2 sdl2_image sdl2_ttf
+SDL2_INSTALLED_LIBS := $(filter $(SDL2_NECCESSARY_LIBS), $(INSTALLED_LIBS_LIST))
+SDL2_NOT_INSTALLED_LIBS := $(filter-out $(SDL2_INSTALLED_LIBS),$(SDL2_NECCESSARY_LIBS))
+
 CC := gcc -march=native -mtune=native -Ofast -flto -pipe
 CC_DEBUG := gcc -march=native -mtune=native -g3 -D DEBUG
 CFLAGS := -Wall -Wextra -Werror -Wunused
 IFLAGS := -I $(CURDIR)/includes/ \
 	-I $(CURDIR)/libft/includes/ -I $(CURDIR)/libftsdl/includes/ \
 
-SRCS := $(abspath $(wildcard srcs/*.c))
-SRCS += $(abspath $(wildcard srcs/*/*.c))
-SRCS += $(abspath $(wildcard srcs/*/*/*.c))
+SRCS := $(abspath $(wildcard srcs/*.c srcs/*/*.c srcs/*/*/*.c))
 OBJ := $(SRCS:.c=.o)
 
 LIBFT := $(CURDIR)/libft/libft.a
@@ -57,10 +57,6 @@ RED := \033[31m
 INVERT := \033[7m
 
 SUCCESS = [$(GREEN)✓$(WHITE)]
-
-SDL2_NECCESSARY_LIBS := sdl2 sdl2_image sdl2_ttf
-SDL2_INSTALLED_LIBS := $(filter $(SDL2_NECCESSARY_LIBS), $(INSTALLED_LIBS_LIST))
-SDL2_NOT_INSTALLED_LIBS := $(filter-out $(SDL2_INSTALLED_LIBS),$(SDL2_NECCESSARY_LIBS))
 
 all: $(SDL2_NOT_INSTALLED_LIBS) $(NAME)
 
