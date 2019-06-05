@@ -45,17 +45,18 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 ```
 ### Flags:
 
-| Flag              | Description                                                               | Shortcut | Valid values   | Default value | Value type | Dependency on `-dbg` mode |
-| ----------------- | ------------------------------------------------------------------------- | -------- | -------------- | ------------- | ---------- | ------------------------- |
-| --help            | Print short flags description. After print RTv1 will automatically close. | -h       | none           | none          | none       | no                        |
-| --debug           | Enable keybinds switcher mode.                                            | -dbg     | none           | none          | none       |                           |
-| --viewportScale   | How many times will be increased viewport.                                | -vps     | 1-10           | 1             | Integer    | no                        |
-| --shadowBright    | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10           | 100           | Integer    | no                        |
-| --fpsTextColor    | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        | yes                       |
-| --fpsFefreshTimer | How often will refresh fps counter. (in ms)                               | -frt     | 0-500          | 25            | Integer    | yes                       |
-| --noCalcLight     | Disable calc all light origins.                                           | -ncl     | none           | none          | none       | no                        |
-| --textured        | Enable textured rendering.                                                | -t       | none           | none          | none       | no                        |
-| --printUsage      | Print usage for -dbg mode.                                                | -pu      | none           | none          | none       | yes                       |
+| Flag                  | Description                                                               | Shortcut | Valid values   | Default value | Value type | Dependency on `-dbg` mode |
+| --------------------- | ------------------------------------------------------------------------- | -------- | -------------- | ------------- | ---------- | ------------------------- |
+| --help                | Print short flags description. After print RTv1 will automatically close. | -h       | none           | none          | none       | no                        |
+| --debug               | Enable keybinds switcher mode.                                            | -dbg     | none           | none          | none       |                           |
+| --viewportScale       | How many times will be increased viewport.                                | -vps     | 1-10           | 1             | Integer    | no                        |
+| --shadowBright        | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10           | 100           | Integer    | no                        |
+| --fpsTextColor        | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        | yes                       |
+| --fpsFefreshTimer     | How often will refresh fps counter. (in ms)                               | -frt     | 0-500          | 25            | Integer    | yes                       |
+| --noCalcLight         | Disable calc all light origins.                                           | -ncl     | none           | not enabled   | none       | no                        |
+| --textured            | Enable textured rendering.                                                | -t       | none           | not enabled   | none       | no                        |
+| --randomLightsIntense | Enable randomatic lights intense.                                         | -rli     | none           | not enabled   | none       | no                        |
+| --printUsage          | Print usage for -dbg mode.                                                | -pu      | none           | not enabled   | none       | yes                       |
 #### Example:
 ```bash
 $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
@@ -87,23 +88,23 @@ eShadow.
 
 
 ## Keybinds:
+###### All binds below works only with `-dbg` flag.
 
 ### General keybinds what works in all keybind modes:
-| Description                   | Keybinding     |
-| ----------------------------- | -------------- |
-| Toggle on\off rendering info. | <kbd>Z</kbd>   |
-| Exit.                         | <kbd>Esc</kbd> |
+| Description                                                                   | Keybinding     |
+| ----------------------------------------------------------------------------- | -------------- |
+| Toggle on\off rendering info.                                                 | <kbd>Z</kbd>   |
+| Toggle on\off calculating and rendering shadows. (__`eShadows`__ scene param) | <kbd>H</kbd>   |
+| Toggle on\off rendering textures. (-t)                                        | <kbd>Y</kbd>   |
+| Toggle on\off calculating light origins. (-ncl)                               | <kbd>N</kbd>   |
+| Exit.                                                                         | <kbd>Esc</kbd> |
 
-###### All binds below works only with `-dbg` flag.
 ## [[__`Keybinds mode switcher binds`__](#keybinds-mode-switcher-binds)]:
-| Name                                                                                  | Description                                                                                                                                                                                                                                                                                                                                        | Keybinding        |
-| ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| Switcher keybind mode to control all light origins or objects.                        | After first press is active [__`Lights Control Mode`__](#lights-control-mode) keybinds, after second press - [__`Objects Control Mode`__](#objects-control-mode). Keybinds after third press retruns to [__`Default Camera Control Mode`__](#default-camera-control-mode). All keybinds valid for all light origins or objects dependecny on mode. | <kbd>X</kbd>      |
-| Increase speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                                                                                    | <kbd>LShift</kbd> |
-| Decrease speed value for changing movements[default] or intensity\specular[optional]. |                                                                                                                                                                                                                                                                                                                                                    | <kbd>LCtrl</kbd>  |
-| Toggle on\off calculating and rendering shadows.                                      |                                                                                                                                                                                                                                                                                                                                                    | <kbd>H</kbd>      |
-| Toggle on\off rendering textures.                                                     |                                                                                                                                                                                                                                                                                                                                                    | <kbd>Y</kbd>      |
-| Toggle on\off calculating light origins                                               |                                                                                                                                                                                                                                                                                                                                                    | <kbd>N</kbd>      |
+| Name                                                           | Description                                                                                                                                                                                                                                                                                                                                        | Keybinding        |
+| -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| Switcher keybind mode to control all light origins or objects. | After first press is active [__`Lights Control Mode`__](#lights-control-mode) keybinds, after second press - [__`Objects Control Mode`__](#objects-control-mode). Keybinds after third press retruns to [__`Default Camera Control Mode`__](#default-camera-control-mode). All keybinds valid for all light origins or objects dependecny on mode. | <kbd>X</kbd>      |
+| Increase speed value.                                          | Increase speed value for changing movements[default] or intensity\specular[optional].                                                                                                                                                                                                                                                              | <kbd>LShift</kbd> |
+| Decrease speed value.                                          | Decrease speed value for changing movements[default] or intensity\specular[optional].                                                                                                                                                                                                                                                              | <kbd>LCtrl</kbd>  |
 
 ### [[__`Default Camera Control Mode`__](#default-camera-control-mode)]:
 | Description                       | Keybinding   |
