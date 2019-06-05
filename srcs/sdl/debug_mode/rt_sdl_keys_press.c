@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:07:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/03 09:29:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/05 23:37:26 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,6 @@ inline void		rt_sdl_keys_press_add_settings(Environment *restrict const env,
 		env->flags.textured = !env->flags.textured;
 	else if (SDLK_n == key)
 		env->flags.no_calc_light = !env->flags.no_calc_light;
+	else if (SDLK_j == key)
+		env->flags.random_lights_intense = !env->flags.random_lights_intense;
 }
