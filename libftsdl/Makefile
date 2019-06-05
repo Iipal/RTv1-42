@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 11:27:37 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/05 11:29:02 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/05 12:56:30 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,11 @@ UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
 	ECHO += -e
 	LC := gcc-ar
-	PACKAGE_MANAGER := dnf
-	INSTALLED_LIBS_LIST := $(shell $(PACKAGE_MANAGER) list)
+	PACKAGE_MANAGER := sudo dnf
+	INSTALLED_LIBS_LIST := $(shell rpm -qa)
+	SDL2_NECCESSARY_LIBS := SDL2-devel-2.0.9-3.fc30.x86_64 \
+							SDL2_ttf-devel-2.0.15-2.fc30.x86_64 \
+							SDL2_image-devel-2.0.4-2.fc30.x86_64
 endif
 ifeq ($(UNAME_S),Darwin)
 	LC := ar
@@ -30,7 +33,6 @@ endif
 
 LC += rcs
 
-SDL2_NECCESSARY_LIBS := sdl2 sdl2_image sdl2_ttf
 SDL2_INSTALLED_LIBS := $(filter $(SDL2_NECCESSARY_LIBS), $(INSTALLED_LIBS_LIST))
 SDL2_NOT_INSTALLED_LIBS := $(filter-out $(SDL2_INSTALLED_LIBS),$(SDL2_NECCESSARY_LIBS))
 
@@ -57,6 +59,8 @@ $(SDL2_NOT_INSTALLED_LIBS):
 ifneq ($(SDL2_NOT_INSTALLED_LIBS),)
 	$(warning some SDL2 neccessary libs not founded, installing:)
 	@$(PACKAGE_MANAGER) install $(SDL2_NOT_INSTALLED_LIBS)
+else
+	$(info all SDL2 neccessary libs installed.)
 endif
 
 $(NAME): $(OBJS)

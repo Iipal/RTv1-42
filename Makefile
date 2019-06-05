@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/05 11:29:15 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/05 12:57:33 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,20 +17,22 @@ UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
 	ECHO := echo -e
-	PACKAGE_MANAGER := dnf
-	INSTALLED_LIBS_LIST := $(shell $(PACKAGE_MANAGER) list)
+	PACKAGE_MANAGER := sudo dnf
+	INSTALLED_LIBS_LIST := $(shell rpm -qa)
+	SDL2_NECCESSARY_LIBS := SDL2-devel-2.0.9-3.fc30.x86_64 \
+							SDL2_ttf-devel-2.0.15-2.fc30.x86_64 \
+							SDL2_image-devel-2.0.4-2.fc30.x86_64
 endif
 ifeq ($(UNAME_S),Darwin)
 	ECHO := echo
 	LIBSINC := -I ~/.brew/include
 	LIBS := -L ~/.brew/lib -rpath ~/.brew/lib
 	PACKAGE_MANAGER := brew
-	INSTALLED_LIBS_LIST := $(shell $(PACKAGE_MANAGER) list)
+	SDL2_NECCESSARY_LIBS := sdl2 sdl2_image sdl2_ttf
 endif
 
 LIBS += -lSDL2 -lSDL2_ttf -lSDL2_image -lm
 
-SDL2_NECCESSARY_LIBS := sdl2 sdl2_image sdl2_ttf
 SDL2_INSTALLED_LIBS := $(filter $(SDL2_NECCESSARY_LIBS), $(INSTALLED_LIBS_LIST))
 SDL2_NOT_INSTALLED_LIBS := $(filter-out $(SDL2_INSTALLED_LIBS),$(SDL2_NECCESSARY_LIBS))
 
@@ -63,7 +65,9 @@ all: $(SDL2_NOT_INSTALLED_LIBS) $(NAME)
 $(SDL2_NOT_INSTALLED_LIBS):
 ifneq ($(SDL2_NOT_INSTALLED_LIBS),)
 	$(warning some SDL2 neccessary libs not founded, installing:)
-	@$(PACKAGE_MANAGER) install $(SDL2_NOT_INSTALLED_LIBS)
+	$(PACKAGE_MANAGER) install $(SDL2_NOT_INSTALLED_LIBS)
+else
+	$(info all SDL2 neccessary libs installed.)
 endif
 
 $(OBJ): %.o: %.c
