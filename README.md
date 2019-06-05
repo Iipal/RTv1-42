@@ -25,11 +25,6 @@ __MacOS:__
 $> brew install SDL2 SDL2_image SDL2_ttf
 ```
 
-__Windows:__
-
-- [MinGW](http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/mingw/index.php).
-- [Visual Studio](http://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/msvsnet2010u/index.php).
-
 ### Additional info:
 This project inlcudes also a few my other projects. It's libraries [libft](https://github.com/Iipal/lft) and [libftsdl](https://github.com/Iipal/libftsdl).
 
