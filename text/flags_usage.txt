@@ -8,4 +8,5 @@ Flags usage:
  -frt, --fpsRefreshTimer: how often will refresh FPS counter. Default: 25(in ms).
  -ncl, --noCalcLight: disable calc all light origins. Default: not enable.
  -t, --textured: enable textured rendering. Default: not enable.
+ -rli, --randomLightsIntense: enable randomatic lights intense. Default: not enable.
  -pu, --printUsage: print -dbg mode usage. Default: not enable.
