@@ -16,7 +16,7 @@ $> sudo dnf install SDL2-devel-2.0.9-3.fc30.x86_64 SDL2_ttf-devel-2.0.15-2.fc30.
 __MacOS:__
 
 ```bash
-$> brew install SDL2 SDL2_image SDL2_ttf
+$> brew install sdl2 sdl2_image sdl2_ttf
 ```
 
 ### Additional info:
