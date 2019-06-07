@@ -6,15 +6,16 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:12:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/28 19:12:56 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/07 19:32:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	add_camera_keys_events(const Isr *restrict const isr,
-										Camera *restrict const cam,
-										const double_t move)
+static inline __attribute__((__always_inline__)) void	add_camera_events(
+	const Isr *restrict const isr,
+	Camera *restrict const cam,
+	const double_t move)
 {
 	if (isr->is_up)
 		Y(cam->pos) = u_d_range(Y(cam->pos) - move, MAX_Y, MIN_Y);
@@ -56,7 +57,7 @@ inline void			rt_sdl_keys_events(Environment *restrict const env)
 		rt_sdl_keys_events_objs_debug(env->scene.objs,
 			&env->fps, &env->isr, env->scene.ins_objs);
 	else
-		add_camera_keys_events(&env->isr, &env->scene.cam, env->fps.move);
+		add_camera_events(&env->isr, &env->scene.cam, env->fps.move);
 	rt_camera_speed_movements(&env->cam_speed,
 			env->isr.is_speedup, env->isr.is_speeddown);
 }

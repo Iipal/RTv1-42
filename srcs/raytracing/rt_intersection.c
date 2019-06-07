@@ -6,45 +6,48 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/05 19:50:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/07 19:28:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline fDot	add_intersection(const Vector o,
-									const Vector d,
+static inline __attribute__((__always_inline__)) __v2df	add_intersection(
+									const __v4df o,
+									const __v4df d,
 									const Object *restrict const obj)
 {
-	const Vector	x = o - obj->pos;
-	const Vector	k = obj->fn_inter_calc(x, d, obj);
+	const __v4df	x = o - obj->pos;
+	const __v4df	k = obj->fn_inter_calc(x, d, obj);
 	const double_t	disc = VDISC(X(k), Y(k), Z(k));
-	fDot			out;
+	__v2df			out;
 
-	out = (fDot){-1, -1};
+	out = (__v2df){-1, -1};
 	if (.0f <= disc)
-		out = (fDot){ (-Y(k) + sqrt(disc)) / (2.0f * X(k)),
+		out = (__v2df){ (-Y(k) + sqrt(disc)) / (2.0f * X(k)),
 					(-Y(k) - sqrt(disc)) / (2.0f * X(k)) };
 	return (out);
 }
 
-static inline fDot	add_plane_inter(const Vector o, const Vector d,
-						const Object *restrict const obj)
+static inline __attribute__((__always_inline__)) __v2df	add_plane_inter(
+									const __v4df o,
+									const __v4df d,
+									const Object *restrict const obj)
 {
 	const double_t	d_dot_v = u_vdot(d, obj->dir);
-	fDot			out;
+	__v2df			out;
 
-	out = (fDot){-1, -1};
+	out = (__v2df){-1, -1};
 	if (d_dot_v)
 		X(out) = -u_vdot(o - obj->pos, obj->dir) / d_dot_v;
 	return (out);
 }
 
-Object				*rt_closest_inter(const Vector o,
-									const Vector d,
+Object					*rt_closest_inter(const __v4df o,
+									const __v4df d,
 									Environment *restrict const env)
 {
-	fDot				t;
+	__v2df				t;
 	size_t				i;
 	Object *restrict	out_obj;
 

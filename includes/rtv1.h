@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/03 10:46:43 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/07 18:53:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 /*
 ** Validate executable path and scene file name.
 */
-extern bool	rt_valid_exe_path(char *const path);
-extern bool	rt_valid_filename(char *const file);
+extern bool		rt_valid_exe_path(char *const path);
+extern bool		rt_valid_filename(char *const file);
 
 /*
 ** Read and validate scene file:
@@ -74,59 +74,59 @@ void			rt_sdl_keys_events_lights_debug(Light *restrict const l,
 
 extern void		rt_camera_speed_movements(double_t *restrict const cam_speed,
 					const bool is_speed_up, const bool is_speed_down);
-extern Vector	rt_camera_rotate(Vector d, const Vector dir);
+extern __v4df	rt_camera_rotate(__v4df d, const __v4df dir);
 
 /*
 ** Ray Tracing:
 */
 void			rt_rendering(Environment *restrict const env);
 
-extern Color	rt_raytracing(Environment *restrict const env, Vector d);
+extern Color	rt_raytracing(Environment *restrict const env, __v4df d);
 
 /*
 ** Objects intersection calc:
 */
-Object			*rt_closest_inter(const Vector o, const Vector d,
+Object			*rt_closest_inter(const __v4df o, const __v4df d,
 								Environment *restrict const env);
-extern Vector	rt_inter_sphere(const Vector x, const Vector d,
+extern __v4df	rt_inter_sphere(const __v4df x, const __v4df d,
 								void const *restrict const obj_ptr);
-extern Vector	rt_inter_cone(const Vector x, const Vector d,
+extern __v4df	rt_inter_cone(const __v4df x, const __v4df d,
 								void const *restrict const obj_ptr);
-extern Vector	rt_inter_plane(const Vector x, const Vector d,
+extern __v4df	rt_inter_plane(const __v4df x, const __v4df d,
 								void const *restrict const obj_ptr);
-extern Vector	rt_inter_cylinder(const Vector x, const Vector d,
+extern __v4df	rt_inter_cylinder(const __v4df x, const __v4df d,
 								void const *restrict const obj_ptr);
 
 /*
 ** Objects nomrals calcs:
 */
-extern Vector	rt_normal_sphere(const Vector p, const Vector d,
+extern __v4df	rt_normal_sphere(const __v4df p, const __v4df d,
 								Camera const *restrict const cam,
 								void const *restrict const obj_ptr);
-extern Vector	rt_normal_cone(const Vector p, const Vector d,
+extern __v4df	rt_normal_cone(const __v4df p, const __v4df d,
 								Camera const *restrict const cam,
 								void const *restrict const obj_ptr);
-extern Vector	rt_normal_plane(const Vector p, const Vector d,
+extern __v4df	rt_normal_plane(const __v4df p, const __v4df d,
 								Camera const *restrict const cam,
 								void const *restrict const obj_ptr);
-extern Vector	rt_normal_cylinder(const Vector p, const Vector d,
+extern __v4df	rt_normal_cylinder(const __v4df p, const __v4df d,
 								Camera const *restrict const cam,
 								void const *restrict const obj_ptr);
 
 /*
 ** Objects uv-mapping calcs:
 */
-extern Color	rt_uv_sphere(SDL_Surface *restrict const tex, const Vector n);
-extern Color	rt_uv_cone(SDL_Surface *restrict const tex, const Vector n);
-extern Color	rt_uv_plane(SDL_Surface *restrict const tex, const Vector n);
-extern Color	rt_uv_cylinder(SDL_Surface *restrict const tex, const Vector n);
+extern Color	rt_uv_sphere(SDL_Surface *restrict const tex, const __v4df n);
+extern Color	rt_uv_cone(SDL_Surface *restrict const tex, const __v4df n);
+extern Color	rt_uv_plane(SDL_Surface *restrict const tex, const __v4df n);
+extern Color	rt_uv_cylinder(SDL_Surface *restrict const tex, const __v4df n);
 
 /*
 ** Calc light:
 */
 Color			rt_calc_light(Environment *restrict const env,
 					t_clhelp *restrict const h,
-					const Vector d);
+					const __v4df d);
 
 /*
 ** FPS counter and drawing this counter:
@@ -144,7 +144,7 @@ extern void		rt_free(Environment *restrict *env);
 **  Used only when validating readed data for convert direction\rotate
 **   from 365 degress to 360;
 */
-Vector			u_inrange_dir_max(Vector dir);
-Vector			u_inrange_dir_min(Vector dir);
+__v4df			u_inrange_dir_max(__v4df dir);
+__v4df			u_inrange_dir_min(__v4df dir);
 
 #endif

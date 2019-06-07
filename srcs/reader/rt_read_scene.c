@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/02 00:08:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/07 18:54:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static bool	add_parser(Scene *const sc, string *str,
 	return (data);
 }
 
-bool		add_valid_objs_counter(int32_t *const fd,
+static bool	add_valid_objs_counter(int32_t *const fd,
 				Scene *const sc, const char *const file)
 {
 	string			temp;

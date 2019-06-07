@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:43:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/04 19:17:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/07 18:51:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,32 +34,32 @@ ETYPE;
 
 struct	s_camera
 {
-	Vector		pos;
-	Vector		dir;
+	__v4df		pos;
+	__v4df		dir;
 	double_t	t;
 	bool		is;
 };
 
 struct	s_light
 {
-	Vector		pos;
-	Vector		dir;
+	__v4df		pos;
+	__v4df		dir;
 	double_t	intens;
 };
 
-typedef Vector	(*t_fn_inter)(const Vector,
-							const Vector,
+typedef __v4df	(*t_fn_inter)(const __v4df,
+							const __v4df,
 							const void *restrict const);
-typedef Vector	(*t_fn_normal)(const Vector,
-							const Vector,
+typedef __v4df	(*t_fn_normal)(const __v4df,
+							const __v4df,
 							const struct s_camera *restrict const,
 							const void *restrict const);
-typedef Color	(*t_fn_uv)(SDL_Surface *restrict const, const Vector);
+typedef Color	(*t_fn_uv)(SDL_Surface *restrict const, const __v4df);
 
 struct	s_object
 {
-	Vector		pos;
-	Vector		dir;
+	__v4df		pos;
+	__v4df		dir;
 	Color		clr;
 	double_t	radius;
 	double_t	spec;

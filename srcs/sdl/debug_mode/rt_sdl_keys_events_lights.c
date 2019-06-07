@@ -6,16 +6,17 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 18:15:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/28 19:14:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/07 19:29:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	add_light_zorintens(Light *restrict const l,
-									const Isr *restrict const isr,
-									const double_t move,
-									const double_t l_move)
+static inline __attribute__((__always_inline__)) void	add_light_zorintens(
+	Light *restrict const l,
+	const Isr *restrict const isr,
+	const double_t move,
+	const double_t l_move)
 {
 	if (!isr->is_debug_zorintens)
 	{

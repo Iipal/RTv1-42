@@ -6,15 +6,15 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:44:49 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/19 15:34:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/07 19:16:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-Vector			u_inrange_dir_max(Vector dir)
+__v4df	u_inrange_dir_max(__v4df dir)
 {
-	Vector	out;
+	__v4df	out;
 
 	out = dir;
 	if (MAX_ROT_ANGLE < X(out))
@@ -29,9 +29,9 @@ Vector			u_inrange_dir_max(Vector dir)
 	return (out);
 }
 
-Vector			u_inrange_dir_min(Vector dir)
+__v4df	u_inrange_dir_min(__v4df dir)
 {
-	Vector	out;
+	__v4df	out;
 
 	out = dir;
 	if (MIN_ROT_ANGLE > X(out))

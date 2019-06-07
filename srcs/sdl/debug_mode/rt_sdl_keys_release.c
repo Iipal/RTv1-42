@@ -6,14 +6,15 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 17:30:12 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/29 17:30:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/07 19:32:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	add_sdl_keys_rot_release(Isr *restrict const isr,
-									const SDL_Keycode key)
+static inline __attribute__((__always_inline__)) void	add_sdl_key_rot_rls(
+	Isr *restrict const isr,
+	const SDL_Keycode key)
 {
 	if (SDLK_r == key)
 		isr->is_rot_x = false;
@@ -49,5 +50,5 @@ inline void			rt_sdl_keys_release(Isr *restrict const isr,
 	else if (SDLK_LCTRL == key)
 		isr->is_speeddown = false;
 	else
-		add_sdl_keys_rot_release(isr, key);
+		add_sdl_key_rot_rls(isr, key);
 }

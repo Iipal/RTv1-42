@@ -6,14 +6,15 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:07:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/05 23:37:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/07 19:31:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	add_sdl_keys_press_rotate(Isr *restrict const isr,
-										const SDL_Keycode key)
+static inline __attribute__((__always_inline__)) void	add_sdl_key_press_rot(
+	Isr *restrict const isr,
+	const SDL_Keycode key)
 {
 	if (SDLK_r == key)
 		isr->is_rot_x = true;
@@ -49,10 +50,10 @@ inline void			rt_sdl_keys_press(Isr *restrict const isr,
 	else if (SDLK_LCTRL == key)
 		isr->is_speeddown = true;
 	else
-		add_sdl_keys_press_rotate(isr, key);
+		add_sdl_key_press_rot(isr, key);
 }
 
-inline void		rt_sdl_keys_press_switcher_mode(Isr *restrict const isr,
+inline void			rt_sdl_keys_press_switcher_mode(Isr *restrict const isr,
 										const SDL_Keycode key)
 {
 	if (SDLK_x == key)
@@ -68,8 +69,9 @@ inline void		rt_sdl_keys_press_switcher_mode(Isr *restrict const isr,
 		isr->is_debug_zorintens = !isr->is_debug_zorintens;
 }
 
-inline void		rt_sdl_keys_press_add_settings(Environment *restrict const env,
-										const SDL_Keycode key)
+inline void			rt_sdl_keys_press_add_settings(
+	Environment *restrict const env,
+	const SDL_Keycode key)
 {
 	if (SDLK_z == key)
 		env->isr.is_render_fps = !env->isr.is_render_fps;

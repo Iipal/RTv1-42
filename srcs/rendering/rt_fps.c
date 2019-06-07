@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 18:51:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/29 11:31:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/07 19:26:37 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static void	add_render_fps(SDL_Surface *text,
 						uint32_t *const screen,
 						const bool pos)
 {
-	Dot		tp;
-	Dot		p;
+	__v2si	tp;
+	__v2si	p;
 
 	Y(p) = -1;
 	Y(tp) = pos ? 20 : 0;

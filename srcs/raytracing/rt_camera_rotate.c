@@ -6,13 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 13:46:41 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/28 18:59:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/07 19:13:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline Vector	add_camera_rot_x(Vector d, Vector dir)
+static inline __attribute__((__always_inline__)) __v4df	add_camera_rot_x(
+												__v4df d, __v4df dir)
 {
 	const double_t	temp = Y(d);
 
@@ -21,7 +22,8 @@ static inline Vector	add_camera_rot_x(Vector d, Vector dir)
 	return (d);
 }
 
-static inline Vector	add_camera_rot_y(Vector d, Vector dir)
+static inline __attribute__((__always_inline__)) __v4df	add_camera_rot_y(
+												__v4df d, __v4df dir)
 {
 	const double_t	temp = X(d);
 
@@ -30,7 +32,8 @@ static inline Vector	add_camera_rot_y(Vector d, Vector dir)
 	return (d);
 }
 
-static inline Vector	add_camera_rot_z(Vector d, Vector dir)
+static inline __attribute__((__always_inline__)) __v4df	add_camera_rot_z(
+												__v4df d, __v4df dir)
 {
 	const double_t	temp = X(d);
 
@@ -39,7 +42,7 @@ static inline Vector	add_camera_rot_z(Vector d, Vector dir)
 	return (d);
 }
 
-inline Vector			rt_camera_rotate(Vector d, const Vector dir)
+inline __v4df			rt_camera_rotate(__v4df d, const __v4df dir)
 {
 	if (X(dir))
 		d = add_camera_rot_x(d, dir);

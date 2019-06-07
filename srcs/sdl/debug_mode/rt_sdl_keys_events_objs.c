@@ -6,16 +6,17 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 23:55:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/28 19:17:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/07 19:31:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	add_objs_z_or_spec(Object *restrict const o,
-									const Isr *restrict const isr,
-									const double_t move,
-									const double_t s_move)
+static inline __attribute__((__always_inline__)) void	dd_objs_z_or_spec(
+	Object *restrict const o,
+	const Isr *restrict const isr,
+	const double_t move,
+	const double_t s_move)
 {
 	if (!isr->is_debug_zorintens)
 	{
@@ -33,9 +34,10 @@ static inline void	add_objs_z_or_spec(Object *restrict const o,
 	}
 }
 
-static inline void	add_objs_rot(Object *restrict const o,
-							const Isr *restrict const isr,
-							const double_t move)
+static inline __attribute__((__always_inline__)) void	add_objs_rot(
+	Object *restrict const o,
+	const Isr *restrict const isr,
+	const double_t move)
 {
 	if (isr->is_rot_x)
 		X(o->dir) = u_d_range(X(o->dir) + (move / 5.0f), 360.0f, -360.0f);
