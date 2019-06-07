@@ -65,15 +65,15 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
 
 # [[__`About scene file params`__](#about-scene-file-params)]:
 
-| Param name | Description                                              | Position | Direction\Rotate    | Color | Radius\Angle | Specular\Intensity |
-| ---------- | -------------------------------------------------------- | -------- | ------------------- | ----- | ------------ | ------------------ |
-| Camera     | Scene camera. Only 1 camera can be in scene.             | X,Y,Z    | X,Y,Z (Z not used.) | none  | none         | none               |
-| Light      | Scene light origin. Max 5 light origins can be in scene. | X,Y,Z    | X,Y,Z (not used.)   | none  | none         | 100                |
-| Sphere     | Sphere object.                                           | X,Y,Z    | X,Y,Z (not used.)   | HEX.  | 1            | 10000              |
-| Cone       | Cone object.                                             | X,Y,Z    | X,Y,Z               | HEX.  | 1            | 10000              |
-| Cylinder   | Cylinder object.                                         | X,Y,Z    | X,Y,Z               | HEX.  | 1            | 10000              |
-| Plane      | Cylinder object.                                         | X,Y,Z    | X,Y,Z               | HEX.  | none         | 10000              |
-| eShadow.   | Enable shadows calc and render in scene.                 | none     | none                | noen  | none         | none               |
+| Param name | Description                                              | Position | Direction\Rotate  | Color | Radius\Angle | Specular\Intensity |
+| ---------- | -------------------------------------------------------- | -------- | ----------------- | ----- | ------------ | ------------------ |
+| Camera     | Scene camera. Only 1 camera can be in scene.             | X,Y,Z    | X,Y,Z             | none  | none         | none               |
+| Light      | Scene light origin. Max 5 light origins can be in scene. | X,Y,Z    | X,Y,Z (not used.) | none  | none         | 100                |
+| Sphere     | Sphere object.                                           | X,Y,Z    | X,Y,Z (not used.) | HEX.  | 1            | 10000              |
+| Cone       | Cone object.                                             | X,Y,Z    | X,Y,Z             | HEX.  | 1            | 10000              |
+| Cylinder   | Cylinder object.                                         | X,Y,Z    | X,Y,Z             | HEX.  | 1            | 10000              |
+| Plane      | Cylinder object.                                         | X,Y,Z    | X,Y,Z             | HEX.  | none         | 10000              |
+| eShadow.   | Enable shadows calc and render in scene.                 | none     | none              | noen  | none         | none               |
 
 #### Example:
 ```bash
