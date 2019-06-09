@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 05:14:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 14:21:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <math.h>
 # include "libftsdl.h"
 # include "rtv1_structs.h"
+# include "rtv1_flags.h"
 # include "rtv1_macroses.h"
 
 /*

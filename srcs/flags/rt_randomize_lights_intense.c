@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_flag_help.c                                     :+:      :+:    :+:   */
+/*   rt_randomize_lights_intense.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/20 19:22:31 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/05 22:06:59 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/06/05 23:48:43 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/06/09 14:45:25 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool	rt_fhelp(Flags *const f, strtab av,
-				const size_t ac, size_t *const av_i)
+void			rt_randomize_lights_intense(Light *restrict const lights,
+											const size_t ins_lights,
+											const float_t time)
 {
-	(void)f;
-	(void)ac;
-	(void)av;
-	(void)av_i;
-	ft_putfile(RTV1_FUSAGE);
-	exit(1);
-	return (true);
+	static float_t	delta_refresh;
+	size_t			i;
+
+	i = ~0UL;
+	(delta_refresh < .25f) ? 1 : (delta_refresh = 0.0f);
+	if (.0f == delta_refresh)
+		while (ins_lights > ++i)
+			lights[i].intens = (ft_rand(100) + 1) / 100.0f - 0.01f;
+	delta_refresh += time;
 }

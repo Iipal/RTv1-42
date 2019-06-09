@@ -6,38 +6,35 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 17:35:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 11:47:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 14:35:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static bool			add_curr_fparse(Flags *const f, strtab av,
-							const size_t ac,
-							size_t *const av_i)
+static bool			add_curr_fparse(Environment *restrict const env,
+						strtab av, const size_t ac, size_t *const av_i)
 {
-	const string		flags[] = {F_HELP, F_VPS, F_AL, F_FTC, F_FRT,
-							F_DBG, F_NCL, F_TEX, F_RLI, F_PU};
-	const string		sflags[] = {SF_HELP, SF_VPS, SF_AL, SF_FTC, SF_FRT,
-							SF_DBG, SF_NCL, SF_TEX, SF_RLI, SF_PU};
-	const t_fn_fparse	fns[] = {rt_fhelp, rt_fvps, rt_fal, rt_fftc, rt_ffrt,
-							rt_fdbg, rt_fncl, rt_ftex, rt_frli, rt_fpu};
-	bool				is_valid_flag;
-	size_t				i;
+	const t_fbool	fbool[] = {rt_fdbg, rt_fncl, rt_ftex, rt_frli, rt_fpu};
+	const t_fwparam	fwparam[] = {rt_fvps, rt_fal, rt_fftc, rt_ffrt};
+	size_t			fn_num;
 
-	i = ~0UL;
-	is_valid_flag = false;
-	while (MAX_FLAGS > ++i)
-		if (ft_is_one_of_str(av[*av_i], false, 2, flags[i], sflags[i]))
-		{
-			is_valid_flag = true;
-			return (fns[i](f, av, ac, av_i));
-		}
-	NODO_F(is_valid_flag, ERRIN(E_INVALID_FLAG, av[*av_i]));
-	return (true);
+	if (ft_is_one_of_str(av[*av_i], false, 2UL, SF_HELP, F_HELP))
+	{
+		ft_putfile(RTV1_FUSAGE);
+		return (false);
+	}
+	else if ((fn_num = rt_is_flag_boolean(av[*av_i])))
+		return (fbool[fn_num - 1](&env->flags));
+	else if ((fn_num = rt_is_flag_wparam(av[*av_i])))
+		return (fwparam[fn_num - 1](&env->flags, av, ac, av_i));
+	else
+		ERRIN(E_INVALID_FLAG, av[*av_i]);
+	return (false);
 }
 
-static inline void	add_validate_parsed_flags(const Flags *const f)
+static inline __attribute__((always_inline)) void	add_valid_parsed_flags(
+	const Flags *restrict const f)
 {
 	if (f->is_parsed_frt && !f->debug_mode)
 		MSGN(E_USELESS_FRT);
@@ -51,7 +48,8 @@ static inline void	add_validate_parsed_flags(const Flags *const f)
 		MSGN(E_USELESS_AL);
 }
 
-bool				rt_flags_parser(Flags *const f, strtab av, const size_t ac)
+bool				rt_flags_parser(Environment *restrict const env,
+									strtab av, const size_t ac)
 {
 	size_t	i;
 
@@ -61,10 +59,10 @@ bool				rt_flags_parser(Flags *const f, strtab av, const size_t ac)
 		&& (('-' == av[i][1] && ft_isalpha_str(av[i] + 2))
 			|| ft_isalpha_str(av[i] + 1)))
 		{
-			NO_F(add_curr_fparse(f, av, ac, &i));
+			NO_F(add_curr_fparse(env, av, ac, &i));
 		}
 		else
 			IFDO_F(true, ERRIN_N(av[i], i + 1, E_CEMANTIC_FLAG));
-	add_validate_parsed_flags(f);
+	add_valid_parsed_flags(&env->flags);
 	return (true);
 }

@@ -6,39 +6,46 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:28:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 11:46:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 14:39:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTV1_FLAGS_H
 # define RTV1_FLAGS_H
 
+# include "rtv1_structs.h"
+
 /*
 ** Flags (and shortcut for that) constant string literals definition:
 */
 # define MAX_FLAGS  10
+
 # define F_HELP     "--help"
-# define F_DBG      "--debug"
+# define SF_HELP    "-h"
+
+# define MAX_WPARAMS_FLAGS 4
 # define F_VPS      "--viewportScale"
 # define F_AL       "--ambientLight"
 # define F_FTC      "--fpsTextColor"
 # define F_FRT      "--fpsRefreshTimer"
+
+# define SF_VPS     "-vps"
+# define SF_AL      "-al"
+# define SF_FTC     "-ftc"
+# define SF_FRT     "-frt"
+
+# define MAX_BOOLEAN_FLAGS 5
+# define F_DBG      "--debug"
 # define F_NCL      "--noCalcLight"
 # define F_TEX      "--textured"
 # define F_RLI      "--randomLightsIntense"
 # define F_PU       "--printUsage"
 
-# define SF_HELP    "-h"
-# define SF_VPS     "-vps"
-# define SF_AL      "-al"
-# define SF_FTC     "-ftc"
-# define SF_FRT     "-frt"
 # define SF_DBG     "-dbg"
 # define SF_NCL     "-ncl"
 # define SF_TEX     "-t"
 # define SF_RLI     "-rli"
 # define SF_PU      "-pu"
-
 /*
 ** Default flag values:
 */
@@ -103,35 +110,14 @@
 # define E_USELESS_PU  WARNING E_PU " useless because you don't use " E_DBG "."
 
 /*
-** Flags struct:
-*/
-struct			s_flags
-{
-	float_t	viewport_scale;
-	double	ambient_light;
-	Color	fps_text_color;
-	bool	is_parsed_ftc;
-	float_t	fps_refresh_timer;
-	bool	is_parsed_frt;
-	bool	debug_mode;
-	bool	print_usage;
-	bool	no_calc_light;
-	bool	textured;
-	bool	random_lights_intense;
-};
-
-# define FLAGS typedef struct s_flags   Flags
-
-FLAGS;
-
-/*
 **	Flags parsing funcs:
 */
-bool			rt_flags_parser(Flags *const f, strtab av, const size_t ac);
+bool			rt_flags_parser(Environment *restrict const env,
+									strtab av, const size_t ac);
 
-typedef bool	(*t_fn_fparse)(Flags *, char**, const size_t, size_t *const);
-extern bool		rt_fhelp(Flags *const f, strtab av,
-					const size_t ac, size_t *const av_i);
+extern bool		rt_is_flag_wparam(string flag);
+
+typedef bool	(*t_fwparam)(Flags*, char**, const size_t, size_t *const);
 extern bool		rt_fvps(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
 extern bool		rt_fal(Flags *const f, strtab av,
@@ -140,18 +126,18 @@ extern bool		rt_fftc(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
 extern bool		rt_ffrt(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
-extern bool		rt_fdbg(Flags *const f, strtab av,
-					const size_t ac, size_t *const av_i);
-extern bool		rt_fncl(Flags *const f, strtab av,
-					const size_t ac, size_t *const av_i);
-extern bool		rt_ftex(Flags *const f, strtab av,
-					const size_t ac, size_t *const av_i);
-extern bool		rt_frli(Flags *const f, strtab av,
-					const size_t ac, size_t *const av_i);
-extern bool		rt_fpu(Flags *const f, strtab av,
-					const size_t ac, size_t *const av_i);
 
-void			rt_randomatic_lights_intense(Light *restrict const lights,
-											const size_t ins_lights);
+extern bool		rt_is_flag_boolean(string flag);
+
+typedef bool	(*t_fbool)(Flags *restrict const);
+extern bool		rt_fdbg(Flags *restrict const boolean_flag);
+extern bool		rt_fncl(Flags *restrict const boolean_flag);
+extern bool		rt_ftex(Flags *restrict const boolean_flag);
+extern bool		rt_frli(Flags *restrict const boolean_flag);
+extern bool		rt_fpu(Flags *restrict const boolean_flag);
+
+void			rt_randomize_lights_intense(Light *restrict const lights,
+											const size_t ins_lights,
+											const float time);
 
 #endif

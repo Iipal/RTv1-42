@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 11:42:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 14:20:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define RTV1_STRUCTS_H
 
 # include "rtv1_scene.h"
-# include "rtv1_flags.h"
 
 struct	s_isrender
 {
@@ -61,6 +60,25 @@ struct	s_fps
 # define FPS typedef struct s_fps       Fps
 
 FPS;
+
+struct			s_flags
+{
+	float_t	viewport_scale;
+	double	ambient_light;
+	Color	fps_text_color;
+	bool	is_parsed_ftc;
+	float_t	fps_refresh_timer;
+	bool	is_parsed_frt;
+	bool	debug_mode;
+	bool	print_usage;
+	bool	no_calc_light;
+	bool	textured;
+	bool	random_lights_intense;
+};
+
+# define FLAGS typedef struct s_flags   Flags
+
+FLAGS;
 
 struct	s_environment
 {
