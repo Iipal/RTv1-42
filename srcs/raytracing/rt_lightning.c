@@ -6,15 +6,16 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 11:45:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 13:31:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	add_calc_light_intens(const Light *restrict l,
-									t_clhelp *restrict const h,
-									const __v4df d)
+static inline __attribute__((always_inline)) void	add_calc_light_intens(
+	const Light *restrict l,
+	t_clhelp *restrict const h,
+	const __v4df d)
 {
 	const double_t	dnl = u_vdot(h->n, h->l);
 
