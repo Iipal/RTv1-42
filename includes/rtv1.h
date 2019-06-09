@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 14:21:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 22:13:30 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,10 @@ extern void		rt_camera_speed_movements(double_t *restrict const cam_speed,
 					const bool is_speed_up, const bool is_speed_down);
 extern __v4df	rt_camera_rotate(__v4df d, const __v4df dir);
 
+void			rt_randomize_lights_intense(Light *restrict const lights,
+											const size_t ins_lights,
+											const float time);
+
 /*
 ** Ray Tracing:
 */
@@ -141,7 +145,7 @@ extern void		rt_render_fps_counter(Environment *const env);
 extern void		rt_free(Environment *restrict *env);
 
 /*
-** Ohter util funcs:
+** Ohter utilites funcs:
 **  Used only when validating readed data for convert direction\rotate
 **   from 365 degress to 360;
 */

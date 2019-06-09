@@ -6,32 +6,64 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 18:30:12 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 11:46:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 22:47:57 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool	rt_fvps(Flags *const f, strtab av,
+inline bool	f_vps(Flags *const f, strtab av,
 				const size_t ac, size_t *const av_i)
 {
+	if (f->is_parsed_vps)
+		MSGN(E_REPEAT_FLAG(E_VPS));
 	IFM_F(E_MP_VPS, ac <= ++*av_i);
 	av[*av_i] += ft_skip_blanks(av[*av_i]);
 	IFM_F(E_UNSIGN, '-' == av[*av_i][0] && ft_isdigit(av[*av_i][1]));
 	NOM_F(E_DIGITS, ft_isdigits_str(av[*av_i]));
 	IFM_F(E_WARN_VPS, E_MAX_VPS < (f->viewport_scale = ft_atoi(av[*av_i])));
 	NOM_F(E_VPS_ZERO, f->viewport_scale);
-	return (true);
+	return (f->is_parsed_vps = true);
 }
 
-inline bool	rt_fal(Flags *const f, strtab av,
+inline bool	f_al(Flags *const f, strtab av,
 				const size_t ac, size_t *const av_i)
 {
+	if (f->is_parsed_al)
+		MSGN(E_REPEAT_FLAG(E_AL));
 	IFM_F(E_MP_AL, ac <= ++*av_i);
 	av[*av_i] += ft_skip_blanks(av[*av_i]);
 	IFM_F(E_UNSIGN, '-' == av[*av_i][0] && ft_isdigit(av[*av_i][1]));
 	NOM_F(E_DIGITS, ft_isdigits_str(av[*av_i]));
 	IFM_F(E_WARN_AL, E_MAX_AL < (f->ambient_light = ft_atoi(av[*av_i])));
 	NOM_F(E_AL_ZERO, f->ambient_light);
-	return (true);
+	return (f->is_parsed_al = true);
+}
+
+inline bool	f_ftc(Flags *const f, strtab av,
+				const size_t ac, size_t *const av_i)
+{
+	if (f->is_parsed_ftc)
+		MSGN(E_REPEAT_FLAG(E_FTC));
+	IFM_F(E_MP_FTC, ac <= ++*av_i);
+	av[*av_i] += ft_skip_blanks(av[*av_i]);
+	IFM_F(E_FTC_NO0X, ft_strncmp(av[*av_i], E_FTC0X, ft_strlen(E_FTC0X)));
+	av[*av_i] += 2;
+	NOM_F(E_FTC_HEX, ft_ishex_str(av[*av_i]));
+	NOM_F(E_FTC_ZERO, f->fps_text_color.hex = ft_atoi_base(av[*av_i], 16));
+	return (f->is_parsed_ftc = true);
+}
+
+inline bool	f_frt(Flags *const f, strtab av,
+				const size_t ac, size_t *const av_i)
+{
+	if (f->is_parsed_frt)
+		MSGN(E_REPEAT_FLAG(E_FRT));
+	IFM_F(E_MP_FRT, ac <= ++*av_i);
+	av[*av_i] += ft_skip_blanks(av[*av_i]);
+	IFM_F(E_UNSIGN, '-' == av[*av_i][0] && ft_isdigit(av[*av_i][1]));
+	NOM_F(E_DIGITS, ft_isdigits_str(av[*av_i]));
+	IFM_F(E_WARN_FRT, E_MAX_FRT < (f->fps_refresh_timer = ft_atoi(av[*av_i])));
+	f->fps_refresh_timer /= 100.0f;
+	return (f->is_parsed_frt = true);
 }

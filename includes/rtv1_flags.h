@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:28:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 14:39:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 22:40:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@
 # define SF_TEX     "-t"
 # define SF_RLI     "-rli"
 # define SF_PU      "-pu"
+
+# define MAX_OTHER_FLAGS 1
+# define F_NB       "--noBorder"
+
+# define SF_NB      "-nb"
+
 /*
 ** Default flag values:
 */
@@ -54,29 +60,32 @@
 # define DEF_FPS_TEXT_COLOR     (Color){0x7FFF00}
 # define DEF_FPS_REFRESH_TIMER  .25f
 # define DEF_DEBUG_MODE         false
-# define DEF_NOT_CALC_LIGHT     false
+# define DEF_NO_CALC_LIGHT      false
 # define DEF_PRINT_USAGE        false
 # define DEF_TEXTURED           false
 # define DEF_RANDOM_INTENSE     false
+
+# define E_MAX_VPS  10
+# define E_MAX_AL   25
+# define E_MAX_FRT  500
 
 /*
 ** Flags parsing errno messages:
 */
 # define E_INVALID_FLAG     " Invalid flag occured: "
-# define E_CEMANTIC_FLAG    ERR "Invalid flag cemantic occured: "
+# define E_SEMATICS_FLAG    ERR "Invalid flag semantics occured: "
 
-# define E_DBG      F_DBG " flag"
 # define E_VPS      F_VPS " flag"
 # define E_AL       F_AL " flag"
 # define E_FTC      F_FTC " flag"
 # define E_FRT      F_FRT " flag"
+# define E_DBG      F_DBG " flag"
 # define E_NCL      F_NCL " flag"
+# define E_TEX      F_TEX " flag"
 # define E_RLI      F_RLI " flag"
 # define E_PU       F_PU " flag"
 
-# define E_MAX_VPS  10
-# define E_MAX_AL   25
-# define E_MAX_FRT  500
+# define E_REPEAT_FLAG(flag) WARNING flag " was already set before. Ignoring."
 
 # define E_MISPARM  "Missed param for "
 # define E_MP_VPS   ERR E_MISPARM F_VPS "."
@@ -103,11 +112,10 @@
 # define E_FTC_NO0X ERR "Missed \'0x\' for HEX color param in " E_FTC "."
 # define E_FTC_HEX  ERR "Invalid HEX color for " E_FTC "."
 
-# define E_USELESS_FRT WARNING E_FRT " useless because you don't use " E_DBG "."
-# define E_USELESS_FTC WARNING E_FTC " useless because you don't use " E_DBG "."
-# define E_USELESS_RLI WARNING E_RLI " useles because you use " E_NCL "."
-# define E_USELESS_AL  WARNING E_AL " useles because you use " E_NCL "."
-# define E_USELESS_PU  WARNING E_PU " useless because you don't use " E_DBG "."
+# define E_USELESS_DONT " useless because you don't use "
+# define E_USELESS_USE  " useless because you use "
+# define E_USLSS_DONT(f, dont) WARNING f E_USELESS_DONT dont "."
+# define E_USLSS_USE(f, use)   WARNING f E_USELESS_USE use "."
 
 /*
 **	Flags parsing funcs:
@@ -115,29 +123,32 @@
 bool			rt_flags_parser(Environment *restrict const env,
 									strtab av, const size_t ac);
 
-extern bool		rt_is_flag_wparam(string flag);
+extern size_t	rt_is_flag_wparam(string flag);
 
 typedef bool	(*t_fwparam)(Flags*, char**, const size_t, size_t *const);
-extern bool		rt_fvps(Flags *const f, strtab av,
+extern bool		f_vps(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
-extern bool		rt_fal(Flags *const f, strtab av,
+extern bool		f_al(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
-extern bool		rt_fftc(Flags *const f, strtab av,
+extern bool		f_ftc(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
-extern bool		rt_ffrt(Flags *const f, strtab av,
+extern bool		f_frt(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
 
-extern bool		rt_is_flag_boolean(string flag);
+extern size_t	rt_is_flag_boolean(string flag);
 
 typedef bool	(*t_fbool)(Flags *restrict const);
-extern bool		rt_fdbg(Flags *restrict const boolean_flag);
-extern bool		rt_fncl(Flags *restrict const boolean_flag);
-extern bool		rt_ftex(Flags *restrict const boolean_flag);
-extern bool		rt_frli(Flags *restrict const boolean_flag);
-extern bool		rt_fpu(Flags *restrict const boolean_flag);
+extern bool		f_dbg(Flags *restrict const boolean_flag);
+extern bool		f_ncl(Flags *restrict const boolean_flag);
+extern bool		f_tex(Flags *restrict const boolean_flag);
+extern bool		f_rli(Flags *restrict const boolean_flag);
+extern bool		f_pu(Flags *restrict const boolean_flag);
 
-void			rt_randomize_lights_intense(Light *restrict const lights,
-											const size_t ins_lights,
-											const float time);
+extern size_t	rt_is_flag_other(string flag);
+
+typedef bool	(*t_fother)(Environment *restrict const env, strtab av,
+					const size_t ac, size_t *const av_i);
+extern bool		f_nb(Environment *restrict const env, strtab av,
+					const size_t ac, size_t *const av_i);
 
 #endif

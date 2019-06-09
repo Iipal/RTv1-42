@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 14:20:41 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 22:44:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,18 @@ FPS;
 struct			s_flags
 {
 	float_t	viewport_scale;
+	bool	is_parsed_vps;
 	double	ambient_light;
+	bool	is_parsed_al;
 	Color	fps_text_color;
 	bool	is_parsed_ftc;
 	float_t	fps_refresh_timer;
 	bool	is_parsed_frt;
 	bool	debug_mode;
-	bool	print_usage;
 	bool	no_calc_light;
 	bool	textured;
 	bool	random_lights_intense;
+	bool	print_usage;
 };
 
 # define FLAGS typedef struct s_flags   Flags
