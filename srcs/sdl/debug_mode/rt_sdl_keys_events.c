@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:12:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/07 19:32:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 11:45:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,20 @@ static inline __attribute__((__always_inline__)) void	add_camera_events(
 		Z(cam->dir) = u_d_range(Z(cam->dir) - (move * 2), 360.0f, -360.0f);
 }
 
+static inline __attribute__((__always_inline__)) void	add_default_keys_event(
+	Environment *restrict const env)
+{
+	if (env->isr.is_inc_ambient_light)
+		env->flags.ambient_light =
+			u_d_range(env->flags.ambient_light + env->fps.move, 100, 1);
+	if (env->isr.is_dec_ambient_light)
+		env->flags.ambient_light =
+			u_d_range(env->flags.ambient_light - env->fps.move, 100, 1);
+}
+
 inline void			rt_sdl_keys_events(Environment *restrict const env)
 {
+	add_default_keys_event(env);
 	if (env->isr.is_light_debug)
 	{
 		if (env->isr.is_objs_debug)

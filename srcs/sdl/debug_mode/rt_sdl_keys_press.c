@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:07:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/07 19:31:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 11:38:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ inline void			rt_sdl_keys_press(Isr *restrict const isr,
 		isr->is_speedup = true;
 	else if (SDLK_LCTRL == key)
 		isr->is_speeddown = true;
+	else if (SDLK_EQUALS == key)
+		isr->is_inc_ambient_light = true;
+	else if (SDLK_MINUS == key)
+		isr->is_dec_ambient_light = true;
 	else
 		add_sdl_key_press_rot(isr, key);
 }

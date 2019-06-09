@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 05:14:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 11:42:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ struct	s_isrender
 	bool	is_light_debug;
 	bool	is_objs_debug;
 	bool	is_debug_zorintens;
+	bool	is_inc_ambient_light;
+	bool	is_dec_ambient_light;
 };
 
 struct	s_time

@@ -3,7 +3,7 @@ Flags usage:
  -h, --help: print this message
  -dbg, --debug: activate switcher binds mode. Default: not enable.
  -vps, --viewportScale: integer param 1-10. Default: 1.
- -sb, --shadowBright: integer param 1-10. Default: 10.
+ -al, --ambientLight: integer param 1-25. Default: 100.
  -ftc, --fpsTextColor: hex param 0x1-0xffffff. Default: 0x80ff00.
  -frt, --fpsRefreshTimer: how often will refresh FPS counter. Default: 25(in ms).
  -ncl, --noCalcLight: disable calc all light origins. Default: not enable.

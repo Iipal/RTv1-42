@@ -22,7 +22,8 @@ Usage:
             [T G B]        - Increase objects rotation axis.
            /                                               \
         Third press on  [X] - returns to default camera control binds.
-       /                       /
+       /                                     /
+    [- +] - Dec\Increase ambient light coefficient.
     [Y]   - Toggle textured render. (-t flag)
     [H]   - Toggle shadows calc. ('eShadows' scene param)
     [N]   - Toggle lights calc. (-ncl flag)
