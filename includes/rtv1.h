@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 05:01:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 05:14:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,59 +74,59 @@ void			rt_sdl_keys_events_lights_debug(Light *restrict const l,
 
 extern void		rt_camera_speed_movements(double_t *restrict const cam_speed,
 					const bool is_speed_up, const bool is_speed_down);
-extern t_v4df	rt_camera_rotate(t_v4df d, const t_v4df dir);
+extern __v4df	rt_camera_rotate(__v4df d, const __v4df dir);
 
 /*
 ** Ray Tracing:
 */
 void			rt_rendering(Environment *restrict const env);
 
-extern Color	rt_raytracing(Environment *restrict const env, t_v4df d);
+extern Color	rt_raytracing(Environment *restrict const env, __v4df d);
 
 /*
 ** Objects intersection calc:
 */
-Object			*rt_closest_inter(const t_v4df o, const t_v4df d,
+Object			*rt_closest_inter(const __v4df o, const __v4df d,
 								Environment *restrict const env);
-extern t_v4df	rt_inter_sphere(const t_v4df x, const t_v4df d,
+extern __v4df	rt_inter_sphere(const __v4df x, const __v4df d,
 								void const *restrict const obj_ptr);
-extern t_v4df	rt_inter_cone(const t_v4df x, const t_v4df d,
+extern __v4df	rt_inter_cone(const __v4df x, const __v4df d,
 								void const *restrict const obj_ptr);
-extern t_v4df	rt_inter_plane(const t_v4df x, const t_v4df d,
+extern __v4df	rt_inter_plane(const __v4df x, const __v4df d,
 								void const *restrict const obj_ptr);
-extern t_v4df	rt_inter_cylinder(const t_v4df x, const t_v4df d,
+extern __v4df	rt_inter_cylinder(const __v4df x, const __v4df d,
 								void const *restrict const obj_ptr);
 
 /*
 ** Objects nomrals calcs:
 */
-extern t_v4df	rt_normal_sphere(const t_v4df p, const t_v4df d,
+extern __v4df	rt_normal_sphere(const __v4df p, const __v4df d,
 								Camera const *restrict const cam,
 								void const *restrict const obj_ptr);
-extern t_v4df	rt_normal_cone(const t_v4df p, const t_v4df d,
+extern __v4df	rt_normal_cone(const __v4df p, const __v4df d,
 								Camera const *restrict const cam,
 								void const *restrict const obj_ptr);
-extern t_v4df	rt_normal_plane(const t_v4df p, const t_v4df d,
+extern __v4df	rt_normal_plane(const __v4df p, const __v4df d,
 								Camera const *restrict const cam,
 								void const *restrict const obj_ptr);
-extern t_v4df	rt_normal_cylinder(const t_v4df p, const t_v4df d,
+extern __v4df	rt_normal_cylinder(const __v4df p, const __v4df d,
 								Camera const *restrict const cam,
 								void const *restrict const obj_ptr);
 
 /*
 ** Objects uv-mapping calcs:
 */
-extern Color	rt_uv_sphere(SDL_Surface *restrict const tex, const t_v4df n);
-extern Color	rt_uv_cone(SDL_Surface *restrict const tex, const t_v4df n);
-extern Color	rt_uv_plane(SDL_Surface *restrict const tex, const t_v4df n);
-extern Color	rt_uv_cylinder(SDL_Surface *restrict const tex, const t_v4df n);
+extern Color	rt_uv_sphere(SDL_Surface *restrict const tex, const __v4df n);
+extern Color	rt_uv_cone(SDL_Surface *restrict const tex, const __v4df n);
+extern Color	rt_uv_plane(SDL_Surface *restrict const tex, const __v4df n);
+extern Color	rt_uv_cylinder(SDL_Surface *restrict const tex, const __v4df n);
 
 /*
 ** Calc light:
 */
 Color			rt_calc_light(Environment *restrict const env,
 					t_clhelp *restrict const h,
-					const t_v4df d);
+					const __v4df d);
 
 /*
 ** FPS counter and drawing this counter:
@@ -144,7 +144,7 @@ extern void		rt_free(Environment *restrict *env);
 **  Used only when validating readed data for convert direction\rotate
 **   from 365 degress to 360;
 */
-t_v4df			u_inrange_dir_max(t_v4df dir);
-t_v4df			u_inrange_dir_min(t_v4df dir);
+__v4df			u_inrange_dir_max(__v4df dir);
+__v4df			u_inrange_dir_min(__v4df dir);
 
 #endif

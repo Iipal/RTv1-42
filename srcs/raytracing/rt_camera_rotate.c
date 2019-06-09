@@ -6,14 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 13:46:41 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 05:01:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 05:14:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline __attribute__((__always_inline__)) t_v4df	add_camera_rot_x(
-												t_v4df d, t_v4df dir)
+static inline __attribute__((__always_inline__)) __v4df	add_camera_rot_x(
+												__v4df d, __v4df dir)
 {
 	const double_t	temp = Y(d);
 
@@ -22,8 +22,8 @@ static inline __attribute__((__always_inline__)) t_v4df	add_camera_rot_x(
 	return (d);
 }
 
-static inline __attribute__((__always_inline__)) t_v4df	add_camera_rot_y(
-												t_v4df d, t_v4df dir)
+static inline __attribute__((__always_inline__)) __v4df	add_camera_rot_y(
+												__v4df d, __v4df dir)
 {
 	const double_t	temp = X(d);
 
@@ -32,8 +32,8 @@ static inline __attribute__((__always_inline__)) t_v4df	add_camera_rot_y(
 	return (d);
 }
 
-static inline __attribute__((__always_inline__)) t_v4df	add_camera_rot_z(
-												t_v4df d, t_v4df dir)
+static inline __attribute__((__always_inline__)) __v4df	add_camera_rot_z(
+												__v4df d, __v4df dir)
 {
 	const double_t	temp = X(d);
 
@@ -42,7 +42,7 @@ static inline __attribute__((__always_inline__)) t_v4df	add_camera_rot_z(
 	return (d);
 }
 
-inline t_v4df			rt_camera_rotate(t_v4df d, const t_v4df dir)
+inline __v4df			rt_camera_rotate(__v4df d, const __v4df dir)
 {
 	if (X(dir))
 		d = add_camera_rot_x(d, dir);

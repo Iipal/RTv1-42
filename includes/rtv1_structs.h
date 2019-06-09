@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 05:01:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 05:14:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ ENV;
 
 struct	s_calc_light_helper
 {
-	t_v4df		p;
-	t_v4df		n;
-	t_v4df		l;
+	__v4df		p;
+	__v4df		n;
+	__v4df		l;
 	double_t	i;
 	Color		curr_clr;
 	double_t	obj_spec;

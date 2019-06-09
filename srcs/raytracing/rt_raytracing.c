@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 19:54:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 05:01:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 05:14:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline Color		rt_raytracing(Environment *restrict const env, t_v4df d)
+inline Color		rt_raytracing(Environment *restrict const env, __v4df d)
 {
 	t_clhelp			h;
 	Object *restrict	obj;
