@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 17:35:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/05 23:43:13 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 04:55:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static bool			add_curr_fparse(Flags *const f, strtab av,
 	bool				is_valid_flag;
 	size_t				i;
 
-	i = ~0L;
+	i = ~0UL;
 	is_valid_flag = false;
 	while (MAX_FLAGS > ++i)
 		if (ft_is_one_of_str(av[*av_i], false, 2, flags[i], sflags[i]))
@@ -55,7 +55,7 @@ bool				rt_flags_parser(Flags *const f, strtab av, const size_t ac)
 {
 	size_t	i;
 
-	i = ~0L;
+	i = ~0UL;
 	while (ac > ++i)
 		if ('-' == av[i][0]
 		&& (('-' == av[i][1] && ft_isalpha_str(av[i] + 2))

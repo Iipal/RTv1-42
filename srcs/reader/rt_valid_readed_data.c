@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 10:05:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/05 23:10:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 04:55:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static bool	add_valid_lights_data(Light *restrict const l,
 {
 	size_t		i;
 
-	i = ~0L;
+	i = ~0UL;
 	while (ins_l > ++i)
 	{
 		NODO_F(u_vec_range(l[i].pos, MAX_X, MIN_X),
@@ -34,7 +34,7 @@ bool		rt_valid_readed_data(Scene *restrict const s)
 {
 	size_t	i;
 
-	i = ~0L;
+	i = ~0UL;
 	NOM_F(E_NOCAM, s->cam.is);
 	NOM_F(E_CAMPOS, u_vec_range(s->cam.pos, MAX_X, MIN_X));
 	s->cam.dir = u_inrange_dir_max(s->cam.dir);

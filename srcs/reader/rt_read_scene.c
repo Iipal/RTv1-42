@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 16:47:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/07 18:54:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 04:55:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static bool	add_parser(Scene *const sc, string *str,
 	bool				is;
 	size_t				i;
 
-	i = ~0L;
+	i = ~0UL;
 	++pfh->nline;
 	is = false;
 	data = false;

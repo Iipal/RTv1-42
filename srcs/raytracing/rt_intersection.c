@@ -6,19 +6,19 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/07 19:28:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 05:01:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
 static inline __attribute__((__always_inline__)) __v2df	add_intersection(
-									const __v4df o,
-									const __v4df d,
+									const t_v4df o,
+									const t_v4df d,
 									const Object *restrict const obj)
 {
-	const __v4df	x = o - obj->pos;
-	const __v4df	k = obj->fn_inter_calc(x, d, obj);
+	const t_v4df	x = o - obj->pos;
+	const t_v4df	k = obj->fn_inter_calc(x, d, obj);
 	const double_t	disc = VDISC(X(k), Y(k), Z(k));
 	__v2df			out;
 
@@ -30,8 +30,8 @@ static inline __attribute__((__always_inline__)) __v2df	add_intersection(
 }
 
 static inline __attribute__((__always_inline__)) __v2df	add_plane_inter(
-									const __v4df o,
-									const __v4df d,
+									const t_v4df o,
+									const t_v4df d,
 									const Object *restrict const obj)
 {
 	const double_t	d_dot_v = u_vdot(d, obj->dir);
@@ -43,15 +43,15 @@ static inline __attribute__((__always_inline__)) __v2df	add_plane_inter(
 	return (out);
 }
 
-Object					*rt_closest_inter(const __v4df o,
-									const __v4df d,
+Object					*rt_closest_inter(const t_v4df o,
+									const t_v4df d,
 									Environment *restrict const env)
 {
 	__v2df				t;
 	size_t				i;
 	Object *restrict	out_obj;
 
-	i = ~0L;
+	i = ~0UL;
 	out_obj = NULL;
 	env->scene.cam.t = env->tmax;
 	while (++i < env->scene.ins_objs)

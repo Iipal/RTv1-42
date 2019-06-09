@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 18:15:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/07 19:29:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 04:55:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void				rt_sdl_keys_events_lights_debug(Light *restrict const l,
 {
 	size_t	i;
 
-	i = ~0L;
+	i = ~0UL;
 	while (in_scene_lights > ++i)
 	{
 		if (isr->is_up)

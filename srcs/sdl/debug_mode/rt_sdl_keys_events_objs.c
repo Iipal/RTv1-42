@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 23:55:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/07 19:31:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 04:55:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline __attribute__((__always_inline__)) void	dd_objs_z_or_spec(
+static inline __attribute__((__always_inline__)) void	add_objs_z_or_spec(
 	Object *restrict const o,
 	const Isr *restrict const isr,
 	const double_t move,
@@ -60,7 +60,7 @@ void				rt_sdl_keys_events_objs_debug(Object *restrict const o,
 {
 	size_t	i;
 
-	i = ~0L;
+	i = ~0UL;
 	while (in_scene_objects > ++i)
 	{
 		if (isr->is_up)

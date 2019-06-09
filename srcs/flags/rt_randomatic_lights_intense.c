@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 23:48:43 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/05 23:51:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 04:55:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void			rt_randomatic_lights_intense(Light *restrict const lights,
 {
 	size_t	i;
 
-	i = ~0L;
+	i = ~0UL;
 	while (ins_lights > ++i)
 		lights[i].intens = (ft_rand(100) + 1) / 100.0 - 0.01;
 }

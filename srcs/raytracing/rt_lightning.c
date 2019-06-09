@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/07 19:27:19 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 05:01:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static inline void	add_calc_light_intens(const Light *restrict l,
 									t_clhelp *restrict const h,
-									const __v4df d)
+									const t_v4df d)
 {
 	const double_t	dnl = u_vdot(h->n, h->l);
 
@@ -30,14 +30,14 @@ static inline void	add_calc_light_intens(const Light *restrict l,
 
 Color				rt_calc_light(Environment *restrict const env,
 									t_clhelp *restrict const h,
-									const __v4df d)
+									const t_v4df d)
 {
 	Object *restrict	shadow;
 	Light *restrict		curr_l;
 	const Color			bg = sdl_clr_div(h->curr_clr, env->flags.shadow_bright);
 	size_t				i;
 
-	i = ~0L;
+	i = ~0UL;
 	h->i = 0.0f;
 	while (++i < env->scene.ins_lights)
 	{

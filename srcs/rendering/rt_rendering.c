@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/07 19:18:25 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/09 05:01:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	rt_rendering(Environment *restrict const env)
 		{
 			env->tmax = TMAX;
 			env->tmin = TMIN;
-			clr = rt_raytracing(env, (__v4df){X(i) * WIN_X / (1000.0 * WIN_X),
+			clr = rt_raytracing(env, (t_v4df){X(i) * WIN_X / (1000.0 * WIN_X),
 											Y(i) * WIN_Y / (1000.0 * WIN_Y),
 											env->flags.viewport_scale});
 			if (clr.hex)
