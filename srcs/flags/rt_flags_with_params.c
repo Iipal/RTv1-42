@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 18:30:12 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 22:47:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/10 20:11:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ inline bool	f_vps(Flags *const f, strtab av,
 	IFM_F(E_MP_VPS, ac <= ++*av_i);
 	av[*av_i] += ft_skip_blanks(av[*av_i]);
 	IFM_F(E_UNSIGN, '-' == av[*av_i][0] && ft_isdigit(av[*av_i][1]));
-	NOM_F(E_DIGITS, ft_isdigits_str(av[*av_i]));
-	IFM_F(E_WARN_VPS, E_MAX_VPS < (f->viewport_scale = ft_atoi(av[*av_i])));
+	NOM_F(E_DIGITS, ft_isfdigits_str(av[*av_i]));
+	IFM_F(E_WARN_VPS, E_MAX_VPS < (f->viewport_scale = ft_atof(av[*av_i])));
 	NOM_F(E_VPS_ZERO, f->viewport_scale);
 	return (f->is_parsed_vps = true);
 }
@@ -34,9 +34,10 @@ inline bool	f_al(Flags *const f, strtab av,
 	IFM_F(E_MP_AL, ac <= ++*av_i);
 	av[*av_i] += ft_skip_blanks(av[*av_i]);
 	IFM_F(E_UNSIGN, '-' == av[*av_i][0] && ft_isdigit(av[*av_i][1]));
-	NOM_F(E_DIGITS, ft_isdigits_str(av[*av_i]));
-	IFM_F(E_WARN_AL, E_MAX_AL < (f->ambient_light = ft_atoi(av[*av_i])));
+	NOM_F(E_DIGITS, ft_isfdigits_str(av[*av_i]));
+	IFM_F(E_WARN_AL, E_MAX_AL < (f->ambient_light = ft_atof(av[*av_i])));
 	NOM_F(E_AL_ZERO, f->ambient_light);
+	f->ambient_light = E_MAX_AL - f->ambient_light;
 	return (f->is_parsed_al = true);
 }
 

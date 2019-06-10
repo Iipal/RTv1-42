@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:28:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 22:40:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/10 20:40:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@
 # define E_MP_FRT   ERR E_MISPARM E_FRT "."
 
 # define E_UNSIGN   ERR "Only unsigned param values."
-# define E_DIGITS   ERR "Only digits in param values string."
+# define E_DIGITS   ERR "Invalid value in params."
 
 # define E_VPS_ZERO  ERR E_VPS " param is 0. Min is 1."
 # define E_AL_ZERO   ERR E_AL " param is 0. Min is 1."

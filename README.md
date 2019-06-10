@@ -54,15 +54,15 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 | Flag                  | Description                                                               | Shortcut | Valid values   | Default value | Value type | Dependency on `-dbg` mode |
 | --------------------- | ------------------------------------------------------------------------- | -------- | -------------- | ------------- | ---------- | ------------------------- |
 | --help                | Print short flags description. After print RTv1 will automatically close. | -h       | none           | none          | none       | no                        |
-| --debug               | Enable keybinds switcher mode.                                            | -dbg     | none           | none          | none       |                           |
-| --viewportScale       | How many times will be increased viewport.                                | -vps     | 1-10           | 1             | Integer    | no                        |
-| --shadowBright        | How dark the shadows should be. (Less - brighter)                         | -sb      | 1-10           | 100           | Integer    | no                        |
-| --fpsTextColor        | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        | yes                       |
-| --fpsFefreshTimer     | How often will refresh fps counter. (in ms)                               | -frt     | 0-500          | 25            | Integer    | yes                       |
+| --debug               | Enable keybinds switcher(debug) mode.                                     | -dbg     | none           | none          | none       | it's enablding this mode  |
 | --noCalcLight         | Disable calc all light origins.                                           | -ncl     | none           | not enabled   | none       | no                        |
 | --textured            | Enable textured rendering.                                                | -t       | none           | not enabled   | none       | no                        |
-| --randomLightsIntense | Enable randomatic lights intense.                                         | -rli     | none           | not enabled   | none       | no                        |
+| --randomLightsIntense | Enable randomatic lights intense.                                         | -rli     | none           | not enabled   | none       | yes                       |
 | --printUsage          | Print usage for -dbg mode.                                                | -pu      | none           | not enabled   | none       | yes                       |
+| --viewportScale       | How many times will be increased viewport.                                | -vps     | 0.0000001-10.0 | 1.0           | Float      | no                        |
+| --ambientLight        | On how much shadow must be darker. (Greater - brighter)                   | -al      | 0.0000001-25.0 | 0.0           | Float      | no                        |
+| --fpsTextColor        | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        | yes                       |
+| --fpsFefreshTimer     | How often will refresh fps counter. (in ms)                               | -frt     | 0-500          | 25            | Integer    | yes                       |
 #### Example:
 ```bash
 $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
@@ -74,19 +74,19 @@ $> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
 | Param name | Description                                              | Position | Direction\Rotate  | Color | Radius\Angle | Specular\Intensity |
 | ---------- | -------------------------------------------------------- | -------- | ----------------- | ----- | ------------ | ------------------ |
 | Camera     | Scene camera. Only 1 camera can be in scene.             | X,Y,Z    | X,Y,Z             | none  | none         | none               |
-| Light      | Scene light origin. Max 5 light origins can be in scene. | X,Y,Z    | X,Y,Z (not used.) | none  | none         | 100                |
-| Sphere     | Sphere object.                                           | X,Y,Z    | X,Y,Z (not used.) | HEX.  | 1            | 10000              |
-| Cone       | Cone object.                                             | X,Y,Z    | X,Y,Z             | HEX.  | 1            | 10000              |
-| Cylinder   | Cylinder object.                                         | X,Y,Z    | X,Y,Z             | HEX.  | 1            | 10000              |
-| Plane      | Cylinder object.                                         | X,Y,Z    | X,Y,Z             | HEX.  | none         | 10000              |
-| eShadow.   | Enable shadows calc and render in scene.                 | none     | none              | noen  | none         | none               |
+| Light      | Scene light origin. Max 5 light origins can be in scene. | X,Y,Z    | X,Y,Z (Z useless) | none  | none         | 100.0              |
+| Sphere     | Sphere object.                                           | X,Y,Z    | X,Y,Z (Z useless) | 0xHEX | 1.0          | 10000              |
+| Cone       | Cone object.                                             | X,Y,Z    | X,Y,Z             | 0xHEX | 1.0          | 10000              |
+| Cylinder   | Cylinder object.                                         | X,Y,Z    | X,Y,Z             | 0xHEX | 1.0          | 10000              |
+| Plane      | Cylinder object.                                         | X,Y,Z    | X,Y,Z             | 0xHEX | none         | 10000              |
+| eShadow.   | Enable shadows calc and render in scene.                 | none     | none              | none  | none         | none               |
 
 #### Example:
 ```bash
 Camera: 0,0,0 0,0,0
-Light: 0,3,1 0,0,0 100
-Sphere: 0,-1,10 0,0,0 0xaaaaaa 1 30
-Cone: -2,5,25 -1,-3,0 0xbaaf32 1 5000
+Light: 0,3,1.5 0,0,0 42.21
+Sphere: 0,-1,6.7 0,0,0 0xaaaaaa 0.5 30
+Cone: -1.65,4.1,21.21 -0.3,-2.1,0 0xbaaf32 0.3 5000
 Plane: 0,-5,0 0,1,0 0xfa1bff 500
 Cylinder: 2,-2,5 -2,4,-3 0xbaaf32 1 1000
 eShadow.
