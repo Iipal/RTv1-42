@@ -6,28 +6,25 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 13:31:21 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/05/30 12:57:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/10 19:53:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool	rt_ssphere(Object *restrict const obj, char *restrict s)
+inline bool	rt_ssphere(Object *restrict const obj, string s)
 {
 	s += ft_skip_to_blank(s);
 	IF_F(*s++ != ' ');
 	IF_F(!*s || ('-' != *s && !ft_isdigit(*s)));
-	IF_F(',' != *(s += ft_digits(X(obj->pos) = ft_atoi(s))) || !*s++);
-	IF_F(',' != *(s += ft_digits(Y(obj->pos) = ft_atoi(s))) || !*s++);
-	IF_F(' ' != *(s += ft_digits(Z(obj->pos) = ft_atoi(s))) || !*s++);
-	IF_F(',' != *(s += ft_digits(X(obj->dir) = ft_atoi(s))) || !*s++);
-	IF_F(',' != *(s += ft_digits(Y(obj->dir) = ft_atoi(s))) || !*s++);
-	IF_F(' ' != *(s += ft_digits(Z(obj->dir) = ft_atoi(s))) || !*s++);
+	NO_F(rt_read_vec(&s, &obj->pos));
+	NO_F(rt_read_vec(&s, &obj->dir));
 	IF_F(*s++ != '0' || *s++ != 'x');
 	NO_F(ft_ishex_strn(s, ft_skip_to_blank(s)));
 	NO_F(obj->clr.hex = ft_atoi_base(s, 16));
 	IF_F(' ' != *(s += ft_skip_to_blank(s)) || !*s++);
-	IF_F(' ' != *(s += ft_digits(obj->radius = ft_atoi(s))) || !*s++);
+	obj->radius = ft_atof(s);
+	IF_F(' ' != *(s += ft_fdigits_str(s)) || !*s++);
 	IF_F(*(s += ft_digits(obj->spec = ft_atoi(s))));
 	if (Y(obj->pos) != 0.0f)
 		Y(obj->pos) = -Y(obj->pos);
@@ -38,22 +35,19 @@ inline bool	rt_ssphere(Object *restrict const obj, char *restrict s)
 	return (true);
 }
 
-inline bool	rt_scone(Object *restrict const obj, char *restrict s)
+inline bool	rt_scone(Object *restrict const obj, string s)
 {
 	s += ft_skip_to_blank(s);
 	IF_F(*s++ != ' ');
 	IF_F(!*s || ('-' != *s && !ft_isdigit(*s)));
-	IF_F(',' != *(s += ft_digits(X(obj->pos) = ft_atoi(s))) || !*s++);
-	IF_F(',' != *(s += ft_digits(Y(obj->pos) = ft_atoi(s))) || !*s++);
-	IF_F(' ' != *(s += ft_digits(Z(obj->pos) = ft_atoi(s))) || !*s++);
-	IF_F(',' != *(s += ft_digits(X(obj->dir) = ft_atoi(s))) || !*s++);
-	IF_F(',' != *(s += ft_digits(Y(obj->dir) = ft_atoi(s))) || !*s++);
-	IF_F(' ' != *(s += ft_digits(Z(obj->dir) = ft_atoi(s))) || !*s++);
+	NO_F(rt_read_vec(&s, &obj->pos));
+	NO_F(rt_read_vec(&s, &obj->dir));
 	IF_F(*s++ != '0' || *s++ != 'x');
 	NO_F(ft_ishex_strn(s, ft_skip_to_blank(s)));
 	NO_F(obj->clr.hex = ft_atoi_base(s, 16));
 	IF_F(' ' != *(s += ft_skip_to_blank(s)) || !*s++);
-	IF_F(' ' != *(s += ft_digits(obj->radius = ft_atoi(s))) || !*s++);
+	obj->radius = ft_atof(s);
+	IF_F(' ' != *(s += ft_fdigits_str(s)) || !*s++);
 	IF_F(*(s += ft_digits(obj->spec = ft_atoi(s))));
 	if (Y(obj->pos) != 0.0f)
 		Y(obj->pos) = -Y(obj->pos);
@@ -64,17 +58,13 @@ inline bool	rt_scone(Object *restrict const obj, char *restrict s)
 	return (true);
 }
 
-inline bool	rt_splane(Object *restrict const obj, char *restrict s)
+inline bool	rt_splane(Object *restrict const obj, string s)
 {
 	s += ft_skip_to_blank(s);
 	IF_F(*s++ != ' ');
 	IF_F(!*s || ('-' != *s && !ft_isdigit(*s)));
-	IF_F(',' != *(s += ft_digits(X(obj->pos) = ft_atoi(s))) || !*s++);
-	IF_F(',' != *(s += ft_digits(Y(obj->pos) = ft_atoi(s))) || !*s++);
-	IF_F(' ' != *(s += ft_digits(Z(obj->pos) = ft_atoi(s))) || !*s++);
-	IF_F(',' != *(s += ft_digits(X(obj->dir) = ft_atoi(s))) || !*s++);
-	IF_F(',' != *(s += ft_digits(Y(obj->dir) = ft_atoi(s))) || !*s++);
-	IF_F(' ' != *(s += ft_digits(Z(obj->dir) = ft_atoi(s))) || !*s++);
+	NO_F(rt_read_vec(&s, &obj->pos));
+	NO_F(rt_read_vec(&s, &obj->dir));
 	IF_F(*s++ != '0' || *s++ != 'x');
 	NO_F(ft_ishex_strn(s, ft_skip_to_blank(s)));
 	NO_F(obj->clr.hex = ft_atoi_base(s, 16));
@@ -89,22 +79,19 @@ inline bool	rt_splane(Object *restrict const obj, char *restrict s)
 	return (true);
 }
 
-inline bool	rt_scylinder(Object *restrict const obj, char *restrict s)
+inline bool	rt_scylinder(Object *restrict const obj, string s)
 {
 	s += ft_skip_to_blank(s);
 	IF_F(*s++ != ' ');
 	IF_F(!*s || ('-' != *s && !ft_isdigit(*s)));
-	IF_F(',' != *(s += ft_digits(X(obj->pos) = ft_atoi(s))) || !*s++);
-	IF_F(',' != *(s += ft_digits(Y(obj->pos) = ft_atoi(s))) || !*s++);
-	IF_F(' ' != *(s += ft_digits(Z(obj->pos) = ft_atoi(s))) || !*s++);
-	IF_F(',' != *(s += ft_digits(X(obj->dir) = ft_atoi(s))) || !*s++);
-	IF_F(',' != *(s += ft_digits(Y(obj->dir) = ft_atoi(s))) || !*s++);
-	IF_F(' ' != *(s += ft_digits(Z(obj->dir) = ft_atoi(s))) || !*s++);
+	NO_F(rt_read_vec(&s, &obj->pos));
+	NO_F(rt_read_vec(&s, &obj->dir));
 	IF_F(*s++ != '0' || *s++ != 'x');
 	NO_F(ft_ishex_strn(s, ft_skip_to_blank(s)));
 	NO_F(obj->clr.hex = ft_atoi_base(s, 16));
 	IF_F(' ' != *(s += ft_skip_to_blank(s)) || !*s++);
-	IF_F(' ' != *(s += ft_digits(obj->radius = ft_atoi(s))) || !*s++);
+	obj->radius = ft_atof(s);
+	IF_F(' ' != *(s += ft_fdigits_str(s)) || !*s++);
 	IF_F(*(s += ft_digits(obj->spec = ft_atoi(s))));
 	if (Y(obj->pos) != 0.0f)
 		Y(obj->pos) = -Y(obj->pos);

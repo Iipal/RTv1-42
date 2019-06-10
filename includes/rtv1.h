@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 22:13:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/10 19:49:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,16 @@ extern bool		rt_valid_filename(char *const file);
 */
 bool			rt_read_scene(Environment *restrict const env,
 							const char *const scene_file);
+extern bool		rt_read_vec(string *const s, __v4df *const v);
 
-extern bool		rt_scam(Camera *restrict const cam, char *restrict s);
-extern bool		rt_slight(Light *restrict const l, char *restrict s);
+extern bool		rt_scam(Camera *restrict const cam, string s);
+extern bool		rt_slight(Light *restrict const l, string s);
 
-typedef bool	(*t_fn_sparse)(Object *restrict const, char *restrict);
-extern bool		rt_ssphere(Object *restrict const obj, char *restrict s);
-extern bool		rt_scone(Object *restrict const obj, char *restrict s);
-extern bool		rt_splane(Object *restrict const obj, char *restrict s);
-extern bool		rt_scylinder(Object *restrict const obj, char *restrict s);
+typedef bool	(*t_fn_sparse)(Object *restrict const, char*);
+extern bool		rt_ssphere(Object *restrict const obj, string s);
+extern bool		rt_scone(Object *restrict const obj, string s);
+extern bool		rt_splane(Object *restrict const obj, string s);
+extern bool		rt_scylinder(Object *restrict const obj, string s);
 
 bool			rt_valid_readed_data(Scene *restrict const s);
 
