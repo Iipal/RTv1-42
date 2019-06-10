@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 18:51:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 14:39:14 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/10 10:02:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	add_fps_prepare_and_draw(const float_t dfps,
 	}
 }
 
-inline void	rt_render_fps_counter(Environment *const env)
+void		rt_render_fps_counter(Environment *const env)
 {
 	static float_t	delta_refresh;
 

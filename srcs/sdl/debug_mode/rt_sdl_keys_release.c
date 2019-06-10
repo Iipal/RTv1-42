@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 17:30:12 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 11:36:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/10 10:02:57 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static inline __attribute__((__always_inline__)) void	add_sdl_key_rot_rls(
 		isr->is_dec_rot_z = false;
 }
 
-inline void			rt_sdl_keys_release(Isr *restrict const isr,
+void				rt_sdl_keys_release(Isr *restrict const isr,
 									const SDL_Keycode key)
 {
 	if (SDLK_w == key)

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 19:54:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 05:14:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/10 10:37:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ inline Color		rt_raytracing(Environment *restrict const env, __v4df d)
 	else
 	{
 		h.curr_clr = obj->clr;
-		h.p = u_vaddv(env->scene.cam.pos, u_vmuld(d, env->scene.cam.t));
+		h.p = env->scene.cam.pos + u_vmuld(d, env->scene.cam.t);
 		if (env->flags.textured)
 			h.curr_clr = obj->fn_uv(obj->texture, u_vnorm(h.p - obj->pos));
 		if (env->flags.no_calc_light)
@@ -34,5 +34,5 @@ inline Color		rt_raytracing(Environment *restrict const env, __v4df d)
 		h.obj_spec = obj->spec;
 		h.n = u_vnorm(obj->fn_normal_calc(h.p, d, &env->scene.cam, obj));
 	}
-	return (rt_calc_light(env, &h, d));
+	return (rt_calc_light(env, &h, -d));
 }

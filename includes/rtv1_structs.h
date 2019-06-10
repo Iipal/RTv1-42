@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 22:44:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/10 11:23:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ struct	s_fps
 	double_t	o_spec_intens;
 };
 
-# define FPS typedef struct s_fps       Fps
+# define FPS typedef struct s_fps Fps
 
 FPS;
 
-struct			s_flags
+struct	s_flags
 {
 	float_t	viewport_scale;
 	bool	is_parsed_vps;
@@ -78,7 +78,7 @@ struct			s_flags
 	bool	print_usage;
 };
 
-# define FLAGS typedef struct s_flags   Flags
+# define FLAGS typedef struct s_flags Flags
 
 FLAGS;
 
@@ -94,10 +94,13 @@ struct	s_environment
 	Flags		flags;
 };
 
-# define ENV typedef struct s_environment   Environment
+# define ENV typedef struct s_environment Environment
 
 ENV;
 
+/*
+**	Helper structs: (for above norme42)
+*/
 struct	s_calc_light_helper
 {
 	__v4df		p;

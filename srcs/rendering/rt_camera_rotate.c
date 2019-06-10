@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 13:46:41 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 05:14:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/10 11:24:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static inline __attribute__((__always_inline__)) __v4df	add_camera_rot_z(
 	return (d);
 }
 
-inline __v4df			rt_camera_rotate(__v4df d, const __v4df dir)
+__v4df					rt_camera_rotate(__v4df d, const __v4df dir)
 {
 	if (X(dir))
 		d = add_camera_rot_x(d, dir);

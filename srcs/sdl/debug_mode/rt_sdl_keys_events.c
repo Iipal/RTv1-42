@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:12:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 11:45:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/10 11:24:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static inline __attribute__((__always_inline__)) void	add_default_keys_event(
 			u_d_range(env->flags.ambient_light - env->fps.move, 100, 1);
 }
 
-inline void			rt_sdl_keys_events(Environment *restrict const env)
+void				rt_sdl_keys_events(Environment *restrict const env)
 {
 	add_default_keys_event(env);
 	if (env->isr.is_light_debug)

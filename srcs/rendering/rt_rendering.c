@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 14:44:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/10 11:23:42 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	rt_rendering(Environment *restrict const env)
 	if (env->isr.is_render_fps)
 		rt_render_fps_counter(env);
 	if (env->flags.random_lights_intense && !env->flags.no_calc_light)
-		rt_randomize_lights_intense(env->scene.lights, env->scene.ins_lights,		env->fps.time.res);
+		rt_randomize_lights_intense(env->scene.lights, env->scene.ins_lights,
+				env->fps.time.res);
 	SDL_UpdateWindowSurface(env->sdl->w);
 }
