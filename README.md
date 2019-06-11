@@ -1,5 +1,5 @@
 # RTv1-42
-## Ray Tracing Engine on C using SDL2. (project from [UNIT Factory](https://unit.ua/en/))
+## Ray Tracing Engine on C using SDL2. (project from school42([UNIT Factory](https://unit.ua/en/)))
 ###### made by tmaluh __(\_ipal)__
 
 ![screenshot](https://github.com/Iipal/RTv1-42/blob/master/screenshot_all.png)
@@ -44,7 +44,7 @@ When you have already installed SDL2 library you can use this simple rules:
 - **make norme**: Check all libft, libftsdl and RTv1 `*.c` and `*.h` files for norme errors. (Works only on MacOS in school42)
 > If you change RTv1 source code use: `make del & make` or equal rule - `make pre` for re-compile only RTv1 executable without re-compile libft and libftsdl.
 >
-> If you chnahe libft or libftsdl source code use: `make -C libft` or `cd libft && make` || `make -C libftsdl` or `cd libftsdl && make`
+> If you chnage libft or libftsdl source code use: `make -C libft` or `cd libft && make` || `make -C libftsdl` or `cd libftsdl && make`
 >
 > If you wants to re-compile libft and libftsdl for debug use: `make -C libft debug_all` and `make -C libftsdl debug_all`.
 
@@ -58,18 +58,19 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 | Flag                  | Description                                                               | Shortcut | Valid values   | Default value | Value type | Dependency on `-dbg` mode |
 | --------------------- | ------------------------------------------------------------------------- | -------- | -------------- | ------------- | ---------- | ------------------------- |
 | --help                | Print short flags description. After print RTv1 will automatically close. | -h       | none           | none          | none       | no                        |
-| --debug               | Enable keybinds switcher(debug) mode.                                     | -dbg     | none           | none          | none       | it's enablding this mode  |
+| --debug               | Enable keybinds switcher(debug) mode.                                     | -dbg     | none           | none          | none       |                           |
 | --noCalcLight         | Disable calc all light origins.                                           | -ncl     | none           | not enabled   | none       | no                        |
 | --textured            | Enable textured rendering.                                                | -t       | none           | not enabled   | none       | no                        |
 | --randomLightsIntense | Enable randomatic lights intense.                                         | -rli     | none           | not enabled   | none       | yes                       |
+| --noBorder            | Create window without borders.                                            | -nb      | none           | not enabled   | none       | no                        |
 | --printUsage          | Print usage for -dbg mode.                                                | -pu      | none           | not enabled   | none       | yes                       |
-| --viewportScale       | How many times will be increased viewport.                                | -vps     | 0.0000001-10.0 | 1.0           | Float      | no                        |
-| --ambientLight        | On how much shadow must be darker. (Greater - brighter)                   | -al      | 0.0000001-25.0 | 0.0           | Float      | no                        |
+| --viewportScale       | How many times will be increased viewport.                                | -vps     | 0.000001-10.0  | 1.0           | Float      | no                        |
+| --ambientLight        | On how much shadow must be darker. (Greater - brighter)                   | -al      | 0.000001-100.0 | 0.0           | Float      | no                        |
 | --fpsTextColor        | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        | yes                       |
-| --fpsFefreshTimer     | How often will refresh fps counter. (in ms)                               | -frt     | 0-500          | 25            | Integer    | yes                       |
+| --fpsRefreshTimer     | How often will refresh fps counter. (in ms)                               | -frt     | 0-500          | 25            | Integer    | yes                       |
 #### Example:
 ```bash
-$> ./RTv1 -vps 1 -sb 5 -ftc 0x5dba5f -dbg scenes/sphere.rtv1
+$> ./RTv1 --debug -vps 0.5 -t -pu -ftc 0x1 -frt 0 -al 10 -nb scenes/sphere.rtv1
 ```
 ###### Note: always put scene file in arguments line, because flags will parse only after successful read scene file.
 
