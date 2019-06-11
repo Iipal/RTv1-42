@@ -39,10 +39,14 @@ When you have already installed SDL2 library you can use this simple rules:
 - **make fclean**: Expands `make clean` to delete also executable RTv1, libraries libft and libftsdl.
 - **make re**: It's rules - **make fclean** & **make** in one.
 - **make pre**: It's rules - **make del** & **make** in one.
-- **make debug**: Re-compile RTv1 without optimization flags but with `-g3` for debug.
+- **make debug_all**: Re-compile all RTv1 source files without optimization flags but with `-g3` for debug.
+- **make debug**: Compile RTv1 source files without optimization flags but with `-g3` for debug.
 - **make norme**: Check all libft, libftsdl and RTv1 `*.c` and `*.h` files for norme errors. (Works only on MacOS in school42)
-###### If you change code use: `make del & make` or equal rule - `make pre` for re-compile only RTv1 executable without re-compile libft and libftsdl.
-###### If you wants to re-compile libft and libftsdl for debug use: `make -C libft debug` and `make -C libftsdl debug`.
+> If you change RTv1 source code use: `make del & make` or equal rule - `make pre` for re-compile only RTv1 executable without re-compile libft and libftsdl.
+>
+> If you chnahe libft or libftsdl source code use: `make -C libft` or `cd libft && make` || `make -C libftsdl` or `cd libftsdl && make`
+>
+> If you wants to re-compile libft and libftsdl for debug use: `make -C libft debug_all` and `make -C libftsdl debug_all`.
 
 ## Usage:
 
