@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/09 04:40:45 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/11 09:08:14 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,9 +76,11 @@ pre: del all
 
 set_cc_debug:
 	@$(eval CC=$(CC_DEBUG))
+debug_all: set_cc_debug pre
+	@echo "$(INVERT)$(NAME) $(GREEN)ready for debug.$(WHITE)"
+debug: set_cc_debug all
+	@echo "$(INVERT)$(NAME) $(GREEN)ready for debug.$(WHITE)"
 
-debug: set_cc_debug pre
-	@echo "$(INVERT)$(GREEN)Ready for debug.$(WHITE)"
 clean:
 	@$(DEL) $(OBJ)
 	@$(LSDLMAKE) clean
@@ -90,6 +92,8 @@ fclean: clean
 	@$(DEL) $(NAME)
 	@echo "$(INVERT)$(RED)deleted$(WHITE)$(INVERT): $(NPWD)$(WHITE)"
 
+re: fclean all
+
 norme:
 	@$(LMAKE) norme
 	@$(LSDLMAKE) norme
@@ -97,6 +101,4 @@ norme:
 	@norminette includes/
 	@norminette $(SRCS)
 
-re: fclean all
-
-.PHONY: all fclean clean re
+.PHONY: re fclean clean all norme del pre debug debug_all
