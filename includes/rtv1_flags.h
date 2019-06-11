@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:28:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/10 20:40:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/11 14:33:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@
 # define DEF_RANDOM_INTENSE     false
 
 # define E_MAX_VPS  10
-# define E_MAX_AL   25
+# define E_MAX_AL   100
 # define E_MAX_FRT  500
 
 /*
@@ -96,16 +96,16 @@
 # define E_UNSIGN   ERR "Only unsigned param values."
 # define E_DIGITS   ERR "Invalid value in params."
 
-# define E_VPS_ZERO  ERR E_VPS " param is 0. Min is 1."
-# define E_AL_ZERO   ERR E_AL " param is 0. Min is 1."
+# define E_VPS_ZERO  ERR E_VPS " param is 0."
+# define E_AL_ZERO   ERR E_AL " param is 0."
 # define E_FTC_ZERO  ERR E_FTC " param invalid or 0x0."
 
 # define E_MAX_10   " param greate than 10. Max is 10."
-# define E_MAX_25   " param greate than 25. Max is 25."
+# define E_MAX_100  " param greate than 100. Max is 100."
 # define E_MAX_500  " param greate than 500. Max is 500."
 
 # define E_WARN_VPS ERR E_VPS E_MAX_10
-# define E_WARN_AL  ERR E_AL E_MAX_25
+# define E_WARN_AL  ERR E_AL E_MAX_100
 # define E_WARN_FRT ERR E_FRT E_MAX_500
 
 # define E_FTC0X    "0x"
