@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 19:54:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/10 10:37:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/11 17:07:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ inline Color		rt_raytracing(Environment *restrict const env, __v4df d)
 		h.curr_clr = obj->clr;
 		h.p = env->scene.cam.pos + u_vmuld(d, env->scene.cam.t);
 		if (env->flags.textured)
-			h.curr_clr = obj->fn_uv(obj->texture, u_vnorm(h.p - obj->pos));
+			h.curr_clr.hex = obj->fn_uv(obj->texture, u_vnorm(h.p - obj->pos));
 		if (env->flags.no_calc_light)
 			return (h.curr_clr);
 		h.obj_spec = obj->spec;

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/10 19:49:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/11 17:08:17 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,10 +122,10 @@ extern __v4df	rt_normal_cylinder(const __v4df p, const __v4df d,
 /*
 ** Objects uv-mapping calcs:
 */
-extern Color	rt_uv_sphere(SDL_Surface *restrict const tex, const __v4df n);
-extern Color	rt_uv_cone(SDL_Surface *restrict const tex, const __v4df n);
-extern Color	rt_uv_plane(SDL_Surface *restrict const tex, const __v4df n);
-extern Color	rt_uv_cylinder(SDL_Surface *restrict const tex, const __v4df n);
+extern Uint32	rt_uv_sphere(SDL_Surface *restrict const tex, const __v4df n);
+extern Uint32	rt_uv_cone(SDL_Surface *restrict const tex, const __v4df n);
+extern Uint32	rt_uv_plane(SDL_Surface *restrict const tex, const __v4df n);
+extern Uint32	rt_uv_cylinder(SDL_Surface *restrict const tex, const __v4df n);
 
 /*
 ** Calc light:

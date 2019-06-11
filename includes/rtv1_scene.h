@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:43:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 05:14:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/11 17:12:10 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef __v4df	(*t_fn_normal)(const __v4df,
 							const __v4df,
 							const struct s_camera *restrict const,
 							const void *restrict const);
-typedef Color	(*t_fn_uv)(SDL_Surface *restrict const, const __v4df);
+typedef Uint32	(*t_fn_uv)(SDL_Surface *restrict const, const __v4df);
 
 struct	s_object
 {
