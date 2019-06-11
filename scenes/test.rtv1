@@ -1,7 +1,0 @@
-Camera: 0,0,0 0,0,0
-Light: 0,3,1.5 0,0,0 42.21
-Sphere: 0,-1,6.7 0,0,0 0xaaaaaa 0.5 30
-Cone: -1.65,4.1,21.21 -0.3,-2.1,0 0xbaaf32 0.3 5000
-Plane: 0,-5,0 0,1,0 0xfa1bff 500
-Cylinder: 2,-2,5 -2,4,-3 0xbaaf32 1 1000
-eShadow.
