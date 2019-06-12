@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/12 19:05:18 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/12 21:15:19 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,9 +65,9 @@ $(LIBFTSDL):
 $(LIBVEC):
 	@$(LVMAKE)
 
-$(NAME): $(LIBFT) $(LIBFTSDL) $(LIBVEC) $(OBJ)
+$(NAME): $(LIBFT) $(LIBVEC) $(LIBFTSDL) $(OBJ)
 	@echo -n ' <q.p> | $(NPWD): '
-	@$(CC) $(OBJ) $(LIBS) $(LIBFT) $(LIBFTSDL) $(LIBVEC) -o $(NAME)
+	@$(CC) $(OBJ) $(LIBS) $(LIBFT) $(LIBVEC) $(LIBFTSDL) -o $(NAME)
 	@echo "$(SUCCESS2)"
 
 del:
