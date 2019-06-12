@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/11 20:10:41 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/12 17:27:52 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,10 @@ NPWD := $(CURDIR)/$(NAME)
 CC := gcc -march=native -mtune=native -Ofast -flto -pipe
 CC_DEBUG := gcc -march=native -mtune=native -g3 -D DEBUG
 CFLAGS := -Wall -Wextra -Werror -Wunused -Wpedantic
-IFLAGS := -I $(CURDIR)/includes/ \
-	-I $(CURDIR)/libft/includes/ \
-	-I $(CURDIR)/libftsdl/includes/
+IFLAGS := -I $(CURDIR)/includes \
+	-I $(CURDIR)/libft/includes \
+	-I $(CURDIR)/libftsdl/includes \
+	-I $(CURDIR)/libvectors/includes
 LIBSINC :=
 LIBS :=
 
@@ -36,6 +37,8 @@ LIBFT := $(CURDIR)/libft/libft.a
 LMAKE := make -C libft
 LIBFTSDL := $(CURDIR)/libftsdl/libftsdl.a
 LSDLMAKE := make -C libftsdl
+LIBVEC := $(CURDIR)/libvectors/libvectors.a
+LVMAKE := make -C libvectors
 
 DEL := rm -rf
 
@@ -57,13 +60,14 @@ $(OBJ): %.o: %.c
 
 $(LIBFT):
 	@$(LMAKE)
-
 $(LIBFTSDL):
 	@$(LSDLMAKE)
+$(LIBVEC):
+	@$(LVMAKE)
 
-$(NAME): $(LIBFT) $(LIBFTSDL) $(OBJ)
+$(NAME): $(LIBFT) $(LIBFTSDL) $(LIBVEC) $(OBJ)
 	@echo -n ' <q.p> | $(NPWD): '
-	@$(CC) $(OBJ) $(LIBS) $(LIBFT) $(LIBFTSDL) -o $(NAME)
+	@$(CC) $(OBJ) $(LIBS) $(LIBFT) $(LIBFTSDL) $(LIBVEC) -o $(NAME)
 	@echo "$(SUCCESS2)"
 
 del:
@@ -82,10 +86,12 @@ debug: set_cc_debug all
 
 clean:
 	@$(DEL) $(OBJ)
+	@$(LVMAKE) clean
 	@$(LSDLMAKE) clean
 	@$(LMAKE) clean
 
 fclean: clean
+	@$(LVMAKE) fclean
 	@$(LSDLMAKE) fclean
 	@$(LMAKE) fclean
 	@$(DEL) $(NAME)
@@ -96,6 +102,7 @@ re: fclean all
 norme:
 	@$(LMAKE) norme
 	@$(LSDLMAKE) norme
+	@$(LVMAKE) norme
 	@echo "$(INVERT)norminette for $(GREEN)$(NAME)$(WHITE)$(INVERT):$(WHITE)"
 	@norminette includes/
 	@norminette $(SRCS)

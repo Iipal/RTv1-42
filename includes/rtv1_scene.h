@@ -6,14 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:43:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/11 17:12:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/12 17:18:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTV1_SCENE_H
 # define RTV1_SCENE_H
 
-# include "libft_vectors.h"
+# include "libvectors.h"
 # include "libftsdl.h"
 
 /*

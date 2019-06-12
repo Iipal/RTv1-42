@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/10 16:59:34 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/12 17:21:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ static inline __attribute__((always_inline)) void	add_calc_light_intens(
 	t_clhelp *restrict const h,
 	const __v4df v)
 {
-	const double_t	ndl = u_vdot(h->n, h->l);
+	const double_t	ndl = v_dot(h->n, h->l);
 
 	if (.0f < ndl)
-		h->i += l->intens * ndl / (u_vlen(h->n) * u_vlen(h->l));
+		h->i += l->intens * ndl / (v_len(h->n) * v_len(h->l));
 	if (.0f < h->obj_spec)
 	{
 		h->i += ((l->intens * MAX(ndl, 0.0) + h->obj_spec)
-			* (l->intens * pow(MAX(u_vdot(h->n, u_vnorm(v + h->l)), 0.0),
-				h->obj_spec))) / pow(u_vlen(h->p - l->pos), 2);
+			* (l->intens * pow(MAX(v_dot(h->n, v_norm(v + h->l)), 0.0),
+				h->obj_spec))) / pow(v_len(h->p - l->pos), 2);
 	}
 }
 

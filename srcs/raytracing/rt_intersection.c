@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 05:14:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/12 17:21:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ static inline __attribute__((__always_inline__)) __v2df	add_plane_inter(
 									const __v4df d,
 									const Object *restrict const obj)
 {
-	const double_t	d_dot_v = u_vdot(d, obj->dir);
+	const double_t	d_dot_v = v_dot(d, obj->dir);
 	__v2df			out;
 
 	out = (__v2df){-1, -1};
 	if (d_dot_v)
-		X(out) = -u_vdot(o - obj->pos, obj->dir) / d_dot_v;
+		X(out) = -v_dot(o - obj->pos, obj->dir) / d_dot_v;
 	return (out);
 }
 
