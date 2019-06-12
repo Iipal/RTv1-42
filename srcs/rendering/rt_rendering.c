@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/10 11:23:42 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/12 18:59:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,19 @@
 
 void	rt_rendering(Environment *restrict const env)
 {
-	Color			clr;
-	__v2df			i;
+	Color	clr;
+	__v2si	i;
 
 	SDL_FillRect(env->sdl->wsurf, NULL, RGB_BLACK);
-	Y(i) = RT_CANVAS_STARTY;
-	while (RT_CANVAS_ENDY > ++Y(i) && (X(i) = RT_CANVAS_STARTX))
-		while (RT_CANVAS_ENDX > ++X(i))
+	Y(i) = -1;
+	while (WIN_Y > ++Y(i) && (X(i) = -1))
+		while (WIN_X > ++X(i))
 		{
 			env->tmax = TMAX;
 			env->tmin = TMIN;
-			clr = rt_raytracing(env, (__v4df){X(i) * WIN_X / (1000.0 * WIN_X),
-											Y(i) * WIN_Y / (1000.0 * WIN_Y),
-											env->flags.viewport_scale});
+			clr = rt_raytracing(env, env->pre_calc_d[Y(i)][X(i)]);
 			if (clr.hex)
-				sdl_pixelput(env->sdl->wsurf,
-					CONVERT_FROM_CANVAS(X(i), Y(i), WIN_X, WIN_Y), clr);
+				sdl_pixelput(env->sdl->wsurf, i, clr);
 		}
 	if (env->isr.is_render_fps)
 		rt_render_fps_counter(env);

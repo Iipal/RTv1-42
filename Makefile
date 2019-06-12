@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/12 17:27:52 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/12 19:05:18 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME := RTv1
 NPWD := $(CURDIR)/$(NAME)
 
 CC := gcc -march=native -mtune=native -Ofast -flto -pipe
-CC_DEBUG := gcc -march=native -mtune=native -g3 -D DEBUG
+CC_DEBUG := gcc -march=native -mtune=native -g3 -D DEBUG -fsanitize=address
 CFLAGS := -Wall -Wextra -Werror -Wunused -Wpedantic
 IFLAGS := -I $(CURDIR)/includes \
 	-I $(CURDIR)/libft/includes \

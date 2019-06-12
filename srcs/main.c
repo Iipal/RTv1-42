@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/10 17:56:14 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/12 19:26:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int					main(int argc, string argv[])
+int	main(int argc, string argv[])
 {
 	Environment *env;
 
@@ -25,6 +25,7 @@ int					main(int argc, string argv[])
 	NODO_F(rt_init_textures(env->scene.objs, env->scene.ins_objs,
 			env->sdl->wsurf->format), rt_free(&env));
 	NODO_F(rt_flags_parser(env, argv, argc - 1), rt_free(&env));
+	NODO_F(rt_precalc_d(env), rt_free(&env));
 	if (env->flags.debug_mode)
 	{
 		if (env->flags.print_usage)
