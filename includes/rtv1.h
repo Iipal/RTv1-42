@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/11 17:08:17 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/12 19:25:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ extern bool		rt_init_env(Environment *restrict env);
 extern bool		rt_init_textures(Object *restrict const objs,
 								const size_t ins_objs,
 								const SDL_PixelFormat *format);
+bool			rt_precalc_d(Environment *restrict const env);
 
 /*
 ** SDL render loop, keypresses and keybinds mode switcher:

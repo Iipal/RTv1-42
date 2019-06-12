@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/10 11:23:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/12 18:53:47 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ struct	s_environment
 	double_t	tmax;
 	double_t	tmin;
 	Flags		flags;
+	__v4df		**pre_calc_d;
 };
 
 # define ENV typedef struct s_environment Environment
