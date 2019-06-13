@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/12 21:15:19 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/13 09:13:04 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,10 +60,10 @@ $(OBJ): %.o: %.c
 
 $(LIBFT):
 	@$(LMAKE)
-$(LIBFTSDL):
-	@$(LSDLMAKE)
 $(LIBVEC):
 	@$(LVMAKE)
+$(LIBFTSDL):
+	@$(LSDLMAKE)
 
 $(NAME): $(LIBFT) $(LIBVEC) $(LIBFTSDL) $(OBJ)
 	@echo -n ' <q.p> | $(NPWD): '
@@ -86,14 +86,14 @@ debug: set_cc_debug all
 
 clean:
 	@$(DEL) $(OBJ)
+	@$(LMAKE) clean
 	@$(LVMAKE) clean
 	@$(LSDLMAKE) clean
-	@$(LMAKE) clean
 
 fclean: clean
+	@$(LMAKE) fclean
 	@$(LVMAKE) fclean
 	@$(LSDLMAKE) fclean
-	@$(LMAKE) fclean
 	@$(DEL) $(NAME)
 	@echo "$(INVERT)$(RED)deleted$(WHITE)$(INVERT): $(NPWD)$(WHITE)"
 
@@ -101,8 +101,8 @@ re: fclean all
 
 norme:
 	@$(LMAKE) norme
-	@$(LSDLMAKE) norme
 	@$(LVMAKE) norme
+	@$(LSDLMAKE) norme
 	@echo "$(INVERT)norminette for $(GREEN)$(NAME)$(WHITE)$(INVERT):$(WHITE)"
 	@norminette includes/
 	@norminette $(SRCS)
