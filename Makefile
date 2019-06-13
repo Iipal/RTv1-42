@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/13 09:13:04 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/13 21:41:35 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NPWD := $(CURDIR)/$(NAME)
 
 CC := gcc -march=native -mtune=native -Ofast -flto -pipe
 CC_DEBUG := gcc -march=native -mtune=native -g3 -D DEBUG -fsanitize=address
-CFLAGS := -Wall -Wextra -Werror -Wunused -Wpedantic
+CFLAGS := -Wall -Wextra -Werror -Wunused -Wpedantic -Wno-type-limits
 IFLAGS := -I $(CURDIR)/includes \
 	-I $(CURDIR)/libft/includes \
 	-I $(CURDIR)/libftsdl/includes \
