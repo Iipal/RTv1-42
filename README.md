@@ -63,12 +63,12 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 | --ambientLight        | On how much shadow must be darker. (Greater - brighter)                   | -al      | 0.000001-100.0 | 0.0           | Float      | no                        |
 | --fpsTextColor        | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        | yes                       |
 | --fpsRefreshTimer     | How often will refresh fps counter. (in ms)                               | -frt     | 0-500          | 25            | Integer    | yes                       |
-| --antiAliasing        | Enable randomatic lights intense.                                         | -aa      | 2-16           | 0             | Integer    | no                        |
+| --antiAliasing        | Enable simplified anti-aliasing algorithm.                                | -aa      | 2-16           | 0             | Integer    | no                        |
 | BOOLEAN:              |                                                                           |          |                |               |            |                           |
 | --debug               | Enable keybinds switcher(debug) mode.                                     | -dbg     | none           | not enabled   | none       |                           |
 | --noCalcLight         | Disable calc all light origins.                                           | -ncl     | none           | not enabled   | none       | no                        |
 | --textured            | Enable textured rendering.                                                | -t       | none           | not enabled   | none       | no                        |
-| --randomLightsIntense | Enable randomatic lights intense.                                         | -rli     | none           | not enabled   | none       | yes                       |
+| --randomLightsIntense | Enable randomaize lights intense.                                         | -rli     | none           | not enabled   | none       | yes                       |
 | --printUsage          | Print usage for -dbg mode.                                                | -pu      | none           | not enabled   | none       | yes                       |
 | OTHER:                |                                                                           |          |                |               |            |                           |
 | --noBorder            | Create window without borders.                                            | -nb      | none           | not enabled   | none       | no                        |
