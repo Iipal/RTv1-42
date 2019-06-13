@@ -61,8 +61,8 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 | WITH PARAMS:          |                                                                           |          |                |               |            |                           |
 | --viewportScale       | How many times will be increased viewport.                                | -vps     | 0.000001-10.0  | 1.0           | Float      | no                        |
 | --ambientLight        | On how much shadow must be darker. (Greater - brighter)                   | -al      | 0.000001-100.0 | 0.0           | Float      | no                        |
-| --fpsTextColor        | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        | yes                       |
-| --fpsRefreshTimer     | How often will refresh fps counter. (in ms)                               | -frt     | 0-500          | 25            | Integer    | yes                       |
+| --fpsTextColor        | FPS counter info text color.                                              | -ftc     | All HEX values | 0x7FFF00      | HEX        | yes                       |
+| --fpsRefreshTimer     | How often will refresh FPS counter. (in ms)                               | -frt     | 0-500          | 25            | Integer    | yes                       |
 | --antiAliasing        | Enable simplified anti-aliasing algorithm.                                | -aa      | 2-16           | 0             | Integer    | no                        |
 | BOOLEAN:              |                                                                           |          |                |               |            |                           |
 | --debug               | Enable keybinds switcher(debug) mode.                                     | -dbg     | none           | not enabled   | none       |                           |
