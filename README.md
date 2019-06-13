@@ -65,7 +65,7 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 | --fpsRefreshTimer     | How often will refresh fps counter. (in ms)                               | -frt     | 0-500          | 25            | Integer    | yes                       |
 | --antiAliasing        | Enable randomatic lights intense.                                         | -aa      | 2-16           | 0             | Integer    | no                        |
 | BOOLEAN:              |                                                                           |          |                |               |            |                           |
-| --debug               | Enable keybinds switcher(debug) mode.                                     | -dbg     | none           | none          | none       |                           |
+| --debug               | Enable keybinds switcher(debug) mode.                                     | -dbg     | none           | not enabled   | none       |                           |
 | --noCalcLight         | Disable calc all light origins.                                           | -ncl     | none           | not enabled   | none       | no                        |
 | --textured            | Enable textured rendering.                                                | -t       | none           | not enabled   | none       | no                        |
 | --randomLightsIntense | Enable randomatic lights intense.                                         | -rli     | none           | not enabled   | none       | yes                       |
