@@ -62,7 +62,7 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 | --noCalcLight         | Disable calc all light origins.                                           | -ncl     | none           | not enabled   | none       | no                        |
 | --textured            | Enable textured rendering.                                                | -t       | none           | not enabled   | none       | no                        |
 | --randomLightsIntense | Enable randomatic lights intense.                                         | -rli     | none           | not enabled   | none       | yes                       |
-| --antiAliasing        | Enable randomatic lights intense.                                         | -all     | 2-16           | 0             | Integer    | no                       |
+| --antiAliasing        | Enable randomatic lights intense.                                         | -aa      | 2-16           | 0             | Integer    | no                        |
 | --noBorder            | Create window without borders.                                            | -nb      | none           | not enabled   | none       | no                        |
 | --printUsage          | Print usage for -dbg mode.                                                | -pu      | none           | not enabled   | none       | yes                       |
 | --viewportScale       | How many times will be increased viewport.                                | -vps     | 0.000001-10.0  | 1.0           | Float      | no                        |
