@@ -58,17 +58,21 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 | Flag                  | Description                                                               | Shortcut | Valid values   | Default value | Value type | Dependency on `-dbg` mode |
 | --------------------- | ------------------------------------------------------------------------- | -------- | -------------- | ------------- | ---------- | ------------------------- |
 | --help                | Print short flags description. After print RTv1 will automatically close. | -h       | none           | none          | none       | no                        |
-| --debug               | Enable keybinds switcher(debug) mode.                                     | -dbg     | none           | none          | none       |                           |
-| --noCalcLight         | Disable calc all light origins.                                           | -ncl     | none           | not enabled   | none       | no                        |
-| --textured            | Enable textured rendering.                                                | -t       | none           | not enabled   | none       | no                        |
-| --randomLightsIntense | Enable randomatic lights intense.                                         | -rli     | none           | not enabled   | none       | yes                       |
-| --antiAliasing        | Enable randomatic lights intense.                                         | -aa      | 2-16           | 0             | Integer    | no                        |
-| --noBorder            | Create window without borders.                                            | -nb      | none           | not enabled   | none       | no                        |
-| --printUsage          | Print usage for -dbg mode.                                                | -pu      | none           | not enabled   | none       | yes                       |
+| WITH PARAMS:          |                                                                           |          |                |               |            |                           |
 | --viewportScale       | How many times will be increased viewport.                                | -vps     | 0.000001-10.0  | 1.0           | Float      | no                        |
 | --ambientLight        | On how much shadow must be darker. (Greater - brighter)                   | -al      | 0.000001-100.0 | 0.0           | Float      | no                        |
 | --fpsTextColor        | Render info text color.                                                   | -ftc     | All HEX values | 0x7FFF00      | HEX        | yes                       |
 | --fpsRefreshTimer     | How often will refresh fps counter. (in ms)                               | -frt     | 0-500          | 25            | Integer    | yes                       |
+| --antiAliasing        | Enable randomatic lights intense.                                         | -aa      | 2-16           | 0             | Integer    | no                        |
+| BOOLEAN:              |                                                                           |          |                |               |            |                           |
+| --debug               | Enable keybinds switcher(debug) mode.                                     | -dbg     | none           | none          | none       |                           |
+| --noCalcLight         | Disable calc all light origins.                                           | -ncl     | none           | not enabled   | none       | no                        |
+| --textured            | Enable textured rendering.                                                | -t       | none           | not enabled   | none       | no                        |
+| --randomLightsIntense | Enable randomatic lights intense.                                         | -rli     | none           | not enabled   | none       | yes                       |
+| --printUsage          | Print usage for -dbg mode.                                                | -pu      | none           | not enabled   | none       | yes                       |
+| OTHER:                |                                                                           |          |                |               |            |                           |
+| --noBorder            | Create window without borders.                                            | -nb      | none           | not enabled   | none       | no                        |
+
 #### Example:
 ```bash
 $> ./RTv1 --debug -vps 0.5 -t -pu -ftc 0x1 -frt 0 -al 10 -nb -aa 4 scenes/sphere.rtv1
