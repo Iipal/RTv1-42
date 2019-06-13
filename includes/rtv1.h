@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/12 19:25:33 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/13 16:32:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ void			rt_randomize_lights_intense(Light *restrict const lights,
 ** Ray Tracing:
 */
 void			rt_rendering(Environment *restrict const env);
+Color			rt_anti_aliasing(Environment *restrict const env,
+									const size_t aa, __v4df d_calc);
 
 extern Color	rt_raytracing(Environment *restrict const env, __v4df d);
 

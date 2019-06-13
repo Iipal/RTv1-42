@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:22:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 22:45:19 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/13 16:21:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ inline bool			rt_init_env(Environment *restrict env)
 						DEF_AMBIENT_LIGHT, false,
 						DEF_FPS_TEXT_COLOR, false,
 						DEF_FPS_REFRESH_TIMER, false,
+						DEF_ANTI_ALIASING, false,
 						DEF_DEBUG_MODE,
 						DEF_NO_CALC_LIGHT,
 						DEF_TEXTURED,

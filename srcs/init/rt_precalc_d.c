@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 19:24:48 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/12 19:27:18 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/13 16:00:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ bool	rt_precalc_d(Environment *restrict const env)
 		{
 			++X(tp);
 			env->pre_calc_d[Y(tp)][X(tp)] = (__v4df){
-					X(p) * WIN_X / (1000.0f * WIN_X),
-					Y(p) * WIN_Y / (1000.0f * WIN_Y),
-						env->flags.viewport_scale};
+						X(p) * WIN_X / (1000.0 * WIN_X),
+						Y(p) * WIN_Y / (1000.0 * WIN_Y),
+						env->flags.viewport_scale, 0.0};
 		}
 	}
 	return (true);

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 17:35:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 22:42:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/13 16:04:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static bool			add_curr_fparse(Environment *restrict const env,
 						strtab av, const size_t ac, size_t *const av_i)
 {
 	const t_fbool	fbool[] = {f_dbg, f_ncl, f_tex, f_rli, f_pu};
-	const t_fwparam	fwparam[] = {f_vps, f_al, f_ftc, f_frt};
+	const t_fwparam	fwparam[] = {f_vps, f_al, f_ftc, f_frt, f_aa};
 	const t_fother	fother[] = {f_nb};
 	size_t			fn_num;
 

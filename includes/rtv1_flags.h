@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:28:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/11 14:33:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/13 16:28:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,18 @@
 # define F_HELP     "--help"
 # define SF_HELP    "-h"
 
-# define MAX_WPARAMS_FLAGS 4
+# define MAX_WPARAMS_FLAGS 5
 # define F_VPS      "--viewportScale"
 # define F_AL       "--ambientLight"
 # define F_FTC      "--fpsTextColor"
 # define F_FRT      "--fpsRefreshTimer"
+# define F_AA       "--antiAliasing"
 
 # define SF_VPS     "-vps"
 # define SF_AL      "-al"
 # define SF_FTC     "-ftc"
 # define SF_FRT     "-frt"
+# define SF_AA      "-aa"
 
 # define MAX_BOOLEAN_FLAGS 5
 # define F_DBG      "--debug"
@@ -64,10 +66,12 @@
 # define DEF_PRINT_USAGE        false
 # define DEF_TEXTURED           false
 # define DEF_RANDOM_INTENSE     false
+# define DEF_ANTI_ALIASING      0
 
 # define E_MAX_VPS  10
 # define E_MAX_AL   100
 # define E_MAX_FRT  500
+# define E_MAX_AA   16
 
 /*
 ** Flags parsing errno messages:
@@ -79,6 +83,7 @@
 # define E_AL       F_AL " flag"
 # define E_FTC      F_FTC " flag"
 # define E_FRT      F_FRT " flag"
+# define E_AA       F_AA " flag"
 # define E_DBG      F_DBG " flag"
 # define E_NCL      F_NCL " flag"
 # define E_TEX      F_TEX " flag"
@@ -88,6 +93,7 @@
 # define E_REPEAT_FLAG(flag) WARNING flag " was already set before. Ignoring."
 
 # define E_MISPARM  "Missed param for "
+# define E_MP_AA    ERR E_MISPARM E_AA "."
 # define E_MP_VPS   ERR E_MISPARM F_VPS "."
 # define E_MP_AL    ERR E_MISPARM F_AL "."
 # define E_MP_FTC   ERR E_MISPARM E_FTC "."
@@ -98,13 +104,18 @@
 
 # define E_VPS_ZERO  ERR E_VPS " param is 0."
 # define E_AL_ZERO   ERR E_AL " param is 0."
+# define E_AA_ZERO   ERR E_AA " param is 0."
 # define E_FTC_ZERO  ERR E_FTC " param invalid or 0x0."
 
+# define E_AA_USLS  ERR E_AA " param is 1. It's make no sense."
+
 # define E_MAX_10   " param greate than 10. Max is 10."
+# define E_MAX_16   " param greate than 16. Max is 16."
 # define E_MAX_100  " param greate than 100. Max is 100."
 # define E_MAX_500  " param greate than 500. Max is 500."
 
 # define E_WARN_VPS ERR E_VPS E_MAX_10
+# define E_WARN_AA  ERR E_VPS E_MAX_16
 # define E_WARN_AL  ERR E_AL E_MAX_100
 # define E_WARN_FRT ERR E_FRT E_MAX_500
 
@@ -133,6 +144,8 @@ extern bool		f_al(Flags *const f, strtab av,
 extern bool		f_ftc(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
 extern bool		f_frt(Flags *const f, strtab av,
+					const size_t ac, size_t *const av_i);
+extern bool		f_aa(Flags *const f, strtab av,
 					const size_t ac, size_t *const av_i);
 
 extern size_t	rt_is_flag_boolean(string flag);

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/12 18:53:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/13 16:22:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ struct	s_flags
 	bool	is_parsed_ftc;
 	float_t	fps_refresh_timer;
 	bool	is_parsed_frt;
+	uint8_t	anti_aliasing;
+	bool	is_parsed_aa;
 	bool	debug_mode;
 	bool	no_calc_light;
 	bool	textured;
