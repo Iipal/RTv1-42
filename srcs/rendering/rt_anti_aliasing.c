@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/13 16:31:16 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/13 16:34:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/13 22:06:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ Color	rt_anti_aliasing(Environment *restrict const env,
 		}
 		Y(d_calc) += step;
 	}
-	outclr = (Color){.c = { INRANGE(X(colors) / (aa * aa)),
+	return ((Color) {.c = { INRANGE(X(colors) / (aa * aa)),
 							INRANGE(Y(colors) / (aa * aa)),
-							INRANGE(Z(colors) / (aa * aa)) }};
-	return (outclr);
+							INRANGE(Z(colors) / (aa * aa)) } } );
 }
