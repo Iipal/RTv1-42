@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/10 11:23:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/13 21:41:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,17 @@
 # ifdef __APPLE__
 #  define WIN_X 2000
 #  define WIN_Y 1000
-
-#  define RT_CANVAS_STARTX   -1000
-#  define RT_CANVAS_STARTY   -500
-#  define RT_CANVAS_ENDX     1000
-#  define RT_CANVAS_ENDY     500
 # endif
-
-/*
-** RT_CANVAS_STARTX equals to: -(WIN_X / 2)
-** RT_CANVAS_STARTY equals to: -(WIN_Y / 2)
-** RT_CANVAS_ENDX   equals to: WIN_X / 2
-** RT_CANVAS_ENDY   equals to: WIN_Y / 2
-*/
 
 # ifdef __linux__
 #  define WIN_X 800
 #  define WIN_Y 400
-
-#  define RT_CANVAS_STARTX   -450
-#  define RT_CANVAS_STARTY   -225
-#  define RT_CANVAS_ENDX     450
-#  define RT_CANVAS_ENDY     225
 # endif
+
+# define RT_CANVAS_STARTX -(WIN_X / 2)
+# define RT_CANVAS_STARTY -(WIN_Y / 2)
+# define RT_CANVAS_ENDX   WIN_X / 2
+# define RT_CANVAS_ENDY   WIN_Y / 2
 
 # define MAX(a, b) (((a) > (b)) ? (a) : (b))
 
