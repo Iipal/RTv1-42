@@ -1,12 +1,17 @@
 Flags usage:
  ./RTv1 [flags-params] scenes/scene_file.rtv1
  -h, --help: print this message
- -dbg, --debug: activate switcher binds mode. Default: not enable.
- -vps, --viewportScale: integer param 1-10. Default: 1.
- -al, --ambientLight: integer param 1-25. Default: 100.
- -ftc, --fpsTextColor: hex param 0x1-0xffffff. Default: 0x80ff00.
- -frt, --fpsRefreshTimer: how often will refresh FPS counter. Default: 25(in ms).
- -ncl, --noCalcLight: disable calc all light origins. Default: not enable.
- -t, --textured: enable textured rendering. Default: not enable.
- -rli, --randomLightsIntense: enable randomatic lights intense. Default: not enable.
- -pu, --printUsage: print -dbg mode usage. Default: not enable.
+ With params:
+  -vps, --viewportScale: integer param 1-10. Default: 1.
+  -al, --ambientLight: integer param 1-25. Default: 100.
+  -ftc, --fpsTextColor: hex param 0x1-0xffffff. Default: 0x80ff00.
+  -frt, --fpsRefreshTimer: how often will refresh FPS counter. Default: 25(in ms).
+  -aa, --antiAliasing: simpliefier anti-aliasing grid calcs. Default: 0.
+ Boolean:
+  -dbg, --debug: activate switcher binds mode. Default: not enabled.
+  -ncl, --noCalcLight: disable calc all light origins. Default: not enabled.
+  -t, --textured: enable textured rendering. Default: not enabled.
+  -rli, --randomLightsIntense: enable randomatic lights intense. Default: not enabled.
+  -pu, --printUsage: print -dbg mode usage. Default: not enabled.
+ Other:
+  -nb, --noBorder: create window without borders. Default: not enabled.
