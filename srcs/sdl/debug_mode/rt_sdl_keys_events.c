@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:12:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/10 11:24:03 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/14 10:51:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ static inline __attribute__((__always_inline__)) void	add_default_keys_event(
 {
 	if (env->isr.is_inc_ambient_light)
 		env->flags.ambient_light =
-			u_d_range(env->flags.ambient_light + env->fps.move, 100, 1);
+			u_d_range(env->flags.ambient_light - env->fps.move, 100, 1);
 	if (env->isr.is_dec_ambient_light)
 		env->flags.ambient_light =
-			u_d_range(env->flags.ambient_light - env->fps.move, 100, 1);
+			u_d_range(env->flags.ambient_light + env->fps.move, 100, 1);
 }
 
 void				rt_sdl_keys_events(Environment *restrict const env)
