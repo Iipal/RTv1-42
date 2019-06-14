@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/14 13:45:21 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/14 17:11:39 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ IFLAGS := -I $(CURDIR)/includes \
 	-I $(CURDIR)/libft/includes \
 	-I $(CURDIR)/libftsdl/includes \
 	-I $(CURDIR)/libvectors/includes \
-	-I $(CURDIR)/parson
+	-I $(CURDIR)/libparson
 LIBSINC :=
 LIBS :=
 
