@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/13 16:32:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/14 13:29:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define RTV1_H
 
 # include <math.h>
+# include "parson.h"
 # include "libftsdl.h"
 # include "rtv1_structs.h"
 # include "rtv1_flags.h"
@@ -28,6 +29,8 @@ extern bool		rt_valid_filename(char *const file);
 /*
 ** Read and validate scene file:
 */
+bool			rt_parse_scene(Environment *env,
+							const char *const scene_file);
 bool			rt_read_scene(Environment *restrict const env,
 							const char *const scene_file);
 extern bool		rt_read_vec(string *const s, __v4df *const v);
