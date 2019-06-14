@@ -26,7 +26,7 @@ $> brew install sdl2 sdl2_image sdl2_ttf
 ###### I'm not tested this on other OS or distros.
 
 ### Additional info:
-This project inlcudes also a few my other projects. It's libraries [libvectors]((https://github.com/Iipal/libvectors)), [libft](https://github.com/Iipal/lft) and [libftsdl](https://github.com/Iipal/libftsdl).
+This project inlcudes also a few my other projects. It's libraries [libvectors](https://github.com/Iipal/libvectors), [libft](https://github.com/Iipal/lft) and [libftsdl](https://github.com/Iipal/libftsdl), and 1 other - forked [parson](https://github.com/Iipal/parson)
 
 ## Compiling
 
