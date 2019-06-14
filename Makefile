@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/13 21:41:35 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/14 13:45:21 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ CFLAGS := -Wall -Wextra -Werror -Wunused -Wpedantic -Wno-type-limits
 IFLAGS := -I $(CURDIR)/includes \
 	-I $(CURDIR)/libft/includes \
 	-I $(CURDIR)/libftsdl/includes \
-	-I $(CURDIR)/libvectors/includes
+	-I $(CURDIR)/libvectors/includes \
+	-I $(CURDIR)/parson
 LIBSINC :=
 LIBS :=
 
@@ -34,11 +35,14 @@ SRCS := $(abspath $(wildcard srcs/*.c srcs/*/*.c srcs/*/*/*.c))
 OBJ := $(SRCS:.c=.o)
 
 LIBFT := $(CURDIR)/libft/libft.a
-LMAKE := make -C libft
-LIBFTSDL := $(CURDIR)/libftsdl/libftsdl.a
-LSDLMAKE := make -C libftsdl
 LIBVEC := $(CURDIR)/libvectors/libvectors.a
+LIBFTSDL := $(CURDIR)/libftsdl/libftsdl.a
+LIBPARSON := $(CURDIR)/parson/libparson.a
+
+LMAKE := make -C libft
 LVMAKE := make -C libvectors
+LSDLMAKE := make -C libftsdl
+LPARSONMAKE := make -C libparson
 
 DEL := rm -rf
 
@@ -64,8 +68,10 @@ $(LIBVEC):
 	@$(LVMAKE)
 $(LIBFTSDL):
 	@$(LSDLMAKE)
+$(LIBPARSON):
+	@$(LPARSONMAKE)
 
-$(NAME): $(LIBFT) $(LIBVEC) $(LIBFTSDL) $(OBJ)
+$(NAME): $(LIBFT) $(LIBVEC) $(LIBFTSDL) $(LIBPARSON) $(OBJ)
 	@echo -n ' <q.p> | $(NPWD): '
 	@$(CC) $(OBJ) $(LIBS) $(LIBFT) $(LIBVEC) $(LIBFTSDL) -o $(NAME)
 	@echo "$(SUCCESS2)"
@@ -89,17 +95,20 @@ clean:
 	@$(LMAKE) clean
 	@$(LVMAKE) clean
 	@$(LSDLMAKE) clean
+	@$(LPARSONMAKE) clean
 
 fclean: clean
+	@$(DEL) $(NAME)
 	@$(LMAKE) fclean
 	@$(LVMAKE) fclean
 	@$(LSDLMAKE) fclean
-	@$(DEL) $(NAME)
+	@$(LPARSONMAKE) fclean
 	@echo "$(INVERT)$(RED)deleted$(WHITE)$(INVERT): $(NPWD)$(WHITE)"
 
 re: fclean all
 
 norme:
+	@echo "$(INVERT)$(RED) WARNING:$(WHITE)$(INVERT) for lib parson norme is not neccessary.$(WHITE)"
 	@$(LMAKE) norme
 	@$(LVMAKE) norme
 	@$(LSDLMAKE) norme
