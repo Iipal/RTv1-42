@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/14 17:11:39 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/06/14 19:03:44 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ OBJ := $(SRCS:.c=.o)
 LIBFT := $(CURDIR)/libft/libft.a
 LIBVEC := $(CURDIR)/libvectors/libvectors.a
 LIBFTSDL := $(CURDIR)/libftsdl/libftsdl.a
-LIBPARSON := $(CURDIR)/parson/libparson.a
+LIBPARSON := $(CURDIR)/libparson/libparson.a
 
 LMAKE := make -C libft
 LVMAKE := make -C libvectors
@@ -73,7 +73,7 @@ $(LIBPARSON):
 
 $(NAME): $(LIBFT) $(LIBVEC) $(LIBFTSDL) $(LIBPARSON) $(OBJ)
 	@echo -n ' <q.p> | $(NPWD): '
-	@$(CC) $(OBJ) $(LIBS) $(LIBFT) $(LIBVEC) $(LIBFTSDL) -o $(NAME)
+	@$(CC) $(OBJ) $(LIBS) $(LIBFT) $(LIBVEC) $(LIBFTSDL) $(LIBPARSON) -o $(NAME)
 	@echo "$(SUCCESS2)"
 
 del:

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:43:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/12 17:18:56 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/14 19:22:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,8 @@ SCENE;
 # define TEX_WOOD       "resources/wood.jpg"
 # define TEX_RUBBLE     "resources/rubble.jpg"
 
-# define FP_CAM         "Camera:"
-# define FP_LIGHT       "Light:"
+# define FP_CAM         "Camera"
+# define FP_LIGHT       "Light"
 # define FP_SHADOWS     "eShadow"
 
 # define FP_MAX_OBJS    4
@@ -135,6 +135,8 @@ SCENE;
 # define MAX_L_INTENS   1.0f
 # define MIN_L_INTENS   .0f
 
+# define DEF_VEC_SIZE   3
+
 /*
 ** Scene parsing errno messages:
 */
@@ -159,6 +161,13 @@ SCENE;
 # define E_NOCAM    ERR "No camera in scene founded."
 # define E_NOLIGHT  ERR "No origin lights in scene founded."
 # define E_NOOBJS   ERR "No objects in scene founded."
+
+# define W_MISS_PARAM(param, obj) WARNING "Missing " param " param for " obj
+# define E_MISS_PARAM(param, obj) ERR "Missing " param " param for " obj
+# define E_IN_PARAM(obj, err) ERR "In " obj ": " err
+
+# define E_VEC_SIZE "Wrong vector size."
+# define E_VEC_FRMT "Wrong vector format."
 
 # define E_INRANGE  " not in available range"
 # define E_CAMDIR   "Camera destination point(rotation)" E_INRANGE

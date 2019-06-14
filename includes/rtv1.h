@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/14 13:29:41 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/14 19:26:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ extern bool		rt_valid_filename(char *const file);
 */
 bool			rt_parse_scene(Environment *env,
 							const char *const scene_file);
+bool			rt_parse_cam(Camera *const camera,
+							JSON_Object *const root_obj);
+
+bool			rt_parce_array_to_vec(const JSON_Array *const arr,
+							__v4df *const dst);
+
 bool			rt_read_scene(Environment *restrict const env,
 							const char *const scene_file);
 extern bool		rt_read_vec(string *const s, __v4df *const v);
