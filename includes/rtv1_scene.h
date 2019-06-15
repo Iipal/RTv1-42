@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:43:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/14 19:22:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/15 13:45:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,26 @@
 /*
 ** Scene structs, pointers to functions & enum:
 */
-enum	e_type
+enum	e_object_types
 {
 	sphere,
 	plane,
 	cone,
 	cylinder,
 	max_objs
-};
+} __attribute__((packed));
 
-# define ETYPE typedef enum e_type  Type
+enum	e_light_types
+{
+	point,
+	direct,
+} __attribute__((packed));
 
-ETYPE;
+# define E_OBJ_TYPES  typedef enum e_object_types objType
+# define E_LGHT_TYPES typedef enum e_light_types  lightType
+
+E_OBJ_TYPES;
+E_LGHT_TYPES;
 
 struct	s_camera
 {
@@ -44,6 +52,7 @@ struct	s_light
 {
 	__v4df		pos;
 	__v4df		dir;
+	lightType	type;
 	double_t	intens;
 };
 
@@ -63,7 +72,7 @@ struct	s_object
 	Color		clr;
 	double_t	radius;
 	double_t	spec;
-	Type		type;
+	objType		type;
 	SDL_Surface	*texture;
 	t_fn_inter	fn_inter_calc;
 	t_fn_normal	fn_normal_calc;
@@ -114,6 +123,10 @@ SCENE;
 # define FP_PLANE       "Plane:"
 # define FP_CYLINDER    "Cylinder:"
 
+# define MAX_LT    2
+# define LT_POINT  "point"
+# define LT_DIRECT "direct"
+
 # define MAX_X  1500
 # define MAX_Z  1500
 # define MAX_Y  1500
@@ -131,6 +144,7 @@ SCENE;
 # define MAX_ROT_ANGLE  360.0f
 # define MIN_ROT_ANGLE  -MAX_ROT_ANGLE
 
+
 # define MAX_LIGHTS     5
 # define MAX_L_INTENS   1.0f
 # define MIN_L_INTENS   .0f
@@ -140,17 +154,6 @@ SCENE;
 /*
 ** Scene parsing errno messages:
 */
-# define PERR       " ERROR"
-# define ERR        " ERROR: "
-# define WARNING    " WARNING: "
-
-# define E_DIR      ERR "Invalid executable path."
-# define E_ALLOC    ERR "Where is memory, pal ?"
-
-# define E_FNMAE    ERR "Missing file name."
-# define E_EFILE    ERR "Empty scene file."
-# define E_FILEXT   ERR "Invalid scene file extension. (.rtv1)"
-# define E_ISYNTAX  ERR "Invalid scene file syntax."
 
 # define E_DUP      ERR "In scene cannot be more than "
 # define E_DCAMERA  E_DUP "1 camera."
@@ -164,19 +167,32 @@ SCENE;
 
 # define W_MISS_PARAM(param, obj) WARNING "Missing " param " param for " obj
 # define E_MISS_PARAM(param, obj) ERR "Missing " param " param for " obj
-# define E_IN_PARAM(obj, err) ERR "In " obj ": " err
 
-# define E_VEC_SIZE "Wrong vector size."
-# define E_VEC_FRMT "Wrong vector format."
+# define E_VEC_SIZE "Wrong vector size: "
+# define E_VEC_FRMT "Wrong vector format: "
 
 # define E_INRANGE  " not in available range"
 # define E_CAMDIR   "Camera destination point(rotation)" E_INRANGE
 # define E_CAMPOS   "Camera position" E_INRANGE
+
+# define E_LIGHTYPE     "Missing light type"
+# define E_INVALID_LT   "Invalid light type"
+
+# define E_LPOINT_DIR   ERR "'direction' in 'point' light types is useless."
+
+# define E_LPOS_MISS    "Missing light position"
+# define E_LDIR_MISS    "Missing light direction"
+# define E_LINTENS_MISS "Missing light intensity"
+# define E_LI_LESS_ZERO "Light intensity less than 0.0"
+# define E_LI_GRT_ZERO  "Light intensity greater than 1.0"
+
 # define E_LIGHTPOS "Light position" E_INRANGE
 # define E_LINTENSE "Light intensity" E_INRANGE
+
 # define E_OBJPOS   "Object position" E_INRANGE
 # define E_OBJRAD   "Object radius" E_INRANGE
 # define E_OBJSPEC  "Object specular intensity" E_INRANGE
+
 # define E_OCONERAD "Cone radius" E_INRANGE ". min 1 - max 3."
 
 # define ERRIN_NUM(msg, n) MSG(msg);ft_putnbr(n)
