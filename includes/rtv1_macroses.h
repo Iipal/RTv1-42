@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/15 09:35:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/15 18:10:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,5 @@
 # define MOVE_SPEED_PERCENT_SUP     3.5f
 # define MOVE_SPEED_PERCENT_SDOWN   .15f
 # define MOVE_SPEED_PERCENT_STEP    .05f
-
-
-
 
 #endif
