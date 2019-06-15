@@ -6,16 +6,16 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 15:40:27 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/15 19:05:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/15 23:06:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-bool			rt_parse_sphere(const JSON_Object *const object_obj,
-							Object *const obj, const size_t curr_obj)
+bool	rt_parse_sphere(const JSON_Object *const object_obj,
+			Object *const obj, const size_t curr_obj)
 {
-	IFDO_F(json_object_has_value_of_type(object_obj, "direction", JSONArray),
+	NODO_F(rt_parse_exclude_param(object_obj, "direction"),
 		ERRIN_N(E_SPHERE_DIR, curr_obj + 1, E_IN_OBJ));
 	NODO_F(json_object_has_value_of_type(object_obj, "position", JSONArray),
 		ERRIN_N(E_OPOS_MISS, curr_obj + 1, E_IN_OBJ));
@@ -39,10 +39,10 @@ bool			rt_parse_sphere(const JSON_Object *const object_obj,
 	return (true);
 }
 
-bool			rt_parse_plane(const JSON_Object *const object_obj,
-							Object *const obj, const size_t curr_obj)
+bool	rt_parse_plane(const JSON_Object *const object_obj,
+			Object *const obj, const size_t curr_obj)
 {
-	IFDO_F(json_object_has_value_of_type(object_obj, "radius", JSONNumber),
+	NODO_F(rt_parse_exclude_param(object_obj, "radius"),
 		ERRIN_N(E_PLANE_RAD, curr_obj + 1, E_IN_OBJ));
 	NODO_F(json_object_has_value_of_type(object_obj, "direction", JSONArray),
 		ERRIN_N(E_ODIR_MISS, curr_obj + 1, E_IN_OBJ));

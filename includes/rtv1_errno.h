@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 09:33:35 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/15 09:37:41 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/15 23:04:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@
 # define E_FNMAE    ERR "Missing file name."
 # define E_EFILE    ERR "Empty scene file."
 # define E_FILEXT   ERR "Invalid scene file extension. (.json)"
-# define E_ISYNTAX  ERR "Invalid scene file syntax."
+# define E_ISYNTAX  ERR "Invalid scene file syntax or file doesn't exist."
 
 #endif

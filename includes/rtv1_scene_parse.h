@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 17:38:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/15 18:57:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/15 23:15:49 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ bool		rt_parse_color(string hex_str,
 				Color *const dst,
 				const size_t parsing_obj_counter);
 
-extern bool	rt_read_vec(string *const s, __v4df *const v);
+bool		rt_parse_exclude_param(const JSON_Object *const obj, string param);
 
 bool		rt_parsed_validation(Scene *restrict const s);
 
@@ -126,22 +126,24 @@ bool		rt_parsed_validation(Scene *restrict const s);
 # define E_INVALID_OT  E_INVALID_OBJ " type"
 # define E_INVALID_LT  E_INVALID_LGT " type"
 
-# define E_LTYPE_MISS   "Missing light type"
-# define E_LPOS_MISS    "Missing light position"
-# define E_LDIR_MISS    "Missing light direction"
-# define E_LINTENS_MISS "Missing light intensity"
+# define E_MISS         "Missing or invalid "
+
+# define E_LTYPE_MISS   E_MISS "light type"
+# define E_LPOS_MISS    E_MISS "light position"
+# define E_LDIR_MISS    E_MISS "light direction"
+# define E_LINTENS_MISS E_MISS "light intensity"
 # define E_LI_LESS_ZERO "Light intensity less than 0.0"
 # define E_LI_GRT_ZERO  "Light intensity greater than 1.0"
 
-# define E_OTYPE_MISS   "Missing object type"
-# define E_OPOS_MISS    "Missing object position"
-# define E_OCLR_MISS    "Missing object color"
-# define E_OCLR_0X_MISS "Missing '0x' at start of the object color HEX value"
+# define E_OTYPE_MISS   E_MISS "object type"
+# define E_OPOS_MISS    E_MISS "object position"
+# define E_OCLR_MISS    E_MISS "object color"
+# define E_OCLR_0X_MISS E_MISS "'0x' at start of the object color HEX value"
 # define E_OCLR_SPECTR  "Invalid color for object. " CLR_DEF_MAX_SPECTRUM
 # define E_INVALID_CLR  "Invalid color of 0x0. Min 0x1."
-# define E_ORADIUS_MISS "Missing object radius"
-# define E_OSPEC_MISS   "Missing object specular"
-# define E_ODIR_MISS    "Missing object direction"
+# define E_ORADIUS_MISS E_MISS "object radius"
+# define E_OSPEC_MISS   E_MISS "object specular"
+# define E_ODIR_MISS    E_MISS "object direction"
 
 # define E_LPOINT_DIR "'direction' in 'point' light types is useless"
 # define E_SPHERE_DIR "'direction' in 'sphere' object types is useless"
