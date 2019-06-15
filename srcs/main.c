@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/15 14:21:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/15 17:54:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, string argv[])
 	{
 		if (env->flags.print_usage)
 			ft_putfile(RTV1_USAGE);
-		rt_render_loop(env);
+		rt_sdl_render_loop(env);
 	}
 	else
 		rt_sdl_fake_render_loop(env);
