@@ -3,11 +3,11 @@
         "position": [0.0, 0.0, -1.0],
         "rotation": [0.001, 0.001, 0.001]
     },
-    "Lights": {
-        "type": "point",
-        "position": [0.0, 0.0, 0.0],
-        "intensity": 1.0
-    },
+    "Lights": [ {
+            "type": "point",
+            "position": [0.0, 0.0, 0.0]
+        }
+    ],
     "Objects": [ {
             "type": "Sphere",
             "position": [0.0, 0.0, 5],
