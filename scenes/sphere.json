@@ -4,16 +4,15 @@
         "rotation": [0.0, 0.0, 0.0]
     },
     "Lights": [ {
-            "type": "direction",
+            "type": "point",
             "position": [0.0, 0.0, 0.0],
-            "intensity": 1.0,
-            "direction": [0.0, 0.0, 0.0]
+            "intensity": 1
         }
     ],
     "Objects": [ {
             "type": "Sphere",
             "position": [0.0, 0.0, 5],
-            "color": "0xfc6419",
+            "color": "0xfc64ff",
             "radius": 1.0002,
             "specular": 500
         }

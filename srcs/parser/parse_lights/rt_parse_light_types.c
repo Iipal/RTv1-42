@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 11:00:16 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/15 15:54:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/15 18:14:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ bool			rt_parse_point_light(const JSON_Object *const light_obj,
 							const size_t curr_light)
 {
 	light->type = direct;
-	NODO_F(json_object_has_value_of_type(light_obj, "direction", JSONArray),
+	IFDO_F(json_object_has_value_of_type(light_obj, "direction", JSONArray),
 		ERRIN_N(E_LPOINT_DIR, curr_light + 1, E_IN_LIGHT));
 	NODO_F(json_object_has_value_of_type(light_obj, "position", JSONArray),
 		ERRIN_N(E_LPOS_MISS, curr_light + 1, E_IN_LIGHT));

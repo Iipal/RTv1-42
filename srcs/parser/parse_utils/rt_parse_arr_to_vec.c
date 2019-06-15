@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 17:49:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/15 14:44:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/15 19:04:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ bool	rt_parse_arr_to_vec(const JSON_Array *const arr,
 	size_t	i;
 
 	i = ~0UL;
+	NODO_F(arr, ERRIN_N(obj_name, parsing_obj_counter + 1, E_INVALID_ARR));
 	IFDO_F(DEF_VEC_SIZE != json_array_get_count(arr),
 		ERRIN_N(obj_name, parsing_obj_counter + 1, E_VEC_FRMT));
 	while (DEF_VEC_SIZE > ++i)
