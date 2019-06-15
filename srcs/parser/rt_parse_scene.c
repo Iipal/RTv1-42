@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 13:23:08 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/14 18:19:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/15 11:55:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ bool	rt_parse_scene(Environment *env, const char *const scene_file)
 
 	NOM_F(E_ISYNTAX, root = json_parse_file(scene_file));
 	obj = json_value_get_object(root);
-	rt_parse_cam(&env->scene.cam, obj);
+	NODO_F(rt_parse_cam(&env->scene.cam, obj), json_value_free(root));
+	NODO_F(rt_parse_lights(&env->scene, obj), json_value_free(root));
 	json_value_free(root);
 	return (true);
 }
