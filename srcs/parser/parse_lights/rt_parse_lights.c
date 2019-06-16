@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 09:47:24 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/15 23:21:42 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/16 11:14:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,14 @@ static bool	add_parse_current_light(JSON_Object *light_obj,
 				const size_t curr_light)
 {
 	const t_fn_lght	fn_lights[] = {rt_parse_point_light, rt_parse_dir_light};
-	const string	available_light_types[] = {LT_POINT, LT_DIRECT};
+	const string	l_types[] = {LT_POINT, LT_DIRECT};
 	const char		*light_type = json_object_get_string(light_obj, "type");
 	size_t			i;
 
 	i = ~0ULL;
 	NODO_F(light_type, ERRIN_N(E_LTYPE_MISS, curr_light + 1, E_IN_LIGHT));
 	while (MAX_LT > ++i)
-		if (!ft_strncmp((string)light_type, available_light_types[i],
-			ft_strlen(available_light_types[i])))
+		if (!ft_strncmp((string)light_type, l_types[i], ft_strlen(l_types[i])))
 			return (fn_lights[i](light_obj, l, curr_light));
 	NODO_F(false, ERRIN_N(E_UNKNOWN_LGT_TYPE, curr_light + 1, E_IN_LIGHT));
 	return (true);

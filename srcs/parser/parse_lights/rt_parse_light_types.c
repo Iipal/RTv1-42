@@ -6,15 +6,15 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 11:00:16 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/15 23:43:10 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/16 11:10:00 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-bool			rt_parse_point_light(const JSON_Object *const light_obj,
-							Light *const light,
-							const size_t curr_light)
+inline bool	rt_parse_point_light(const JSON_Object *const light_obj,
+				Light *const light,
+				const size_t curr_light)
 {
 	NODO_F(rt_parse_exclude_param(light_obj, "direction"),
 		ERRIN_N(E_LPOINT_DIR, curr_light + 1, E_IN_LIGHT));
@@ -34,9 +34,9 @@ bool			rt_parse_point_light(const JSON_Object *const light_obj,
 	return (true);
 }
 
-bool			rt_parse_dir_light(const JSON_Object *const light_obj,
-							Light *const light,
-							const size_t curr_light)
+inline bool	rt_parse_dir_light(const JSON_Object *const light_obj,
+				Light *const light,
+				const size_t curr_light)
 {
 	NODO_F(json_object_has_value_of_type(light_obj, "direction", JSONArray),
 		ERRIN_N(E_LDIR_MISS, curr_light + 1, E_IN_LIGHT));

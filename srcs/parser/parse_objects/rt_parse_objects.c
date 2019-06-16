@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 14:04:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/15 22:23:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/16 11:17:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ static bool	add_parse_current_object(JSON_Object *object_obj,
 				Object *const obj,
 				const size_t curr_obj)
 {
-	const t_fn_obj	fn_objs[] = {rt_parse_sphere, rt_parse_plane};
-	const string	available_obj_types[] = {FP_SPHERE, FP_PLANE};
+	const t_fn_obj	fn_objs[] = {rt_parse_sphere, rt_parse_cone,
+								rt_parse_plane, rt_parse_cylinder};
+	const string	o_types[] = {FP_SPHERE, FP_CONE, FP_PLANE, FP_CYLINDER};
 	const char		*obj_type = json_object_get_string(object_obj, "type");
 	size_t			i;
 
 	i = ~0ULL;
 	NODO_F(obj_type, ERRIN_N(E_OTYPE_MISS, curr_obj + 1, E_IN_OBJ));
-	while (2 > ++i)
-		if (!ft_strncmp((string)obj_type, available_obj_types[i],
-			ft_strlen(available_obj_types[i])))
+	while (FP_MAX_OBJS > ++i)
+		if (!ft_strncmp((string)obj_type, o_types[i], ft_strlen(o_types[i])))
 			return (fn_objs[i](object_obj, obj, curr_obj));
 	NODO_F(false, ERRIN_N(E_UNKNOWN_OBJ_TYPE, curr_obj + 1, E_IN_OBJ));
 	return (true);

@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 13:23:08 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/15 13:54:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/16 11:08:44 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-bool	rt_parse_scene(Environment *env, const char *const scene_file)
+inline bool	rt_parse_scene(Environment *env, const char *const scene_file)
 {
 	JSON_Value	*root;
 	JSON_Object	*obj;
