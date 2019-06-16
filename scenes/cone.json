@@ -1,0 +1,21 @@
+{
+    "Camera": {
+        "position": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0]
+    },
+    "Lights": [ {
+            "type": "point",
+            "position": [3, 0.0, 4],
+            "intensity": 1
+        }
+    ],
+    "Objects": [ {
+            "type": "Cone",
+            "position": [0.0, 0.0, 10],
+            "direction": [1.0, 1.0, -1.0],
+            "color": "0xf21f42",
+            "radius": 1.0,
+            "specular": 1000
+        }
+    ]
+}

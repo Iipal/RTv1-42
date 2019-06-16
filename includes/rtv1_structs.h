@@ -6,14 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/13 16:22:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/15 18:09:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTV1_STRUCTS_H
 # define RTV1_STRUCTS_H
 
-# include "rtv1_scene.h"
+# include "rtv1_scene_structs.h"
 
 struct	s_isrender
 {

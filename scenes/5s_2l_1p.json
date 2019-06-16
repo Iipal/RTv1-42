@@ -1,0 +1,54 @@
+{
+    "Camera": {
+        "position": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0]
+    },
+    "Lights": [ {
+            "type": "point",
+            "position": [5, 4, 5],
+            "intensity": 0.7
+        }, {
+            "type": "point",
+            "position": [3, 4, 3],
+            "intensity": 0.3
+        }
+    ],
+    "Objects": [ {
+            "type": "Sphere",
+            "position": [-2, 0, 10],
+            "color": "0xaa11fa",
+            "radius": 1,
+            "specular": 100
+        }, {
+            "type": "Sphere",
+            "position": [2, 1, 20],
+            "color": "0xccacaa",
+            "radius": 1,
+            "specular": 100
+        }, {
+            "type": "Sphere",
+            "position": [0, -1, 11],
+            "color": "0x11cdf0",
+            "radius": 1,
+            "specular": 100
+        }, {
+            "type": "Sphere",
+            "position": [-1, 2, 16],
+            "color": "0x11fa1a",
+            "radius": 1,
+            "specular": 100
+        }, {
+            "type": "Sphere",
+            "position": [3, 0, 10],
+            "color": "0x424242",
+            "radius": 1,
+            "specular": 100
+        }, {
+            "type": "Plane",
+            "position": [0, -5, 0],
+            "direction": [0, 1, 0],
+            "color": "0xafaffa",
+            "specular": 5000
+        }
+    ]
+}

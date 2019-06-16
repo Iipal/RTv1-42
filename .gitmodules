@@ -7,3 +7,6 @@
 [submodule "libvectors"]
 	path = libvectors
 	url = git@github.com:Iipal/libvectors
+[submodule "libparson"]
+	path = libparson
+	url = git@github.com:Iipal/parson.git

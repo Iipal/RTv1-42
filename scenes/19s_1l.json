@@ -1,0 +1,129 @@
+{
+    "Camera": {
+        "position": [0.0, 0.0, -1.0],
+        "rotation": [0.0, 0.0, 0.0]
+    },
+    "Lights": [ {
+            "type": "point",
+            "position": [4, -4, 4],
+            "intensity": 1
+        }
+    ],
+    "Objects": [ {
+            "type": "Sphere",
+            "position": [0.0, 1, 10],
+            "color": "0xaa11ff",
+            "radius": 1,
+            "specular": 500
+        }, {
+            "type": "Sphere",
+            "position": [1, 1, 16],
+            "color": "0xffacaa",
+            "radius": 1,
+            "specular": 500
+        }, {
+            "type": "Sphere",
+            "position": [6, 3, 21],
+            "color": "0xabcdef",
+            "radius": 1,
+            "specular": 500
+        }, {
+            "type": "Sphere",
+            "position": [11, 4, 15],
+            "color": "0xfedcba",
+            "radius": 1,
+            "specular": 500
+        }, {
+            "type": "Sphere",
+            "position": [-5, 3, 15],
+            "color": "0x123456",
+            "radius": 1,
+            "specular": 500
+        }, {
+            "type": "Sphere",
+            "position": [-5, 2, 25],
+            "color": "0x654321",
+            "radius": 1,
+            "specular": 500
+        }, {
+            "type": "Sphere",
+            "position": [0, 6, 40],
+            "color": "0x135791",
+            "radius": 1,
+            "specular": 500
+        }, {
+            "type": "Sphere",
+            "position": [-4, 7, 20],
+            "color": "0x197531",
+            "radius": 1,
+            "specular": 500
+        }, {
+            "type": "Sphere",
+            "position": [4, 2, 10],
+            "color": "0x782351",
+            "radius": 1,
+            "specular": 500
+        }, {
+            "type": "Sphere",
+            "position": [-4, 9, 18],
+            "color": "0x156595",
+            "radius": 1,
+            "specular": 500
+        }, {
+            "type": "Sphere",
+            "position": [1, 4, 12],
+            "color": "0x595651",
+            "radius": 1,
+            "specular": 500
+        }, {
+            "type": "Sphere",
+            "position": [5, 4, 32],
+            "color": "0xfc9a1f",
+            "radius": 1,
+            "specular": 500
+        }, {
+            "type": "Sphere",
+            "position": [-2, 10, 34],
+            "color": "0xfacaff",
+            "radius": 1,
+            "specular": 500
+        }, {
+            "type": "Sphere",
+            "position": [0, -1, 12],
+            "color": "0xf123ff",
+            "radius": 1,
+            "specular": 500
+        }, {
+            "type": "Sphere",
+            "position": [0, -6, 19],
+            "color": "0xff123f",
+            "radius": 1,
+            "specular": 500
+        }, {
+            "type": "Sphere",
+            "position": [3, -6, 20],
+            "color": "0xfaaf12",
+            "radius": 1,
+            "specular": 500
+        }, {
+            "type": "Sphere",
+            "position": [1, -4, 24],
+            "color": "0x12faaf",
+            "radius": 1,
+            "specular": 500
+        }, {
+            "type": "Sphere",
+            "position": [-3, -2, 10],
+            "color": "0x1211ff",
+            "radius": 1,
+            "specular": 500
+        }, {
+            "type": "Sphere",
+            "position": [-6, -1, 10],
+            "color": "0xf4133f",
+            "radius": 1,
+            "specular": 500
+        }
+    ],
+    "Shadows": true
+}

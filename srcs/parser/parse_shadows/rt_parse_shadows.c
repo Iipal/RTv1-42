@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_read_vec.c                                      :+:      :+:    :+:   */
+/*   rt_parse_shadows.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/10 19:47:11 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/10 19:47:59 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/06/16 12:08:54 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/06/16 13:57:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "rtv1_scene_parse.h"
 
-inline bool	rt_read_vec(string *const s, __v4df *const v)
+inline bool	rt_parse_shadows(const JSON_Object *const root_obj)
 {
-	string	str;
-	__v4df	vec;
-
-	vec = *v;
-	str = *s;
-	X(vec) = ft_atof(str);
-	IF_F(',' != *(str += ft_fdigits_str(str)) || !*str++);
-	Y(vec) = ft_atof(str);
-	IF_F(',' != *(str += ft_fdigits_str(str)) || !*str++);
-	Z(vec) = ft_atof(str);
-	IF_F(' ' != *(str += ft_fdigits_str(str)) || !*str++);
-	*v = vec;
-	*s = str;
-	return (true);
+	return (json_object_get_boolean(root_obj, "Shadows"));
 }

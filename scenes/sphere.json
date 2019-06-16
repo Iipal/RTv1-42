@@ -1,0 +1,20 @@
+{
+    "Camera": {
+        "position": [0.0, 0.0, -1.0],
+        "rotation": [0.0, 0.0, 0.0]
+    },
+    "Lights": [ {
+            "type": "point",
+            "position": [0.0, 0.0, 0.0],
+            "intensity": 1
+        }
+    ],
+    "Objects": [ {
+            "type": "Sphere",
+            "position": [0.0, 0.0, 5],
+            "color": "0xfc64ff",
+            "radius": 1.0002,
+            "specular": 500
+        }
+    ]
+}
