@@ -1,0 +1,21 @@
+{
+    "Camera": {
+        "position": [0.0, 0.0, 0.0],
+        "rotation": [0.0, 0.0, 0.0]
+    },
+    "Lights": [ {
+            "type": "point",
+            "position": [0.0, 0.0, 5],
+            "intensity": 1
+        }
+    ],
+    "Objects": [ {
+            "type": "Cylinder",
+            "position": [0.0, 0.0, 10],
+            "direction": [1.0, 1.0, 0.0],
+            "color": "0xaffda",
+            "radius": 1.0,
+            "specular": 1000
+        }
+    ]
+}
