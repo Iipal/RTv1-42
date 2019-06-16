@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 10:05:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/15 14:03:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/17 00:17:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ bool		rt_parsed_validation(Scene *restrict const s)
 	size_t	i;
 
 	i = ~0UL;
-	NOM_F(E_NOCAM, s->cam.is);
+	NOM_F(E_NOCAM, s->is_camera_exist);
 	NOM_F(E_CAMPOS, u_vec_range(s->cam.pos, MAX_X, MIN_X));
 	s->cam.dir = u_inrange_dir_max(s->cam.dir);
 	s->cam.dir = u_inrange_dir_min(s->cam.dir);

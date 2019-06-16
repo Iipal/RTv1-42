@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:43:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/16 13:48:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/17 00:41:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ enum	e_light_types
 {
 	point,
 	direct,
+	max_lights
 } __attribute__((packed));
 
 # define E_OBJ_TYPES  typedef enum e_object_types objType
@@ -45,15 +46,14 @@ struct	s_camera
 	__v4df		pos;
 	__v4df		dir;
 	double_t	t;
-	bool		is;
 };
 
 struct	s_light
 {
 	__v4df		pos;
 	__v4df		dir;
-	lightType	type;
 	double_t	intens;
+	lightType	type;
 };
 
 typedef __v4df	(*t_fn_inter)(const __v4df,
@@ -67,16 +67,16 @@ typedef Uint32	(*t_fn_uv)(SDL_Surface *restrict const, const __v4df);
 
 struct	s_object
 {
-	__v4df		pos;
-	__v4df		dir;
-	Color		clr;
-	double_t	radius;
-	double_t	spec;
-	objType		type;
 	SDL_Surface	*texture;
 	t_fn_inter	fn_inter_calc;
 	t_fn_normal	fn_normal_calc;
 	t_fn_uv		fn_uv;
+	__v4df		pos;
+	__v4df		dir;
+	double_t	radius;
+	double_t	spec;
+	Color		clr;
+	objType		type;
 };
 
 # define CAMERA typedef struct s_camera    Camera
@@ -93,12 +93,13 @@ TIME;
 
 struct	s_scene
 {
-	Camera		cam;
 	Light		*lights;
 	Object		*objs;
 	size_t		ins_lights;
 	size_t		ins_objs;
+	Camera		cam;
 	bool		is_render_shadow;
+	bool		is_camera_exist;
 };
 
 # define SCENE typedef struct s_scene   Scene

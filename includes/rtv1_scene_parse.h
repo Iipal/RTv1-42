@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 17:38:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/16 14:03:13 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/17 00:13:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,11 @@ bool		rt_parsed_validation(Scene *restrict const s);
 # define TEX_WOOD       "resources/wood.jpg"
 # define TEX_RUBBLE     "resources/rubble.jpg"
 
-# define FP_MAX_OBJS    4
 # define FP_SPHERE      "Sphere"
 # define FP_CONE        "Cone"
 # define FP_PLANE       "Plane"
 # define FP_CYLINDER    "Cylinder"
 
-# define MAX_LT    2
 # define LT_POINT  "point"
 # define LT_DIRECT "direct"
 

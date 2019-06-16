@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/15 18:09:33 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/17 00:44:37 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,25 @@
 
 struct	s_isrender
 {
-	bool	is_up;
-	bool	is_down;
-	bool	is_left;
-	bool	is_right;
-	bool	is_zinc;
-	bool	is_zdec;
-	bool	is_rot_x;
-	bool	is_rot_y;
-	bool	is_rot_z;
-	bool	is_dec_rot_x;
-	bool	is_dec_rot_y;
-	bool	is_dec_rot_z;
-	bool	is_render_fps;
-	bool	is_speedup;
-	bool	is_speeddown;
-	bool	is_light_debug;
-	bool	is_objs_debug;
-	bool	is_debug_zorintens;
-	bool	is_inc_ambient_light;
+	bool	is_up:1;
+	bool	is_down:1;
+	bool	is_left:1;
+	bool	is_right:1;
+	bool	is_zinc:1;
+	bool	is_zdec:1;
+	bool	is_rot_x:1;
+	bool	is_rot_y:1;
+	bool	is_rot_z:1;
+	bool	is_dec_rot_x:1;
+	bool	is_dec_rot_y:1;
+	bool	is_dec_rot_z:1;
+	bool	is_render_fps:1;
+	bool	is_speedup:1;
+	bool	is_speeddown:1;
+	bool	is_light_debug:1;
+	bool	is_objs_debug:1;
+	bool	is_debug_zorintens:1;
+	bool	is_inc_ambient_light:1;
 	bool	is_dec_ambient_light;
 };
 
@@ -63,19 +63,19 @@ FPS;
 
 struct	s_flags
 {
-	float_t	viewport_scale;
-	bool	is_parsed_vps;
-	double	ambient_light;
-	bool	is_parsed_al;
 	Color	fps_text_color;
-	bool	is_parsed_ftc;
 	float_t	fps_refresh_timer;
-	bool	is_parsed_frt;
+	float_t	viewport_scale;
+	float_t	ambient_light;
 	uint8_t	anti_aliasing;
-	bool	is_parsed_aa;
-	bool	debug_mode;
-	bool	no_calc_light;
-	bool	textured;
+	bool	is_parsed_ftc:1;
+	bool	is_parsed_frt:1;
+	bool	is_parsed_vps:1;
+	bool	is_parsed_al:1;
+	bool	is_parsed_aa:1;
+	bool	debug_mode:1;
+	bool	no_calc_light:1;
+	bool	textured:1;
 	bool	random_lights_intense;
 	bool	print_usage;
 };
@@ -86,15 +86,15 @@ FLAGS;
 
 struct	s_environment
 {
+	__v4df		**pre_calc_d;
 	Sdl			*sdl;
-	Scene		scene;
-	Isr			isr;
-	Fps			fps;
 	double_t	cam_speed;
 	double_t	tmax;
 	double_t	tmin;
+	Fps			fps;
+	Isr			isr;
+	Scene		scene;
 	Flags		flags;
-	__v4df		**pre_calc_d;
 };
 
 # define ENV typedef struct s_environment Environment

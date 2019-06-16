@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 17:34:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/16 14:03:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/17 00:16:42 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ inline bool	rt_parse_cam(Camera *const camera,
 		json_object_get_array(obj_cam, "position"), &camera->pos, "Camera", 0));
 	NO_F(rt_parse_arr_to_vec(
 		json_object_get_array(obj_cam, "rotation"), &camera->dir, "Camera", 0));
-	return (camera->is = true);
+	return (true);
 }
