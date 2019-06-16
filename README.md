@@ -73,35 +73,11 @@ $> ./RTv1 [flags-params] scenes/<scene_name>.rtv1
 | OTHER:                |                                                                           |          |                |               |            |                           |
 | --noBorder            | Create window without borders.                                            | -nb      | none           | not enabled   | none       | no                        |
 
+###### Note: always put scene file in arguments line, because flags will parse only after successful read scene file.
 #### Example:
 ```bash
 $> ./RTv1 --debug -vps 0.5 -t -pu -ftc 0x1 -frt 0 -al 10 -nb -aa 4 scenes/sphere.rtv1
 ```
-###### Note: always put scene file in arguments line, because flags will parse only after successful read scene file.
-
-# [[__`About scene file params`__](#about-scene-file-params)]:
-
-| Param name | Description                                              | Position | Direction\Rotate  | Color | Radius\Angle | Specular\Intensity |
-| ---------- | -------------------------------------------------------- | -------- | ----------------- | ----- | ------------ | ------------------ |
-| Camera     | Scene camera. Only 1 camera can be in scene.             | X,Y,Z    | X,Y,Z             | none  | none         | none               |
-| Light      | Scene light origin. Max 5 light origins can be in scene. | X,Y,Z    | X,Y,Z (Z useless) | none  | none         | 100.0              |
-| Sphere     | Sphere object.                                           | X,Y,Z    | X,Y,Z (Z useless) | 0xHEX | 1.0          | 10000              |
-| Cone       | Cone object.                                             | X,Y,Z    | X,Y,Z             | 0xHEX | 1.0          | 10000              |
-| Cylinder   | Cylinder object.                                         | X,Y,Z    | X,Y,Z             | 0xHEX | 1.0          | 10000              |
-| Plane      | Cylinder object.                                         | X,Y,Z    | X,Y,Z             | 0xHEX | none         | 10000              |
-| eShadow.   | Enable shadows calc and render in scene.                 | none     | none              | none  | none         | none               |
-
-#### Example:
-```bash
-Camera: 0,0,0 0,0,0
-Light: 0,3,1.5 0,0,0 42.21
-Sphere: 0,-1,6.7 0,0,0 0xaaaaaa 0.5 30
-Cone: -1.65,4.1,21.21 -0.3,-2.1,0 0xbaaf32 0.3 5000
-Plane: 0,-5,0 0,1,0 0xfa1bff 500
-Cylinder: 2,-2,5 -2,4,-3 0xbaaf32 1 1000
-eShadow.
-```
-
 
 ## Keybinds:
 ###### All binds below works only with `-dbg` flag.
