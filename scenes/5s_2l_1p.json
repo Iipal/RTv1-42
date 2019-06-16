@@ -50,5 +50,6 @@
             "color": "0xafaffa",
             "specular": 5000
         }
-    ]
+    ],
+    "Shadows": true
 }
