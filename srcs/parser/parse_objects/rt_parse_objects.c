@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 14:04:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/16 11:17:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/16 14:04:44 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1.h"
+#include "rtv1_scene_parse.h"
 
-static bool	add_parse_current_object(JSON_Object *object_obj,
+static bool	add_parse_current_object(const JSON_Object *const object_obj,
 				Object *const obj,
 				const size_t curr_obj)
 {
@@ -32,17 +32,17 @@ static bool	add_parse_current_object(JSON_Object *object_obj,
 }
 
 bool		rt_parse_objects(Scene *const scene,
-				JSON_Object *root_obj)
+				const JSON_Object *const root_obj)
 {
-	JSON_Value	*objects_value;
-	JSON_Array	*objects_arr;
-	JSON_Object	*object_obj;
-	size_t		i;
+	const JSON_Value	*o_value = json_object_get_value(root_obj, "Objects");
+	JSON_Array			*objects_arr;
+	JSON_Object			*object_obj;
+	size_t				i;
 
 	i = ~0ULL;
-	NOM_F(E_NOOBJS, objects_value = json_object_get_value(root_obj, "Objects"));
-	IFM_F(E_OARR_TYPE, JSONArray != json_value_get_type(objects_value));
-	NOM_F(E_NOOBJS, objects_arr = json_value_get_array(objects_value));
+	NOM_F(E_NOOBJS, o_value);
+	IFM_F(E_OARR_TYPE, JSONArray != json_value_get_type(o_value));
+	NOM_F(E_NOOBJS, objects_arr = json_value_get_array(o_value));
 	NOM_F(E_NOOBJS, scene->ins_objs = json_array_get_count(objects_arr));
 	MEM(Object, scene->objs, scene->ins_objs, E_ALLOC);
 	while (scene->ins_objs > ++i)

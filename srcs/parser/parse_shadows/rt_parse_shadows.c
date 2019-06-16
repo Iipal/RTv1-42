@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_parse_exclude_param.c                           :+:      :+:    :+:   */
+/*   rt_parse_shadows.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/15 22:55:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/15 23:01:41 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/06/16 12:08:54 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/06/16 13:57:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1_scene_parse.h"
 
-bool	rt_parse_exclude_param(const JSON_Object *const obj, string param)
+inline bool	rt_parse_shadows(const JSON_Object *const root_obj)
 {
-	JSON_Value_Type	i;
-
-	i = JSONError;
-	while (JSONBoolean >= ++i)
-		if (json_object_has_value_of_type(obj, param, i))
-			return (false);
-	return (true);
+	return (json_object_get_boolean(root_obj, "Shadows"));
 }

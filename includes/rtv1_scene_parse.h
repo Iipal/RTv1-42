@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 17:38:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/16 11:18:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/16 14:03:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,21 @@
 # define RTV1_SCENE_PARSE_H
 
 # include "parson.h"
+# include "rtv1_errno.h"
 # include "rtv1_structs.h"
 
 /*
 ** Function prototypes:
 */
-extern bool	rt_parse_scene(Environment *env,
+extern bool	rt_parse_scene(Environment *const env,
 				const char *const scene_file);
 
 extern bool	rt_parse_cam(Camera *const camera,
-				JSON_Object *const root_obj);
+				const JSON_Object *const root_obj);
 bool		rt_parse_lights(Scene *const scene,
-				JSON_Object *root_obj);
+				const JSON_Object *root_obj);
 bool		rt_parse_objects(Scene *const scene,
-				JSON_Object *root_obj);
+				const JSON_Object *const root_obj);
 
 typedef bool (*t_fn_lght)(const JSON_Object *const, Light *const, const size_t);
 extern bool	rt_parse_point_light(const JSON_Object *const light_obj,
@@ -45,6 +46,8 @@ extern bool	rt_parse_plane(const JSON_Object *const object_obj,
 extern bool	rt_parse_cylinder(const JSON_Object *const object_obj,
 				Object *const obj, const size_t curr_obj);
 
+extern bool	rt_parse_shadows(const JSON_Object *const root_obj);
+
 bool		rt_parse_arr_to_vec(const JSON_Array *const arr,
 				__v4df *const dst,
 				const char *const obj_name,
@@ -52,8 +55,6 @@ bool		rt_parse_arr_to_vec(const JSON_Array *const arr,
 extern bool	rt_parse_color(string hex_str,
 				Color *const dst,
 				const size_t parsing_obj_counter);
-
-bool		rt_parse_exclude_param(const JSON_Object *const obj, string param);
 
 bool		rt_parsed_validation(Scene *restrict const s);
 
@@ -110,9 +111,6 @@ bool		rt_parsed_validation(Scene *restrict const s);
 # define E_NOLIGHT ERR "No origin lights in scene founded."
 # define E_NOOBJS  ERR "No objects in scene founded."
 
-# define W_MISS_PARAM(param, obj) WARNING "Missing " param " param for " obj
-# define E_MISS_PARAM(param, obj) ERR "Missing " param " param for " obj
-
 # define E_VEC_SIZE "Wrong vector size: "
 # define E_VEC_FRMT "Wrong vector format: "
 
@@ -132,6 +130,9 @@ bool		rt_parsed_validation(Scene *restrict const s);
 
 # define E_MISS         "Missing or invalid "
 
+# define E_CPOS_MISS    E_MISS "camera position"
+# define E_CROT_MISS    E_MISS "camera rotation"
+
 # define E_LTYPE_MISS   E_MISS "light type"
 # define E_LPOS_MISS    E_MISS "light position"
 # define E_LDIR_MISS    E_MISS "light direction"
@@ -148,6 +149,8 @@ bool		rt_parsed_validation(Scene *restrict const s);
 # define E_ORADIUS_MISS E_MISS "object radius"
 # define E_OSPEC_MISS   E_MISS "object specular"
 # define E_ODIR_MISS    E_MISS "object direction"
+
+# define E_SPARAM_MISS  E_MISS "shadows control boolean param."
 
 # define E_LPOINT_DIR "'direction' in 'point' light types is useless"
 # define E_SPHERE_DIR "'direction' in 'sphere' object types is useless"
@@ -171,6 +174,7 @@ bool		rt_parsed_validation(Scene *restrict const s);
 # define E_IN_LINE  E_OCCURED "at line: "
 # define E_IN_LIGHT E_OCCURED "in light origin: "
 # define E_IN_OBJ   E_OCCURED "in object: "
+# define E_IN_CAM   E_OCCURED "in camera: "
 
 # define ERRIN_NUM(msg, n) MSG(msg);ft_putnbr(n)
 # define ERRIN_N(msg, n, err) {ERRIN_NUM(err,n);MSG(" \"");MSG(msg);MSGN("\"");}
