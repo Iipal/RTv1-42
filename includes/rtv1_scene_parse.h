@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 17:38:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/17 00:13:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/17 12:32:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,22 @@ bool		rt_parse_objects(Scene *const scene,
 
 typedef bool (*t_fn_lght)(const JSON_Object *const, Light *const, const size_t);
 extern bool	rt_parse_point_light(const JSON_Object *const light_obj,
-				Light *const l, const size_t curr_light);
+				Light *const l, const size_t light_i);
 extern bool	rt_parse_dir_light(const JSON_Object *const light_obj,
-				Light *const l, const size_t curr_light);
+				Light *const l, const size_t light_i);
 
 typedef bool (*t_fn_obj)(const JSON_Object *const, Object *const, const size_t);
 extern bool	rt_parse_sphere(const JSON_Object *const object_obj,
-				Object *const obj, const size_t curr_obj);
+				Object *const obj, const size_t obj_i);
 extern bool	rt_parse_cone(const JSON_Object *const object_obj,
-				Object *const obj, const size_t curr_obj);
+				Object *const obj, const size_t obj_i);
 extern bool	rt_parse_plane(const JSON_Object *const object_obj,
-				Object *const obj, const size_t curr_obj);
+				Object *const obj, const size_t obj_i);
 extern bool	rt_parse_cylinder(const JSON_Object *const object_obj,
-				Object *const obj, const size_t curr_obj);
+				Object *const obj, const size_t obj_i);
 
-extern bool	rt_parse_shadows(const JSON_Object *const root_obj);
+extern bool	rt_parse_other(Environment *const env,
+				const JSON_Object *const root_obj);
 
 bool		rt_parse_arr_to_vec(const JSON_Array *const arr,
 				__v4df *const dst,
@@ -143,7 +144,8 @@ bool		rt_parsed_validation(Scene *restrict const s);
 # define E_OCLR_MISS    E_MISS "object color"
 # define E_OCLR_0X_MISS E_MISS "'0x' at start of the object color HEX value"
 # define E_OCLR_SPECTR  "Invalid color for object. " CLR_DEF_MAX_SPECTRUM
-# define E_INVALID_CLR  "Invalid color of 0x0. Min 0x1."
+# define E_INVALID_CLR  "Invalid color or 0x0. Min 0x1."
+# define E_INVALID_HCLR "Invalid color hex value."
 # define E_ORADIUS_MISS E_MISS "object radius"
 # define E_OSPEC_MISS   E_MISS "object specular"
 # define E_ODIR_MISS    E_MISS "object direction"
@@ -153,6 +155,11 @@ bool		rt_parsed_validation(Scene *restrict const s);
 # define E_LPOINT_DIR "'direction' in 'point' light types is useless"
 # define E_SPHERE_DIR "'direction' in 'sphere' object types is useless"
 # define E_PLANE_RAD  "'radius' in 'plane' object types in useless"
+
+# define E_SHADOWS_BOOL ERR "'Shadows' param must to be 'boolean' type."
+# define E_AA_NUMBER    ERR "'Anti-Aliasing' param must to be 'number' type."
+# define E_AA_USELESS   ERR "'Anti-Aliasing' param less than 0 or 1. Useless."
+# define E_AA_MAX       ERR "'Anti-Aliasing' param greate than 8. Max is 8."
 
 # define E_INRANGE " not in available range"
 

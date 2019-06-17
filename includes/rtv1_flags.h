@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:28:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/17 10:23:14 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/17 12:13:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,105 +18,97 @@
 /*
 ** Flags (and shortcut for that) constant string literals definition:
 */
-# define MAX_FLAGS  10
+# define MAX_FLAGS 10
 
-# define F_HELP     "--help"
-# define SF_HELP    "-h"
+# define F_HELP  "--help"
+# define SF_HELP "-h"
 
 # define MAX_WPARAMS_FLAGS 5
-# define F_VPS      "--viewportScale"
-# define F_AL       "--ambientLight"
-# define F_FTC      "--fpsTextColor"
-# define F_FRT      "--fpsRefreshTimer"
-# define F_AA       "--antiAliasing"
+# define F_VPS  "--viewportScale"
+# define F_AL   "--ambientLight"
+# define F_FTC  "--fpsTextColor"
+# define F_FRT  "--fpsRefreshTimer"
+# define F_AA   "--antiAliasing"
 
-# define SF_VPS     "-vps"
-# define SF_AL      "-al"
-# define SF_FTC     "-ftc"
-# define SF_FRT     "-frt"
-# define SF_AA      "-aa"
+# define SF_VPS "-vps"
+# define SF_AL  "-al"
+# define SF_FTC "-ftc"
+# define SF_FRT "-frt"
+# define SF_AA  "-aa"
 
 # define MAX_BOOLEAN_FLAGS 5
-# define F_DBG      "--debug"
-# define F_NCL      "--noCalcLight"
-# define F_TEX      "--textured"
-# define F_RLI      "--randomLightsIntense"
-# define F_PU       "--printUsage"
+# define F_DBG  "--debug"
+# define F_NCL  "--noCalcLight"
+# define F_TEX  "--textured"
+# define F_RLI  "--randomLightsIntense"
+# define F_PU   "--printUsage"
 
-# define SF_DBG     "-dbg"
-# define SF_NCL     "-ncl"
-# define SF_TEX     "-t"
-# define SF_RLI     "-rli"
-# define SF_PU      "-pu"
+# define SF_DBG "-dbg"
+# define SF_NCL "-ncl"
+# define SF_TEX "-t"
+# define SF_RLI "-rli"
+# define SF_PU  "-pu"
 
 # define MAX_OTHER_FLAGS 1
-# define F_NB       "--noBorder"
+# define F_NB  "--noBorder"
 
-# define SF_NB      "-nb"
+# define SF_NB "-nb"
 
 /*
 ** Default flag values:
 */
-# define DEF_VIEWPORT_SCALE     1.0f
-# define DEF_AMBIENT_LIGHT      100.0f
-# define DEF_FPS_TEXT_COLOR     (Color){0x7FFF00}
-# define DEF_FPS_REFRESH_TIMER  .25f
-# define DEF_DEBUG_MODE         false
-# define DEF_NO_CALC_LIGHT      false
-# define DEF_PRINT_USAGE        false
-# define DEF_TEXTURED           false
-# define DEF_RANDOM_INTENSE     false
-# define DEF_ANTI_ALIASING      0
+# define DEF_VIEWPORT_SCALE    1.0f
+# define DEF_AMBIENT_LIGHT     100.0f
+# define DEF_FPS_TEXT_COLOR    (Color){0x7FFF00}
+# define DEF_FPS_REFRESH_TIMER .25f
+# define DEF_DEBUG_MODE        false
+# define DEF_NO_CALC_LIGHT     false
+# define DEF_PRINT_USAGE       false
+# define DEF_TEXTURED          false
+# define DEF_RANDOM_INTENSE    false
+# define DEF_ANTI_ALIASING     0
 
-# define E_MAX_VPS  10
-# define E_MAX_AL   100
-# define E_MAX_FRT  500
-# define E_MAX_AA   16
+# define E_MAX_VPS 10
+# define E_MAX_AL  100
+# define E_MAX_FRT 500
+# define E_MAX_AA  8
 
 /*
 ** Flags parsing errno messages:
 */
-# define E_INVALID_FLAG     " Invalid flag occured: "
-# define E_SEMATICS_FLAG    ERR "Invalid flag semantics occured: "
+# define E_INVALID_FLAG  " Invalid flag occured: "
+# define E_SEMATICS_FLAG ERR "Invalid flag semantics occured: "
 
-# define E_VPS      F_VPS " flag"
-# define E_AL       F_AL " flag"
-# define E_FTC      F_FTC " flag"
-# define E_FRT      F_FRT " flag"
-# define E_AA       F_AA " flag"
-# define E_DBG      F_DBG " flag"
-# define E_NCL      F_NCL " flag"
-# define E_TEX      F_TEX " flag"
-# define E_RLI      F_RLI " flag"
-# define E_PU       F_PU " flag"
+# define E_VPS F_VPS " flag"
+# define E_AL  F_AL " flag"
+# define E_FTC F_FTC " flag"
+# define E_FRT F_FRT " flag"
+# define E_AA  F_AA " flag"
+# define E_DBG F_DBG " flag"
+# define E_NCL F_NCL " flag"
+# define E_TEX F_TEX " flag"
+# define E_RLI F_RLI " flag"
+# define E_PU  F_PU " flag"
+
+# define E_UNSIGN ERR "Only unsigned param value."
+# define E_DIGITS ERR "Invalid value in params."
 
 # define E_REPEAT_FLAG(flag) WARNING flag " was already set before. Ignoring."
+# define E_MISS_PARAM(flag)  ERR "Missed param for " flag "."
+# define E_ZERO_PARAM(flag)  ERR flag " param is 0."
 
-# define E_MISPARM  "Missed param for "
-# define E_MP_AA    ERR E_MISPARM E_AA "."
-# define E_MP_VPS   ERR E_MISPARM F_VPS "."
-# define E_MP_AL    ERR E_MISPARM F_AL "."
-# define E_MP_FTC   ERR E_MISPARM E_FTC "."
-# define E_MP_FRT   ERR E_MISPARM E_FRT "."
+# define E_FTC_ZERO ERR E_FTC " param invalid or 0x0."
 
-# define E_UNSIGN   ERR "Only unsigned param values."
-# define E_DIGITS   ERR "Invalid value in params."
+# define E_AA_USLS  ERR E_AA " param is 0 or 1. It's make no sense."
 
-# define E_VPS_ZERO  ERR E_VPS " param is 0."
-# define E_AL_ZERO   ERR E_AL " param is 0."
-# define E_AA_ZERO   ERR E_AA " param is 0."
-# define E_FTC_ZERO  ERR E_FTC " param invalid or 0x0."
+# define E_MAX_8  " param greate than 8. Max is 8."
+# define E_MAX_10  " param greate than 10. Max is 10."
+# define E_MAX_100 " param greate than 100. Max is 100."
+# define E_MAX_500 " param greate than 500. Max is 500."
 
-# define E_AA_USLS  ERR E_AA " param is 1. It's make no sense."
-
-# define E_MAX_10   " param greate than 10. Max is 10."
-# define E_MAX_16   " param greate than 16. Max is 16."
-# define E_MAX_100  " param greate than 100. Max is 100."
-# define E_MAX_500  " param greate than 500. Max is 500."
-
-# define E_WARN_VPS ERR E_VPS E_MAX_10
-# define E_WARN_AA  ERR E_AA E_MAX_16
+# define E_WARN_AA  ERR E_AA E_MAX_8
 # define E_WARN_AL  ERR E_AL E_MAX_100
+# define E_WARN_VPS ERR E_VPS E_MAX_10
 # define E_WARN_FRT ERR E_FRT E_MAX_500
 
 # define E_FTC0X    "0x"

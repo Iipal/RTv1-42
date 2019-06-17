@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 13:23:08 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/17 11:08:16 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/17 11:43:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ inline bool	rt_parse_scene(Environment *const env, const char *const scene_file)
 		= rt_parse_cam(&env->scene.cam, obj), json_value_free(root));
 	NODO_F(rt_parse_lights(&env->scene, obj), json_value_free(root));
 	NODO_F(rt_parse_objects(&env->scene, obj), json_value_free(root));
-	env->scene.is_render_shadow = rt_parse_shadows(obj);
+	NODO_F(rt_parse_other(env, obj), json_value_free(root));
 	json_value_free(root);
 	return (true);
 }

@@ -72,5 +72,6 @@
             "specular": 1000
         }
     ],
-    "Shadows": true
+    "Shadows": true,
+    "Anti-Aliasing": 4
 }
