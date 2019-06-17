@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/15 18:04:43 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/17 10:21:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ extern bool		rt_valid_filename(char *const file);
 /*
 ** Initialization and pre-calculating:
 */
-extern bool		rt_init_env(Environment *restrict env);
+extern void		rt_init_flags(Flags *restrict const flags);
 extern bool		rt_init_textures(Object *restrict const objs,
 							const size_t ins_objs,
 							const SDL_PixelFormat *format);

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:28:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/13 16:28:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/06/17 10:23:14 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@
 # define E_MAX_500  " param greate than 500. Max is 500."
 
 # define E_WARN_VPS ERR E_VPS E_MAX_10
-# define E_WARN_AA  ERR E_VPS E_MAX_16
+# define E_WARN_AA  ERR E_AA E_MAX_16
 # define E_WARN_AL  ERR E_AL E_MAX_100
 # define E_WARN_FRT ERR E_FRT E_MAX_500
 
