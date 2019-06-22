@@ -15,7 +15,7 @@ NPWD := $(CURDIR)/$(NAME)
 
 CC := gcc -march=native -mtune=native -Ofast -flto -pipe
 CC_DEBUG := gcc -march=native -mtune=native -g3 -D DEBUG -fsanitize=address
-CFLAGS := -Wall -Wextra -Werror -Wunused -Wpedantic -Wno-type-limits
+CFLAGS := -Wall -Wextra -Werror -Wunused -Wno-type-limits
 IFLAGS := -I $(CURDIR)/includes \
 	-I $(CURDIR)/libft/includes \
 	-I $(CURDIR)/libftsdl/includes \
