@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 14:04:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/17 00:14:07 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/04 13:05:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ static bool	add_parse_current_object(const JSON_Object *const object_obj,
 {
 	const t_fn_obj	fn_objs[] = {rt_parse_sphere, rt_parse_cone,
 								rt_parse_plane, rt_parse_cylinder};
-	const string	o_types[] = {FP_SPHERE, FP_CONE, FP_PLANE, FP_CYLINDER};
+	const char		*o_types[] = {FP_SPHERE, FP_CONE, FP_PLANE, FP_CYLINDER};
 	const char		*obj_type = json_object_get_string(object_obj, "type");
 	size_t			i;
 
 	i = ~0ULL;
 	NODO_F(obj_type, ERRIN_N(E_OTYPE_MISS, curr_obj + 1, E_IN_OBJ));
 	while (max_objs > ++i)
-		if (!ft_strncmp((string)obj_type, o_types[i], ft_strlen(o_types[i])))
+		if (!ft_strncmp((char*)obj_type, o_types[i], ft_strlen(o_types[i])))
 			return (fn_objs[i](object_obj, obj, curr_obj));
 	NODO_F(false, ERRIN_N(E_UNKNOWN_OBJ_TYPE, curr_obj + 1, E_IN_OBJ));
 	return (true);

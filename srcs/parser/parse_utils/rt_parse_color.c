@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 16:09:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/17 12:31:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/04 13:05:38 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool	rt_parse_color(string hex_str, Color *const dst,
+inline bool	rt_parse_color(char *hex_str, Color *const dst,
 				const size_t parsing_obj_counter)
 {
 	IFDO_F(ft_strncmp(hex_str, "0x", ft_strlen("0x")),

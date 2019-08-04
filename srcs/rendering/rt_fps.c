@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 18:51:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/13 12:41:42 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/04 13:04:18 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	add_render_fps(SDL_Surface *text,
 	{
 		while (text->w > ++X(p))
 			screen[Y(tp) * WIN_X + ++X(tp)] =
-				((uiarr)(text->pixels))[Y(p) * text->w + X(p)];
+				((uint32_t*)(text->pixels))[Y(p) * text->w + X(p)];
 		++Y(tp);
 	}
 	SDL_FreeSurface(text);
@@ -47,10 +47,10 @@ static void	add_fps_prepare_and_draw(const float_t dfps,
 									const float_t dms,
 									const Environment *const env)
 {
-	const string	data_info[] = {" fps", " ms"};
-	SDL_Surface		*text;
-	string			data[2];
-	string			temp[2];
+	const char	*data_info[] = {" fps", " ms"};
+	SDL_Surface	*text;
+	char		*data[2];
+	char		*temp[2];
 	int8_t			i;
 
 	i = -1;

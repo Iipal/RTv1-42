@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:28:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/17 12:13:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/04 13:02:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,23 +124,23 @@
 **	Flags parsing funcs:
 */
 bool			rt_flags_parser(Environment *restrict const env,
-									strtab av, const size_t ac);
+									char **av, const size_t ac);
 
-extern size_t	rt_is_flag_wparam(string flag);
+extern size_t	rt_is_flag_wparam(char *flag);
 
 typedef bool	(*t_fwparam)(Flags*, char**, const size_t, size_t *const);
-extern bool		f_vps(Flags *const f, strtab av,
+extern bool		f_vps(Flags *const f, char **av,
 					const size_t ac, size_t *const av_i);
-extern bool		f_al(Flags *const f, strtab av,
+extern bool		f_al(Flags *const f, char **av,
 					const size_t ac, size_t *const av_i);
-extern bool		f_ftc(Flags *const f, strtab av,
+extern bool		f_ftc(Flags *const f, char **av,
 					const size_t ac, size_t *const av_i);
-extern bool		f_frt(Flags *const f, strtab av,
+extern bool		f_frt(Flags *const f, char **av,
 					const size_t ac, size_t *const av_i);
-extern bool		f_aa(Flags *const f, strtab av,
+extern bool		f_aa(Flags *const f, char **av,
 					const size_t ac, size_t *const av_i);
 
-extern size_t	rt_is_flag_boolean(string flag);
+extern size_t	rt_is_flag_boolean(char *flag);
 
 typedef bool	(*t_fbool)(Flags *restrict const);
 extern bool		f_dbg(Flags *restrict const boolean_flag);
@@ -149,11 +149,11 @@ extern bool		f_tex(Flags *restrict const boolean_flag);
 extern bool		f_rli(Flags *restrict const boolean_flag);
 extern bool		f_pu(Flags *restrict const boolean_flag);
 
-extern size_t	rt_is_flag_other(string flag);
+extern size_t	rt_is_flag_other(char *flag);
 
-typedef bool	(*t_fother)(Environment *restrict const env, strtab av,
+typedef bool	(*t_fother)(Environment *restrict const env, char **av,
 					const size_t ac, size_t *const av_i);
-extern bool		f_nb(Environment *restrict const env, strtab av,
+extern bool		f_nb(Environment *restrict const env, char **av,
 					const size_t ac, size_t *const av_i);
 
 #endif

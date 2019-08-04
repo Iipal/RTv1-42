@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/17 10:22:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/04 13:03:18 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int	main(int argc, string argv[])
+int	main(int argc, char *argv[])
 {
 	Environment *env;
 

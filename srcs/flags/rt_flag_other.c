@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 22:09:48 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/10 10:47:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/04 13:04:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool	f_nb(Environment *restrict const env, strtab av,
+inline bool	f_nb(Environment *restrict const env, char **av,
 					const size_t ac, size_t *const av_i)
 {
 	(void)av;

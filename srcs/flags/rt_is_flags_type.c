@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 14:32:58 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/13 16:04:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/04 13:04:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1_flags.h"
 
-inline size_t	rt_is_flag_boolean(string flag)
+size_t	rt_is_flag_boolean(char *flag)
 {
 	size_t	out;
 
@@ -26,7 +26,7 @@ inline size_t	rt_is_flag_boolean(string flag)
 	return (out);
 }
 
-inline size_t	rt_is_flag_wparam(string flag)
+size_t	rt_is_flag_wparam(char *flag)
 {
 	size_t	out;
 
@@ -40,7 +40,7 @@ inline size_t	rt_is_flag_wparam(string flag)
 	return (out);
 }
 
-inline size_t	rt_is_flag_other(string flag)
+size_t	rt_is_flag_other(char *flag)
 {
 	size_t	out;
 
