@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 10:39:08 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/03 10:40:11 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/08 23:50:03 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	rt_sdl_fake_render_loop(Environment *restrict const env)
 		while (SDL_PollEvent(&env->sdl->e) > 0)
 			if (SDL_QUIT == env->sdl->e.type)
 				quit = true;
-			else if (SDL_KEYDOWN == env->sdl->e.type && SDLK_ESCAPE == SEKEY)
+			else if (SDL_KEYDOWN == env->sdl->e.type
+				&& SDLK_ESCAPE == env->sdl->e.key.keysym.sym)
 				quit = true;
 }

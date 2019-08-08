@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/13 22:01:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/08 23:13:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	rt_rendering(Environment *restrict const env)
 			if (clr.hex)
 				sdl_pixelput(env->sdl->wsurf, i, clr);
 		}
-	if (env->isr.is_render_fps)
+	if (IS_BIT(g_isr_flags, ISR_RENDER_FPS))
 		rt_render_fps_counter(env);
-	if (env->flags.random_lights_intense && !env->flags.no_calc_light)
+	if (IS_BIT(g_flags, F_BIT_RLI) && !IS_BIT(g_flags, F_BIT_NCL))
 		rt_randomize_lights_intense(env->scene.lights, env->scene.ins_lights,
 				env->fps.time.res);
 	SDL_UpdateWindowSurface(env->sdl->w);

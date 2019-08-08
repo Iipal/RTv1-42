@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/12 17:21:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/08 22:56:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ Color				rt_calc_light(Environment *restrict const env,
 			continue ;
 		h->l = curr_l->pos - h->p;
 		env->tmax = 1.0f;
-		if (env->scene.is_render_shadow
+		if (IS_BIT(g_flags, F_BIT_SHADOWS)
 		&& (shadow = rt_closest_inter(h->p, h->l, env)))
 			continue ;
 		add_calc_light_intens(curr_l, h, v);

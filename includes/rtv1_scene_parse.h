@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 17:38:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/04 13:03:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/08 22:55:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ bool		rt_parsed_validation(Scene *restrict const s);
 /*
 ** Scene Default constants, params and also:
 */
+# define F_BIT_SHADOWS (1 << 11)
+
 # define TEX_MAX        3
 # define TEX_WORLD      "resources/world.jpg"
 # define TEX_WOOD       "resources/wood.jpg"

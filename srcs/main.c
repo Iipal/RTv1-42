@@ -6,11 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/04 13:03:18 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/08 23:12:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+uint32_t	g_isr_flags = 0U;
 
 int	main(int argc, char *argv[])
 {
@@ -30,9 +32,9 @@ int	main(int argc, char *argv[])
 			env->sdl->wsurf->format), rt_free(&env));
 	NODO_F(rt_flags_parser(env, argv, argc - 1), rt_free(&env));
 	NODO_F(rt_precalc_d(env), rt_free(&env));
-	if (env->flags.debug_mode)
+	if (IS_BIT(g_flags, F_BIT_DBG))
 	{
-		if (env->flags.print_usage)
+		if (IS_BIT(g_flags, F_BIT_PU))
 			ft_putfile(RTV1_USAGE);
 		rt_sdl_render_loop(env);
 	}

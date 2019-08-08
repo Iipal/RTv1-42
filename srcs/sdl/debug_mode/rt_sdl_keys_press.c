@@ -6,85 +6,79 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 17:07:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/10 10:02:42 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/08 23:27:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline __attribute__((__always_inline__)) void	add_sdl_key_press_rot(
-	Isr *restrict const isr,
-	const SDL_Keycode key)
+static void	add_sdl_key_press_rot(SDL_Keycode const key)
 {
 	if (SDLK_r == key)
-		isr->is_rot_x = true;
+		SET_BIT(g_isr_flags, ISR_ROT_X);
 	else if (SDLK_f == key)
-		isr->is_rot_y = true;
+		SET_BIT(g_isr_flags, ISR_ROT_Y);
 	else if (SDLK_v == key)
-		isr->is_rot_z = true;
+		SET_BIT(g_isr_flags, ISR_ROT_Z);
 	else if (SDLK_t == key)
-		isr->is_dec_rot_x = true;
+		SET_BIT(g_isr_flags, ISR_DEC_ROT_X);
 	else if (SDLK_g == key)
-		isr->is_dec_rot_y = true;
+		SET_BIT(g_isr_flags, ISR_DEC_ROT_Y);
 	else if (SDLK_b == key)
-		isr->is_dec_rot_z = true;
+		SET_BIT(g_isr_flags, ISR_DEC_ROT_Z);
 }
 
-void				rt_sdl_keys_press(Isr *restrict const isr,
-										const SDL_Keycode key)
+void		rt_sdl_keys_press(SDL_Keycode const key)
 {
 	if (SDLK_w == key)
-		isr->is_up = true;
+		SET_BIT(g_isr_flags, ISR_UP);
 	else if (SDLK_s == key)
-		isr->is_down = true;
+		SET_BIT(g_isr_flags, ISR_DOWN);
 	else if (SDLK_a == key)
-		isr->is_left = true;
+		SET_BIT(g_isr_flags, ISR_LEFT);
 	else if (SDLK_d == key)
-		isr->is_right = true;
+		SET_BIT(g_isr_flags, ISR_RIGHT);
 	else if (SDLK_q == key)
-		isr->is_zdec = true;
+		SET_BIT(g_isr_flags, ISR_ZDEC);
 	else if (SDLK_e == key)
-		isr->is_zinc = true;
+		SET_BIT(g_isr_flags, ISR_ZINC);
 	else if (SDLK_LSHIFT == key)
-		isr->is_speedup = true;
+		SET_BIT(g_isr_flags, ISR_SPEEDUP);
 	else if (SDLK_LCTRL == key)
-		isr->is_speeddown = true;
+		SET_BIT(g_isr_flags, ISR_SPEEDDOWN);
 	else if (SDLK_EQUALS == key)
-		isr->is_inc_ambient_light = true;
+		SET_BIT(g_isr_flags, ISR_INC_AL);
 	else if (SDLK_MINUS == key)
-		isr->is_dec_ambient_light = true;
+		SET_BIT(g_isr_flags, ISR_DEC_AL);
 	else
-		add_sdl_key_press_rot(isr, key);
+		add_sdl_key_press_rot(key);
 }
 
-inline void			rt_sdl_keys_press_switcher_mode(Isr *restrict const isr,
-										const SDL_Keycode key)
+void		rt_sdl_keys_press_switcher_mode(SDL_Keycode const key)
 {
 	if (SDLK_x == key)
 	{
-		if (isr->is_objs_debug)
-			isr->is_objs_debug = false;
-		else if (isr->is_light_debug)
-			isr->is_objs_debug = true;
+		if (IS_BIT(g_isr_flags, ISR_OBJS_DEBUG))
+			UNSET_BIT(g_isr_flags, ISR_OBJS_DEBUG);
+		else if (IS_BIT(g_isr_flags, ISR_LIGHT_DEBUG))
+			SET_BIT(g_isr_flags, ISR_OBJS_DEBUG);
 		else
-			isr->is_light_debug = !isr->is_light_debug;
+			TOGGLE_BIT(g_isr_flags, ISR_LIGHT_DEBUG);
 	}
 	else if (SDLK_c == key)
-		isr->is_debug_zorintens = !isr->is_debug_zorintens;
+		TOGGLE_BIT(g_isr_flags, ISR_DBG_Z_OR_INTENSE);
 }
 
-inline void			rt_sdl_keys_press_add_settings(
-	Environment *restrict const env,
-	const SDL_Keycode key)
+void		rt_sdl_keys_press_add_settings(SDL_Keycode const key)
 {
 	if (SDLK_z == key)
-		env->isr.is_render_fps = !env->isr.is_render_fps;
+		TOGGLE_BIT(g_isr_flags, ISR_RENDER_FPS);
 	else if (SDLK_h == key)
-		env->scene.is_render_shadow = !env->scene.is_render_shadow;
+		TOGGLE_BIT(g_flags, F_BIT_SHADOWS);
 	else if (SDLK_y == key)
-		env->flags.textured = !env->flags.textured;
+		TOGGLE_BIT(g_flags, F_BIT_TEX);
 	else if (SDLK_n == key)
-		env->flags.no_calc_light = !env->flags.no_calc_light;
+		TOGGLE_BIT(g_flags, F_BIT_NCL);
 	else if (SDLK_j == key)
-		env->flags.random_lights_intense = !env->flags.random_lights_intense;
+		TOGGLE_BIT(g_flags, F_BIT_RLI);
 }

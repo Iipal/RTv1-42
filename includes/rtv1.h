@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/17 10:21:19 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/08 23:47:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "libftsdl.h"
 # include "rtv1_errno.h"
 # include "rtv1_flags.h"
+# include "rtv1_isr_flags.h"
 # include "rtv1_structs.h"
 # include "rtv1_macroses.h"
 
@@ -54,8 +55,7 @@ void			rt_rendering(Environment *restrict const env);
 Color			rt_anti_aliasing(Environment *restrict const env,
 							const size_t aa, __v4df d_calc);
 
-extern void		rt_camera_speed_movements(double_t *restrict const cam_speed,
-							const bool is_speed_up, const bool is_speed_down);
+void			rt_camera_speed_movements(double_t *restrict const cam_speed);
 
 void			rt_randomize_lights_intense(Light *restrict const lights,
 							const size_t ins_lights,
