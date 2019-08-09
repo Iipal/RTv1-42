@@ -6,15 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 23:48:43 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 14:45:25 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 09:12:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
 void			rt_randomize_lights_intense(Light *restrict const lights,
-											const size_t ins_lights,
-											const float_t time)
+					size_t const ins_lights, float_t const time)
 {
 	static float_t	delta_refresh;
 	size_t			i;

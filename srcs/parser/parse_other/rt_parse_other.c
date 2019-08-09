@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 12:08:54 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/08 22:55:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 08:36:57 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "rtv1_flags.h"
 
 bool	rt_parse_other(Environment *const env,
-			const JSON_Object *const root_obj)
+			JSON_Object const *const root_obj)
 {
 	bool const	is_shadows = json_object_has_value(root_obj, "Shadows");
 	bool const	is_aa = json_object_has_value(root_obj, "Anti-Aliasing");

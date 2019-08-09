@@ -6,14 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 18:30:12 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/08 22:37:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 08:16:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
 bool	f_vps(Flags *const f, char **av,
-			const size_t ac, size_t *const av_i)
+			size_t const ac, size_t *const av_i)
 {
 	if (IS_BIT(g_flags, F_BIT_VPS))
 	{
@@ -31,7 +31,7 @@ bool	f_vps(Flags *const f, char **av,
 }
 
 bool	f_al(Flags *const f, char **av,
-			const size_t ac, size_t *const av_i)
+			size_t const ac, size_t *const av_i)
 {
 	if (IS_BIT(g_flags, F_BIT_AL))
 	{
@@ -50,7 +50,7 @@ bool	f_al(Flags *const f, char **av,
 }
 
 bool	f_ftc(Flags *const f, char **av,
-			const size_t ac, size_t *const av_i)
+			size_t const ac, size_t *const av_i)
 {
 	if (IS_BIT(g_flags, F_BIT_FTC))
 	{
@@ -68,7 +68,7 @@ bool	f_ftc(Flags *const f, char **av,
 }
 
 bool	f_frt(Flags *const f, char **av,
-			const size_t ac, size_t *const av_i)
+			size_t const ac, size_t *const av_i)
 {
 	if (IS_BIT(g_flags, F_BIT_FRT))
 	{
@@ -86,7 +86,7 @@ bool	f_frt(Flags *const f, char **av,
 }
 
 bool	f_aa(Flags *const f, char **av,
-			const size_t ac, size_t *const av_i)
+			size_t const ac, size_t *const av_i)
 {
 	if (IS_BIT(g_flags, F_BIT_AA))
 	{

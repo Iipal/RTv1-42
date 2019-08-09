@@ -6,18 +6,16 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/08 22:56:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 08:48:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline __attribute__((always_inline)) void	add_calc_light_intens(
-	const Light *restrict l,
-	t_clhelp *restrict const h,
-	const __v4df v)
+static inline void	add_calc_light_intens(Light const *restrict l,
+	t_clhelp *restrict const h, __v4df const v)
 {
-	const double_t	ndl = v_dot(h->n, h->l);
+	double_t const	ndl = v_dot(h->n, h->l);
 
 	if (.0f < ndl)
 		h->i += l->intens * ndl / (v_len(h->n) * v_len(h->l));
@@ -30,13 +28,13 @@ static inline __attribute__((always_inline)) void	add_calc_light_intens(
 }
 
 Color				rt_calc_light(Environment *restrict const env,
-									t_clhelp *restrict const h,
-									const __v4df v)
+						t_clhelp *restrict const h,
+						__v4df const v)
 {
-	Object *restrict	shadow;
-	Light *restrict		curr_l;
-	const Color			bg = sdl_clr_div(h->curr_clr, env->flags.ambient_light);
-	size_t				i;
+	Object		*shadow;
+	Light		*curr_l;
+	Color const	bg = sdl_clr_div(h->curr_clr, env->flags.ambient_light);
+	size_t		i;
 
 	i = ~0UL;
 	h->i = 0.0f;

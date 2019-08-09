@@ -6,16 +6,16 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 19:54:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/08 22:50:56 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 08:42:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline Color		rt_raytracing(Environment *restrict const env, __v4df d)
+Color	rt_raytracing(Environment *restrict const env, __v4df d)
 {
-	t_clhelp			h;
-	Object *restrict	obj;
+	t_clhelp	h;
+	Object		*obj;
 
 	d = v_norm(rt_camera_rotate(d, env->scene.cam.dir));
 	obj = rt_closest_inter(env->scene.cam.pos, d, env);

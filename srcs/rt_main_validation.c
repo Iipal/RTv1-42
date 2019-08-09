@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 10:45:06 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/03 10:45:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 09:13:51 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #ifdef DEBUG
 
-inline bool	rt_valid_exe_path(char *const path)
+bool	rt_valid_exe_path(char const *path)
 {
 	(void)path;
 	return (true);
@@ -22,7 +22,7 @@ inline bool	rt_valid_exe_path(char *const path)
 
 #else
 
-inline bool	rt_valid_exe_path(char *const path)
+bool	rt_valid_exe_path(char const *path)
 {
 	IFM_F(E_DIR, ft_strcmp(path, RTV1_EXE_PATH));
 	return (true);
@@ -30,7 +30,7 @@ inline bool	rt_valid_exe_path(char *const path)
 
 #endif
 
-inline bool	rt_valid_filename(char *const file)
+bool	rt_valid_filename(char const *file)
 {
 	NOM_F(E_FILEXT,
 	!ft_strcmp(file + (ft_strlen(file) - ft_strlen(RTV1_FILEXT)), RTV1_FILEXT));

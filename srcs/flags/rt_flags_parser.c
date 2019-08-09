@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 17:35:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/08 22:52:17 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 08:19:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	add_valid_parsed_flags(Flags const *restrict const f)
 }
 
 static bool	add_curr_fparse(Environment *restrict const env,
-				char **av, const size_t ac, size_t *const av_i)
+				char **av, size_t const ac, size_t *const av_i)
 {
 	t_fbool const	fbool[] = {f_dbg, f_ncl, f_tex, f_rli, f_pu};
 	t_fwparam const	fwparam[] = {f_vps, f_al, f_ftc, f_frt, f_aa};
@@ -51,8 +51,8 @@ static bool	add_curr_fparse(Environment *restrict const env,
 	return (false);
 }
 
-bool		rt_flags_parser(Environment *restrict const env,
-				char **av, const size_t ac)
+bool		rt_flags_parser(Environment *const env,
+				char **av, size_t const ac)
 {
 	size_t	i;
 

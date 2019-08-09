@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:50:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/15 23:35:34 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 09:13:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline void	rt_free(Environment *restrict *env)
+void	rt_free(Environment *restrict *env)
 {
 	size_t	i;
 

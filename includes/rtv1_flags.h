@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:28:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/08 23:02:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 08:34:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ extern uint16_t	g_flags;
 # define SF_NB "-nb"
 
 # define F_BIT_NB (1 << 10)
+
+# define F_BIT_SHADOWS (1 << 11)
 
 /*
 ** Default flag values:
@@ -134,24 +136,24 @@ extern uint16_t	g_flags;
 /*
 **	Flags parsing funcs:
 */
-bool	rt_flags_parser(Environment *restrict const env,
-			char **av, const size_t ac);
+bool	rt_flags_parser(Environment *const env,
+			char **av, size_t const ac);
 
-size_t	rt_is_flag_wparam(char *flag);
+size_t	rt_is_flag_wparam(char const *flag);
 
-typedef bool	(*t_fwparam)(Flags*, char**, const size_t, size_t *const);
+typedef bool	(*t_fwparam)(Flags*, char**, size_t const, size_t *const);
 bool	f_vps(Flags *const f, char **av,
-			const size_t ac, size_t *const av_i);
+			size_t const ac, size_t *const av_i);
 bool	f_al(Flags *const f, char **av,
-			const size_t ac, size_t *const av_i);
+			size_t const ac, size_t *const av_i);
 bool	f_ftc(Flags *const f, char **av,
-			const size_t ac, size_t *const av_i);
+			size_t const ac, size_t *const av_i);
 bool	f_frt(Flags *const f, char **av,
-			const size_t ac, size_t *const av_i);
+			size_t const ac, size_t *const av_i);
 bool	f_aa(Flags *const f, char **av,
-			const size_t ac, size_t *const av_i);
+			size_t const ac, size_t *const av_i);
 
-size_t	rt_is_flag_boolean(char *flag);
+size_t	rt_is_flag_boolean(char const *flag);
 
 typedef bool (*t_fbool)(void);
 bool	f_dbg(void);
@@ -160,11 +162,11 @@ bool	f_tex(void);
 bool	f_rli(void);
 bool	f_pu(void);
 
-size_t	rt_is_flag_other(char *flag);
+size_t	rt_is_flag_other(char const *flag);
 
 typedef bool	(*t_fother)(Environment *restrict const env, char **av,
-					const size_t ac, size_t *const av_i);
-bool		f_nb(Environment *restrict const env, char **av,
-					const size_t ac, size_t *const av_i);
+					size_t const ac, size_t *const av_i);
+bool	f_nb(Environment *restrict const env, char **av,
+			size_t const ac, size_t *const av_i);
 
 #endif

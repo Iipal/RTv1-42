@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 18:02:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/15 18:04:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 08:44:47 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,53 +15,53 @@
 
 # include "rtv1_structs.h"
 
-extern Color	rt_raytracing(Environment *restrict const env, __v4df d);
+Color	rt_raytracing(Environment *restrict const env, __v4df d);
 
-extern __v4df	rt_camera_rotate(__v4df d, const __v4df dir);
+__v4df	rt_camera_rotate(__v4df d, __v4df const dir);
 
 /*
 ** Objects intersection calc:
 */
-Object			*rt_closest_inter(const __v4df o, const __v4df d,
-							Environment *restrict const env);
-extern __v4df	rt_inter_sphere(const __v4df x, const __v4df d,
-							void const *restrict const obj_ptr);
-extern __v4df	rt_inter_cone(const __v4df x, const __v4df d,
-							void const *restrict const obj_ptr);
-extern __v4df	rt_inter_plane(const __v4df x, const __v4df d,
-							void const *restrict const obj_ptr);
-extern __v4df	rt_inter_cylinder(const __v4df x, const __v4df d,
-							void const *restrict const obj_ptr);
+Object	*rt_closest_inter(__v4df const o, __v4df const d,
+			Environment *restrict const env);
+__v4df	rt_inter_sphere(__v4df const x, __v4df const d,
+			void const *restrict const obj_ptr);
+__v4df	rt_inter_cone(__v4df const x, __v4df const d,
+			void const *restrict const obj_ptr);
+__v4df	rt_inter_plane(__v4df const x, __v4df const d,
+			void const *restrict const obj_ptr);
+__v4df	rt_inter_cylinder(__v4df const x, __v4df const d,
+			void const *restrict const obj_ptr);
 
 /*
-** Objects nomrals calcs:
+** Objects normals calcs:
 */
-extern __v4df	rt_normal_sphere(const __v4df p, const __v4df d,
-							Camera const *restrict const cam,
-							void const *restrict const obj_ptr);
-extern __v4df	rt_normal_cone(const __v4df p, const __v4df d,
-							Camera const *restrict const cam,
-							void const *restrict const obj_ptr);
-extern __v4df	rt_normal_plane(const __v4df p, const __v4df d,
-							Camera const *restrict const cam,
-							void const *restrict const obj_ptr);
-extern __v4df	rt_normal_cylinder(const __v4df p, const __v4df d,
-							Camera const *restrict const cam,
-							void const *restrict const obj_ptr);
+__v4df	rt_normal_sphere(__v4df const p, __v4df const d,
+			Camera const *restrict const cam,
+			void const *restrict const obj_ptr);
+__v4df	rt_normal_cone(__v4df const p, __v4df const d,
+			Camera const *restrict const cam,
+			void const *restrict const obj_ptr);
+__v4df	rt_normal_plane(__v4df const p, __v4df const d,
+			Camera const *restrict const cam,
+			void const *restrict const obj_ptr);
+__v4df	rt_normal_cylinder(__v4df const p, __v4df const d,
+			Camera const *restrict const cam,
+			void const *restrict const obj_ptr);
 
 /*
 ** Objects uv-mapping calcs:
 */
-extern Uint32	rt_uv_sphere(SDL_Surface *restrict const tex, const __v4df n);
-extern Uint32	rt_uv_cone(SDL_Surface *restrict const tex, const __v4df n);
-extern Uint32	rt_uv_plane(SDL_Surface *restrict const tex, const __v4df n);
-extern Uint32	rt_uv_cylinder(SDL_Surface *restrict const tex, const __v4df n);
+Uint32	rt_uv_sphere(SDL_Surface *restrict const tex, __v4df const n);
+Uint32	rt_uv_cone(SDL_Surface *restrict const tex, __v4df const n);
+Uint32	rt_uv_plane(SDL_Surface *restrict const tex, __v4df const n);
+Uint32	rt_uv_cylinder(SDL_Surface *restrict const tex, __v4df const n);
 
 /*
 ** Calc light:
 */
-Color			rt_calc_light(Environment *restrict const env,
-							t_clhelp *restrict const h,
-							const __v4df d);
+Color	rt_calc_light(Environment *restrict const env,
+			t_clhelp *restrict const h,
+			__v4df const d);
 
 #endif

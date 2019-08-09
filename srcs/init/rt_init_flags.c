@@ -6,14 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:22:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/08 22:58:26 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 08:25:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
 uint16_t g_flags = 0;
-uint16_t g_key_flags = 0;
 
 void	rt_init_flags(Flags *restrict const flags)
 {
