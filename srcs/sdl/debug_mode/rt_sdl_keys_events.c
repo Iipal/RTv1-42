@@ -6,70 +6,63 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:12:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/14 10:51:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/08 23:47:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline __attribute__((__always_inline__)) void	add_camera_events(
-	const Isr *restrict const isr,
-	Camera *restrict const cam,
-	const double_t move)
+static void	add_camera_events(Camera *restrict const cam, double_t const move)
 {
-	if (isr->is_up)
+	if (IS_BIT(g_isr_flags, ISR_UP))
 		Y(cam->pos) = u_d_range(Y(cam->pos) - move, MAX_Y, MIN_Y);
-	if (isr->is_down)
+	if (IS_BIT(g_isr_flags, ISR_DOWN))
 		Y(cam->pos) = u_d_range(Y(cam->pos) + move, MAX_Y, MIN_Y);
-	if (isr->is_left)
+	if (IS_BIT(g_isr_flags, ISR_LEFT))
 		X(cam->pos) = u_d_range(X(cam->pos) - move, MAX_X, MIN_X);
-	if (isr->is_right)
+	if (IS_BIT(g_isr_flags, ISR_RIGHT))
 		X(cam->pos) = u_d_range(X(cam->pos) + move, MAX_X, MIN_X);
-	if (isr->is_zdec)
+	if (IS_BIT(g_isr_flags, ISR_ZDEC))
 		Z(cam->pos) = u_d_range(Z(cam->pos) - move, MAX_Z, MIN_Z);
-	if (isr->is_zinc)
+	if (IS_BIT(g_isr_flags, ISR_ZINC))
 		Z(cam->pos) = u_d_range(Z(cam->pos) + move, MAX_Z, MIN_Z);
-	if (isr->is_rot_x)
+	if (IS_BIT(g_isr_flags, ISR_ROT_X))
 		X(cam->dir) = u_d_range(X(cam->dir) + (move * 2), 360.0f, -360.0f);
-	if (isr->is_rot_y)
+	if (IS_BIT(g_isr_flags, ISR_ROT_Y))
 		Y(cam->dir) = u_d_range(Y(cam->dir) + (move * 2), 360.0f, -360.0f);
-	if (isr->is_rot_z)
+	if (IS_BIT(g_isr_flags, ISR_ROT_Z))
 		Z(cam->dir) = u_d_range(Z(cam->dir) + (move * 2), 360.0f, -360.0f);
-	if (isr->is_dec_rot_x)
+	if (IS_BIT(g_isr_flags, ISR_DEC_ROT_X))
 		X(cam->dir) = u_d_range(X(cam->dir) - (move * 2), 360.0f, -360.0f);
-	if (isr->is_dec_rot_y)
+	if (IS_BIT(g_isr_flags, ISR_DEC_ROT_Y))
 		Y(cam->dir) = u_d_range(Y(cam->dir) - (move * 2), 360.0f, -360.0f);
-	if (isr->is_dec_rot_z)
+	if (IS_BIT(g_isr_flags, ISR_DEC_ROT_Z))
 		Z(cam->dir) = u_d_range(Z(cam->dir) - (move * 2), 360.0f, -360.0f);
 }
 
-static inline __attribute__((__always_inline__)) void	add_default_keys_event(
-	Environment *restrict const env)
+static void	add_default_keys_event(float_t *const al, double_t const move)
 {
-	if (env->isr.is_inc_ambient_light)
-		env->flags.ambient_light =
-			u_d_range(env->flags.ambient_light - env->fps.move, 100, 1);
-	if (env->isr.is_dec_ambient_light)
-		env->flags.ambient_light =
-			u_d_range(env->flags.ambient_light + env->fps.move, 100, 1);
+	if (IS_BIT(g_isr_flags, ISR_INC_AL))
+		*al = u_d_range(*al - move, 100, 1);
+	if (IS_BIT(g_isr_flags, ISR_DEC_AL))
+		*al = u_d_range(*al + move, 100, 1);
 }
 
 void				rt_sdl_keys_events(Environment *restrict const env)
 {
-	add_default_keys_event(env);
-	if (env->isr.is_light_debug)
+	add_default_keys_event(&env->flags.ambient_light, env->fps.move);
+	if (IS_BIT(g_isr_flags, ISR_LIGHT_DEBUG))
 	{
-		if (env->isr.is_objs_debug)
-			env->isr.is_light_debug = false;
-		else if (!env->flags.no_calc_light)
+		if (IS_BIT(g_isr_flags, ISR_OBJS_DEBUG))
+			UNSET_BIT(g_isr_flags, ISR_LIGHT_DEBUG);
+		else if (!IS_BIT(g_flags, F_BIT_NCL))
 			rt_sdl_keys_events_lights_debug(env->scene.lights,
-				&env->fps, &env->isr, env->scene.ins_lights);
+				&env->fps, env->scene.ins_lights);
 	}
-	else if (env->isr.is_objs_debug)
+	else if (IS_BIT(g_isr_flags, ISR_OBJS_DEBUG))
 		rt_sdl_keys_events_objs_debug(env->scene.objs,
-			&env->fps, &env->isr, env->scene.ins_objs);
+			&env->fps, env->scene.ins_objs);
 	else
-		add_camera_events(&env->isr, &env->scene.cam, env->fps.move);
-	rt_camera_speed_movements(&env->cam_speed,
-			env->isr.is_speedup, env->isr.is_speeddown);
+		add_camera_events(&env->scene.cam, env->fps.move);
+	rt_camera_speed_movements(&env->cam_speed);
 }

@@ -6,15 +6,15 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 11:00:16 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/17 12:32:34 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 08:33:02 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1_scene_parse.h"
 
-inline bool	rt_parse_point_light(const JSON_Object *const light_obj,
-				Light *const light,
-				const size_t light_i)
+bool	rt_parse_point_light(JSON_Object const *const light_obj,
+			Light *const light,
+			size_t const light_i)
 {
 	IFDO_F(json_object_has_value(light_obj, "direction"),
 		ERRIN_N(E_LPOINT_DIR, light_i + 1, E_IN_LIGHT));
@@ -34,9 +34,9 @@ inline bool	rt_parse_point_light(const JSON_Object *const light_obj,
 	return (true);
 }
 
-inline bool	rt_parse_dir_light(const JSON_Object *const light_obj,
-				Light *const light,
-				const size_t light_i)
+bool	rt_parse_dir_light(JSON_Object const *const light_obj,
+			Light *const light,
+			size_t const light_i)
 {
 	NODO_F(json_object_has_value_of_type(light_obj, "direction", JSONArray),
 		ERRIN_N(E_LDIR_MISS, light_i + 1, E_IN_LIGHT));

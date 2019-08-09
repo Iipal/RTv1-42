@@ -6,53 +6,50 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 17:30:12 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/10 10:02:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/08 23:35:18 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline __attribute__((__always_inline__)) void	add_sdl_key_rot_rls(
-	Isr *restrict const isr,
-	const SDL_Keycode key)
+static void	add_sdl_key_rot_release(SDL_Keycode const key)
 {
 	if (SDLK_r == key)
-		isr->is_rot_x = false;
+		UNSET_BIT(g_isr_flags, ISR_ROT_X);
 	else if (SDLK_f == key)
-		isr->is_rot_y = false;
+		UNSET_BIT(g_isr_flags, ISR_ROT_Y);
 	else if (SDLK_v == key)
-		isr->is_rot_z = false;
+		UNSET_BIT(g_isr_flags, ISR_ROT_Z);
 	else if (SDLK_t == key)
-		isr->is_dec_rot_x = false;
+		UNSET_BIT(g_isr_flags, ISR_DEC_ROT_X);
 	else if (SDLK_g == key)
-		isr->is_dec_rot_y = false;
+		UNSET_BIT(g_isr_flags, ISR_DEC_ROT_Y);
 	else if (SDLK_b == key)
-		isr->is_dec_rot_z = false;
+		UNSET_BIT(g_isr_flags, ISR_DEC_ROT_Z);
 }
 
-void				rt_sdl_keys_release(Isr *restrict const isr,
-									const SDL_Keycode key)
+void		rt_sdl_keys_release(SDL_Keycode const key)
 {
 	if (SDLK_w == key)
-		isr->is_up = false;
+		UNSET_BIT(g_isr_flags, ISR_UP);
 	else if (SDLK_s == key)
-		isr->is_down = false;
+		UNSET_BIT(g_isr_flags, ISR_DOWN);
 	else if (SDLK_a == key)
-		isr->is_left = false;
+		UNSET_BIT(g_isr_flags, ISR_LEFT);
 	else if (SDLK_d == key)
-		isr->is_right = false;
+		UNSET_BIT(g_isr_flags, ISR_RIGHT);
 	else if (SDLK_q == key)
-		isr->is_zdec = false;
+		UNSET_BIT(g_isr_flags, ISR_ZDEC);
 	else if (SDLK_e == key)
-		isr->is_zinc = false;
+		UNSET_BIT(g_isr_flags, ISR_ZINC);
 	else if (SDLK_LSHIFT == key)
-		isr->is_speedup = false;
+		UNSET_BIT(g_isr_flags, ISR_SPEEDUP);
 	else if (SDLK_LCTRL == key)
-		isr->is_speeddown = false;
+		UNSET_BIT(g_isr_flags, ISR_SPEEDDOWN);
 	else if (SDLK_EQUALS == key)
-		isr->is_inc_ambient_light = false;
+		UNSET_BIT(g_isr_flags, ISR_INC_AL);
 	else if (SDLK_MINUS == key)
-		isr->is_dec_ambient_light = false;
+		UNSET_BIT(g_isr_flags, ISR_DEC_AL);
 	else
-		add_sdl_key_rot_rls(isr, key);
+		add_sdl_key_rot_release(key);
 }

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:28:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/04 13:02:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 08:34:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define RTV1_FLAGS_H
 
 # include "rtv1_structs.h"
+
+extern uint16_t	g_flags;
 
 /*
 ** Flags (and shortcut for that) constant string literals definition:
@@ -36,6 +38,12 @@
 # define SF_FRT "-frt"
 # define SF_AA  "-aa"
 
+# define F_BIT_VPS (1 << 0)
+# define F_BIT_AL  (1 << 1)
+# define F_BIT_FTC (1 << 2)
+# define F_BIT_FRT (1 << 3)
+# define F_BIT_AA  (1 << 4)
+
 # define MAX_BOOLEAN_FLAGS 5
 # define F_DBG  "--debug"
 # define F_NCL  "--noCalcLight"
@@ -49,23 +57,28 @@
 # define SF_RLI "-rli"
 # define SF_PU  "-pu"
 
+# define F_BIT_DBG (1 << 5)
+# define F_BIT_NCL (1 << 6)
+# define F_BIT_TEX (1 << 7)
+# define F_BIT_RLI (1 << 8)
+# define F_BIT_PU  (1 << 9)
+
 # define MAX_OTHER_FLAGS 1
 # define F_NB  "--noBorder"
 
 # define SF_NB "-nb"
 
+# define F_BIT_NB (1 << 10)
+
+# define F_BIT_SHADOWS (1 << 11)
+
 /*
 ** Default flag values:
 */
-# define DEF_VIEWPORT_SCALE    1.0f
-# define DEF_AMBIENT_LIGHT     100.0f
 # define DEF_FPS_TEXT_COLOR    (Color){0x7FFF00}
 # define DEF_FPS_REFRESH_TIMER .25f
-# define DEF_DEBUG_MODE        false
-# define DEF_NO_CALC_LIGHT     false
-# define DEF_PRINT_USAGE       false
-# define DEF_TEXTURED          false
-# define DEF_RANDOM_INTENSE    false
+# define DEF_VIEWPORT_SCALE    1.0f
+# define DEF_AMBIENT_LIGHT     100.0f
 # define DEF_ANTI_ALIASING     0
 
 # define E_MAX_VPS 10
@@ -123,37 +136,37 @@
 /*
 **	Flags parsing funcs:
 */
-bool			rt_flags_parser(Environment *restrict const env,
-									char **av, const size_t ac);
+bool	rt_flags_parser(Environment *const env,
+			char **av, size_t const ac);
 
-extern size_t	rt_is_flag_wparam(char *flag);
+size_t	rt_is_flag_wparam(char const *flag);
 
-typedef bool	(*t_fwparam)(Flags*, char**, const size_t, size_t *const);
-extern bool		f_vps(Flags *const f, char **av,
-					const size_t ac, size_t *const av_i);
-extern bool		f_al(Flags *const f, char **av,
-					const size_t ac, size_t *const av_i);
-extern bool		f_ftc(Flags *const f, char **av,
-					const size_t ac, size_t *const av_i);
-extern bool		f_frt(Flags *const f, char **av,
-					const size_t ac, size_t *const av_i);
-extern bool		f_aa(Flags *const f, char **av,
-					const size_t ac, size_t *const av_i);
+typedef bool	(*t_fwparam)(Flags*, char**, size_t const, size_t *const);
+bool	f_vps(Flags *const f, char **av,
+			size_t const ac, size_t *const av_i);
+bool	f_al(Flags *const f, char **av,
+			size_t const ac, size_t *const av_i);
+bool	f_ftc(Flags *const f, char **av,
+			size_t const ac, size_t *const av_i);
+bool	f_frt(Flags *const f, char **av,
+			size_t const ac, size_t *const av_i);
+bool	f_aa(Flags *const f, char **av,
+			size_t const ac, size_t *const av_i);
 
-extern size_t	rt_is_flag_boolean(char *flag);
+size_t	rt_is_flag_boolean(char const *flag);
 
-typedef bool	(*t_fbool)(Flags *restrict const);
-extern bool		f_dbg(Flags *restrict const boolean_flag);
-extern bool		f_ncl(Flags *restrict const boolean_flag);
-extern bool		f_tex(Flags *restrict const boolean_flag);
-extern bool		f_rli(Flags *restrict const boolean_flag);
-extern bool		f_pu(Flags *restrict const boolean_flag);
+typedef bool (*t_fbool)(void);
+bool	f_dbg(void);
+bool	f_ncl(void);
+bool	f_tex(void);
+bool	f_rli(void);
+bool	f_pu(void);
 
-extern size_t	rt_is_flag_other(char *flag);
+size_t	rt_is_flag_other(char const *flag);
 
 typedef bool	(*t_fother)(Environment *restrict const env, char **av,
-					const size_t ac, size_t *const av_i);
-extern bool		f_nb(Environment *restrict const env, char **av,
-					const size_t ac, size_t *const av_i);
+					size_t const ac, size_t *const av_i);
+bool	f_nb(Environment *restrict const env, char **av,
+			size_t const ac, size_t *const av_i);
 
 #endif

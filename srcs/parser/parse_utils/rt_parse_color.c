@@ -6,14 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 16:09:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/04 13:05:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 08:37:31 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool	rt_parse_color(char *hex_str, Color *const dst,
-				const size_t parsing_obj_counter)
+bool	rt_parse_color(char *hex_str, Color *const dst,
+			size_t const parsing_obj_counter)
 {
 	IFDO_F(ft_strncmp(hex_str, "0x", ft_strlen("0x")),
 		ERRIN_N(E_OCLR_0X_MISS, parsing_obj_counter + 1, E_IN_OBJ));

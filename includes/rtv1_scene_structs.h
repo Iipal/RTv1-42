@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:43:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/17 00:41:11 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/08 23:23:40 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,11 @@ struct	s_object
 # define CAMERA typedef struct s_camera    Camera
 # define LIGHT typedef struct s_light      Light
 # define OBJECT typedef struct s_object    Object
-# define ISRNDR typedef struct s_isrender  Isr
 # define TIME typedef struct s_time        Time
 
 CAMERA;
 LIGHT;
 OBJECT;
-ISRNDR;
 TIME;
 
 struct	s_scene
@@ -98,7 +96,6 @@ struct	s_scene
 	size_t		ins_lights;
 	size_t		ins_objs;
 	Camera		cam;
-	bool		is_render_shadow;
 	bool		is_camera_exist;
 };
 

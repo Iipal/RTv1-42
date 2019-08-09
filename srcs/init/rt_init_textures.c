@@ -6,15 +6,15 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 20:57:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/09 04:55:13 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 08:27:45 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-inline bool	rt_init_textures(Object *restrict const objs,
-								const size_t ins_objs,
-								const SDL_PixelFormat *format)
+bool	rt_init_textures(Object *restrict const objs,
+			size_t const ins_objs,
+			SDL_PixelFormat const *format)
 {
 	size_t						i;
 	const char *restrict const	textures_path[TEX_MAX] = {TEX_WORLD, TEX_WOOD,

@@ -6,18 +6,17 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 15:40:27 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/04 13:06:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 08:36:46 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1_rt.h"
 #include "rtv1_scene_parse.h"
 
-static inline __attribute__((always_inline)) bool	add_main_params(
-	const JSON_Object *const object_obj,
-	const size_t obj_i,
+static bool	add_main_params(JSON_Object const *const object_obj,
+	size_t const obj_i,
 	Object *const obj,
-	char *param)
+	char const *const param)
 {
 	NODO_F(json_object_has_value_of_type(object_obj, "position", JSONArray),
 		ERRIN_N(E_OPOS_MISS, obj_i + 1, E_IN_OBJ));
@@ -33,8 +32,8 @@ static inline __attribute__((always_inline)) bool	add_main_params(
 	return (true);
 }
 
-bool	rt_parse_sphere(const JSON_Object *const object_obj,
-			Object *const obj, const size_t obj_i)
+bool		rt_parse_sphere(JSON_Object const *const object_obj,
+				Object *const obj, size_t const obj_i)
 {
 	NO_F(add_main_params(object_obj, obj_i, obj, "Sphere"));
 	NODO_F(json_object_has_value_of_type(object_obj, "radius", JSONNumber),
@@ -50,8 +49,8 @@ bool	rt_parse_sphere(const JSON_Object *const object_obj,
 	return (true);
 }
 
-bool	rt_parse_cone(const JSON_Object *const object_obj,
-			Object *const obj, const size_t obj_i)
+bool		rt_parse_cone(JSON_Object const *const object_obj,
+				Object *const obj, size_t const obj_i)
 {
 	NO_F(add_main_params(object_obj, obj_i, obj, "Cone"));
 	NODO_F(json_object_has_value_of_type(object_obj, "radius", JSONNumber),
@@ -69,8 +68,8 @@ bool	rt_parse_cone(const JSON_Object *const object_obj,
 	return (true);
 }
 
-bool	rt_parse_plane(const JSON_Object *const object_obj,
-			Object *const obj, const size_t obj_i)
+bool		rt_parse_plane(JSON_Object const *const object_obj,
+				Object *const obj, size_t const obj_i)
 {
 	NO_F(add_main_params(object_obj, obj_i, obj, "Plane"));
 	NODO_F(json_object_has_value_of_type(object_obj, "direction", JSONArray),
@@ -87,8 +86,8 @@ bool	rt_parse_plane(const JSON_Object *const object_obj,
 	return (true);
 }
 
-bool	rt_parse_cylinder(const JSON_Object *const object_obj,
-			Object *const obj, const size_t obj_i)
+bool		rt_parse_cylinder(JSON_Object const *const object_obj,
+				Object *const obj, size_t const obj_i)
 {
 	NO_F(add_main_params(object_obj, obj_i, obj, "Cylinder"));
 	NODO_F(json_object_has_value_of_type(object_obj, "radius", JSONNumber),

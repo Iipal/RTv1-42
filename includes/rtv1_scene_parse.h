@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 17:38:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/04 13:03:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 08:36:44 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,44 +20,44 @@
 /*
 ** Function prototypes:
 */
-extern bool	rt_parse_scene(Environment *const env,
-				const char *const scene_file);
+bool	rt_parse_scene(Environment *const env,
+			char const *const scene_file);
 
-extern bool	rt_parse_cam(Camera *const camera,
-				const JSON_Object *const root_obj);
-bool		rt_parse_lights(Scene *const scene,
-				const JSON_Object *root_obj);
-bool		rt_parse_objects(Scene *const scene,
-				const JSON_Object *const root_obj);
+bool	rt_parse_cam(Camera *const camera,
+			JSON_Object const *const root_obj);
+bool	rt_parse_lights(Scene *const scene,
+			JSON_Object const *const root_obj);
+bool	rt_parse_objects(Scene *const scene,
+			JSON_Object const *const root_obj);
 
-typedef bool (*t_fn_lght)(const JSON_Object *const, Light *const, const size_t);
-extern bool	rt_parse_point_light(const JSON_Object *const light_obj,
-				Light *const l, const size_t light_i);
-extern bool	rt_parse_dir_light(const JSON_Object *const light_obj,
-				Light *const l, const size_t light_i);
+typedef bool (*t_fn_lght)(JSON_Object const *const, Light *const, size_t const);
+bool	rt_parse_point_light(JSON_Object const *const light_obj,
+			Light *const l, size_t const light_i);
+bool	rt_parse_dir_light(JSON_Object const *const light_obj,
+			Light *const l, size_t const light_i);
 
-typedef bool (*t_fn_obj)(const JSON_Object *const, Object *const, const size_t);
-extern bool	rt_parse_sphere(const JSON_Object *const object_obj,
-				Object *const obj, const size_t obj_i);
-extern bool	rt_parse_cone(const JSON_Object *const object_obj,
-				Object *const obj, const size_t obj_i);
-extern bool	rt_parse_plane(const JSON_Object *const object_obj,
-				Object *const obj, const size_t obj_i);
-extern bool	rt_parse_cylinder(const JSON_Object *const object_obj,
-				Object *const obj, const size_t obj_i);
+typedef bool (*t_fn_obj)(JSON_Object const *const, Object *const, size_t const);
+bool	rt_parse_sphere(JSON_Object const *const object_obj,
+			Object *const obj, size_t const obj_i);
+bool	rt_parse_cone(JSON_Object const *const object_obj,
+			Object *const obj, size_t const obj_i);
+bool	rt_parse_plane(JSON_Object const *const object_obj,
+			Object *const obj, size_t const obj_i);
+bool	rt_parse_cylinder(JSON_Object const *const object_obj,
+			Object *const obj, size_t const obj_i);
 
-extern bool	rt_parse_other(Environment *const env,
-				const JSON_Object *const root_obj);
+bool	rt_parse_other(Environment *const env,
+			JSON_Object const *const root_obj);
 
-bool		rt_parse_arr_to_vec(const JSON_Array *const arr,
-				__v4df *const dst,
-				const char *const obj_name,
-				const size_t parsing_obj_counter);
-extern bool	rt_parse_color(char *hex_str,
-				Color *const dst,
-				const size_t parsing_obj_counter);
+bool	rt_parse_arr_to_vec(JSON_Array const *const arr,
+			__v4df *const dst,
+			char const *const obj_name,
+			size_t const parsing_obj_counter);
+bool	rt_parse_color(char *hex_str,
+			Color *const dst,
+			size_t const parsing_obj_counter);
 
-bool		rt_parsed_validation(Scene *restrict const s);
+bool	rt_parsed_validation(Scene *restrict const s);
 
 /*
 ** Scene Default constants, params and also:

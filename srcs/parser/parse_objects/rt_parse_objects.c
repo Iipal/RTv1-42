@@ -6,20 +6,20 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 14:04:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/04 13:05:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 08:35:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1_scene_parse.h"
 
-static bool	add_parse_current_object(const JSON_Object *const object_obj,
+static bool	add_parse_current_object(JSON_Object const *const object_obj,
 				Object *const obj,
-				const size_t curr_obj)
+				size_t const curr_obj)
 {
-	const t_fn_obj	fn_objs[] = {rt_parse_sphere, rt_parse_cone,
+	t_fn_obj const	fn_objs[] = {rt_parse_sphere, rt_parse_cone,
 								rt_parse_plane, rt_parse_cylinder};
-	const char		*o_types[] = {FP_SPHERE, FP_CONE, FP_PLANE, FP_CYLINDER};
-	const char		*obj_type = json_object_get_string(object_obj, "type");
+	char const		*o_types[] = {FP_SPHERE, FP_CONE, FP_PLANE, FP_CYLINDER};
+	char const		*obj_type = json_object_get_string(object_obj, "type");
 	size_t			i;
 
 	i = ~0ULL;
@@ -32,9 +32,9 @@ static bool	add_parse_current_object(const JSON_Object *const object_obj,
 }
 
 bool		rt_parse_objects(Scene *const scene,
-				const JSON_Object *const root_obj)
+				JSON_Object const *const root_obj)
 {
-	const JSON_Value	*o_value = json_object_get_value(root_obj, "Objects");
+	JSON_Value const	*o_value = json_object_get_value(root_obj, "Objects");
 	JSON_Array			*objects_arr;
 	JSON_Object			*object_obj;
 	size_t				i;

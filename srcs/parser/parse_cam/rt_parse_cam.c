@@ -6,16 +6,15 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 17:34:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/17 00:16:42 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 08:30:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1_scene_parse.h"
 
-inline bool	rt_parse_cam(Camera *const camera,
-				const JSON_Object *const root_obj)
+bool	rt_parse_cam(Camera *const camera, JSON_Object const *const root_obj)
 {
-	const JSON_Object	*obj_cam = json_object_get_object(root_obj, "Camera");
+	JSON_Object const	*obj_cam = json_object_get_object(root_obj, "Camera");
 
 	NOM_F(E_NOCAM, obj_cam);
 	NODO_F(json_object_has_value_of_type(obj_cam, "position", JSONArray),

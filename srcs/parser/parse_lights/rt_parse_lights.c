@@ -6,19 +6,18 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 09:47:24 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/04 13:05:27 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 08:31:42 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1_scene_parse.h"
 
-static bool	add_parse_current_light(JSON_Object *light_obj,
-				Light *const l,
-				const size_t curr_light_i)
+static bool	add_parse_current_light(JSON_Object *light_obj, Light *const l,
+				size_t const curr_light_i)
 {
-	const t_fn_lght	fn_lights[] = {rt_parse_point_light, rt_parse_dir_light};
-	const char		*l_types[] = {LT_POINT, LT_DIRECT};
-	const char		*light_type = json_object_get_string(light_obj, "type");
+	t_fn_lght const	fn_lights[] = {rt_parse_point_light, rt_parse_dir_light};
+	char const		*l_types[] = {LT_POINT, LT_DIRECT};
+	char const		*light_type = json_object_get_string(light_obj, "type");
 	size_t			i;
 
 	i = ~0ULL;
@@ -31,9 +30,9 @@ static bool	add_parse_current_light(JSON_Object *light_obj,
 }
 
 bool		rt_parse_lights(Scene *const scene,
-				const JSON_Object *const root_obj)
+				JSON_Object const *const root_obj)
 {
-	const JSON_Value	*l_value = json_object_get_value(root_obj, "Lights");
+	JSON_Value const	*l_value = json_object_get_value(root_obj, "Lights");
 	JSON_Array			*lights_arr;
 	JSON_Object			*light_obj;
 	size_t				i;

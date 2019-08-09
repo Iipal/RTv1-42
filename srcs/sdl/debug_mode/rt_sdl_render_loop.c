@@ -28,13 +28,13 @@ void	rt_sdl_render_loop(Environment *restrict const env)
 					quit = true;
 				else
 				{
-					rt_sdl_keys_press(&env->isr, env->sdl->e.key.keysym.sym);
-					rt_sdl_keys_press_switcher_mode(&env->isr, env->sdl->e.key.keysym.sym);
-					rt_sdl_keys_press_add_settings(env, env->sdl->e.key.keysym.sym);
+					rt_sdl_keys_press(env->sdl->e.key.keysym.sym);
+					rt_sdl_keys_press_switcher_mode(env->sdl->e.key.keysym.sym);
+					rt_sdl_keys_press_add_settings(env->sdl->e.key.keysym.sym);
 				}
 			}
 			else if (env->sdl->e.type == SDL_KEYUP)
-				rt_sdl_keys_release(&env->isr, env->sdl->e.key.keysym.sym);
+				rt_sdl_keys_release(env->sdl->e.key.keysym.sym);
 		rt_sdl_keys_events(env);
 		rt_rendering(env);
 		rt_fps(&env->fps, env->cam_speed);
