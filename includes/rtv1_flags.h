@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:28:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 08:34:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 13:58:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ bool	f_aa(Flags *const f, char **av,
 
 size_t	rt_is_flag_boolean(char const *flag);
 
-typedef bool (*t_fbool)(void);
+typedef bool	(*t_fbool)(void);
 bool	f_dbg(void);
 bool	f_ncl(void);
 bool	f_tex(void);

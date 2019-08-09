@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 18:51:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 09:11:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 14:01:24 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	add_fps_prepare_and_draw(float_t const dfps, float_t const dms,
 	SDL_Surface	*text;
 	char		*data[2];
 	char		*temp[2];
-	int8_t			i;
+	int8_t		i;
 
 	i = -1;
 	while (2 > ++i)

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 09:13:53 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 13:57:44 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,15 @@
 # include "rtv1_isr_flags.h"
 # include "rtv1_structs.h"
 # include "rtv1_macroses.h"
+# include "rtv1_scene_parse.h"
+# include "rtv1_sdl.h"
+# include "rtv1_rt.h"
 
 /*
 ** Validate executable path and scene file name.
 */
-bool		rt_valid_exe_path(char const *path);
-bool		rt_valid_filename(char const *file);
-
-/*
-** Parse and validate scene file:
-*/
-# include "rtv1_scene_parse.h"
+bool	rt_valid_exe_path(char const *path);
+bool	rt_valid_filename(char const *file);
 
 /*
 ** Initialization and pre-calculating:
@@ -41,11 +39,6 @@ bool	rt_init_textures(Object *restrict const objs,
 			size_t const ins_objs,
 			SDL_PixelFormat const *format);
 bool	rt_precalc_d(Environment *restrict const env);
-
-/*
-** SDL render loop, keypresses and keybinds mode switcher:
-*/
-# include "rtv1_sdl.h"
 
 /*
 ** Rendering and other rendering stuff:
@@ -65,19 +58,14 @@ void	rt_render_fps_counter(Color const *text_clr, Time *const fps,
 			Sdl const *const sdl, double_t const frt);
 
 /*
-** Ray Tracing:
-*/
-# include "rtv1_rt.h"
-
-/*
 ** Free all malloced memory:
 */
 void	rt_free(Environment *restrict *env);
 
 /*
 ** Ohter utilites funcs:
-**  Used only when validating readed data for convert direction\rotate
-**   from 365 degress to 360;
+**  Used only when validating read data for convert direction\rotate
+**   from 365 degrees to 360;
 */
 __v4df	u_inrange_dir_max(__v4df dir);
 __v4df	u_inrange_dir_min(__v4df dir);

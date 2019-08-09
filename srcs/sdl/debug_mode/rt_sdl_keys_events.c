@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:12:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/08 23:47:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 14:01:57 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	add_default_keys_event(float_t *const al, double_t const move)
 		*al = u_d_range(*al + move, 100, 1);
 }
 
-void				rt_sdl_keys_events(Environment *restrict const env)
+void		rt_sdl_keys_events(Environment *restrict const env)
 {
 	add_default_keys_event(&env->flags.ambient_light, env->fps.move);
 	if (IS_BIT(g_isr_flags, ISR_LIGHT_DEBUG))

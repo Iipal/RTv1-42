@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 18:00:05 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/08 23:28:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 13:59:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,5 @@ void	rt_sdl_keys_events_objs_debug(Object *restrict const o,
 void	rt_sdl_keys_events_lights_debug(Light *restrict const l,
 									Fps const *restrict const fps,
 									size_t const in_scene_lights);
-
 
 #endif

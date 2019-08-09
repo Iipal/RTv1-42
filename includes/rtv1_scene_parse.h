@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 17:38:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 08:36:44 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 13:58:52 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,15 @@ bool	rt_parse_lights(Scene *const scene,
 bool	rt_parse_objects(Scene *const scene,
 			JSON_Object const *const root_obj);
 
-typedef bool (*t_fn_lght)(JSON_Object const *const, Light *const, size_t const);
+typedef bool	(*t_fn_lght)(JSON_Object const *const,
+					Light *const, size_t const);
 bool	rt_parse_point_light(JSON_Object const *const light_obj,
 			Light *const l, size_t const light_i);
 bool	rt_parse_dir_light(JSON_Object const *const light_obj,
 			Light *const l, size_t const light_i);
 
-typedef bool (*t_fn_obj)(JSON_Object const *const, Object *const, size_t const);
+typedef bool	(*t_fn_obj)(JSON_Object const *const,
+					Object *const, size_t const);
 bool	rt_parse_sphere(JSON_Object const *const object_obj,
 			Object *const obj, size_t const obj_i);
 bool	rt_parse_cone(JSON_Object const *const object_obj,

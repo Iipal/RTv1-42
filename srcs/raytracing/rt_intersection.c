@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 08:46:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 14:00:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static inline __v2df	add_plane_inter(__v4df const o, __v4df const d,
 Object					*rt_closest_inter(__v4df const o, __v4df const d,
 									Environment *restrict const env)
 {
-	__v2df		t;
-	size_t		i;
-	Object *	out_obj;
+	Object	*out_obj;
+	__v2df	t;
+	size_t	i;
 
 	i = ~0UL;
 	out_obj = NULL;

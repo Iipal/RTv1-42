@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/06/14 19:03:44 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/08/09 13:55:23 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,7 +107,7 @@ fclean: clean
 
 re: fclean all
 
-norme:
+norme_all:
 	@echo "$(INVERT)$(RED) WARNING:$(WHITE)$(INVERT) for lib parson norme is not neccessary.$(WHITE)"
 	@$(LMAKE) norme
 	@$(LVMAKE) norme
@@ -116,4 +116,9 @@ norme:
 	@norminette includes/
 	@norminette $(SRCS)
 
-.PHONY: re fclean clean all norme del pre debug debug_all
+norme:
+	@echo "$(INVERT)norminette for $(GREEN)$(NAME)$(WHITE)$(INVERT):$(WHITE)"
+	@norminette includes/
+	@norminette $(SRCS)
+
+.PHONY: re fclean clean all norme_all norme del pre debug debug_all

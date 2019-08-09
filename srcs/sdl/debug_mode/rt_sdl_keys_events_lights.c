@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 18:15:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/08 23:47:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 14:01:45 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static void	add_light_zorintens(Light *restrict const l,
 	}
 }
 
-void				rt_sdl_keys_events_lights_debug(Light *restrict const l,
-						Fps const *restrict const fps,
-						size_t const in_scene_lights)
+void		rt_sdl_keys_events_lights_debug(Light *restrict const l,
+				Fps const *restrict const fps,
+				size_t const in_scene_lights)
 {
 	size_t	i;
 

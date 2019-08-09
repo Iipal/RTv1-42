@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 11:00:16 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 08:33:02 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/09 14:01:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ bool	rt_parse_dir_light(JSON_Object const *const light_obj,
 		ERRIN_N(E_LINTENS_MISS, light_i + 1, E_IN_LIGHT));
 	NO_F(rt_parse_arr_to_vec(json_object_get_array(light_obj, "position"),
 		&light->pos, "Light", light_i));
-		NO_F(rt_parse_arr_to_vec(json_object_get_array(light_obj, "direction"),
+	NO_F(rt_parse_arr_to_vec(json_object_get_array(light_obj, "direction"),
 		&light->dir, "Light", light_i));
 	light->intens = json_object_get_number(light_obj, "intensity");
 	IFDO_F(MIN_L_INTENS > light->intens,
