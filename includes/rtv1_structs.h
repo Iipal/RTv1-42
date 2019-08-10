@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/10 10:21:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/10 15:06:14 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ struct	s_fps
 
 struct	s_fps_render
 {
-
+	char	byte;
 };
 
 struct	s_flags

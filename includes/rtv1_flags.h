@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:28:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/10 11:24:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/10 14:58:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,6 @@ typedef bool	(*t_fother)(Environment *restrict const env, char **av,
 bool	f_nb(Environment *restrict const env, char **av,
 			size_t const ac, size_t *const av_i);
 
-void	rt_parsed_flags_validation(Flags const *const f);
+bool	rt_parsed_flags_validation(Flags const *const f);
 
 #endif

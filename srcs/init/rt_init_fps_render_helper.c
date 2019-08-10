@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_free.c                                          :+:      :+:    :+:   */
+/*   rt_init_fps_render_helper.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/10 15:50:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/10 14:38:09 by tmaluh           ###   ########.fr       */
+/*   Created: 2019/08/10 14:38:44 by tmaluh            #+#    #+#             */
+/*   Updated: 2019/08/10 15:05:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	rt_free(Environment *restrict *env)
+FpsRenderHelper	*rt_init_fps_render_helper(void)
 {
-	size_t	i;
+	FpsRenderHelper *out;
 
-	i = ~0ULL;
-	if ((*env)->pre_calc_d)
-	{
-		while (WIN_Y > ++i)
-			FREE((*env)->pre_calc_d[i], free);
-		FREE((*env)->pre_calc_d, free);
-	}
-	IFDO(*env && (*env)->sdl, sdl_free(&(*env)->sdl));
-	IFDO(*env, FREE((*env)->scene.objs, free));
-	IFDO(*env, FREE((*env)->scene.lights, free));
-	IFDO(*env, FREE((*env)->frh, free));
-	FREE(*env, free);
+	out = NULL;
+	MEM(FpsRenderHelper, out, 1, E_ALLOC);
+	return out;
 }
