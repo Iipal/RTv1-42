@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 18:51:52 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 14:01:24 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/10 09:25:42 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	add_fps_prepare_and_draw(float_t const dfps, float_t const dms,
 		data[i] = (i ? ft_itoa(dms) : ft_itoa(dfps));
 		temp[i] = data[i];
 		data[i] = ft_strjoin(data[i], data_info[i]);
-		text = sdl_load_font(sdl, data[i], SDL_CLR(text_clr->c), text);
+		text = sdl_load_font(sdl, data[i], SDL_CLR(text_clr->c));
 		add_render_fps(text, sdl->pxls, i);
 		ft_strdel(&(temp[i]));
 		ft_strdel(&(data[i]));

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 20:57:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 08:27:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/10 09:26:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ bool	rt_init_textures(Object *restrict const objs,
 	i = ~0UL;
 	while (ins_objs > ++i)
 		NO_F(objs[i].texture = sdl_load_image(textures_path[ft_rand(TEX_MAX)],
-							format, objs[i].texture));
+									format));
 	return (true);
 }
