@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/10 14:58:00 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/10 22:51:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,21 @@ FpsRenderHelper	*rt_init_fps_render_helper(void);
 void		rt_rendering(Environment *restrict const env);
 
 Color		rt_anti_aliasing(Environment *restrict const env,
-				size_t const aa, __v4df d_calc);
+				size_t const aa,
+				__v4df d_calc);
 
 void		rt_camera_speed_movements(double_t *restrict const cam_speed);
 
 void		rt_randomize_lights_intense(Light *restrict const lights,
-				size_t const ins_lights, float const time);
+				size_t const ins_lights,
+				float const time);
 
 void		rt_fps(Fps *restrict const fps, double_t const cam_speed);
-void		rt_render_fps_counter(Color const *text_clr, Time *const fps,
-				Sdl const *const sdl, double_t const frt);
+void		rt_render_fps_counter(Color const *text_clr,
+				Time *const fps,
+				Sdl const *const sdl,
+				double_t const frt,
+				FpsRenderHelper *const frh);
 
 /*
 ** Free all malloced memory:
@@ -67,7 +72,7 @@ void		rt_free(Environment *restrict *env);
 /*
 ** Ohter utilites funcs:
 **  Used only when validating read data for convert direction\rotate
-**   from 365 degrees to 360;
+**   from 365 degrees to 5;
 */
 __v4df		u_inrange_dir_max(__v4df dir);
 __v4df		u_inrange_dir_min(__v4df dir);

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 09:11:46 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/10 22:51:17 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	rt_rendering(Environment *restrict const env)
 		}
 	if (IS_BIT(g_isr_flags, ISR_RENDER_FPS))
 		rt_render_fps_counter(&env->flags.fps_text_color, &env->fps.time,
-			env->sdl, env->flags.fps_refresh_timer);
+			env->sdl, env->flags.fps_refresh_timer, env->frh);
 	if (IS_BIT(g_flags, F_BIT_RLI) && !IS_BIT(g_flags, F_BIT_NCL))
 		rt_randomize_lights_intense(env->scene.lights, env->scene.ins_lights,
 				env->fps.time.res);

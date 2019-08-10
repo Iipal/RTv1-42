@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/10 15:06:14 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/10 22:39:54 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ struct	s_time
 	float_t	old;
 	float_t	current;
 	float_t	res;
-	float_t	ms;
-	float_t	fps;
 };
 
 struct	s_fps
@@ -35,7 +33,11 @@ struct	s_fps
 
 struct	s_fps_render
 {
-	char	byte;
+	char	*fps_str;
+	char	*ms_str;
+	float_t	fps;
+	float_t	ms;
+	float_t	frt_delta;
 };
 
 struct	s_flags

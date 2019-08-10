@@ -6,62 +6,57 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 10:17:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/10 10:45:18 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/11 01:43:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static void	add_render_fps(SDL_Surface *text, uint32_t *screen, bool const pos)
+static void	add_render_fps(SDL_Surface *text,
+				SDL_Surface *const screen,
+				int32_t const y_pos)
 {
-	__v2si	tp;
-	__v2si	p;
+	int32_t	*const src = text->pixels;
+	int32_t	*const dst = screen->pixels;
+	int32_t	i;
 
-	Y(p) = -1;
-	Y(tp) = pos ? 20 : 0;
-	while (text->h > ++Y(p) && (X(p) = -1)
-							&& (X(tp) = -1))
-	{
-		while (text->w > ++X(p))
-			screen[Y(tp) * WIN_X + ++X(tp)] =
-				((uint32_t*)(text->pixels))[Y(p) * text->w + X(p)];
-		++Y(tp);
-	}
+	i = -1;
+	while (text->h > ++i)
+		ft_memcpy(dst + (screen->w * (i + y_pos)),
+			src + (text->w * i), sizeof(int32_t) * text->w);
 	SDL_FreeSurface(text);
 }
 
-static void	add_fps_prepare_and_draw(float_t const dfps, float_t const dms,
-				Sdl const *const sdl, Color const *text_clr)
+static void	add_prepare_strinfo(char *const dst,
+				float_t const info,
+				char str_info[])
 {
-	char const	*data_info[] = {" fps", " ms"};
-	char		*data[2];
-	char		*temp[2];
-	int8_t		i;
+	char	*temp;
 
-	i = -1;
-	while (2 > ++i)
-	{
-		data[i] = (i ? ft_itoa(dms) : ft_itoa(dfps));
-		temp[i] = data[i];
-		data[i] = ft_strjoin(data[i], data_info[i]);
-		add_render_fps(sdl_load_font(sdl, data[i], SDL_CLR(text_clr->c)),
-			sdl->pxls, i);
-		ft_strdel(&(temp[i]));
-		ft_strdel(&(data[i]));
-	}
+	temp = ft_itoa(info);
+	ft_bzero(dst, sizeof(char) * FPS_MAX_BUFF_SIZE);
+	ft_strcpy(dst, str_info);
+	ft_strcpy(dst + ft_strlen(str_info), temp);
+	ft_strdel(&temp);
 }
 
-void		rt_render_fps_counter(Color const *text_clr, Time *const fps,
-				Sdl const *const sdl, double_t const frt)
+void		rt_render_fps_counter(Color const *text_clr,
+				Time *const fps,
+				Sdl const *const sdl,
+				double_t const frt,
+				FpsRenderHelper *const frh)
 {
-	static float_t	delta_refresh;
-
-	(delta_refresh < frt) ? 1 : (delta_refresh = 0.0f);
-	if (.0f == delta_refresh)
+	(frh->frt_delta < frt) ? 1 : (frh->frt_delta = 0.0f);
+	if (.0f == frh->frt_delta)
 	{
-		fps->fps = 1.0f / fps->res;
-		fps->ms = fps->res * 1000.0f;
+		frh->fps = 1.0f / fps->res;
+		frh->ms = fps->res * 1000.0f;
 	}
-	add_fps_prepare_and_draw(fps->fps, fps->ms, sdl, text_clr);
-	delta_refresh += fps->res;
+	add_prepare_strinfo(frh->fps_str, frh->fps, "fps: ");
+	add_prepare_strinfo(frh->ms_str, frh->ms, "ms: ");
+	add_render_fps(sdl_load_font(sdl, frh->fps_str,
+		SDL_CLR(text_clr->c)), sdl->wsurf, 0);
+	add_render_fps(sdl_load_font(sdl, frh->ms_str,
+		SDL_CLR(text_clr->c)), sdl->wsurf, FPS_FONT_SIZE);
+	frh->frt_delta += fps->res;
 }
