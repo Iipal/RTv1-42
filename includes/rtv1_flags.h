@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:28:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 13:58:07 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/10 11:24:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,16 +128,15 @@ extern uint16_t	g_flags;
 # define E_FTC_NO0X ERR "Missed \'0x\' for HEX color param in " E_FTC "."
 # define E_FTC_HEX  ERR "Invalid HEX color for " E_FTC "."
 
-# define E_USELESS_DONT " useless because you don't use "
-# define E_USELESS_USE  " useless because you use "
-# define E_USLSS_DONT(f, dont) WARNING f E_USELESS_DONT dont "."
-# define E_USLSS_USE(f, use)   WARNING f E_USELESS_USE use "."
+# define E_USELESS_DONT_MSG " useless because you don't use "
+# define E_USELESS_USE_MSG  " useless because you use "
+# define E_USELESS_DONT(f, dont) WARNING f E_USELESS_DONT_MSG dont "."
+# define E_USELESS_USE(f, use)   WARNING f E_USELESS_USE_MSG use "."
 
 /*
 **	Flags parsing funcs:
 */
-bool	rt_flags_parser(Environment *const env,
-			char **av, size_t const ac);
+bool	rt_parse_flags(Environment *const env, char **av, size_t const ac);
 
 size_t	rt_is_flag_wparam(char const *flag);
 
@@ -168,5 +167,7 @@ typedef bool	(*t_fother)(Environment *restrict const env, char **av,
 					size_t const ac, size_t *const av_i);
 bool	f_nb(Environment *restrict const env, char **av,
 			size_t const ac, size_t *const av_i);
+
+void	rt_parsed_flags_validation(Flags const *const f);
 
 #endif

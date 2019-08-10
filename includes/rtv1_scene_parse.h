@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 17:38:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 13:58:52 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/10 10:34:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ bool	rt_parse_color(char *hex_str,
 			Color *const dst,
 			size_t const parsing_obj_counter);
 
-bool	rt_parsed_validation(Scene *restrict const s);
+bool	rt_parsed_scene_validation(Scene *restrict const s);
 
 /*
 ** Scene Default constants, params and also:

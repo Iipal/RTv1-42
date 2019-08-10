@@ -1,32 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_flags_parser.c                                  :+:      :+:    :+:   */
+/*   rt_parse_flags.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 17:35:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 08:19:56 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/10 11:25:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-
-static void	add_valid_parsed_flags(Flags const *restrict const f)
-{
-	if (IS_BIT(g_flags, F_BIT_FRT) && !IS_BIT(g_flags, F_BIT_DBG))
-		MSGN(E_USLSS_DONT(E_FRT, E_DBG));
-	if (IS_BIT(g_flags, F_BIT_FTC) && !IS_BIT(g_flags, F_BIT_DBG))
-		MSGN(E_USLSS_DONT(E_FTC, E_DBG));
-	if (IS_BIT(g_flags, F_BIT_PU) && !IS_BIT(g_flags, F_BIT_DBG))
-		MSGN(E_USLSS_DONT(E_PU, E_DBG));
-	if (IS_BIT(g_flags, F_BIT_RLI) && IS_BIT(g_flags, F_BIT_NCL))
-		MSGN(E_USLSS_USE(E_RLI, E_NCL));
-	if (IS_BIT(g_flags, F_BIT_RLI) && !IS_BIT(g_flags, F_BIT_DBG))
-		MSGN(E_USLSS_DONT(E_RLI, E_DBG));
-	if (E_MAX_AL > f->ambient_light && IS_BIT(g_flags, F_BIT_NCL))
-		MSGN(E_USLSS_USE(E_AL, E_NCL));
-}
 
 static bool	add_curr_fparse(Environment *restrict const env,
 				char **av, size_t const ac, size_t *const av_i)
@@ -51,8 +35,7 @@ static bool	add_curr_fparse(Environment *restrict const env,
 	return (false);
 }
 
-bool		rt_flags_parser(Environment *const env,
-				char **av, size_t const ac)
+bool		rt_parse_flags(Environment *const env, char **av, size_t const ac)
 {
 	size_t	i;
 
@@ -67,6 +50,5 @@ bool		rt_flags_parser(Environment *const env,
 		}
 		else
 			IFDO_F(true, ERRIN_N(av[i], i + 1, E_SEMATICS_FLAG));
-	add_valid_parsed_flags(&env->flags);
 	return (true);
 }

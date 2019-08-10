@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_parsed_validation.c                             :+:      :+:    :+:   */
+/*   rt_parsed_scene_validation.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 10:05:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 08:39:29 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/10 10:37:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static bool	add_valid_lights_data(Light *restrict const l, double_t const ins_l)
 	return (true);
 }
 
-bool		rt_parsed_validation(Scene *restrict const s)
+bool		rt_parsed_scene_validation(Scene *restrict const s)
 {
 	size_t	i;
 

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 13:57:44 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/10 10:27:44 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,11 @@
 bool	rt_valid_exe_path(char const *path);
 bool	rt_valid_filename(char const *file);
 
+
 /*
 ** Initialization and pre-calculating:
 */
-void	rt_init_flags(Flags *restrict const flags);
+bool	rt_main_env_init(Environment *const env);
 bool	rt_init_textures(Object *restrict const objs,
 			size_t const ins_objs,
 			SDL_PixelFormat const *format);

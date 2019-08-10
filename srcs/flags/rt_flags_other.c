@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_flag_other.c                                    :+:      :+:    :+:   */
+/*   rt_flags_other.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 22:09:48 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 08:21:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/10 11:26:29 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,5 @@ bool	f_nb(Environment *const env, char **av,
 	(void)av;
 	(void)ac;
 	(void)av_i;
-	return (sdl_create_window_without_borders(env->sdl,
-		WIN_X, WIN_Y, RTV1_TITLE));
+	return (sdl_create_window_borderless(env->sdl, WIN_X, WIN_Y, RTV1_TITLE));
 }

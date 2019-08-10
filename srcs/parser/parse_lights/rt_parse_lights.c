@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 09:47:24 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 08:31:42 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/10 10:43:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static bool	add_parse_current_light(JSON_Object *light_obj, Light *const l,
 	size_t			i;
 
 	i = ~0ULL;
+	NODO_F(light_obj, ERRIN_N(E_INVALID_LGT, i + 1, E_IN_LINE));
 	NODO_F(light_type, ERRIN_N(E_LTYPE_MISS, curr_light_i + 1, E_IN_LIGHT));
 	while (max_lights > ++i)
 		if (!ft_strncmp((char*)light_type, l_types[i], ft_strlen(l_types[i])))
@@ -34,7 +35,6 @@ bool		rt_parse_lights(Scene *const scene,
 {
 	JSON_Value const	*l_value = json_object_get_value(root_obj, "Lights");
 	JSON_Array			*lights_arr;
-	JSON_Object			*light_obj;
 	size_t				i;
 
 	i = ~0ULL;
@@ -44,10 +44,7 @@ bool		rt_parse_lights(Scene *const scene,
 	NOM_F(E_NOLIGHT, scene->ins_lights = json_array_get_count(lights_arr));
 	MEM(Light, scene->lights, scene->ins_lights, E_ALLOC);
 	while (scene->ins_lights > ++i)
-	{
-		NODO_F(light_obj = json_array_get_object(lights_arr, i),
-			ERRIN_N(E_INVALID_LGT, i + 1, E_IN_LINE));
-		NO_F(add_parse_current_light(light_obj, &scene->lights[i], i));
-	}
+		NO_F(add_parse_current_light(json_array_get_object(lights_arr, i),
+				&scene->lights[i], i));
 	return (true);
 }

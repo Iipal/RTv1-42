@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 14:04:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 08:35:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/10 10:46:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static bool	add_parse_current_object(JSON_Object const *const object_obj,
 	size_t			i;
 
 	i = ~0ULL;
+	NODO_F(object_obj, ERRIN_N(E_INVALID_OBJ, i + 1, E_IN_LINE));
 	NODO_F(obj_type, ERRIN_N(E_OTYPE_MISS, curr_obj + 1, E_IN_OBJ));
 	while (max_objs > ++i)
 		if (!ft_strncmp((char*)obj_type, o_types[i], ft_strlen(o_types[i])))
@@ -36,7 +37,6 @@ bool		rt_parse_objects(Scene *const scene,
 {
 	JSON_Value const	*o_value = json_object_get_value(root_obj, "Objects");
 	JSON_Array			*objects_arr;
-	JSON_Object			*object_obj;
 	size_t				i;
 
 	i = ~0ULL;
@@ -46,10 +46,7 @@ bool		rt_parse_objects(Scene *const scene,
 	NOM_F(E_NOOBJS, scene->ins_objs = json_array_get_count(objects_arr));
 	MEM(Object, scene->objs, scene->ins_objs, E_ALLOC);
 	while (scene->ins_objs > ++i)
-	{
-		NODO_F(object_obj = json_array_get_object(objects_arr, i),
-			ERRIN_N(E_INVALID_OBJ, i + 1, E_IN_LINE));
-		NO_F(add_parse_current_object(object_obj, &scene->objs[i], i));
-	}
+		NO_F(add_parse_current_object(json_array_get_object(objects_arr, i),
+				&scene->objs[i], i));
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/08 23:10:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/10 10:21:23 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ struct	s_fps
 	double_t	o_spec_intens;
 };
 
-# define FPS typedef struct s_fps Fps
+struct	s_fps_render
+{
 
-FPS;
+};
 
 struct	s_flags
 {
@@ -46,20 +47,25 @@ struct	s_flags
 	uint8_t	anti_aliasing;
 };
 
+# define FPS typedef struct s_fps Fps
+# define FPS_R typedef struct s_fps_render FpsRenderHelper
 # define FLAGS typedef struct s_flags Flags
 
+FPS;
+FPS_R;
 FLAGS;
 
 struct	s_environment
 {
-	__v4df		**pre_calc_d;
-	Sdl			*sdl;
-	double_t	cam_speed;
-	double_t	tmax;
-	double_t	tmin;
-	Fps			fps;
-	Scene		scene;
-	Flags		flags;
+	__v4df			**pre_calc_d;
+	Sdl				*sdl;
+	FpsRenderHelper	*frh;
+	Fps				fps;
+	double_t		cam_speed;
+	double_t		tmax;
+	double_t		tmin;
+	Scene			scene;
+	Flags			flags;
 };
 
 # define ENV typedef struct s_environment Environment
