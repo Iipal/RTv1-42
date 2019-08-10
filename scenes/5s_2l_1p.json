@@ -47,10 +47,9 @@
             "type": "Plane",
             "position": [0, -5, 0],
             "direction": [0, 1, 0],
-            "color": "0x",
+            "color": "0x4f11ff",
             "specular": 5000
         }
     ],
-    "Shadows": true,
-    "Anti-Aliasing": 2
+    "Shadows": true
 }

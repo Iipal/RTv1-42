@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:07:28 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/10 15:02:43 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/10 22:00:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int			main(int argc, char *argv[])
 	NODO_F(rt_parse_scene(env, argv[argc - 1]), rt_free(&env));
 	NODO_F(rt_parsed_scene_validation(&env->scene), rt_free(&env));
 	NODO_F(rt_parse_flags(env, argv, argc - 1), rt_free(&env));
-	NODO_F(rt_parsed_flags_validation(&env->flags), rt_free(&env));
+	rt_parsed_flags_validation(&env->flags);
 	NODO_F(rt_init_textures(env->scene.objs, env->scene.ins_objs,
 			env->sdl->wsurf->format), rt_free(&env));
 	NODO_F(rt_precalc_d(env), rt_free(&env));
