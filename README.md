@@ -39,7 +39,9 @@ When you have already installed SDL2 library you can use this simple rules:
 - **make fclean**: Expands `make clean` to delete also executable RTv1, libraries libft and libftsdl.
 - **make re**: It's rules - **make fclean** & **make** in one.
 - **make pre**: It's rules - **make del** & **make** in one.
+- **make profie_all**: Re-compile all RTv1 source files without optimization flags but with `-no-pie -pg -O0` for profiling.
 - **make debug_all**: Re-compile all RTv1 source files without optimization flags but with `-g3` for debug.
+- **make profile**: Compile RTv1 source files without optimization flags but with `-no-pie -pg -O0` for profiling.
 - **make debug**: Compile RTv1 source files without optimization flags but with `-g3` for debug.
 - **make norme**: Check all libft, libftsdl and RTv1 `*.c` and `*.h` files for norme errors. (Works only on MacOS in school42)
 > If you change RTv1 source code use: `make del & make` or equal rule - `make pre` for re-compile only RTv1 executable without re-compile libft and libftsdl.
@@ -125,7 +127,7 @@ $> ./RTv1 --debug -vps 0.5 -t -pu -ftc 0x1 -frt 0 -al 10 -nb -aa 4 scenes/sphere
 | Switch to control lights intensity.  | <kbd>C</kbd> |
 | Decrease lights inensity. [optional] | <kbd>Q</kbd> |
 | Increase lights inensity. [optional] | <kbd>E</kbd> |
-## [[__`Objects Control Mode`__](#objects-control-mode)]:
+### [[__`Objects Control Mode`__](#objects-control-mode)]:
 | Description                           | Keybinding   |
 | ------------------------------------- | ------------ |
 | Move objects up.                      | <kbd>W</kbd> |
@@ -143,3 +145,25 @@ $> ./RTv1 --debug -vps 0.5 -t -pu -ftc 0x1 -frt 0 -al 10 -nb -aa 4 scenes/sphere
 | Decrease objects rotate by X-axis.    | <kbd>T</kbd> |
 | Decrease objects rotate by Y-axis.    | <kbd>G</kbd> |
 | Decrease objects rotate by Z-axis.    | <kbd>B</kbd> |
+
+
+## Profilig (with gprof, gprof2dot and graphviz):
+
+For re-compile whole project for correct profiling use this command:
+```bash
+$> make -C libft profile_all; make -C libftsdl profile_all; make -C libftsdl profile_all; make -C libparson profile_all; make profile_all;
+```
+After re-compile just run `./RTv1`. More info about profiling on [eax.me](https://eax.me/c-cpp-profiling/)(RU).
+
+Example on:
+```bash
+$> ./RTv1 -dbg scenes/sphere.json
+```
+![./RTv1 -dbg scenes/sphere.json](https://github.com/Iipal/RTv1-42/blob/master/profiles/RTV1_sphere.svg)
+
+Example on:
+```bash
+$> ./RTv1 -dbg scenes/all.json
+```
+![./RTv1 -dbg scenes/sphere.json](https://github.com/Iipal/RTv1-42/blob/master/profiles/RTv1_all.svg)
+![./RTv1 -dbg scenes/sphere.json](https://github.com/Iipal/RTv1-42/blob/master/profiles/RTv1_all_v2.svg)
