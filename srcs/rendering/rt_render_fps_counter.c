@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 10:17:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/11 01:43:07 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/11 09:00:25 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static void	add_render_fps(SDL_Surface *text,
+static void	add_render_strinfo(SDL_Surface *text,
 				SDL_Surface *const screen,
 				int32_t const y_pos)
 {
@@ -54,9 +54,9 @@ void		rt_render_fps_counter(Color const *text_clr,
 	}
 	add_prepare_strinfo(frh->fps_str, frh->fps, "fps: ");
 	add_prepare_strinfo(frh->ms_str, frh->ms, "ms: ");
-	add_render_fps(sdl_load_font(sdl, frh->fps_str,
+	add_render_strinfo(sdl_load_font(sdl, frh->fps_str,
 		SDL_CLR(text_clr->c)), sdl->wsurf, 0);
-	add_render_fps(sdl_load_font(sdl, frh->ms_str,
+	add_render_strinfo(sdl_load_font(sdl, frh->ms_str,
 		SDL_CLR(text_clr->c)), sdl->wsurf, FPS_FONT_SIZE);
 	frh->frt_delta += fps->res;
 }
