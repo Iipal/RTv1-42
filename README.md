@@ -151,7 +151,7 @@ $> ./RTv1 --debug -vps 0.5 -t -pu -ftc 0x1 -frt 0 -al 10 -nb -aa 4 scenes/sphere
 
 For re-compile whole project for correct profiling use this command:
 ```bash
-$> make -C libft profile_all; make -C libftsdl profile_all; make -C libftsdl profile_all; make -C libparson profile_all; make profile_all;
+$> make profile_allr
 ```
 After re-compile just run `./RTv1`. More info about profiling on [eax.me](https://eax.me/c-cpp-profiling/)(RU).
 
@@ -165,5 +165,17 @@ Example on:
 ```bash
 $> ./RTv1 -dbg scenes/all.json
 ```
-![./RTv1 -dbg scenes/sphere.json](https://github.com/Iipal/RTv1-42/blob/master/profiles/RTv1_all.svg)
-![./RTv1 -dbg scenes/sphere.json](https://github.com/Iipal/RTv1-42/blob/master/profiles/RTv1_all_v2.svg)
+![./RTv1 -dbg scenes/all.json](https://github.com/Iipal/RTv1-42/blob/master/profiles/RTv1_all.svg)
+![./RTv1 -dbg scenes/all.json](https://github.com/Iipal/RTv1-42/blob/master/profiles/RTv1_all_v2.svg)
+
+Example on:
+```bash
+$> ./RTv1 scenes/all.json
+```
+![./RTv1 scenes/all.json](https://github.com/Iipal/RTv1-42/blob/master/profiles/RTv1_no_dbg_all.svg)
+
+Example on:
+```bash
+$> ./RTv1 scenes/sphere.json
+```
+![./RTv1 scenes/sphere.json](https://github.com/Iipal/RTv1-42/blob/master/profiles/RTv1_no_dbg_sphere.svg)
