@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/08/11 16:07:51 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/08/11 17:31:08 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,10 @@ del:
 pre: del all
 	@echo "$(INVERT)$(GREEN)Successed re-build.$(WHITE)"
 
+.PHONY: clear_pre
+clear_pre:
+	pre
+
 set_cc_debug:
 	@$(eval CC=$(CC_DEBUG))
 debug_all: set_cc_debug pre
@@ -101,6 +105,13 @@ profile_all: set_cc_profle pre
 	@echo "$(INVERT)$(NAME) $(GREEN)ready for profile.$(WHITE)"
 profile: set_cc_profle all
 	@echo "$(INVERT)$(NAME) $(GREEN)ready for profile.$(WHITE)"
+
+profile_allr: set_cc_profle
+	@$(LMAKE) profile_all
+	@$(LVMAKE) profile_all
+	@$(LSDLMAKE) profile_all
+	@$(LPARSONMAKE) profile_all
+	@make profile_all
 
 clean:
 	@$(DEL) $(OBJ)
