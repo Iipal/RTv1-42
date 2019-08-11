@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 10:17:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/11 09:00:25 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/11 13:50:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static void	add_render_strinfo(SDL_Surface *text,
+static void	s_render_strinfo(SDL_Surface *text,
 				SDL_Surface *const screen,
 				int32_t const y_pos)
 {
@@ -27,7 +27,7 @@ static void	add_render_strinfo(SDL_Surface *text,
 	SDL_FreeSurface(text);
 }
 
-static void	add_prepare_strinfo(char *const dst,
+static void	s_prepare_strinfo(char *const dst,
 				float_t const info,
 				char str_info[])
 {
@@ -52,11 +52,11 @@ void		rt_render_fps_counter(Color const *text_clr,
 		frh->fps = 1.0f / fps->res;
 		frh->ms = fps->res * 1000.0f;
 	}
-	add_prepare_strinfo(frh->fps_str, frh->fps, "fps: ");
-	add_prepare_strinfo(frh->ms_str, frh->ms, "ms: ");
-	add_render_strinfo(sdl_load_font(sdl, frh->fps_str,
+	s_prepare_strinfo(frh->fps_str, frh->fps, "fps: ");
+	s_prepare_strinfo(frh->ms_str, frh->ms, "ms: ");
+	s_render_strinfo(sdl_load_font(sdl, frh->fps_str,
 		SDL_CLR(text_clr->c)), sdl->wsurf, 0);
-	add_render_strinfo(sdl_load_font(sdl, frh->ms_str,
+	s_render_strinfo(sdl_load_font(sdl, frh->ms_str,
 		SDL_CLR(text_clr->c)), sdl->wsurf, FPS_FONT_SIZE);
 	frh->frt_delta += fps->res;
 }

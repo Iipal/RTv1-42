@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 23:55:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 08:18:11 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/11 13:50:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static void	add_objs_z_or_spec(Object *restrict const o,
+static void	s_objs_z_or_spec(Object *restrict const o,
 				double_t const move,
 				double_t const s_move)
 {
@@ -32,7 +32,7 @@ static void	add_objs_z_or_spec(Object *restrict const o,
 	}
 }
 
-static void	add_objs_rot(Object *restrict const o, double_t const move)
+static void	s_objs_rot(Object *restrict const o, double_t const move)
 {
 	if (IS_BIT(g_isr_flags, ISR_ROT_X))
 		X(o->dir) = u_d_range(X(o->dir) + (move / 5.0f), 360.0f, -360.0f);
@@ -65,7 +65,7 @@ void		rt_sdl_keys_events_objs_debug(Object *restrict const o,
 			X(o[i].pos) = u_d_range(X(o[i].pos) - fps->move, MAX_X, MIN_X);
 		if (IS_BIT(g_isr_flags, ISR_RIGHT))
 			X(o[i].pos) = u_d_range(X(o[i].pos) + fps->move, MAX_X, MIN_X);
-		add_objs_z_or_spec(&o[i], fps->move, fps->o_spec_intens);
-		add_objs_rot(&o[i], fps->move);
+		s_objs_z_or_spec(&o[i], fps->move, fps->o_spec_intens);
+		s_objs_rot(&o[i], fps->move);
 	}
 }

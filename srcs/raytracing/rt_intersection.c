@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 14:00:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/11 14:41:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline __v2df	add_intersection(__v4df const o, __v4df const d,
+static inline __v2df	s_intersection(__v4df const o, __v4df const d,
 							const Object *restrict const obj)
 {
 	__v4df const	x = o - obj->pos;
@@ -27,7 +27,7 @@ static inline __v2df	add_intersection(__v4df const o, __v4df const d,
 	return (out);
 }
 
-static inline __v2df	add_plane_inter(__v4df const o, __v4df const d,
+static inline __v2df	s_plane_inter(__v4df const o, __v4df const d,
 							const Object *restrict const obj)
 {
 	double_t const	d_dot_v = v_dot(d, obj->dir);
@@ -40,7 +40,7 @@ static inline __v2df	add_plane_inter(__v4df const o, __v4df const d,
 }
 
 Object					*rt_closest_inter(__v4df const o, __v4df const d,
-									Environment *restrict const env)
+									Scene *restrict const scene)
 {
 	Object	*out_obj;
 	__v2df	t;
@@ -48,22 +48,22 @@ Object					*rt_closest_inter(__v4df const o, __v4df const d,
 
 	i = ~0UL;
 	out_obj = NULL;
-	env->scene.cam.t = env->tmax;
-	while (++i < env->scene.ins_objs)
+	scene->cam.t = scene->tmax;
+	while (++i < scene->ins_objs)
 	{
-		if (plane == env->scene.objs[i].type)
-			t = add_plane_inter(o, d, &env->scene.objs[i]);
+		if (plane == scene->objs[i].type)
+			t = s_plane_inter(o, d, &scene->objs[i]);
 		else
-			t = add_intersection(o, d, &env->scene.objs[i]);
-		if (X(t) > env->tmin && X(t) < env->tmax && X(t) < env->scene.cam.t)
+			t = s_intersection(o, d, &scene->objs[i]);
+		if (X(t) > scene->tmin && X(t) < scene->tmax && X(t) < scene->cam.t)
 		{
-			env->scene.cam.t = X(t);
-			out_obj = &env->scene.objs[i];
+			scene->cam.t = X(t);
+			out_obj = &scene->objs[i];
 		}
-		if (Y(t) > env->tmin && Y(t) < env->tmax && Y(t) < env->scene.cam.t)
+		if (Y(t) > scene->tmin && Y(t) < scene->tmax && Y(t) < scene->cam.t)
 		{
-			env->scene.cam.t = Y(t);
-			out_obj = &env->scene.objs[i];
+			scene->cam.t = Y(t);
+			out_obj = &scene->objs[i];
 		}
 	}
 	return (out_obj);

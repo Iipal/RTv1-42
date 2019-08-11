@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 17:30:12 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/08 23:35:18 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/11 13:50:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static void	add_sdl_key_rot_release(SDL_Keycode const key)
+static void	s_sdl_key_rot_release(SDL_Keycode const key)
 {
 	if (SDLK_r == key)
 		UNSET_BIT(g_isr_flags, ISR_ROT_X);
@@ -51,5 +51,5 @@ void		rt_sdl_keys_release(SDL_Keycode const key)
 	else if (SDLK_MINUS == key)
 		UNSET_BIT(g_isr_flags, ISR_DEC_AL);
 	else
-		add_sdl_key_rot_release(key);
+		s_sdl_key_rot_release(key);
 }

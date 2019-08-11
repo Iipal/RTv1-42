@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 17:35:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/10 11:25:07 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/11 13:50:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static bool	add_curr_fparse(Environment *restrict const env,
+static bool	s_curr_fparse(Environment *restrict const env,
 				char **av, size_t const ac, size_t *const av_i)
 {
 	t_fbool const	fbool[] = {f_dbg, f_ncl, f_tex, f_rli, f_pu};
@@ -45,7 +45,7 @@ bool		rt_parse_flags(Environment *const env, char **av, size_t const ac)
 		&& (('-' == av[i][1] && ft_isalpha_str(av[i] + 2))
 			|| ft_isalpha_str(av[i] + 1)))
 		{
-			if (!add_curr_fparse(env, av, ac, &i))
+			if (!s_curr_fparse(env, av, ac, &i))
 				return (false);
 		}
 		else

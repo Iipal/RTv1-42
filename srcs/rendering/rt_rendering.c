@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/10 22:51:17 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/11 14:47:06 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ void	rt_rendering(Environment *restrict const env)
 	while (WIN_Y > ++Y(i) && (X(i) = -1))
 		while (WIN_X > ++X(i))
 		{
-			env->tmax = TMAX;
-			env->tmin = TMIN;
+			env->scene.tmax = TMAX;
+			env->scene.tmin = TMIN;
 			if (env->flags.anti_aliasing)
 				clr = rt_anti_aliasing(env, env->flags.anti_aliasing,
 					env->pre_calc_d[Y(i)][X(i)]);
 			else
-				clr = rt_raytracing(env, env->pre_calc_d[Y(i)][X(i)]);
+				clr = rt_raytracing(&env->scene, env->pre_calc_d[Y(i)][X(i)],
+					env->flags.ambient_light);
 			if (clr.hex)
 				sdl_pixelput(env->sdl->wsurf, i, clr);
 		}

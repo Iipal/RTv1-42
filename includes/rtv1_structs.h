@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/10 22:39:54 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/11 14:42:19 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ struct	s_environment
 	FpsRenderHelper	*frh;
 	Fps				fps;
 	double_t		cam_speed;
-	double_t		tmax;
-	double_t		tmin;
 	Scene			scene;
 	Flags			flags;
 };
@@ -82,9 +80,10 @@ struct	s_calc_light_helper
 	__v4df		p;
 	__v4df		n;
 	__v4df		l;
-	double_t	i;
 	Color		curr_clr;
+	double_t	i;
 	double_t	obj_spec;
+	float_t		al;
 };
 
 typedef struct s_calc_light_helper	t_clhelp;

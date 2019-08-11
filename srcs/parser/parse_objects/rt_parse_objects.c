@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 14:04:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/10 10:46:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/11 13:50:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1_scene_parse.h"
 
-static bool	add_parse_current_object(JSON_Object const *const object_obj,
+static bool	s_parse_current_object(JSON_Object const *const object_obj,
 				Object *const obj,
 				size_t const curr_obj)
 {
@@ -46,7 +46,7 @@ bool		rt_parse_objects(Scene *const scene,
 	NOM_F(E_NOOBJS, scene->ins_objs = json_array_get_count(objects_arr));
 	MEM(Object, scene->objs, scene->ins_objs, E_ALLOC);
 	while (scene->ins_objs > ++i)
-		NO_F(add_parse_current_object(json_array_get_object(objects_arr, i),
+		NO_F(s_parse_current_object(json_array_get_object(objects_arr, i),
 				&scene->objs[i], i));
 	return (true);
 }

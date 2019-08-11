@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 18:02:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 08:44:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/11 14:45:21 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "rtv1_structs.h"
 
-Color	rt_raytracing(Environment *restrict const env, __v4df d);
+Color	rt_raytracing(Scene *restrict const scene, __v4df d, double_t const al);
 
 __v4df	rt_camera_rotate(__v4df d, __v4df const dir);
 
@@ -23,7 +23,7 @@ __v4df	rt_camera_rotate(__v4df d, __v4df const dir);
 ** Objects intersection calc:
 */
 Object	*rt_closest_inter(__v4df const o, __v4df const d,
-			Environment *restrict const env);
+			Scene *restrict const scene);
 __v4df	rt_inter_sphere(__v4df const x, __v4df const d,
 			void const *restrict const obj_ptr);
 __v4df	rt_inter_cone(__v4df const x, __v4df const d,
@@ -60,7 +60,7 @@ Uint32	rt_uv_cylinder(SDL_Surface *restrict const tex, __v4df const n);
 /*
 ** Calc light:
 */
-Color	rt_calc_light(Environment *restrict const env,
+Color	rt_lightning(Scene *restrict const scene,
 			t_clhelp *restrict const h,
 			__v4df const d);
 

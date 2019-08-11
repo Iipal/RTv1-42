@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 18:15:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 14:01:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/11 13:50:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static void	add_light_zorintens(Light *restrict const l,
+static void	s_light_zorintens(Light *restrict const l,
 				double_t const move,
 				double_t const l_move)
 {
@@ -51,6 +51,6 @@ void		rt_sdl_keys_events_lights_debug(Light *restrict const l,
 			X(l[i].pos) = u_d_range(X(l[i].pos) - fps->l_move, MAX_X, MIN_X);
 		if (IS_BIT(g_isr_flags, ISR_RIGHT))
 			X(l[i].pos) = u_d_range(X(l[i].pos) + fps->l_move, MAX_X, MIN_X);
-		add_light_zorintens(&l[i], fps->l_move, fps->l_intens);
+		s_light_zorintens(&l[i], fps->l_move, fps->l_intens);
 	}
 }

@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:12:23 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 14:01:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/11 13:50:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static void	add_camera_events(Camera *restrict const cam, double_t const move)
+static void	s_camera_events(Camera *restrict const cam, double_t const move)
 {
 	if (IS_BIT(g_isr_flags, ISR_UP))
 		Y(cam->pos) = u_d_range(Y(cam->pos) - move, MAX_Y, MIN_Y);
@@ -40,7 +40,7 @@ static void	add_camera_events(Camera *restrict const cam, double_t const move)
 		Z(cam->dir) = u_d_range(Z(cam->dir) - (move * 2), 360.0f, -360.0f);
 }
 
-static void	add_default_keys_event(float_t *const al, double_t const move)
+static void	s_default_keys_event(float_t *const al, double_t const move)
 {
 	if (IS_BIT(g_isr_flags, ISR_INC_AL))
 		*al = u_d_range(*al - move, 100, 1);
@@ -50,7 +50,7 @@ static void	add_default_keys_event(float_t *const al, double_t const move)
 
 void		rt_sdl_keys_events(Environment *restrict const env)
 {
-	add_default_keys_event(&env->flags.ambient_light, env->fps.move);
+	s_default_keys_event(&env->flags.ambient_light, env->fps.move);
 	if (IS_BIT(g_isr_flags, ISR_LIGHT_DEBUG))
 	{
 		if (IS_BIT(g_isr_flags, ISR_OBJS_DEBUG))
@@ -63,6 +63,6 @@ void		rt_sdl_keys_events(Environment *restrict const env)
 		rt_sdl_keys_events_objs_debug(env->scene.objs,
 			&env->fps, env->scene.ins_objs);
 	else
-		add_camera_events(&env->scene.cam, env->fps.move);
+		s_camera_events(&env->scene.cam, env->fps.move);
 	rt_camera_speed_movements(&env->cam_speed);
 }

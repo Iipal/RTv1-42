@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:43:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/08 23:23:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/11 14:41:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ struct	s_scene
 	Object		*objs;
 	size_t		ins_lights;
 	size_t		ins_objs;
+	double_t	tmax;
+	double_t	tmin;
 	Camera		cam;
 	bool		is_camera_exist;
 };

@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 09:47:24 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/10 10:43:08 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/11 13:50:35 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1_scene_parse.h"
 
-static bool	add_parse_current_light(JSON_Object *light_obj, Light *const l,
+static bool	s_parse_current_light(JSON_Object *light_obj, Light *const l,
 				size_t const curr_light_i)
 {
 	t_fn_lght const	fn_lights[] = {rt_parse_point_light, rt_parse_dir_light};
@@ -44,7 +44,7 @@ bool		rt_parse_lights(Scene *const scene,
 	NOM_F(E_NOLIGHT, scene->ins_lights = json_array_get_count(lights_arr));
 	MEM(Light, scene->lights, scene->ins_lights, E_ALLOC);
 	while (scene->ins_lights > ++i)
-		NO_F(add_parse_current_light(json_array_get_object(lights_arr, i),
+		NO_F(s_parse_current_light(json_array_get_object(lights_arr, i),
 				&scene->lights[i], i));
 	return (true);
 }
