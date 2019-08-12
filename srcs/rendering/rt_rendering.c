@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/11 14:47:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/12 19:59:14 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,5 @@ void	rt_rendering(Environment *restrict const env)
 			env->sdl, env->flags.fps_refresh_timer, env->frh);
 	if (IS_BIT(g_flags, F_BIT_RLI) && !IS_BIT(g_flags, F_BIT_NCL))
 		rt_randomize_lights_intense(env->scene.lights, env->scene.ins_lights,
-				env->fps.time.res);
-	SDL_UpdateWindowSurface(env->sdl->w);
+			env->fps.time.res);
 }

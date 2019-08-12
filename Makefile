@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/08/11 17:31:08 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/08/12 12:52:52 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ CC_PROFILE := $(CC_BASE) -no-pie -pg -O0
 CFLAGS := -Wall -Wextra -Werror -Wunused -Wno-type-limits
 IFLAGS := -I $(CURDIR)/includes \
 	-I $(CURDIR)/libft/includes \
+	-I $(CURDIR)/libwu/includes \
 	-I $(CURDIR)/libftsdl/includes \
 	-I $(CURDIR)/libvectors/includes \
 	-I $(CURDIR)/libparson
@@ -40,12 +41,14 @@ SRCS := $(abspath $(wildcard srcs/*.c srcs/*/*.c srcs/*/*/*.c))
 OBJ := $(SRCS:.c=.o)
 
 LIBFT := $(CURDIR)/libft/libft.a
+LIBWU := $(CURDIR)/libwu/libwu.a
 LIBVEC := $(CURDIR)/libvectors/libvectors.a
 LIBFTSDL := $(CURDIR)/libftsdl/libftsdl.a
 LIBPARSON := $(CURDIR)/libparson/libparson.a
 
 LMAKE := make -C libft
-LVMAKE := make -C libvectors
+LWUMAKE := make -C libwu
+LVECMAKE := make -C libvectors
 LSDLMAKE := make -C libftsdl
 LPARSONMAKE := make -C libparson
 
@@ -69,16 +72,18 @@ $(OBJ): %.o: %.c
 
 $(LIBFT):
 	@$(LMAKE)
+$(LIBWU):
+	@$(LWUMAKE)
 $(LIBVEC):
-	@$(LVMAKE)
+	@$(LVECMAKE)
 $(LIBFTSDL):
 	@$(LSDLMAKE)
 $(LIBPARSON):
 	@$(LPARSONMAKE)
 
-$(NAME): $(LIBFT) $(LIBVEC) $(LIBFTSDL) $(LIBPARSON) $(OBJ)
+$(NAME): $(LIBFT) $(LIBWU) $(LIBVEC) $(LIBFTSDL) $(LIBPARSON) $(OBJ)
 	@echo -n ' <q.p> | $(NPWD): '
-	@$(CC) $(OBJ) $(LIBS) $(LIBFT) $(LIBVEC) $(LIBFTSDL) $(LIBPARSON) -o $(NAME)
+	@$(CC) $(OBJ) $(LIBS) $(LIBFT) $(LIBWU) $(LIBVEC) $(LIBFTSDL) $(LIBPARSON) -o $(NAME)
 	@echo "$(SUCCESS2)"
 
 del:
@@ -108,7 +113,7 @@ profile: set_cc_profle all
 
 profile_allr: set_cc_profle
 	@$(LMAKE) profile_all
-	@$(LVMAKE) profile_all
+	@$(LVECMAKE) profile_all
 	@$(LSDLMAKE) profile_all
 	@$(LPARSONMAKE) profile_all
 	@make profile_all
@@ -116,14 +121,14 @@ profile_allr: set_cc_profle
 clean:
 	@$(DEL) $(OBJ)
 	@$(LMAKE) clean
-	@$(LVMAKE) clean
+	@$(LVECMAKE) clean
 	@$(LSDLMAKE) clean
 	@$(LPARSONMAKE) clean
 
 fclean: clean
 	@$(DEL) $(NAME)
 	@$(LMAKE) fclean
-	@$(LVMAKE) fclean
+	@$(LVECMAKE) fclean
 	@$(LSDLMAKE) fclean
 	@$(LPARSONMAKE) fclean
 	@echo "$(INVERT)$(RED)deleted$(WHITE)$(INVERT): $(NPWD)$(WHITE)"
@@ -133,7 +138,7 @@ re: fclean all
 norme_all:
 	@echo "$(INVERT)$(RED) WARNING:$(WHITE)$(INVERT) for lib parson norme is not neccessary.$(WHITE)"
 	@$(LMAKE) norme
-	@$(LVMAKE) norme
+	@$(LVECMAKE) norme
 	@$(LSDLMAKE) norme
 	@echo "$(INVERT)norminette for $(GREEN)$(NAME)$(WHITE)$(INVERT):$(WHITE)"
 	@norminette includes/

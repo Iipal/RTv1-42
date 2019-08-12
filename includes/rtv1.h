@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/10 22:51:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/12 13:11:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 # define RTV1_H
 
 # include <math.h>
+
 # include "parson.h"
+
+# include "wu_algo.h"
+
 # include "libftsdl.h"
+
 # include "rtv1_errno.h"
 # include "rtv1_flags.h"
 # include "rtv1_isr_flags.h"
