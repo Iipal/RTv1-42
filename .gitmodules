@@ -10,3 +10,6 @@
 [submodule "libparson"]
 	path = libparson
 	url = git@github.com:Iipal/parson.git
+[submodule "libwu"]
+	path = libwu
+	url = git@github.com:Iipal/libwu.git
