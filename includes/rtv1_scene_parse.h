@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 17:38:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/10 10:34:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/13 12:55:47 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,8 @@ bool	rt_parsed_scene_validation(Scene *restrict const s);
 # define E_AA_NUMBER    ERR "'Anti-Aliasing' param must to be 'number' type."
 # define E_AA_USELESS   ERR "'Anti-Aliasing' param less than 0 or 1. Useless."
 # define E_AA_MAX       ERR "'Anti-Aliasing' param greate than 8. Max is 8."
+
+# define E_AL_NUMBER    ERR "'Ambient light' param must to be 'number' type."
 
 # define E_INRANGE " not in available range"
 

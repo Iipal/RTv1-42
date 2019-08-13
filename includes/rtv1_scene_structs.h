@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:43:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/11 14:41:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/13 10:41:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,15 @@ typedef Uint32	(*t_fn_uv)(SDL_Surface *restrict const, const __v4df);
 
 struct	s_object
 {
-	SDL_Surface	*texture;
-	t_fn_inter	fn_inter_calc;
-	t_fn_normal	fn_normal_calc;
-	t_fn_uv		fn_uv;
 	__v4df		pos;
 	__v4df		dir;
 	double_t	radius;
 	double_t	spec;
 	Color		clr;
+	SDL_Surface	*texture;
+	t_fn_inter	fn_inter_calc;
+	t_fn_normal	fn_normal_calc;
+	t_fn_uv		fn_uv;
 	objType		type;
 };
 

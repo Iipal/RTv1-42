@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 15:40:27 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/11 13:50:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/13 10:43:32 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ bool		rt_parse_plane(JSON_Object const *const object_obj,
 	NO_F(rt_parse_arr_to_vec(json_object_get_array(object_obj, "direction"),
 		&obj->dir, "Plane", obj_i));
 	IFDO(Y(obj->pos) != 0.0f, Y(obj->pos) = -Y(obj->pos));
-	obj->fn_inter_calc = rt_inter_plane;
+	obj->fn_inter_calc = NULL;
 	obj->fn_normal_calc = rt_normal_plane;
 	obj->fn_uv = rt_uv_plane;
 	obj->type = plane;

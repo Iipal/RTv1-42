@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 18:06:24 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 08:50:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/13 10:42:58 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,6 @@ __v4df	rt_inter_cone(__v4df const x, __v4df const d,
 	return ((__v4df){v_dot(d, d) - k * pow(v_dot(d, obj->dir), 2.0),
 		2.0 * (v_dot(d, x) - k * v_dot(d, obj->dir) * v_dot(x, obj->dir)),
 		v_dot(x, x) - k * pow(v_dot(x, obj->dir), 2.0), 0.0});
-}
-
-__v4df	rt_inter_plane(__v4df const x, __v4df const d,
-			void const *restrict const obj_ptr)
-{
-	(void)x;
-	(void)d;
-	(void)obj_ptr;
-	return ((__v4df){0.0, 0.0, 0.0, 0.0});
 }
 
 __v4df	rt_inter_cylinder(__v4df const x, __v4df const d,

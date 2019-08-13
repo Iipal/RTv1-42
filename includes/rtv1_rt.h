@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 18:02:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/11 14:45:21 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/13 10:43:07 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ Object	*rt_closest_inter(__v4df const o, __v4df const d,
 __v4df	rt_inter_sphere(__v4df const x, __v4df const d,
 			void const *restrict const obj_ptr);
 __v4df	rt_inter_cone(__v4df const x, __v4df const d,
-			void const *restrict const obj_ptr);
-__v4df	rt_inter_plane(__v4df const x, __v4df const d,
 			void const *restrict const obj_ptr);
 __v4df	rt_inter_cylinder(__v4df const x, __v4df const d,
 			void const *restrict const obj_ptr);

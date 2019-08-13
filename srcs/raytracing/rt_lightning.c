@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/11 14:45:41 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/13 10:34:09 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static inline void	s_calc_light_intens(Light const *restrict l,
+static __always_inline void	s_calc_light_intens(Light const *restrict l,
 	t_clhelp *restrict const h, __v4df const v)
 {
 	double_t const	ndl = v_dot(h->n, h->l);
@@ -20,11 +20,9 @@ static inline void	s_calc_light_intens(Light const *restrict l,
 	if (.0f < ndl)
 		h->i += l->intens * ndl / (v_len(h->n) * v_len(h->l));
 	if (.0f < h->obj_spec)
-	{
 		h->i += ((l->intens * MAX(ndl, 0.0) + h->obj_spec)
 			* (l->intens * pow(MAX(v_dot(h->n, v_norm(v + h->l)), 0.0),
-				h->obj_spec))) / pow(v_len(h->p - l->pos), 2);
-	}
+				h->obj_spec))) / pow(v_len(h->p - l->pos), 2.0);
 }
 
 Color				rt_lightning(Scene *restrict const scene,
@@ -37,14 +35,14 @@ Color				rt_lightning(Scene *restrict const scene,
 	size_t		i;
 
 	i = ~0UL;
-	h->i = 0.0f;
+	h->i = 0.0;
 	while (++i < scene->ins_lights)
 	{
 		curr_l = &scene->lights[i];
 		if (.0 >= curr_l->intens)
 			continue ;
 		h->l = curr_l->pos - h->p;
-		scene->tmax = 1.0f;
+		scene->tmax = 1.0;
 		if (IS_BIT(g_flags, F_BIT_SHADOWS)
 		&& (shadow = rt_closest_inter(h->p, h->l, scene)))
 			continue ;
