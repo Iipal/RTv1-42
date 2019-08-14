@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/13 10:42:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/13 21:23:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ Object					*rt_closest_inter(__v4df const o, __v4df const d,
 	__v2df	t;
 	size_t	i;
 
-	i = ~0UL;
 	out_obj = NULL;
 	scene->cam.t = scene->tmax;
-	while (++i < scene->ins_objs)
+	i = scene->ins_objs;
+	while (0 <= --i)
 	{
 		if (plane == scene->objs[i].type)
 			t = s_plane_inter(o, d, &scene->objs[i]);

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/13 13:28:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/13 21:20:08 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	rt_rendering(Environment *restrict const env)
 	Color	clr;
 	__v2si	i;
 
-	Y(i) = -1;
 	SDL_FillRect(env->sdl->wsurf, NULL, RGB_BLACK);
-	while (WIN_Y > ++Y(i) && (X(i) = -1))
-		while (WIN_X > ++X(i))
+	Y(i) = WIN_Y;
+	while (0 <= --Y(i) && (X(i) = WIN_X))
+		while (0 <= --X(i))
 		{
 			env->scene.tmax = TMAX;
 			env->scene.tmin = TMIN;
