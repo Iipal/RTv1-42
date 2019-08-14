@@ -2,6 +2,6 @@
 .VScode/
 **.o
 **.a
-RTv1
 **.DS_Store
 test/
+bin/

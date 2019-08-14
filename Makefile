@@ -6,11 +6,11 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/08/13 09:34:01 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/08/14 22:03:19 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := RTv1
+NAME := bin/RTv1
 NPWD := $(CURDIR)/$(NAME)
 
 CC_BASE := gcc -march=native -mtune=native
@@ -77,7 +77,10 @@ $(LIBFTSDL):
 $(LIBPARSON):
 	@$(LPARSONMAKE)
 
-$(NAME): $(LIBFT) $(LIBWU) $(LIBFTSDL) $(LIBPARSON) $(OBJ)
+bin_dir:
+	@mkdir -p bin
+
+$(NAME): bin_dir $(LIBFT) $(LIBWU) $(LIBFTSDL) $(LIBPARSON) $(OBJ)
 	@echo -n ' <q.p> | $(NPWD): '
 	@$(CC) $(OBJ) $(LIBS) $(LIBFT) $(LIBWU) $(LIBFTSDL) $(LIBPARSON) -o $(NAME)
 	@echo "$(SUCCESS2)"
