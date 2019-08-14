@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 09:47:24 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/11 13:50:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/14 08:42:12 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ bool		rt_parse_lights(Scene *const scene,
 {
 	JSON_Value const	*l_value = json_object_get_value(root_obj, "Lights");
 	JSON_Array			*lights_arr;
-	size_t				i;
+	ssize_t				i;
 
-	i = ~0ULL;
+	i = -1L;
 	NOM_F(E_NOLIGHT, l_value);
 	IFM_F(E_LARR_TYPE, JSONArray != json_value_get_type(l_value));
 	NOM_F(E_NOLIGHT, lights_arr = json_value_get_array(l_value));

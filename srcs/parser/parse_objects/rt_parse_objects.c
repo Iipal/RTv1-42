@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 14:04:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/11 13:50:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/14 08:42:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ bool		rt_parse_objects(Scene *const scene,
 {
 	JSON_Value const	*o_value = json_object_get_value(root_obj, "Objects");
 	JSON_Array			*objects_arr;
-	size_t				i;
+	ssize_t				i;
 
-	i = ~0ULL;
+	i = -1L;
 	NOM_F(E_NOOBJS, o_value);
 	IFM_F(E_OARR_TYPE, JSONArray != json_value_get_type(o_value));
 	NOM_F(E_NOOBJS, objects_arr = json_value_get_array(o_value));
