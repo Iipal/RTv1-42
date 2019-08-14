@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:43:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/13 10:41:04 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/14 08:40:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ struct	s_scene
 {
 	Light		*lights;
 	Object		*objs;
-	size_t		ins_lights;
-	size_t		ins_objs;
+	ssize_t		ins_lights;
+	ssize_t		ins_objs;
 	double_t	tmax;
 	double_t	tmin;
 	Camera		cam;

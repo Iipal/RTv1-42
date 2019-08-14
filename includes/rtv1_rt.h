@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 18:02:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/13 10:43:07 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/14 09:00:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ __v4df	rt_camera_rotate(__v4df d, __v4df const dir);
 /*
 ** Objects intersection calc:
 */
-Object	*rt_closest_inter(__v4df const o, __v4df const d,
+Object	*rt_intersection(__v4df const o, __v4df const d,
 			Scene *restrict const scene);
 __v4df	rt_inter_sphere(__v4df const x, __v4df const d,
 			void const *restrict const obj_ptr);
