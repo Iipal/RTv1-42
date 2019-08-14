@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/13 10:34:09 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/14 09:05:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,19 @@ Color				rt_lightning(Scene *restrict const scene,
 	Object		*shadow;
 	Light		*curr_l;
 	Color const	bg = sdl_clr_div(h->curr_clr, h->al);
-	size_t		i;
+	ssize_t		i;
 
-	i = ~0UL;
 	h->i = 0.0;
-	while (++i < scene->ins_lights)
+	i = scene->ins_objs;
+	while (0 <= --i)
 	{
 		curr_l = &scene->lights[i];
 		if (.0 >= curr_l->intens)
 			continue ;
-		h->l = curr_l->pos - h->p;
 		scene->tmax = 1.0;
+		h->l = curr_l->pos - h->p;
 		if (IS_BIT(g_flags, F_BIT_SHADOWS)
-		&& (shadow = rt_closest_inter(h->p, h->l, scene)))
+		&& (shadow = rt_intersection(h->p, h->l, scene)))
 			continue ;
 		s_calc_light_intens(curr_l, h, v);
 	}

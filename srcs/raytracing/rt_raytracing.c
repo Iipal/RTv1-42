@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 19:54:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/11 14:45:23 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/14 09:00:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Color	rt_raytracing(Scene *restrict const scene, __v4df d, double_t const al)
 	Object		*obj;
 
 	d = v_norm(rt_camera_rotate(d, scene->cam.dir));
-	obj = rt_closest_inter(scene->cam.pos, d, scene);
+	obj = rt_intersection(scene->cam.pos, d, scene);
 	if (!obj)
 		return (U_CLR_BLACK);
 	else if (IS_BIT(g_flags, F_BIT_NCL) && !IS_BIT(g_flags, F_BIT_TEX))
