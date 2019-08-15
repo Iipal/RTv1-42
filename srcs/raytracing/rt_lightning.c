@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/14 09:05:48 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/15 21:54:40 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Color				rt_lightning(Scene *restrict const scene,
 	ssize_t		i;
 
 	h->i = 0.0;
-	i = scene->ins_objs;
+	i = scene->ins_lights;
 	while (0 <= --i)
 	{
 		curr_l = &scene->lights[i];
