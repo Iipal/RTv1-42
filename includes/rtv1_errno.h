@@ -6,14 +6,17 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 09:33:35 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/06/15 23:04:55 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/15 21:05:37 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTV1_ERRNO_H
 # define RTV1_ERRNO_H
 
-# define RTV1_MAIN_USAGE    "Usage: ./RTv1 [flags-params] <scene_name>.json"
+# define RTV1_MAIN_USAGE "Usage: ./RTv1 [flags-params] <scene_name>.json"
+# define RTV1_EXE_PATH1  "./bin/RTv1"
+# define RTV1_EXE_PATH2  "./RTv1"
+# define RTV1_FILEXT     ".json"
 
 # define PERR       " ERROR"
 # define ERR        " ERROR: "

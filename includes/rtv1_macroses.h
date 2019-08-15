@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:12:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/11 01:43:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/15 21:47:27 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@
 #  define WIN_X 800
 #  define WIN_Y 400
 # endif
-
-# define RTV1_EXE_PATH "./RTv1"
-# define RTV1_FILEXT   ".json"
 
 # define RTV1_USAGE    "text/usage.txt"
 # define RTV1_FUSAGE   "text/flags_usage.txt"
