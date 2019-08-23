@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 10:17:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/11 13:50:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/23 22:51:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ static void	s_render_strinfo(SDL_Surface *text,
 				SDL_Surface *const screen,
 				int32_t const y_pos)
 {
-	int32_t	*const src = text->pixels;
-	int32_t	*const dst = screen->pixels;
-	int32_t	i;
+	Uint32 *const	src = text->pixels;
+	Uint32 *const	dst = screen->pixels;
+	int32_t			i;
 
 	i = -1;
 	while (text->h > ++i)
 		ft_memcpy(dst + (screen->w * (i + y_pos)),
-			src + (text->w * i), sizeof(int32_t) * text->w);
+			src + (text->w * i), sizeof(Uint32) * text->w);
 	SDL_FreeSurface(text);
 }
 
