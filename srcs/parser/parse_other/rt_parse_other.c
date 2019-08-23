@@ -6,12 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 12:08:54 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/13 13:37:49 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/19 13:43:36 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1_scene_parse.h"
-#include "rtv1_flags.h"
+#include "rtv1.h"
 
 bool	rt_parse_other(Environment *const env,
 			JSON_Object const *const root_obj)

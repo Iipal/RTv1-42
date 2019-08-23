@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 09:47:24 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/14 08:42:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/19 13:43:13 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1_scene_parse.h"
+#include "rtv1.h"
 
 static bool	s_parse_current_light(JSON_Object *light_obj, Light *const l,
 				size_t const curr_light_i)

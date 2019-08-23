@@ -6,12 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 15:40:27 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/13 10:43:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/19 13:43:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1_rt.h"
-#include "rtv1_scene_parse.h"
+#include "rtv1.h"
 
 static bool	s_main_params(JSON_Object const *const object_obj,
 	size_t const obj_i,

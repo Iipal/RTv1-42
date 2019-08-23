@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 17:34:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 08:30:36 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/19 13:42:56 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1_scene_parse.h"
+#include "rtv1.h"
 
 bool	rt_parse_cam(Camera *const camera, JSON_Object const *const root_obj)
 {

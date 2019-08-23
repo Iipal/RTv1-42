@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 11:00:16 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 14:01:05 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/19 13:43:04 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1_scene_parse.h"
+#include "rtv1.h"
 
 bool	rt_parse_point_light(JSON_Object const *const light_obj,
 			Light *const light,

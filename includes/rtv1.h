@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/12 13:11:56 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/19 13:40:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define RTV1_H
 
 # include <math.h>
+
+# include "libft.h"
 
 # include "parson.h"
 

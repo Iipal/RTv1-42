@@ -6,12 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 10:35:47 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/10 22:18:32 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/19 13:42:41 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1_errno.h"
-#include "rtv1_flags.h"
+#include "rtv1.h"
 
 void	rt_parsed_flags_validation(Flags const *const f)
 {

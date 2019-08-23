@@ -6,11 +6,11 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/09 14:32:58 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/15 21:16:12 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/19 13:41:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rtv1_flags.h"
+#include "rtv1.h"
 
 size_t	rt_is_flag_boolean(char const *flag)
 {
