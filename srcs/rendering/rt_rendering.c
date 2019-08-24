@@ -6,11 +6,30 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/14 21:28:28 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/08/24 18:27:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+static void	draw_from_l_to_obj(Environment *restrict const env)
+{
+	__v2df	uv_l, uv_o;
+	Light const *const l = env->scene.lights;
+	Object const *const o = env->scene.objs;
+
+	for (ssize_t i = env->scene.ins_lights; 0 <= --i;) {
+		for (ssize_t j = env->scene.ins_objs; 0 <= --j;) {
+			uv_l = (__v2df){X(l[i].pos) / (!Z(l[i].pos) ? 1.0 : Z(l[i].pos)),
+						Y(l[i].pos) / (!Z(l[i].pos) ? 1.0 : Z(l[i].pos))};
+			uv_o = (__v2df){X(o[j].pos) / (!Z(o[j].pos) ? 1.0 : Z(o[i].pos)),
+						Y(o[j].pos) / (!Z(o[j].pos) ? 1.0 : Z(o[i].pos))};
+			uv_l = D_FROM_CANVAS(X(uv_l), Y(uv_l), WIN_X, WIN_Y);
+			uv_o = D_FROM_CANVAS(X(uv_o), Y(uv_o), WIN_X, WIN_Y);
+			wu_draw_line(uv_l, uv_o, env->sdl->wsurf);
+		}
+	}
+}
 
 void	rt_rendering(Environment *restrict const env)
 {
@@ -39,4 +58,5 @@ void	rt_rendering(Environment *restrict const env)
 	if (IS_BIT(g_flags, F_BIT_RLI) && !IS_BIT(g_flags, F_BIT_NCL))
 		rt_randomize_lights_intense(env->scene.lights, env->scene.ins_lights,
 			env->fps.time.res);
+	draw_from_l_to_obj(env);
 }
