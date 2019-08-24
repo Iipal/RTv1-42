@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/08/14 22:03:19 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/08/24 17:33:32 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,6 +112,7 @@ profile: set_cc_profle all
 
 profile_allr: set_cc_profle
 	@$(LMAKE) profile_all
+	@$(LWUMAKE) profile_all
 	@$(LVECMAKE) profile_all
 	@$(LSDLMAKE) profile_all
 	@$(LPARSONMAKE) profile_all
@@ -120,12 +121,14 @@ profile_allr: set_cc_profle
 clean:
 	@$(DEL) $(OBJ)
 	@$(LMAKE) clean
+	@$(LWUMAKE) clean
 	@$(LSDLMAKE) clean
 	@$(LPARSONMAKE) clean
 
 fclean: clean
 	@$(DEL) $(NAME)
 	@$(LMAKE) fclean
+	@$(LWUMAKE) fclean
 	@$(LSDLMAKE) fclean
 	@$(LPARSONMAKE) fclean
 	@echo "$(INVERT)$(RED)deleted$(WHITE)$(INVERT): $(NPWD)$(WHITE)"
