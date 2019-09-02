@@ -6,13 +6,13 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 13:46:41 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/13 10:31:06 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/09/02 21:51:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static __always_inline __v4df	s_camera_rot_x(__v4df d, __v4df const dir)
+static __always_inline t_v4df	s_camera_rot_x(t_v4df d, t_v4df const dir)
 {
 	double_t const	temp = Y(d);
 
@@ -21,7 +21,7 @@ static __always_inline __v4df	s_camera_rot_x(__v4df d, __v4df const dir)
 	return (d);
 }
 
-static __always_inline __v4df	s_camera_rot_y(__v4df d, __v4df const dir)
+static __always_inline t_v4df	s_camera_rot_y(t_v4df d, t_v4df const dir)
 {
 	double_t const	temp = X(d);
 
@@ -30,7 +30,7 @@ static __always_inline __v4df	s_camera_rot_y(__v4df d, __v4df const dir)
 	return (d);
 }
 
-static __always_inline __v4df	s_camera_rot_z(__v4df d, __v4df const dir)
+static __always_inline t_v4df	s_camera_rot_z(t_v4df d, t_v4df const dir)
 {
 	double_t const	temp = X(d);
 
@@ -39,7 +39,7 @@ static __always_inline __v4df	s_camera_rot_z(__v4df d, __v4df const dir)
 	return (d);
 }
 
-__v4df					rt_camera_rotate(__v4df d, __v4df const dir)
+t_v4df					rt_camera_rotate(t_v4df d, t_v4df const dir)
 {
 	if (X(dir))
 		d = s_camera_rot_x(d, dir);

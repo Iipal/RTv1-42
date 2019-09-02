@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:43:10 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/14 08:40:39 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/09/02 21:51:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,32 +43,32 @@ E_LGHT_TYPES;
 
 struct	s_camera
 {
-	__v4df		pos;
-	__v4df		dir;
+	t_v4df		pos;
+	t_v4df		dir;
 	double_t	t;
 };
 
 struct	s_light
 {
-	__v4df		pos;
-	__v4df		dir;
+	t_v4df		pos;
+	t_v4df		dir;
 	double_t	intens;
 	lightType	type;
 };
 
-typedef __v4df	(*t_fn_inter)(const __v4df,
-							const __v4df,
+typedef t_v4df	(*t_fn_inter)(const t_v4df,
+							const t_v4df,
 							const void *restrict const);
-typedef __v4df	(*t_fn_normal)(const __v4df,
-							const __v4df,
+typedef t_v4df	(*t_fn_normal)(const t_v4df,
+							const t_v4df,
 							const struct s_camera *restrict const,
 							const void *restrict const);
-typedef Uint32	(*t_fn_uv)(SDL_Surface *restrict const, const __v4df);
+typedef Uint32	(*t_fn_uv)(SDL_Surface *restrict const, const t_v4df);
 
 struct	s_object
 {
-	__v4df		pos;
-	__v4df		dir;
+	t_v4df		pos;
+	t_v4df		dir;
 	double_t	radius;
 	double_t	spec;
 	Color		clr;

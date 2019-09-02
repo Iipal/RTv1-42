@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 17:38:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/13 12:55:47 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/09/02 21:51:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ bool	rt_parse_other(Environment *const env,
 			JSON_Object const *const root_obj);
 
 bool	rt_parse_arr_to_vec(JSON_Array const *const arr,
-			__v4df *const dst,
+			t_v4df *const dst,
 			char const *const obj_name,
 			size_t const parsing_obj_counter);
 bool	rt_parse_color(char *hex_str,

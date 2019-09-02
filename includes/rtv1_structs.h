@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/11 14:42:19 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/09/02 21:51:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ FLAGS;
 
 struct	s_environment
 {
-	__v4df			**pre_calc_d;
+	t_v4df			**pre_calc_d;
 	Sdl				*sdl;
 	FpsRenderHelper	*frh;
 	Fps				fps;
@@ -77,9 +77,9 @@ ENV;
 */
 struct	s_calc_light_helper
 {
-	__v4df		p;
-	__v4df		n;
-	__v4df		l;
+	t_v4df		p;
+	t_v4df		n;
+	t_v4df		l;
 	Color		curr_clr;
 	double_t	i;
 	double_t	obj_spec;

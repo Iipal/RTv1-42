@@ -6,45 +6,45 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 11:06:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/14 21:28:22 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/09/02 21:51:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static __always_inline __v2df	s_intersection(__v4df const o, __v4df const d,
+static __always_inline t_v2df	s_intersection(t_v4df const o, t_v4df const d,
 							Object const *const obj)
 {
-	__v4df const	x = o - obj->pos;
-	__v4df const	k = obj->fn_inter_calc(x, d, obj);
+	t_v4df const	x = o - obj->pos;
+	t_v4df const	k = obj->fn_inter_calc(x, d, obj);
 	double_t const	disc = VDISC(X(k), Y(k), Z(k));
-	__v2df			out;
+	t_v2df			out;
 
-	out = (__v2df){ -1.0, -1.0 };
+	out = (t_v2df){ -1.0, -1.0 };
 	if (.0 <= disc)
-		out = (__v2df){ (-Y(k) + sqrt(disc)) / (2.0 * X(k)),
+		out = (t_v2df){ (-Y(k) + sqrt(disc)) / (2.0 * X(k)),
 					(-Y(k) - sqrt(disc)) / (2.0 * X(k)) };
 	return (out);
 }
 
-static __always_inline __v2df	s_plane_inter(__v4df const o, __v4df const d,
-									__v4df const pos, __v4df const dir)
+static __always_inline t_v2df	s_plane_inter(t_v4df const o, t_v4df const d,
+									t_v4df const pos, t_v4df const dir)
 {
 	double_t const	d_dot_v = v_dot(d, dir);
-	__v2df			out;
+	t_v2df			out;
 
-	out = (__v2df){ -1.0, -1.0 };
+	out = (t_v2df){ -1.0, -1.0 };
 	if (d_dot_v)
 		X(out) = -v_dot(o - pos, dir) / d_dot_v;
 	return (out);
 }
 
-Object					*rt_intersection(__v4df const o, __v4df const d,
+Object					*rt_intersection(t_v4df const o, t_v4df const d,
 									Scene *restrict const scene)
 {
 	Object	*obj;
 	Object	*out_obj;
-	__v2df	t;
+	t_v2df	t;
 	ssize_t	i;
 
 	out_obj = NULL;

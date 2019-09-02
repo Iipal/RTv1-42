@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 14:02:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/19 13:40:50 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/09/02 21:51:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		rt_rendering(Environment *restrict const env);
 
 Color		rt_anti_aliasing(Environment *restrict const env,
 				size_t const aa,
-				__v4df d_calc);
+				t_v4df d_calc);
 
 void		rt_camera_speed_movements(double_t *restrict const cam_speed);
 
@@ -81,7 +81,7 @@ void		rt_free(Environment *restrict *env);
 **  Used only when validating read data for convert direction\rotate
 **   from 365 degrees to 5;
 */
-__v4df		u_inrange_dir_max(__v4df dir);
-__v4df		u_inrange_dir_min(__v4df dir);
+t_v4df		u_inrange_dir_max(t_v4df dir);
+t_v4df		u_inrange_dir_min(t_v4df dir);
 
 #endif

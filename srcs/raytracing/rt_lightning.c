@@ -6,14 +6,14 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 16:04:26 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/15 21:54:40 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/09/02 21:51:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
 static __always_inline void	s_calc_light_intens(Light const *restrict l,
-	t_clhelp *restrict const h, __v4df const v)
+	t_clhelp *restrict const h, t_v4df const v)
 {
 	double_t const	ndl = v_dot(h->n, h->l);
 
@@ -27,7 +27,7 @@ static __always_inline void	s_calc_light_intens(Light const *restrict l,
 
 Color				rt_lightning(Scene *restrict const scene,
 						t_clhelp *restrict const h,
-						__v4df const v)
+						t_v4df const v)
 {
 	Object		*shadow;
 	Light		*curr_l;
