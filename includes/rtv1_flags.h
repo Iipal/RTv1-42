@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:28:29 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/10 21:59:57 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/10/26 12:33:34 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,23 +136,24 @@ extern uint16_t	g_flags;
 /*
 **	Flags parsing funcs:
 */
-bool	rt_parse_flags(Environment *const env, char **av, size_t const ac);
+bool	rt_parse_flags(Environment *const env, char **av, size_t const ac)
+			NON_NULL((1,2));
 
-size_t	rt_is_flag_wparam(char const *flag);
+size_t	rt_is_flag_wparam(char const *flag) NON_NULL((1));
 
 typedef bool	(*t_fwparam)(Flags*, char**, size_t const, size_t *const);
 bool	f_vps(Flags *const f, char **av,
-			size_t const ac, size_t *const av_i);
+			size_t const ac, size_t *const av_i) NON_NULL((1,2,4));
 bool	f_al(Flags *const f, char **av,
-			size_t const ac, size_t *const av_i);
+			size_t const ac, size_t *const av_i) NON_NULL((1,2,4));
 bool	f_ftc(Flags *const f, char **av,
-			size_t const ac, size_t *const av_i);
+			size_t const ac, size_t *const av_i) NON_NULL((1,2,4));
 bool	f_frt(Flags *const f, char **av,
-			size_t const ac, size_t *const av_i);
+			size_t const ac, size_t *const av_i) NON_NULL((1,2,4));
 bool	f_aa(Flags *const f, char **av,
-			size_t const ac, size_t *const av_i);
+			size_t const ac, size_t *const av_i) NON_NULL((1,2,4));
 
-size_t	rt_is_flag_boolean(char const *flag);
+size_t	rt_is_flag_boolean(char const *flag) NON_NULL((1));
 
 typedef bool	(*t_fbool)(void);
 bool	f_dbg(void);
@@ -161,13 +162,13 @@ bool	f_tex(void);
 bool	f_rli(void);
 bool	f_pu(void);
 
-size_t	rt_is_flag_other(char const *flag);
+size_t	rt_is_flag_other(char const *flag) NON_NULL((1));
 
 typedef bool	(*t_fother)(Environment *restrict const env, char **av,
 					size_t const ac, size_t *const av_i);
 bool	f_nb(Environment *restrict const env, char **av,
-			size_t const ac, size_t *const av_i);
+			size_t const ac, size_t *const av_i) NON_NULL((1,2,4));
 
-void	rt_parsed_flags_validation(Flags const *const f);
+void	rt_parsed_flags_validation(Flags const *const f) NON_NULL((1));
 
 #endif

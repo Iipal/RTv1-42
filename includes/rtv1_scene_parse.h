@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 17:38:25 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/09/02 21:51:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/10/26 12:41:22 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,45 +21,45 @@
 ** Function prototypes:
 */
 bool	rt_parse_scene(Environment *const env,
-			char const *const scene_file);
+			char const *const scene_file) NON_NULL((1,2));
 
 bool	rt_parse_cam(Camera *const camera,
-			JSON_Object const *const root_obj);
+			JSON_Object const *const root_obj) NON_NULL((1,2));
 bool	rt_parse_lights(Scene *const scene,
-			JSON_Object const *const root_obj);
+			JSON_Object const *const root_obj) NON_NULL((1,2));
 bool	rt_parse_objects(Scene *const scene,
-			JSON_Object const *const root_obj);
+			JSON_Object const *const root_obj) NON_NULL((1,2));
 
 typedef bool	(*t_fn_lght)(JSON_Object const *const,
 					Light *const, size_t const);
 bool	rt_parse_point_light(JSON_Object const *const light_obj,
-			Light *const l, size_t const light_i);
+			Light *const l, size_t const light_i) NON_NULL((1,2));
 bool	rt_parse_dir_light(JSON_Object const *const light_obj,
-			Light *const l, size_t const light_i);
+			Light *const l, size_t const light_i) NON_NULL((1,2));
 
 typedef bool	(*t_fn_obj)(JSON_Object const *const,
 					Object *const, size_t const);
 bool	rt_parse_sphere(JSON_Object const *const object_obj,
-			Object *const obj, size_t const obj_i);
+			Object *const obj, size_t const obj_i) NON_NULL((1,2));
 bool	rt_parse_cone(JSON_Object const *const object_obj,
-			Object *const obj, size_t const obj_i);
+			Object *const obj, size_t const obj_i) NON_NULL((1,2));
 bool	rt_parse_plane(JSON_Object const *const object_obj,
-			Object *const obj, size_t const obj_i);
+			Object *const obj, size_t const obj_i) NON_NULL((1,2));
 bool	rt_parse_cylinder(JSON_Object const *const object_obj,
-			Object *const obj, size_t const obj_i);
+			Object *const obj, size_t const obj_i) NON_NULL((1,2));
 
 bool	rt_parse_other(Environment *const env,
-			JSON_Object const *const root_obj);
+			JSON_Object const *const root_obj) NON_NULL((1,2));
 
 bool	rt_parse_arr_to_vec(JSON_Array const *const arr,
 			t_v4df *const dst,
 			char const *const obj_name,
-			size_t const parsing_obj_counter);
+			size_t const parsing_obj_counter) NON_NULL((2,3));
 bool	rt_parse_color(char *hex_str,
 			Color *const dst,
-			size_t const parsing_obj_counter);
+			size_t const parsing_obj_counter) NON_NULL((1,2));
 
-bool	rt_parsed_scene_validation(Scene *restrict const s);
+bool	rt_parsed_scene_validation(Scene *restrict const s) NON_NULL((1));
 
 /*
 ** Scene Default constants, params and also:
