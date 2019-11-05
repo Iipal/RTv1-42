@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/09/02 21:56:47 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/11/05 12:30:41 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,10 @@ LIBSINC :=
 LIBS :=
 
 UNAME_S := $(shell uname -s)
+ECHO := echo
+ifeq ($(UNAME_S),Linux)
+	ECHO += -e
+endif
 ifeq ($(UNAME_S),Darwin)
 	LIBSINC += -I ~/.brew/include
 	LIBS += -L ~/.brew/lib -rpath ~/.brew/lib
@@ -64,9 +68,9 @@ SUCCESS2 := [$(INVERT)$(GREEN)✓$(WHITE)]
 all: $(NAME)
 
 $(OBJ): %.o: %.c
-	@echo -e -n ' $@: '
+	@$(ECHO) -n ' $@: '
 	@$(CC) -c $(CFLAGS) $(LIBSINC) $(IFLAGS) $< -o $@
-	@echo -e "$(SUCCESS)"
+	@$(ECHO) "$(SUCCESS)"
 
 $(LIBFT):
 	@$(LMAKE)
@@ -81,16 +85,16 @@ bin_dir:
 	@mkdir -p bin
 
 $(NAME): bin_dir $(LIBFT) $(LIBWU) $(LIBFTSDL) $(LIBPARSON) $(OBJ)
-	@echo -e -n ' <q.p> | $(NPWD): '
+	@$(ECHO) -n ' <q.p> | $(NPWD): '
 	@$(CC) $(OBJ) $(LIBS) $(LIBFT) $(LIBWU) $(LIBFTSDL) $(LIBPARSON) -o $(NAME)
-	@echo -e "$(SUCCESS2)"
+	@$(ECHO) "$(SUCCESS2)"
 
 del:
 	@$(DEL) $(OBJ)
 	@$(DEL) $(NAME)
 
 pre: del all
-	@echo -e "$(INVERT)$(GREEN)Successed re-build.$(WHITE)"
+	@$(ECHO) "$(INVERT)$(GREEN)Successed re-build.$(WHITE)"
 
 .PHONY: clear_pre
 clear_pre:
@@ -99,16 +103,16 @@ clear_pre:
 set_cc_debug:
 	@$(eval CC=$(CC_DEBUG))
 debug_all: set_cc_debug pre
-	@echo -e "$(INVERT)$(NAME) $(GREEN)ready for debug.$(WHITE)"
+	@$(ECHO) "$(INVERT)$(NAME) $(GREEN)ready for debug.$(WHITE)"
 debug: set_cc_debug all
-	@echo -e "$(INVERT)$(NAME) $(GREEN)ready for debug.$(WHITE)"
+	@$(ECHO) "$(INVERT)$(NAME) $(GREEN)ready for debug.$(WHITE)"
 
 set_cc_profle:
 	@$(eval CC=$(CC_PROFILE))
 profile_all: set_cc_profle pre
-	@echo -e "$(INVERT)$(NAME) $(GREEN)ready for profile.$(WHITE)"
+	@$(ECHO) "$(INVERT)$(NAME) $(GREEN)ready for profile.$(WHITE)"
 profile: set_cc_profle all
-	@echo -e "$(INVERT)$(NAME) $(GREEN)ready for profile.$(WHITE)"
+	@$(ECHO) "$(INVERT)$(NAME) $(GREEN)ready for profile.$(WHITE)"
 
 profile_allr: set_cc_profle
 	@$(LMAKE) profile_all
@@ -131,20 +135,20 @@ fclean: clean
 	@$(LWUMAKE) fclean
 	@$(LSDLMAKE) fclean
 	@$(LPARSONMAKE) fclean
-	@echo -e "$(INVERT)$(RED)deleted$(WHITE)$(INVERT): $(NPWD)$(WHITE)"
+	@$(ECHO) "$(INVERT)$(RED)deleted$(WHITE)$(INVERT): $(NPWD)$(WHITE)"
 
 re: fclean all
 
 norme_all:
-	@echo -e "$(INVERT)$(RED) WARNING:$(WHITE)$(INVERT) for lib parson norme is not neccessary.$(WHITE)"
+	@$(ECHO) "$(INVERT)$(RED) WARNING:$(WHITE)$(INVERT) for lib parson norme is not neccessary.$(WHITE)"
 	@$(LMAKE) norme
 	@$(LSDLMAKE) norme
-	@echo -e "$(INVERT)norminette for $(GREEN)$(NAME)$(WHITE)$(INVERT):$(WHITE)"
+	@$(ECHO) "$(INVERT)norminette for $(GREEN)$(NAME)$(WHITE)$(INVERT):$(WHITE)"
 	@norminette includes/
 	@norminette $(SRCS)
 
 norme:
-	@echo -e "$(INVERT)norminette for $(GREEN)$(NAME)$(WHITE)$(INVERT):$(WHITE)"
+	@$(ECHO) "$(INVERT)norminette for $(GREEN)$(NAME)$(WHITE)$(INVERT):$(WHITE)"
 	@norminette includes/
 	@norminette $(SRCS)
 
