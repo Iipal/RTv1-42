@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 16:09:14 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/09 08:37:31 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/11/06 13:26:42 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 bool	rt_parse_color(char *hex_str, Color *const dst,
 			size_t const parsing_obj_counter)
 {
-	IFDO_F(ft_strncmp(hex_str, "0x", ft_strlen("0x")),
+	IFDO_F(ft_strncmp(hex_str, "0x", 2UL),
 		ERRIN_N(E_OCLR_0X_MISS, parsing_obj_counter + 1, E_IN_OBJ));
-	hex_str += ft_strlen("0x");
+	hex_str += 2UL;
 	NODO_F(ft_ishex_str(hex_str),
 		ERRIN_N(E_INVALID_HCLR, parsing_obj_counter + 1, E_IN_OBJ));
 	IFDO_F(MAX_HEX_SPECTRUM_LENGHT < ft_strlen(hex_str),
