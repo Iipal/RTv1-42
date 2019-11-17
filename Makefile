@@ -6,7 +6,7 @@
 #    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/11/05 12:30:41 by tmaluh           ###   ########.fr        #
+#    Updated: 2019/11/17 16:57:19 by tmaluh           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NPWD := $(CURDIR)/$(NAME)
 
 CC_BASE := gcc -march=native -mtune=native
 
-CC := $(CC_BASE) -Ofast -pipe -flto
+CC := $(CC_BASE) -Ofast -pipe -flto -fpic
 CC_DEBUG := $(CC_BASE) -g3 -D DEBUG
 CC_PROFILE := $(CC_BASE) -no-pie -pg -O0
 
