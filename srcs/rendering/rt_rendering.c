@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/12/10 19:38:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/10 19:46:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	render(void *arg)
 	__v2si						xy;
 	int							i;
 
-	i = env->render_range[0] - 1;
-	while (env->render_range[1] >= ++i)
+	i = env->render_range.x - 1;
+	while (env->render_range.y >= ++i)
 		{
 			xy = (__v2si) { i / WIN_X, i % WIN_X };
 			env->scene.tmax = TMAX;
@@ -44,10 +44,10 @@ void	rt_rendering(Environment *restrict const env)
 	i = ~0UL;
 	printf("render frame: %zu(%d)\n", render_frame, WIN_X * WIN_Y);
 	while (g_threads_num > ++i) {
-		env->render_range = (__v2si)
+		env->render_range = (struct	s_2si)
 			{ render_frame * i, render_frame * (i + 1UL) };
 		printf("render range[%3zu]: %7d -> %7d\n", i + 1UL,
-			env->render_range[0], env->render_range[1]);
+			env->render_range.x, env->render_range.y);
 		tpool_add_work(g_threads_pool, render, env);
 	}
 	tpool_wait(g_threads_pool);

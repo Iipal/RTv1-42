@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/12/10 16:59:01 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/10 19:46:15 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define RTV1_STRUCTS_H
 
 # include "rtv1_scene_structs.h"
+
+struct	s_2si
+{
+	int	x;
+	int	y;
+};
 
 struct	s_time
 {
@@ -62,7 +68,7 @@ struct	s_environment
 	t_v4df			**pre_calc_d;
 	Sdl				*sdl;
 	FpsRenderHelper	*frh;
-	__v2si			render_range;
+	struct	s_2si	render_range;
 	Fps				fps;
 	double_t		cam_speed;
 	Scene			scene;
