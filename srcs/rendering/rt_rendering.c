@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/12/10 19:46:33 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/10 19:59:55 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ void	render(void *arg)
 	i = env->render_range.x - 1;
 	while (env->render_range.y >= ++i)
 		{
-			xy = (__v2si) { i / WIN_X, i % WIN_X };
+			xy = (__v2si) { i % WIN_X, i / WIN_X };
+			if (0 <= X(xy) && 0 <= Y(xy)
+			&& Y(xy) < env->sdl->wsurf->h && X(xy) < env->sdl->wsurf->w) {
 			env->scene.tmax = TMAX;
 			env->scene.tmin = TMIN;
 			if (env->flags.anti_aliasing)
@@ -33,6 +35,7 @@ void	render(void *arg)
 					env->flags.ambient_light);
 			if (clr.hex)
 				sdl_pixelput(env->sdl->wsurf, xy, clr);
+			}
 		}
 }
 
@@ -50,7 +53,6 @@ void	rt_rendering(Environment *restrict const env)
 			env->render_range.x, env->render_range.y);
 		tpool_add_work(g_threads_pool, render, env);
 	}
-	tpool_wait(g_threads_pool);
 	if (IS_BIT(g_isr_flags, ISR_RENDER_FPS))
 		rt_render_fps_counter(&env->flags.fps_text_color, &env->fps.time,
 			env->sdl, env->flags.fps_refresh_timer, env->frh);
