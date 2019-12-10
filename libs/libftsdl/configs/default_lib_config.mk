@@ -55,6 +55,7 @@ ifeq ($(UNAME_S),Darwin)
  endif
 
 AR := ar
+IFLAGS += -I../../../.brew/include
 endif
 
 MAKE += --no-print-directory

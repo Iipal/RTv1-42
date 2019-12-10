@@ -26,6 +26,7 @@ endif
 ifneq (,$(wildcard ./libs))
 LIBS_DIRS := $(shell find ./libs -maxdepth 1 -type d)
 LIBS_DIRS := $(filter-out $(firstword $(LIBS_DIRS)), $(LIBS_DIRS))
+LIBS_DIRS := $(filter-out ./libs/libvectors, $(LIBS_DIRS))
 LIBS_NAMES = $(join $(LIBS_DIRS),$(addsuffix .a,$(addprefix /,$(notdir $(LIBS_DIRS)))))
 endif
 
@@ -56,7 +57,8 @@ ifeq ($(UNAME_S),Darwin)
 	MAKE_PARALLEL_FLAGS := -j $(NPROCS) -l $(NPROCS) -Otarget
  endif
 
-IFLAGS += -I~/.brew/include
+
+IFLAGS += -I../.brew/include
 CFLAGS_LIBS += -L ~/.brew/lib -rpath ~/.brew/lib -lSDL2 -lSDL2_ttf -lSDL2_image
 endif
 
