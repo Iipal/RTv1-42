@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/12/10 19:46:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/10 22:25:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,14 @@ FPS;
 FPS_R;
 FLAGS;
 
+typedef Color (*render_fnptr)(void *restrict const, t_v4df);
+
 struct	s_environment
 {
 	t_v4df			**pre_calc_d;
 	Sdl				*sdl;
 	FpsRenderHelper	*frh;
+	render_fnptr	render_fn;
 	struct	s_2si	render_range;
 	Fps				fps;
 	double_t		cam_speed;

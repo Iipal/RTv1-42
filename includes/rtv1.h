@@ -52,10 +52,10 @@ FpsRenderHelper	*rt_init_fps_render_helper(void);
 /*
 ** Rendering and other rendering stuff:
 */
-void		rt_rendering(Environment *restrict const env) NON_NULL((1));
+void		rt_render_threds_create(Environment **env) NON_NULL((1));
 
-Color		rt_anti_aliasing(Environment *restrict const env,
-				size_t const aa, t_v4df d_calc) NON_NULL((1));
+Color		rt_anti_aliasing(void *restrict const arg, t_v4df d_calc)
+				NON_NULL((1));
 
 void		rt_camera_speed_movements(double_t *restrict const cam_speed)
 				NON_NULL((1));

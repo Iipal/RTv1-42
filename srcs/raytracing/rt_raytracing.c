@@ -6,16 +6,18 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 19:54:55 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/09/02 21:51:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/10 22:27:17 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-Color	rt_raytracing(Scene *restrict const scene, t_v4df d, double_t const al)
+Color	rt_raytracing(void *restrict const arg, t_v4df d)
 {
-	t_clhelp	h;
-	Object		*obj;
+	Scene *restrict const	scene = &((Environment*)arg)->scene;
+	const float				al = ((Environment*)arg)->flags.ambient_light;
+	t_clhelp				h;
+	Object					*obj;
 
 	d = v_norm(rt_camera_rotate(d, scene->cam.dir));
 	obj = rt_intersection(scene->cam.pos, d, scene);

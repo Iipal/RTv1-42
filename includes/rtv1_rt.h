@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 18:02:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/10/26 12:38:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/10 22:27:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 # include "rtv1_structs.h"
 
-Color	rt_raytracing(Scene *restrict const scene, t_v4df d, double_t const al)
-			NON_NULL((1));
+Color	rt_raytracing(void *restrict const arg, t_v4df d) NON_NULL((1));
 
 t_v4df	rt_camera_rotate(t_v4df d, t_v4df const dir);
 
@@ -66,5 +65,9 @@ Uint32	rt_uv_cylinder(SDL_Surface *restrict const tex, t_v4df const n)
 Color	rt_lightning(Scene *restrict const scene,
 			t_clhelp *restrict const h,
 			t_v4df const d) NON_NULL((1,2));
+
+
+Environment	**rt_prepare_threading(Environment *restrict const env);
+void		rt_free_threading(Environment **env_dups);
 
 #endif
