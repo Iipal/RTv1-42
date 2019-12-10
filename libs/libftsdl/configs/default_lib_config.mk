@@ -5,7 +5,7 @@ CC := clang
 
 CFLAGS_WARN := -Wall -Wextra -Werror -Wunused
 
-CFLAGS_DEBUG := -glldb
+CFLAGS_DEBUG := -g3
 CFLAGS_SANITIZE := $(CFLAGS_DEBUG) -fsanitize=address
 CFLAGS_OPTIMIZE := -march=native -mtune=native -Ofast -pipe -flto -fpic
 
@@ -29,7 +29,7 @@ DEL := rm -rf
 
 NPROCS := 1
 
-ARFLAGS = -Trcs
+ARFLAGS = -rcs
 
 UNAME_S := $(shell uname -s)
 # Linux Specifications:

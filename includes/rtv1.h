@@ -37,7 +37,6 @@ extern struct s_tpool *restrict	g_threads_pool;
 /*
 ** Validate executable path and scene file name.
 */
-bool			rt_valid_exe_path(char const *path) NON_NULL((1));
 bool			rt_valid_filename(char const *file) NON_NULL((1));
 
 /*

@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/12/10 17:38:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/10 19:38:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ void	render(void *arg)
 	int							i;
 
 	i = env->render_range[0] - 1;
-	while (env->render_range[1] > ++i)
+	while (env->render_range[1] >= ++i)
 		{
-			xy = (__v2si) { i / WIN_X, i / WIN_Y };
-			if (WIN_X <= X(xy) || WIN_Y <= Y(xy))
-				continue ;
+			xy = (__v2si) { i / WIN_X, i % WIN_X };
 			env->scene.tmax = TMAX;
 			env->scene.tmin = TMIN;
 			if (env->flags.anti_aliasing)
@@ -44,9 +42,12 @@ void	rt_rendering(Environment *restrict const env)
 	size_t			i;
 
 	i = ~0UL;
+	printf("render frame: %zu(%d)\n", render_frame, WIN_X * WIN_Y);
 	while (g_threads_num > ++i) {
 		env->render_range = (__v2si)
 			{ render_frame * i, render_frame * (i + 1UL) };
+		printf("render range[%3zu]: %7d -> %7d\n", i + 1UL,
+			env->render_range[0], env->render_range[1]);
 		tpool_add_work(g_threads_pool, render, env);
 	}
 	tpool_wait(g_threads_pool);

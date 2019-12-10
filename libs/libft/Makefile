@@ -3,10 +3,10 @@ include configs/default_lib_config.mk
 .PHONY: all multi $(LIBS_DIRS)
 multi: $(LIBS_DIRS)
  ifneq (,$(filter $(MAKECMDGOALS),debug debug_all))
-	@$(MAKE) $(MAKE_PARALLEL_FLAGS) CFLAGS="$(CFLAGS_DEBUG)" DEFINES="$(shell echo $(NAME) | tr a-z A-Z)_DEBUG" all
+	@$(MAKE) $(MAKE_PARALLEL_FLAGS) CFLAGS="$(CFLAGS_DEBUG)" DEFINES="$(shell echo $(basename $(NAME)) | tr a-z A-Z)_DEBUG" all
  else
   ifneq (,$(filter $(MAKECMDGOALS),sanitize sanitize_all))
-	@$(MAKE) $(MAKE_PARALLEL_FLAGS) CFLAGS="$(CFLAGS_SANITIZE)" DEFINES="$(shell echo $(NAME) | tr a-z A-Z)_SANITIZE" all
+	@$(MAKE) $(MAKE_PARALLEL_FLAGS) CFLAGS="$(CFLAGS_SANITIZE)" DEFINES="$(shell echo $(basename $(NAME)) | tr a-z A-Z)_SANITIZE" all
   else
 	@$(MAKE) $(MAKE_PARALLEL_FLAGS) all
   endif
@@ -19,7 +19,7 @@ $(NAME): $(OBJS)
 	@$(MAKE) STATUS
 
 $(OBJS): %.o: %.c
-	@$(CC) $(addprefix "-D ",$(DEFINES)) -c $(CFLAGS) $(CFLAGS_WARN) $(IFLAGS) $< -o $@
+	@$(CC) $(addprefix -D,$(DEFINES)) -c $(CFLAGS) $(CFLAGS_WARN) $(IFLAGS) $< -o $@
 	@$(ECHO) " | $@: $(MSG_SUCCESS)"
 
 STATUS:
