@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 09:47:24 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/19 13:43:13 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/10 16:36:25 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static bool	s_parse_current_light(JSON_Object *light_obj, Light *const l,
 	char const		*light_type = json_object_get_string(light_obj, "type");
 	size_t			i;
 
-	i = ~0ULL;
+	i = ~0UL;
 	NODO_F(light_obj, ERRIN_N(E_INVALID_LGT, i + 1, E_IN_LINE));
 	NODO_F(light_type, ERRIN_N(E_LTYPE_MISS, curr_light_i + 1, E_IN_LIGHT));
 	while (max_lights > ++i)

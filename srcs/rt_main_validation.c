@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 10:45:06 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/15 21:15:58 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/10 17:44:20 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	rt_valid_exe_path(char const *path)
 
 bool	rt_valid_exe_path(char const *path)
 {
-	return (ft_is_one_of_str(path, 2UL, RTV1_EXE_PATH1, RTV1_EXE_PATH2));
+	return (ft_is_one_of_n(path, 2UL, RTV1_EXE_PATH1, RTV1_EXE_PATH2));
 }
 
 #endif

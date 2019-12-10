@@ -1,155 +1,69 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/02/06 14:43:13 by tmaluh            #+#    #+#              #
-#    Updated: 2019/11/17 16:57:19 by tmaluh           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+include configs/default_config.mk
 
-NAME := bin/RTv1
-NPWD := $(CURDIR)/$(NAME)
-
-CC_BASE := gcc -march=native -mtune=native
-
-CC := $(CC_BASE) -Ofast -pipe -flto -fpic
-CC_DEBUG := $(CC_BASE) -g3 -D DEBUG
-CC_PROFILE := $(CC_BASE) -no-pie -pg -O0
-
-CFLAGS := -Wall -Wextra -Werror -Wunused -Wno-type-limits
-IFLAGS := -I $(CURDIR)/includes \
-	-I $(CURDIR)/libft/includes \
-	-I $(CURDIR)/libwu/includes \
-	-I $(CURDIR)/libftsdl/includes \
-	-I $(CURDIR)/libvectors \
-	-I $(CURDIR)/libparson
-
-LIBSINC :=
-LIBS :=
-
-UNAME_S := $(shell uname -s)
-ECHO := echo
-ifeq ($(UNAME_S),Linux)
-	ECHO += -e
-endif
-ifeq ($(UNAME_S),Darwin)
-	LIBSINC += -I ~/.brew/include
-	LIBS += -L ~/.brew/lib -rpath ~/.brew/lib
-endif
-LIBS += -lSDL2 -lSDL2_ttf -lSDL2_image -lm
-
-SRCS := $(abspath $(wildcard srcs/*.c srcs/*/*.c srcs/*/*/*.c))
-OBJ := $(SRCS:.c=.o)
-
-LIBFT := $(CURDIR)/libft/libft.a
-LIBWU := $(CURDIR)/libwu/libwu.a
-LIBFTSDL := $(CURDIR)/libftsdl/libftsdl.a
-LIBPARSON := $(CURDIR)/libparson/libparson.a
-
-LMAKE := make -C libft
-LWUMAKE := make -C libwu
-LSDLMAKE := make -C libftsdl
-LPARSONMAKE := make -C libparson
-
-DEL := rm -rf
-
-WHITE := \033[0m
-BGREEN := \033[42m
-GREEN := \033[32m
-RED := \033[31m
-INVERT := \033[7m
-
-SUCCESS := [$(GREEN)✓$(WHITE)]
-SUCCESS2 := [$(INVERT)$(GREEN)✓$(WHITE)]
+.PHONY: all multi $(LIBS_DIRS)
+multi: $(LIBS_DIRS)
+ ifneq (,$(filter $(MAKECMDGOALS),debug debug_all))
+	@$(MAKE) $(MAKE_PARALLEL_FLAGS) CFLAGS="$(CFLAGS_DEBUG)" DEFINES="$(shell echo $(NAME) | tr a-z A-Z)_DEBUG" all
+ else
+  ifneq (,$(filter $(MAKECMDGOALS),sanitize sanitize_all))
+	@$(MAKE) $(MAKE_PARALLEL_FLAGS) CFLAGS="$(CFLAGS_SANITIZE)" DEFINES="$(shell echo $(NAME) | tr a-z A-Z)_SANITIZE" all
+  else
+	@$(MAKE) $(MAKE_PARALLEL_FLAGS) all
+  endif
+ endif
 
 all: $(NAME)
 
-$(OBJ): %.o: %.c
-	@$(ECHO) -n ' $@: '
-	@$(CC) -c $(CFLAGS) $(LIBSINC) $(IFLAGS) $< -o $@
-	@$(ECHO) "$(SUCCESS)"
+$(NAME): $(OBJS)
+	@$(CC) $(addprefix "-D ",$(DEFINES)) $(CFLAGS) $(OBJS) $(LIBS_NAMES) $(CFLAGS_LIBS) $(IFLAGS) -o $(NAME)
+	@$(MAKE) STATUS
 
-$(LIBFT):
-	@$(LMAKE)
-$(LIBWU):
-	@$(LWUMAKE)
-$(LIBFTSDL):
-	@$(LSDLMAKE)
-$(LIBPARSON):
-	@$(LPARSONMAKE)
+$(OBJS): %.o: %.c
+	@$(CC) $(addprefix "-D ",$(DEFINES)) -c $(CFLAGS) $(CFLAGS_WARN) $(IFLAGS) $< -o $@
+	@$(ECHO) " | $@: $(MSG_SUCCESS)"
 
-bin_dir:
-	@mkdir -p bin
+$(LIBS_DIRS):
+ ifneq ($(MAKECMDGOALS),pre)
+	@$(MAKE) -C $@ $(MAKECMDGOALS)
+ endif
 
-$(NAME): bin_dir $(LIBFT) $(LIBWU) $(LIBFTSDL) $(LIBPARSON) $(OBJ)
-	@$(ECHO) -n ' <q.p> | $(NPWD): '
-	@$(CC) $(OBJ) $(LIBS) $(LIBFT) $(LIBWU) $(LIBFTSDL) $(LIBPARSON) -o $(NAME)
-	@$(ECHO) "$(SUCCESS2)"
+STATUS:
+	@$(ECHO) "/ compiled: $(NAME) $(MSG_SUCCESS)"
+ ifneq (,$(DEFINES))
+	@$(ECHO) "| compiler custom defines: $(foreach dfns,$(DEFINES),$(CLR_INVERT)$(dfns)$(CLR_WHITE) )"
+ endif
+	@$(ECHO) "| compiler default flags: $(CFLAGS_WARN)"
+	@$(ECHO) "_ compiler optional flags: $(CLR_UNDERLINE)$(CFLAGS)$(CLR_WHITE)"
+
+debug_all: fclean multi
+debug: multi
+
+sanitize_all: fclean multi
+sanitize: multi
 
 del:
-	@$(DEL) $(OBJ)
+	@$(DEL) $(OBJS)
 	@$(DEL) $(NAME)
+del_libs:
+	@$(DEL) $(LIBS_NAMES)
 
-pre: del all
-	@$(ECHO) "$(INVERT)$(GREEN)Successed re-build.$(WHITE)"
+pre: del multi
+re: del del_libs multi
 
-.PHONY: clear_pre
-clear_pre:
-	pre
-
-set_cc_debug:
-	@$(eval CC=$(CC_DEBUG))
-debug_all: set_cc_debug pre
-	@$(ECHO) "$(INVERT)$(NAME) $(GREEN)ready for debug.$(WHITE)"
-debug: set_cc_debug all
-	@$(ECHO) "$(INVERT)$(NAME) $(GREEN)ready for debug.$(WHITE)"
-
-set_cc_profle:
-	@$(eval CC=$(CC_PROFILE))
-profile_all: set_cc_profle pre
-	@$(ECHO) "$(INVERT)$(NAME) $(GREEN)ready for profile.$(WHITE)"
-profile: set_cc_profle all
-	@$(ECHO) "$(INVERT)$(NAME) $(GREEN)ready for profile.$(WHITE)"
-
-profile_allr: set_cc_profle
-	@$(LMAKE) profile_all
-	@$(LWUMAKE) profile_all
-	@$(LVECMAKE) profile_all
-	@$(LSDLMAKE) profile_all
-	@$(LPARSONMAKE) profile_all
-	@make profile_all
-
-clean:
-	@$(DEL) $(OBJ)
-	@$(LMAKE) clean
-	@$(LWUMAKE) clean
-	@$(LSDLMAKE) clean
-	@$(LPARSONMAKE) clean
-
-fclean: clean
+clean: $(LIBS_DIRS)
+	@$(DEL) $(OBJS)
+	@$(ECHO) " | $(CLR_INVERT)deleted$(CLR_WHITE): $(NPWD) source objects"
+fclean: clean $(LIBS_DIRS)
 	@$(DEL) $(NAME)
-	@$(LMAKE) fclean
-	@$(LWUMAKE) fclean
-	@$(LSDLMAKE) fclean
-	@$(LPARSONMAKE) fclean
-	@$(ECHO) "$(INVERT)$(RED)deleted$(WHITE)$(INVERT): $(NPWD)$(WHITE)"
-
-re: fclean all
-
-norme_all:
-	@$(ECHO) "$(INVERT)$(RED) WARNING:$(WHITE)$(INVERT) for lib parson norme is not neccessary.$(WHITE)"
-	@$(LMAKE) norme
-	@$(LSDLMAKE) norme
-	@$(ECHO) "$(INVERT)norminette for $(GREEN)$(NAME)$(WHITE)$(INVERT):$(WHITE)"
-	@norminette includes/
-	@norminette $(SRCS)
+	@$(ECHO) " | $(CLR_INVERT)deleted$(CLR_WHITE): $(NPWD)"
 
 norme:
-	@$(ECHO) "$(INVERT)norminette for $(GREEN)$(NAME)$(WHITE)$(INVERT):$(WHITE)"
+	@$(ECHO) "$(CLR_INVERT)norminette$(CLR_WHITE) for $(NPWD):"
 	@norminette includes/
 	@norminette $(SRCS)
 
-.PHONY: re fclean clean all norme_all norme del pre debug debug_all
+norme_all:
+	@$(foreach L_DIRS,$(LIBS_DIRS),$(MAKE) -C $(L_DIRS) norme;)
+	@$(MAKE) norme
+
+.PHONY: re fclean clean norme del pre sanitize sanitize_all debug debug_all STATUS

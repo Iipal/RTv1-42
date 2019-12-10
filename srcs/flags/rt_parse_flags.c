@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 17:35:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/15 21:15:45 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/10 17:53:53 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static bool	s_curr_fparse(Environment *restrict const env,
 	t_fother const	fother[] = {f_nb};
 	size_t			fn_num;
 
-	if (ft_is_one_of_str(av[*av_i], 2UL, SF_HELP, F_HELP))
+	if (ft_is_one_of_n((const char *restrict)av[*av_i], 2UL, SF_HELP, F_HELP))
 	{
 		ft_putfile(RTV1_FUSAGE);
 		return (false);

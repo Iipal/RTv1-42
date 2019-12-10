@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:09:45 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/09/02 21:51:59 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/10 16:59:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ struct	s_environment
 	t_v4df			**pre_calc_d;
 	Sdl				*sdl;
 	FpsRenderHelper	*frh;
+	__v2si			render_range;
 	Fps				fps;
 	double_t		cam_speed;
 	Scene			scene;

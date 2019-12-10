@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 14:04:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/19 13:43:30 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/10 16:36:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static bool	s_parse_current_object(JSON_Object const *const object_obj,
 	char const		*obj_type = json_object_get_string(object_obj, "type");
 	size_t			i;
 
-	i = ~0ULL;
+	i = ~0UL;
 	NODO_F(object_obj, ERRIN_N(E_INVALID_OBJ, i + 1, E_IN_LINE));
 	NODO_F(obj_type, ERRIN_N(E_OTYPE_MISS, curr_obj + 1, E_IN_OBJ));
 	while (max_objs > ++i)

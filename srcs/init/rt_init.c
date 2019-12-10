@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:22:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/10 10:28:15 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/10 16:42:05 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 uint32_t g_isr_flags = 0U;
 uint16_t g_flags = 0;
+const size_t				g_threads_num = 8UL;
+struct s_tpool *restrict	g_threads_pool = NULL;
 
 bool	rt_main_env_init(Environment *const env)
 {
+	NO_F(g_threads_pool = tpool_create(g_threads_num));
 	MEM(Sdl, env->sdl, 1, E_ALLOC);
 	NO_F(sdl_init(env->sdl, WIN_X, WIN_Y, RTV1_TITLE));
 	env->flags = (Flags){DEF_FPS_TEXT_COLOR,

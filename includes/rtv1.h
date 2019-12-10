@@ -29,6 +29,10 @@
 # include "rtv1_scene_parse.h"
 # include "rtv1_sdl.h"
 # include "rtv1_rt.h"
+# include "tpool.h"
+
+extern const size_t				g_threads_num;
+extern struct s_tpool *restrict	g_threads_pool;
 
 /*
 ** Validate executable path and scene file name.
