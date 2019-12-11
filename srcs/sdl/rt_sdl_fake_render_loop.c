@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 10:39:08 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/12/10 22:19:51 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/11 11:50:01 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	rt_sdl_fake_render_loop(Environment *restrict const env)
 
 	quit = false;
 	env_dups = rt_prepare_threading(env);
-	rt_render_threds_create(env_dups);
+	rt_render_threads_create(env_dups);
 	while (!quit)
 	{
 		while (SDL_PollEvent(&env->sdl->e) > 0)

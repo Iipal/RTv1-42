@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 22:17:57 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/12/10 22:27:38 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/11 11:55:39 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,16 @@ Environment	**rt_prepare_threading(Environment *restrict const env)
 		out[i]->render_fn = render_fn;
 	}
 	return (out);
+}
+
+void		rt_update_threading(Environment *restrict *restrict env_dups,
+				const Environment *restrict src_env)
+{
+	size_t	i;
+
+	i = ~0UL;
+	while (g_threads_num > ++i)
+		env_dups[i] = ft_memcpy(env_dups[i], src_env, sizeof(Environment));
 }
 
 void		rt_free_threading(Environment **env_dups)

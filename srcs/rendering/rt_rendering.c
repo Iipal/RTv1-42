@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/12/10 22:23:11 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/11 11:48:48 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	render(void *arg)
 	}
 }
 
-void	rt_render_threds_create(Environment **envs)
+void	rt_render_threads_create(Environment **envs)
 {
 	size_t	i;
 

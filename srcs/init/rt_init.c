@@ -14,7 +14,7 @@
 
 uint32_t g_isr_flags = 0U;
 uint16_t g_flags = 0;
-const size_t				g_threads_num = 8UL;
+const size_t				g_threads_num = 12UL;
 struct s_tpool *restrict	g_threads_pool = NULL;
 
 bool	rt_main_env_init(Environment *const env)

@@ -6,50 +6,50 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 17:30:12 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/08/11 13:50:35 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/11 11:40:59 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static void	s_sdl_key_rot_release(SDL_Keycode const key)
+static int	s_sdl_key_rot_release(SDL_Keycode const key)
 {
 	if (SDLK_r == key)
-		UNSET_BIT(g_isr_flags, ISR_ROT_X);
+		return (UNSET_BIT(g_isr_flags, ISR_ROT_X));
 	else if (SDLK_f == key)
-		UNSET_BIT(g_isr_flags, ISR_ROT_Y);
+		return (UNSET_BIT(g_isr_flags, ISR_ROT_Y));
 	else if (SDLK_v == key)
-		UNSET_BIT(g_isr_flags, ISR_ROT_Z);
+		return (UNSET_BIT(g_isr_flags, ISR_ROT_Z));
 	else if (SDLK_t == key)
-		UNSET_BIT(g_isr_flags, ISR_DEC_ROT_X);
+		return (UNSET_BIT(g_isr_flags, ISR_DEC_ROT_X));
 	else if (SDLK_g == key)
-		UNSET_BIT(g_isr_flags, ISR_DEC_ROT_Y);
+		return (UNSET_BIT(g_isr_flags, ISR_DEC_ROT_Y));
 	else if (SDLK_b == key)
-		UNSET_BIT(g_isr_flags, ISR_DEC_ROT_Z);
+		return (UNSET_BIT(g_isr_flags, ISR_DEC_ROT_Z));
+	return (0);
 }
 
-void		rt_sdl_keys_release(SDL_Keycode const key)
+int		rt_sdl_keys_release(SDL_Keycode const key)
 {
 	if (SDLK_w == key)
-		UNSET_BIT(g_isr_flags, ISR_UP);
+		return (!UNSET_BIT(g_isr_flags, ISR_UP));
 	else if (SDLK_s == key)
-		UNSET_BIT(g_isr_flags, ISR_DOWN);
+		return (!UNSET_BIT(g_isr_flags, ISR_DOWN));
 	else if (SDLK_a == key)
-		UNSET_BIT(g_isr_flags, ISR_LEFT);
+		return (!UNSET_BIT(g_isr_flags, ISR_LEFT));
 	else if (SDLK_d == key)
-		UNSET_BIT(g_isr_flags, ISR_RIGHT);
+		return (!UNSET_BIT(g_isr_flags, ISR_RIGHT));
 	else if (SDLK_q == key)
-		UNSET_BIT(g_isr_flags, ISR_ZDEC);
+		return (!UNSET_BIT(g_isr_flags, ISR_ZDEC));
 	else if (SDLK_e == key)
-		UNSET_BIT(g_isr_flags, ISR_ZINC);
+		return (!UNSET_BIT(g_isr_flags, ISR_ZINC));
 	else if (SDLK_LSHIFT == key)
-		UNSET_BIT(g_isr_flags, ISR_SPEEDUP);
+		return (!UNSET_BIT(g_isr_flags, ISR_SPEEDUP));
 	else if (SDLK_LCTRL == key)
-		UNSET_BIT(g_isr_flags, ISR_SPEEDDOWN);
+		return (!UNSET_BIT(g_isr_flags, ISR_SPEEDDOWN));
 	else if (SDLK_EQUALS == key)
-		UNSET_BIT(g_isr_flags, ISR_INC_AL);
+		return (!UNSET_BIT(g_isr_flags, ISR_INC_AL));
 	else if (SDLK_MINUS == key)
-		UNSET_BIT(g_isr_flags, ISR_DEC_AL);
-	else
-		s_sdl_key_rot_release(key);
+		return (!UNSET_BIT(g_isr_flags, ISR_DEC_AL));
+	return (!s_sdl_key_rot_release(key));
 }

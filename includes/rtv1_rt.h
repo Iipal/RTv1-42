@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/15 18:02:36 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/12/10 22:27:20 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/11 11:55:28 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,10 @@ Color	rt_lightning(Scene *restrict const scene,
 			t_clhelp *restrict const h,
 			t_v4df const d) NON_NULL((1,2));
 
-
+void		rt_render_threads_create(Environment **envs);
 Environment	**rt_prepare_threading(Environment *restrict const env);
+void		rt_update_threading(Environment *restrict *restrict env_dups,
+				const Environment *restrict src_env);
 void		rt_free_threading(Environment **env_dups);
 
 #endif

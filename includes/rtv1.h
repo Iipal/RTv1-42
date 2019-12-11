@@ -52,8 +52,6 @@ FpsRenderHelper	*rt_init_fps_render_helper(void);
 /*
 ** Rendering and other rendering stuff:
 */
-void		rt_render_threds_create(Environment **env) NON_NULL((1));
-
 Color		rt_anti_aliasing(void *restrict const arg, t_v4df d_calc)
 				NON_NULL((1));
 
