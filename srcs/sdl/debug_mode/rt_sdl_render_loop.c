@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:20:04 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/12/11 12:53:37 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/11 13:05:11 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void					rt_sdl_render_loop(Environment *restrict const env)
 		rt_sdl_keys_events(env);
 		SDL_UpdateWindowSurface(env->sdl->w);
 		rt_fps(&env->fps, env->cam_speed);
-		// if (IS_BIT(g_isr_flags, ISR_RENDER_FPS))
-			// rt_render_fps_counter(&env->flags.fps_text_color, &env->fps.time,
-				// env->sdl, env->flags.fps_refresh_timer, env->frh);
+		/* if (IS_BIT(g_isr_flags, ISR_RENDER_FPS))
+			rt_render_fps_counter(&env->flags.fps_text_color, &env->fps.time,
+				env->sdl, env->flags.fps_refresh_timer, env->frh); */
 		if (IS_BIT(g_flags, F_BIT_RLI) && !IS_BIT(g_flags, F_BIT_NCL))
 			rt_randomize_lights_intense(env->scene.lights,
 				env->scene.ins_lights, env->fps.time.res);

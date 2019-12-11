@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/12/11 12:57:33 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/11 13:12:43 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	render(void *arg)
 {
 	Environment *restrict const	env = arg;
-	Color						clr;
 	__v2si						xy;
 	int							i;
 
@@ -29,8 +28,8 @@ void	render(void *arg)
 			continue ;
 		env->scene.tmax = TMAX;
 		env->scene.tmin = TMIN;
-		if ((clr = env->render_fn(env, env->pre_calc_d[Y(xy)][X(xy)])).hex)
-			sdl_pixelput(env->sdl->wsurf, xy, clr);
+		sdl_pixelput(env->sdl->wsurf, xy,
+			env->render_fn(env, env->pre_calc_d[Y(xy)][X(xy)]));
 	}
 	goto again;
 }
