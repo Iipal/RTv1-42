@@ -35,7 +35,7 @@ STATUS:
  endif
 	@$(ECHO) "| compiler default flags: $(CFLAGS_WARN)"
 	@$(ECHO) "| compiler optional flags: $(CLR_UNDERLINE)$(CFLAGS)$(CLR_WHITE)"
-	@$(ECHO) "_"
+	@$(ECHO) "-$(shell printf "%0.s_" {1..$(words $(OBJS))})-"
 
 debug_all: fclean multi
 debug: multi

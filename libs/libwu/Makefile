@@ -31,7 +31,7 @@ STATUS:
 	@$(ECHO) "| compiler default flags: $(CFLAGS_WARN)"
 	@$(ECHO) "| compiler optional flags: $(CLR_UNDERLINE)$(CFLAGS)$(CLR_WHITE)"
 	@$(ECHO) "| archiver flags: $(CLR_UNDERLINE)$(ARFLAGS)$(CLR_WHITE)"
-	@$(ECHO) "\\"
+	@$(ECHO) "\$(shell printf "%0.s_" {1..$(words $(OBJS))})"
 
 debug_all: pre
 debug: multi
