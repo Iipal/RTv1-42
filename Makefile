@@ -28,12 +28,14 @@ $(LIBS_DIRS):
  endif
 
 STATUS:
-	@$(ECHO) "/ compiled: $(NAME) $(MSG_SUCCESS)"
+	@$(ECHO) "/"
+	@$(ECHO) "| compiled: $(NAME) $(MSG_SUCCESS)"
  ifneq (,$(DEFINES))
 	@$(ECHO) "| compiler custom defines: $(foreach dfns,$(DEFINES),$(CLR_INVERT)$(dfns)$(CLR_WHITE) )"
  endif
 	@$(ECHO) "| compiler default flags: $(CFLAGS_WARN)"
-	@$(ECHO) "_ compiler optional flags: $(CLR_UNDERLINE)$(CFLAGS)$(CLR_WHITE)"
+	@$(ECHO) "| compiler optional flags: $(CLR_UNDERLINE)$(CFLAGS)$(CLR_WHITE)"
+	@$(ECHO) "_"
 
 debug_all: fclean multi
 debug: multi

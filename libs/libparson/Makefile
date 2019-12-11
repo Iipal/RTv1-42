@@ -23,13 +23,15 @@ $(OBJS): %.o: %.c
 	@$(ECHO) " | $@: $(MSG_SUCCESS)"
 
 STATUS:
-	@$(ECHO) "/ created: $(NAME) $(MSG_SUCCESS)"
+	@$(ECHO) "/"
+	@$(ECHO) "| created: $(NAME) $(MSG_SUCCESS)"
  ifneq (,$(DEFINES))
 	@$(ECHO) "| compiler custom defines: $(foreach dfns,$(DEFINES),$(CLR_INVERT)$(dfns)$(CLR_WHITE) )"
  endif
 	@$(ECHO) "| compiler default flags: $(CFLAGS_WARN)"
 	@$(ECHO) "| compiler optional flags: $(CLR_UNDERLINE)$(CFLAGS)$(CLR_WHITE)"
-	@$(ECHO) "\ archiver flags: $(CLR_UNDERLINE)$(ARFLAGS)$(CLR_WHITE)"
+	@$(ECHO) "| archiver flags: $(CLR_UNDERLINE)$(ARFLAGS)$(CLR_WHITE)"
+	@$(ECHO) "\\"
 
 debug_all: pre
 debug: multi
