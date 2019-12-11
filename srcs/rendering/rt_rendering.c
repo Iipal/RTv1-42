@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 20:11:30 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/12/11 11:48:48 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/11 12:57:33 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	render(void *arg)
 	__v2si						xy;
 	int							i;
 
+	again:
 	i = env->render_range.x - 1;
 	while (env->render_range.y >= ++i)
 	{
@@ -31,6 +32,7 @@ void	render(void *arg)
 		if ((clr = env->render_fn(env, env->pre_calc_d[Y(xy)][X(xy)])).hex)
 			sdl_pixelput(env->sdl->wsurf, xy, clr);
 	}
+	goto again;
 }
 
 void	rt_render_threads_create(Environment **envs)
