@@ -1,14 +1,18 @@
-#include "tpool.h"
+#include "libtpool.h"
 
-void __attribute__((__nonnull__(1)))
-	tpool_wait(struct s_tpool *restrict tm)
+#define LIBTPOOL_INTERNAL
+# include "libtpool_internal.h"
+#undef LIBTPOOL_INTERNAL
+
+void	tpool_wait(struct s_tpool *restrict tpool)
 {
-	pthread_mutex_lock(&(tm->work_mutex));
-	while (-42)
-		if ((!(tm->stop) && !!(tm->working_cnt))
-		|| (!!(tm->stop) && !!(tm->thread_cnt)))
-			pthread_cond_wait(&(tm->working_cond), &(tm->work_mutex));
+	pthread_mutex_lock(&tpool->pool_mutex);
+	while (1) {
+		if ((!tpool->stop && tpool->works_count)
+		|| (tpool->stop && tpool->threads_count))
+			pthread_cond_wait(&tpool->pool_cond, &tpool->pool_mutex);
 		else
 			break ;
-	pthread_mutex_unlock(&(tm->work_mutex));
+	}
+	pthread_mutex_unlock(&tpool->pool_mutex);
 }
