@@ -17,6 +17,7 @@ struct	s_worker
 {
 	void	(*routine)(void *restrict);
 	void	*arg;
+	int		busy;
 };
 
 # endif

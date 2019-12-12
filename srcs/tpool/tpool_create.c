@@ -11,44 +11,35 @@ static struct s_worker
 
 	i = ~0UL;
 	while (tpool->pool_size > ++i)
-		if (tpool->works && tpool->works[i].routine)
+		if (tpool->works && tpool->works[i].routine && !tpool->works[i].busy)
 			break ;
 	if (tpool->pool_size > i)
 		return (&tpool->works[i]);
 	return (NULL);
 }
 
-static inline struct s_worker
-	*s_free_work(struct s_worker *restrict work)
-{
-	if (work)
-		*work = (struct s_worker) {
-			.routine = NULL,
-			.arg = NULL
-		};
-	return (NULL);
-}
-
+#include <stdio.h>
 static void
 	*s_thread_work(void *restrict arg)
 {
 	struct s_tpool *restrict	tpool = (struct s_tpool *restrict)arg;
 	struct s_worker *restrict	work;
 
+	work = NULL;
 	while (1) {
 		pthread_mutex_lock(&tpool->pool_mutex);
 		if (tpool->stop)
 		 	break ;
-		if (!(work = s_get_work(tpool)))
+		if (!tpool->works_count)
 			pthread_cond_wait(&tpool->work_cond, &tpool->pool_mutex);
-		tpool->works_count++;
 		work = s_get_work(tpool);
+		work->busy = 1;
 		pthread_mutex_unlock(&tpool->pool_mutex);
 		if (work && work->routine)
 			work->routine(work->arg);
 		pthread_mutex_lock(&tpool->pool_mutex);
-		work = s_free_work(work);
-		tpool->works_count--;
+		work->busy = 0;
+		--tpool->works_count;
 		if (!tpool->stop && !tpool->works_count)
 			pthread_cond_signal(&tpool->pool_cond);
 		pthread_mutex_unlock(&tpool->pool_mutex);
