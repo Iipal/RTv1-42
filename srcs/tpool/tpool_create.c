@@ -10,12 +10,10 @@ static struct s_worker
 	size_t	i;
 
 	i = ~0UL;
-	while (tpool->pool_size > ++i)
+	while (tpool->works_count > ++i)
 		if (tpool->works && tpool->works[i].routine && !tpool->works[i].busy)
 			break ;
-	if (tpool->pool_size > i)
-		return (&tpool->works[i]);
-	return (NULL);
+	return (&tpool->works[i]);
 }
 
 #include <stdio.h>
@@ -35,8 +33,7 @@ static void
 		work = s_get_work(tpool);
 		work->busy = 1;
 		pthread_mutex_unlock(&tpool->pool_mutex);
-		if (work && work->routine)
-			work->routine(work->arg);
+		work->routine(work->arg);
 		pthread_mutex_lock(&tpool->pool_mutex);
 		work->busy = 0;
 		--tpool->works_count;
