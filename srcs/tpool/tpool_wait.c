@@ -4,7 +4,7 @@
 # include "libtpool_internal.h"
 #undef LIBTPOOL_INTERNAL
 
-void	tpool_wait(struct s_tpool *restrict tpool)
+void	tpool_wait(struct s_tpool *__restrict tpool)
 {
 	pthread_mutex_lock(&tpool->pool_mutex);
 	while (1) {

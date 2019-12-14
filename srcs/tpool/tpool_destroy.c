@@ -4,7 +4,7 @@
 # include "libtpool_internal.h"
 #undef LIBTPOOL_INTERNAL
 
-void	tpool_destroy(struct s_tpool *restrict tpool)
+void	tpool_destroy(struct s_tpool *__restrict tpool)
 {
 	size_t	i;
 

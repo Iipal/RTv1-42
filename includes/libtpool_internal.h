@@ -3,11 +3,9 @@
 
 # ifndef LIBTPOOL_INTERNAL
 #  error "include libtpool.h only"
-# endif
+# endif /* LIBTPOOL_INTERNAL */
 
 # include <stdlib.h>
-# include <string.h>
-# include <stddef.h>
 # include <pthread.h>
 # include <assert.h>
 
@@ -16,45 +14,29 @@
 
 struct	s_work
 {
-	void	(*routine)(void *restrict);
-	void	*arg;
+	void	(*__nullable routine)(void *__restrict __nonnull);
+	void	*__restrict __nullable arg;
 };
 
-# endif
-
-# ifndef S_CURRENT_WORK
-#  define S_CURRENT_WORK
-
-struct	s_current_work
-{
-	struct s_work	work;
-	ptrdiff_t		work_mask_index;
-};
-
-# endif
-
+# endif /* S_WORK */
 
 # ifndef S_TPOOL
 #  define S_TPOOL
 
 struct	s_tpool
 {
-	struct s_work	*works;
-	ptrdiff_t		done_works_mask;
-	size_t			works_count;
-	size_t			threads_count;
-	size_t			pool_size;
-	pthread_mutex_t	pool_mutex;
-	pthread_cond_t	pool_cond;
-	pthread_cond_t	work_cond;
-	int				stop;
+	struct s_work *__restrict __nonnull	works;
+	size_t								works_count;
+	size_t								threads_count;
+	size_t								pool_size;
+	pthread_mutex_t						pool_mutex;
+	pthread_cond_t						pool_cond;
+	pthread_cond_t						work_cond;
+	int									stop;
 };
 
-# endif
+# endif /* S_TPOOL */
 
-ptrdiff_t __attribute__((__const__))
-internal_get_unbusy_index(const ptrdiff_t busy_works_mask);
-void
-*internal_thread_worker(void *restrict arg);
+void *__nullable	internal_thread_worker(void *__restrict __nonnull arg);
 
 #endif /* LIBTPOOL_INTERNAL_H */

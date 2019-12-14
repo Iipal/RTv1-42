@@ -4,14 +4,11 @@
 # include "libtpool_internal.h"
 #undef LIBTPOOL_INTERNAL
 
-#include <stdio.h>
-
-struct s_tpool
-	*tpool_create(const size_t threads_count)
+struct s_tpool *__nonnull	tpool_create(const size_t threads_count)
 {
-	struct s_tpool	*tpool;
-	pthread_t		thread;
-	size_t			i;
+	struct s_tpool *__restrict	tpool;
+	pthread_t					thread;
+	size_t						i;
 
 	assert(threads_count);
 	assert((tpool = calloc(1UL, sizeof(*tpool))));

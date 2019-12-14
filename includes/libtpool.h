@@ -12,25 +12,18 @@
 struct s_tpool;
 
 struct s_tpool
-*tpool_create(const size_t threads_count);
+*__nonnull tpool_create(const size_t threads_count);
 
 bool
-tpool_add_work(struct s_tpool *restrict tpool,
-	void (*work_routine)(void *restrict),
-	void *restrict arg);
+tpool_add_work(struct s_tpool *__restrict __nonnull tpool,
+	void (*__nonnull work_routine)(void *__nonnull),
+	void *__restrict __nonnull arg);
 
 void
-tpool_wait(struct s_tpool *restrict tpool);
+tpool_wait(struct s_tpool *__restrict __nonnull tpool);
 
-void __attribute__((__nonnull__(1)))
-tpool_destroy(struct s_tpool *restrict tpool);
-
-size_t __attribute__((__nonnull__(1)))
-tpool_size(struct s_tpool *restrict tpool);
-size_t __attribute__((__nonnull__(1)))
-tpool_alive(struct s_tpool *restrict tpool);
-size_t __attribute__((__nonnull__(1)))
-tpool_works(struct s_tpool *restrict tpool);
+void
+tpool_destroy(struct s_tpool *__restrict __nonnull tpool);
 
 # ifdef ONLY_LOCAL_GNU_SOURCE_DEFINE
 #  undef ONLY_LOCAL_GNU_SOURCE_DEFINE

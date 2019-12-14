@@ -6,40 +6,41 @@
 
 #include <stdio.h>
 
-static inline struct s_current_work
-	s_get_work(const struct s_tpool *restrict tpool)
+static struct s_work	s_get_work(struct s_tpool *__restrict tpool)
 {
-	size_t	i;
+	struct s_work	out;
+	size_t			i;
 
 	i = ~0UL;
+	out = (struct s_work) { NULL, NULL };
 	while (tpool->pool_size > ++i)
-		if (!!tpool->works[i].routine && !(tpool->done_works_mask & (1L << (ptrdiff_t)i)))
-			return ((struct s_current_work) { tpool->works[i], 1L << (ptrdiff_t)i });
-	return ((struct s_current_work) { { NULL, NULL }, 0L });
+		if (!!tpool->works[i].routine) {
+			out = tpool->works[i];
+			tpool->works[i] = (struct s_work) { NULL, NULL };
+			break ;
+		}
+	return (out);
 }
 
-void
-	*internal_thread_worker(void *restrict arg)
+void *__nullable	internal_thread_worker(void *__restrict __nonnull arg)
 {
-	struct s_tpool *restrict		tpool = (struct s_tpool *restrict)arg;
-	struct s_current_work			*c_work = valloc(sizeof(*c_work));
+	struct s_tpool *__restrict	tpool = (struct s_tpool *__restrict)arg;
+	struct s_work				work;
 
-	assert(arg);
-	assert(c_work);
 	while (1) {
 		pthread_mutex_lock(&tpool->pool_mutex);
 		if (tpool->stop)
 		 	break ;
 		if (!tpool->works_count)
 			pthread_cond_wait(&tpool->work_cond, &tpool->pool_mutex);
-		*c_work = s_get_work(tpool);
-		tpool->done_works_mask |= c_work->work_mask_index;
+		work = s_get_work(tpool);
 		++tpool->works_count;
 		pthread_mutex_unlock(&tpool->pool_mutex);
-		if (c_work->work.routine && c_work->work.arg)
-			c_work->work.routine(c_work->work.arg);
+		if (work.routine && work.arg)
+			work.routine(work.arg);
 		pthread_mutex_lock(&tpool->pool_mutex);
 		--tpool->works_count;
+		work = (struct s_work) { NULL, NULL };
 		if (!tpool->stop && !tpool->works_count)
 			pthread_cond_signal(&tpool->pool_cond);
 		pthread_mutex_unlock(&tpool->pool_mutex);
