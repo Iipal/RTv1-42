@@ -8,19 +8,16 @@ bool	tpool_add_work(struct s_tpool *restrict tpool,
 			void (*work_routine)(void *restrict),
 			void *arg)
 {
-	bool	ret;
+	size_t	i;
 
-	ret = false;
 	pthread_mutex_lock(&tpool->pool_mutex);
-	if (tpool->works_count < tpool->pool_size) {
-		tpool->works[tpool->works_count++] = (struct s_worker) {
-			.routine = work_routine,
-			.arg = arg,
-			.busy = 0
-		};
-		pthread_cond_broadcast(&tpool->work_cond);
-		ret = true;
-	}
+	i = ~0UL;
+	while (tpool->pool_size > ++i)
+		if (!tpool->works[i].routine) {
+			tpool->works[i] = (struct s_work) { work_routine, arg };
+			break ;
+		}
+	pthread_cond_broadcast(&tpool->work_cond);
 	pthread_mutex_unlock(&tpool->pool_mutex);
-	return (ret);
+	return (true);
 }

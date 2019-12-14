@@ -6,28 +6,41 @@
 # endif
 
 # include <stdlib.h>
+# include <string.h>
 # include <stddef.h>
 # include <pthread.h>
 # include <assert.h>
 
-# ifndef S_WORKER
-#  define S_WORKER
+# ifndef S_WORK
+#  define S_WORK
 
-struct	s_worker
+struct	s_work
 {
 	void	(*routine)(void *restrict);
 	void	*arg;
-	int		busy;
 };
 
 # endif
+
+# ifndef S_CURRENT_WORK
+#  define S_CURRENT_WORK
+
+struct	s_current_work
+{
+	struct s_work	work;
+	ptrdiff_t		work_mask_index;
+};
+
+# endif
+
 
 # ifndef S_TPOOL
 #  define S_TPOOL
 
 struct	s_tpool
 {
-	struct s_worker	*works;
+	struct s_work	*works;
+	ptrdiff_t		done_works_mask;
 	size_t			works_count;
 	size_t			threads_count;
 	size_t			pool_size;
@@ -38,5 +51,10 @@ struct	s_tpool
 };
 
 # endif
+
+ptrdiff_t __attribute__((__const__))
+internal_get_unbusy_index(const ptrdiff_t busy_works_mask);
+void
+*internal_thread_worker(void *restrict arg);
 
 #endif /* LIBTPOOL_INTERNAL_H */

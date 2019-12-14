@@ -26,10 +26,11 @@ void __attribute__((__nonnull__(1)))
 tpool_destroy(struct s_tpool *restrict tpool);
 
 size_t __attribute__((__nonnull__(1)))
-tpool_size(const struct s_tpool *restrict tpool);
-
+tpool_size(struct s_tpool *restrict tpool);
 size_t __attribute__((__nonnull__(1)))
-tpool_alive(const struct s_tpool *restrict tpool);
+tpool_alive(struct s_tpool *restrict tpool);
+size_t __attribute__((__nonnull__(1)))
+tpool_works(struct s_tpool *restrict tpool);
 
 # ifdef ONLY_LOCAL_GNU_SOURCE_DEFINE
 #  undef ONLY_LOCAL_GNU_SOURCE_DEFINE

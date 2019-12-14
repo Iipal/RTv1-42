@@ -2,6 +2,7 @@
 .VScode/
 **.o
 **.a
+**.d
 **.DS_Store
 test/
 bin/

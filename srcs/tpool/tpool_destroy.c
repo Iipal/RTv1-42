@@ -10,7 +10,6 @@ void	tpool_destroy(struct s_tpool *restrict tpool)
 
 	i = ~0UL;
 	pthread_mutex_lock(&tpool->pool_mutex);
-	free(tpool->works);
 	tpool->stop = true;
 	pthread_cond_broadcast(&tpool->work_cond);
 	pthread_mutex_unlock(&tpool->pool_mutex);
@@ -18,5 +17,6 @@ void	tpool_destroy(struct s_tpool *restrict tpool)
 	pthread_mutex_destroy(&tpool->pool_mutex);
 	pthread_cond_destroy(&tpool->pool_cond);
 	pthread_cond_destroy(&tpool->work_cond);
+	free(tpool->works);
 	free(tpool);
 }

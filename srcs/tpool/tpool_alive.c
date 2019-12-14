@@ -4,7 +4,12 @@
 # include "libtpool_internal.h"
 #undef LIBTPOOL_INTERNAL
 
-size_t	tpool_alive(const struct s_tpool *restrict tpool)
+size_t	tpool_alive(struct s_tpool *restrict tpool)
 {
-	return (tpool->threads_count);
+	size_t	n;
+
+	pthread_mutex_lock(&tpool->pool_mutex);
+	n = tpool->threads_count;
+	pthread_mutex_unlock(&tpool->pool_mutex);
+	return (n);
 }

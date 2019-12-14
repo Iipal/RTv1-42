@@ -6,7 +6,7 @@
 /*   By: tmaluh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 15:22:19 by tmaluh            #+#    #+#             */
-/*   Updated: 2019/12/11 12:56:18 by tmaluh           ###   ########.fr       */
+/*   Updated: 2019/12/14 14:12:50 by tmaluh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 uint32_t g_isr_flags = 0U;
 uint16_t g_flags = 0;
-const size_t				g_threads_num = 64UL;
+const size_t				g_threads_num = 32UL;
 struct s_tpool *restrict	g_threads_pool = NULL;
 
 bool	rt_main_env_init(Environment *const env)
